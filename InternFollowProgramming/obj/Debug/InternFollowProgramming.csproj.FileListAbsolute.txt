@@ -1,0 +1,9 @@
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\bin\Debug\InternFollowProgramming.exe.config
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\bin\Debug\InternFollowProgramming.exe
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\bin\Debug\InternFollowProgramming.pdb
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csprojResolveAssemblyReference.cache
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmHome.resources
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.Properties.Resources.resources
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csproj.GenerateResource.Cache
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.exe
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.pdb
