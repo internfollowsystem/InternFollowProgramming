@@ -32,13 +32,13 @@
             this.panel_ust = new System.Windows.Forms.Panel();
             this.label_isim = new System.Windows.Forms.Label();
             this.panel_alt = new System.Windows.Forms.Panel();
-            this.textBox_password = new System.Windows.Forms.TextBox();
-            this.label2_user = new System.Windows.Forms.Label();
-            this.label_password = new System.Windows.Forms.Label();
-            this.button_login = new System.Windows.Forms.Button();
-            this.checkBox_password = new System.Windows.Forms.CheckBox();
-            this.button_logout = new System.Windows.Forms.Button();
             this.comboBox_user = new System.Windows.Forms.ComboBox();
+            this.button_logout = new System.Windows.Forms.Button();
+            this.checkBox_password = new System.Windows.Forms.CheckBox();
+            this.button_login = new System.Windows.Forms.Button();
+            this.label_password = new System.Windows.Forms.Label();
+            this.label2_user = new System.Windows.Forms.Label();
+            this.textBox_password = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logo)).BeginInit();
             this.panel_ust.SuspendLayout();
             this.panel_alt.SuspendLayout();
@@ -89,31 +89,35 @@
             this.panel_alt.Size = new System.Drawing.Size(419, 205);
             this.panel_alt.TabIndex = 2;
             // 
-            // textBox_password
+            // comboBox_user
             // 
-            this.textBox_password.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_password.Location = new System.Drawing.Point(104, 101);
-            this.textBox_password.Name = "textBox_password";
-            this.textBox_password.Size = new System.Drawing.Size(164, 25);
-            this.textBox_password.TabIndex = 1;
+            this.comboBox_user.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.comboBox_user.FormattingEnabled = true;
+            this.comboBox_user.Location = new System.Drawing.Point(104, 58);
+            this.comboBox_user.Name = "comboBox_user";
+            this.comboBox_user.Size = new System.Drawing.Size(164, 27);
+            this.comboBox_user.TabIndex = 7;
             // 
-            // label2_user
+            // button_logout
             // 
-            this.label2_user.AutoSize = true;
-            this.label2_user.Location = new System.Drawing.Point(18, 58);
-            this.label2_user.Name = "label2_user";
-            this.label2_user.Size = new System.Drawing.Size(40, 19);
-            this.label2_user.TabIndex = 2;
-            this.label2_user.Text = "User:";
+            this.button_logout.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button_logout.Location = new System.Drawing.Point(319, 150);
+            this.button_logout.Name = "button_logout";
+            this.button_logout.Size = new System.Drawing.Size(75, 29);
+            this.button_logout.TabIndex = 6;
+            this.button_logout.Text = "Logout";
+            this.button_logout.UseVisualStyleBackColor = false;
             // 
-            // label_password
+            // checkBox_password
             // 
-            this.label_password.AutoSize = true;
-            this.label_password.Location = new System.Drawing.Point(18, 104);
-            this.label_password.Name = "label_password";
-            this.label_password.Size = new System.Drawing.Size(66, 19);
-            this.label_password.TabIndex = 3;
-            this.label_password.Text = "Password:";
+            this.checkBox_password.AutoSize = true;
+            this.checkBox_password.Location = new System.Drawing.Point(286, 104);
+            this.checkBox_password.Name = "checkBox_password";
+            this.checkBox_password.Size = new System.Drawing.Size(108, 23);
+            this.checkBox_password.TabIndex = 5;
+            this.checkBox_password.Text = "Şifreyi Göster";
+            this.checkBox_password.UseVisualStyleBackColor = true;
+            this.checkBox_password.CheckedChanged += new System.EventHandler(this.checkBox_password_CheckedChanged);
             // 
             // button_login
             // 
@@ -126,34 +130,32 @@
             this.button_login.UseVisualStyleBackColor = false;
             this.button_login.Click += new System.EventHandler(this.button_login_Click);
             // 
-            // checkBox_password
+            // label_password
             // 
-            this.checkBox_password.AutoSize = true;
-            this.checkBox_password.Location = new System.Drawing.Point(286, 104);
-            this.checkBox_password.Name = "checkBox_password";
-            this.checkBox_password.Size = new System.Drawing.Size(108, 23);
-            this.checkBox_password.TabIndex = 5;
-            this.checkBox_password.Text = "Şifreyi Göster";
-            this.checkBox_password.UseVisualStyleBackColor = true;
+            this.label_password.AutoSize = true;
+            this.label_password.Location = new System.Drawing.Point(18, 104);
+            this.label_password.Name = "label_password";
+            this.label_password.Size = new System.Drawing.Size(66, 19);
+            this.label_password.TabIndex = 3;
+            this.label_password.Text = "Password:";
             // 
-            // button_logout
+            // label2_user
             // 
-            this.button_logout.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button_logout.Location = new System.Drawing.Point(319, 150);
-            this.button_logout.Name = "button_logout";
-            this.button_logout.Size = new System.Drawing.Size(75, 29);
-            this.button_logout.TabIndex = 6;
-            this.button_logout.Text = "Logout";
-            this.button_logout.UseVisualStyleBackColor = false;
+            this.label2_user.AutoSize = true;
+            this.label2_user.Location = new System.Drawing.Point(18, 58);
+            this.label2_user.Name = "label2_user";
+            this.label2_user.Size = new System.Drawing.Size(40, 19);
+            this.label2_user.TabIndex = 2;
+            this.label2_user.Text = "User:";
             // 
-            // comboBox_user
+            // textBox_password
             // 
-            this.comboBox_user.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.comboBox_user.FormattingEnabled = true;
-            this.comboBox_user.Location = new System.Drawing.Point(104, 58);
-            this.comboBox_user.Name = "comboBox_user";
-            this.comboBox_user.Size = new System.Drawing.Size(164, 27);
-            this.comboBox_user.TabIndex = 7;
+            this.textBox_password.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_password.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.textBox_password.Location = new System.Drawing.Point(104, 101);
+            this.textBox_password.Name = "textBox_password";
+            this.textBox_password.Size = new System.Drawing.Size(164, 25);
+            this.textBox_password.TabIndex = 1;
             // 
             // FrmHome
             // 

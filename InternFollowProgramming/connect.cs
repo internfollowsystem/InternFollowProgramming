@@ -16,7 +16,7 @@ namespace InternFollowProgramming
         SqlCommand cmd;
 
 
-        public Connect() //Kurucu metot
+        public void Connect() //Kurucu metot
         {
             Baglan();
         }
@@ -35,8 +35,8 @@ namespace InternFollowProgramming
             try
             {
                 List<Intern> ogrenciListesi = new List<Intern>();
-                cmd.CommandText = "Select *From ogrenci";
-                cmd.CommandText = "Selecet *From staj_bilgileri";
+                cmd.CommandText = "Select *From intern";
+                cmd.CommandText = "Selecet *From IntershipInformation";
                 cmd.CommandType = CommandType.Text;
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -113,7 +113,7 @@ namespace InternFollowProgramming
             try
             {
                 cmd.CommandText = "Insert Into intern(tc_kimlikno,ad_soyad,baba_adı,anne_adı,d_yeri,d_tarih,uyrugu,cinsiyet,ev_tel,cep_tel,adres,e_posta,web_adres,boy,agırlık,kan_grubu,okul_turu,okul_adı,okul_sehir,bolum_adı,sınıf,okul_no,okul_puan,sigorta_evrak_durumu,acil_adsoyad,acil_adres,acil_akrabalık_derecesi,acil_telefon_no,acil_e_posta) values('" + i.tcNo + "','" + i.AdSoyad + "','" + i.BabaAd + "','" + i.AnneAd + "','" + i.DogumYeri + "','" + i.DogumTarihi + "','" + i.Uyrugu + "','" + i.Cinsiyet + "','" + i.EvTelefonu + "','" + i.CepTelefonu + "','" + i.Ikametgah + "','" + i.EPosta + "','" + i.WebAdress + "','" + i.Boy + "','" + i.Agirlik + "','" + i.KanGrubu + "','" + i.OkulTuru + "," + i.OkulAdi + "','" + i.Sehir + "','" + i.BolumAdi + "','" + i.Sinif + "','" + i.OkulNo + "','" + i.OkulPuani + "','" + i.Sigorta + "','" + i.acl_AdSoyad + "','" + i.acl_Ikametgah + "','" + i.acl_Akrabalik + "','" + i.acl_Telefon + "','" + i.acl_EPosta + "')";
-                cmd.CommandText = "Insert Into staj_bilgileri(staj_kabul_durumu,staj_basvuru_turu,staj_yılı,staj_donem,staj_konusu,staj_baslama_tarihi,staj_bitis_tarihi,staj_süresi,staj_bas_kalan_sure,staj_durumu,staj_konuları) values('" + i.StjKabulDurum + "','" + i.StjBasvuruTuru + "','" + i.StjYili + "','" + i.StjDonemi + "','" + i.StjKonusu + "','" + i.BslmSuresi + "','" + i.BtsSuresi + "','" + i.StjSuresi + "','" + i.KlnSuresi + "','" + i.StjDurumu + "','" + i.StjIcerigi + "')";
+                cmd.CommandText = "Insert Into IntershipInformation(staj_kabul_durumu,staj_basvuru_turu,staj_yılı,staj_donem,staj_konusu,staj_baslama_tarihi,staj_bitis_tarihi,staj_süresi,staj_bas_kalan_sure,staj_durumu,staj_konuları) values('" + i.StjKabulDurum + "','" + i.StjBasvuruTuru + "','" + i.StjYili + "','" + i.StjDonemi + "','" + i.StjKonusu + "','" + i.BslmSuresi + "','" + i.BtsSuresi + "','" + i.StjSuresi + "','" + i.KlnSuresi + "','" + i.StjDurumu + "','" + i.StjIcerigi + "')";
                 cmd.CommandType = CommandType.Text;
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -140,8 +140,8 @@ namespace InternFollowProgramming
 
             try
             {
-                cmd.CommandText = "Update ogrenci SET ad_soyad='" + yeniKisi.AdSoyad + "',baba_adı='" + yeniKisi.BabaAd + "',anne_adı='" + yeniKisi.AnneAd + "',d_yeri='" + yeniKisi.DogumYeri + "',d_tarih='" + yeniKisi.DogumTarihi + "',uyrugu='" + yeniKisi.Uyrugu + "',cinsiyet='" + yeniKisi.Cinsiyet + "',ev_tel='" + yeniKisi.EvTelefonu + "',cep_tel='" + yeniKisi.CepTelefonu + "',adres='" + yeniKisi.Ikametgah + "',e_posta'=" + yeniKisi.EPosta + "',web_adres='" + yeniKisi.WebAdress + "',boy='" + yeniKisi.Boy + "',agırlık='" + yeniKisi.Agirlik + "',kan_grubu='" + yeniKisi.KanGrubu + "',okul_turu='" + yeniKisi.OkulTuru + "',okul_adı='" + yeniKisi.OkulAdi + "',okul_sehir='" + yeniKisi.Sehir + "',bolum_adı='" + yeniKisi.BolumAdi + "',sınıf='" + yeniKisi.Sinif + "',okul_no'" + yeniKisi.OkulNo + "',okul_puan='" + yeniKisi.OkulPuani + "',sigorta_evrak_durumu='" + yeniKisi.Sigorta + "',acil_adsoyad='" + yeniKisi.acl_AdSoyad + "',acil_adres='" + yeniKisi.acl_Ikametgah + "',acil_akabalık_derecesi='" + yeniKisi.acl_Akrabalik + "',acil_telefon_no='" + yeniKisi.acl_Telefon + "',acil_e_posta='" + yeniKisi.acl_EPosta + "' Where tc_kimlikno='" + eskiKisi.tcNo + "'";
-                cmd.CommandText = "Update staj_bilgileri SET staj_kabul_durumu='" + yeniKisi.StjKabulDurum + "',staj_basvuru_turu='" + yeniKisi.StjBasvuruTuru + "',staj_yılı='" + yeniKisi.StjYili + "',staj_donem='" + yeniKisi + "',staj_konusu='" + yeniKisi.StjKonusu + "',staj_baslama_tarihi='" + yeniKisi.BslmSuresi + "',staj_bitis_tarihi='" + yeniKisi.BtsSuresi + "',staj_süresi='" + yeniKisi.StjSuresi + "',staj_bas_kalan_sure='" + yeniKisi.KlnSuresi + "',staj_durumu='" + yeniKisi.StjDurumu + "',staj_konuları='" + yeniKisi.StjIcerigi + "' Where tc_kimlikno='" + eskiKisi.tcNo + "'";
+                cmd.CommandText = "Update intern SET ad_soyad='" + yeniKisi.AdSoyad + "',baba_adı='" + yeniKisi.BabaAd + "',anne_adı='" + yeniKisi.AnneAd + "',d_yeri='" + yeniKisi.DogumYeri + "',d_tarih='" + yeniKisi.DogumTarihi + "',uyrugu='" + yeniKisi.Uyrugu + "',cinsiyet='" + yeniKisi.Cinsiyet + "',ev_tel='" + yeniKisi.EvTelefonu + "',cep_tel='" + yeniKisi.CepTelefonu + "',adres='" + yeniKisi.Ikametgah + "',e_posta'=" + yeniKisi.EPosta + "',web_adres='" + yeniKisi.WebAdress + "',boy='" + yeniKisi.Boy + "',agırlık='" + yeniKisi.Agirlik + "',kan_grubu='" + yeniKisi.KanGrubu + "',okul_turu='" + yeniKisi.OkulTuru + "',okul_adı='" + yeniKisi.OkulAdi + "',okul_sehir='" + yeniKisi.Sehir + "',bolum_adı='" + yeniKisi.BolumAdi + "',sınıf='" + yeniKisi.Sinif + "',okul_no'" + yeniKisi.OkulNo + "',okul_puan='" + yeniKisi.OkulPuani + "',sigorta_evrak_durumu='" + yeniKisi.Sigorta + "',acil_adsoyad='" + yeniKisi.acl_AdSoyad + "',acil_adres='" + yeniKisi.acl_Ikametgah + "',acil_akabalık_derecesi='" + yeniKisi.acl_Akrabalik + "',acil_telefon_no='" + yeniKisi.acl_Telefon + "',acil_e_posta='" + yeniKisi.acl_EPosta + "' Where tc_kimlikno='" + eskiKisi.tcNo + "'";
+                cmd.CommandText = "Update IntershipInformation SET staj_kabul_durumu='" + yeniKisi.StjKabulDurum + "',staj_basvuru_turu='" + yeniKisi.StjBasvuruTuru + "',staj_yılı='" + yeniKisi.StjYili + "',staj_donem='" + yeniKisi + "',staj_konusu='" + yeniKisi.StjKonusu + "',staj_baslama_tarihi='" + yeniKisi.BslmSuresi + "',staj_bitis_tarihi='" + yeniKisi.BtsSuresi + "',staj_süresi='" + yeniKisi.StjSuresi + "',staj_bas_kalan_sure='" + yeniKisi.KlnSuresi + "',staj_durumu='" + yeniKisi.StjDurumu + "',staj_konuları='" + yeniKisi.StjIcerigi + "' Where tc_kimlikno='" + eskiKisi.tcNo + "'";
                 cmd.CommandType = CommandType.Text;
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -165,7 +165,7 @@ namespace InternFollowProgramming
         {
             try
             {
-                cmd.CommandText = "Delete From Ogrenci Where tc_kimlikno='" + i.tcNo + "'";
+                cmd.CommandText = "Delete From intern Where tc_kimlikno='" + i.tcNo + "'";
                 cmd.CommandType = CommandType.Text;
                 con.Open();
                 cmd.ExecuteNonQuery();

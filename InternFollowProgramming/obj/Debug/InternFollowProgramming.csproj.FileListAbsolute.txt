@@ -7,3 +7,5 @@ C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFoll
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csproj.GenerateResource.Cache
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.exe
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.pdb
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmInternInformation.resources
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmScreen.resources
