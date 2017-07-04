@@ -32,7 +32,6 @@
             this.textBox_tcbul = new System.Windows.Forms.TextBox();
             this.panel_adsoyadbul = new System.Windows.Forms.Panel();
             this.button_bul = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button_resim = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -41,12 +40,10 @@
             this.textBox_agırlık = new System.Windows.Forms.TextBox();
             this.textBox_boy = new System.Windows.Forms.TextBox();
             this.textBox_website = new System.Windows.Forms.TextBox();
-            this.textBox_iban = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.textBox_eposta = new System.Windows.Forms.TextBox();
             this.textBox_adres = new System.Windows.Forms.TextBox();
             this.textBox_ceptel = new System.Windows.Forms.TextBox();
@@ -97,8 +94,10 @@
             this.textBox_okulpuan = new System.Windows.Forms.TextBox();
             this.textBox_okulno = new System.Windows.Forms.TextBox();
             this.textBox_okul = new System.Windows.Forms.TextBox();
+            this.textBox_iban = new System.Windows.Forms.TextBox();
             this.comboBox_sinif = new System.Windows.Forms.ComboBox();
             this.checkBox_referans = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.comboBox_bolumadı = new System.Windows.Forms.ComboBox();
             this.comboBox_sehir = new System.Windows.Forms.ComboBox();
             this.comboBox_egitim = new System.Windows.Forms.ComboBox();
@@ -110,6 +109,7 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.comboBox_stajyerkonusu = new System.Windows.Forms.ComboBox();
             this.label_acıklama = new System.Windows.Forms.Label();
             this.textBox_aciklama = new System.Windows.Forms.TextBox();
             this.comboBox_mentor = new System.Windows.Forms.ComboBox();
@@ -124,7 +124,6 @@
             this.textBox_stajsuresi = new System.Windows.Forms.TextBox();
             this.dateTimePicker_bitis = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_baslangıc = new System.Windows.Forms.DateTimePicker();
-            this.textBox_stajkonusu = new System.Windows.Forms.TextBox();
             this.comboBox_stajdonemi = new System.Windows.Forms.ComboBox();
             this.comboBox_stajyili = new System.Windows.Forms.ComboBox();
             this.comboBox_basvuruturu = new System.Windows.Forms.ComboBox();
@@ -142,19 +141,22 @@
             this.button_update = new System.Windows.Forms.Button();
             this.button_delete = new System.Windows.Forms.Button();
             this.button_evrak = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button_kisiselbilgiler_kaydet = new System.Windows.Forms.Button();
             this.panel_adsoyadbul.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel_referans.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label_tcbul
             // 
             this.label_tcbul.AutoSize = true;
+            this.label_tcbul.ForeColor = System.Drawing.Color.White;
             this.label_tcbul.Location = new System.Drawing.Point(6, 17);
             this.label_tcbul.Name = "label_tcbul";
             this.label_tcbul.Size = new System.Drawing.Size(56, 13);
@@ -166,48 +168,38 @@
             this.textBox_tcbul.Location = new System.Drawing.Point(94, 10);
             this.textBox_tcbul.Name = "textBox_tcbul";
             this.textBox_tcbul.Size = new System.Drawing.Size(109, 20);
-            this.textBox_tcbul.TabIndex = 2;
+            this.textBox_tcbul.TabIndex = 0;
             // 
             // panel_adsoyadbul
             // 
-            this.panel_adsoyadbul.BackColor = System.Drawing.Color.Moccasin;
+            this.panel_adsoyadbul.BackColor = System.Drawing.Color.Black;
             this.panel_adsoyadbul.Controls.Add(this.button_bul);
             this.panel_adsoyadbul.Controls.Add(this.textBox_tcbul);
             this.panel_adsoyadbul.Controls.Add(this.label_tcbul);
-            this.panel_adsoyadbul.Location = new System.Drawing.Point(12, 10);
+            this.panel_adsoyadbul.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_adsoyadbul.Location = new System.Drawing.Point(0, 0);
             this.panel_adsoyadbul.Name = "panel_adsoyadbul";
-            this.panel_adsoyadbul.Size = new System.Drawing.Size(262, 40);
-            this.panel_adsoyadbul.TabIndex = 4;
+            this.panel_adsoyadbul.Size = new System.Drawing.Size(971, 40);
+            this.panel_adsoyadbul.TabIndex = 2;
             // 
             // button_bul
             // 
-            this.button_bul.BackColor = System.Drawing.Color.Tan;
+            this.button_bul.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button_bul.BackgroundImage = global::InternFollowProgramming.Properties.Resources.Search3;
             this.button_bul.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_bul.Location = new System.Drawing.Point(218, 6);
             this.button_bul.Name = "button_bul";
             this.button_bul.Size = new System.Drawing.Size(25, 26);
-            this.button_bul.TabIndex = 3;
+            this.button_bul.TabIndex = 2;
             this.button_bul.UseVisualStyleBackColor = false;
             this.button_bul.Click += new System.EventHandler(this.button_bul_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.OldLace;
-            this.pictureBox1.Image = global::InternFollowProgramming.Properties.Resources.pp;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 64);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(104, 116);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // button_resim
             // 
             this.button_resim.Location = new System.Drawing.Point(41, 196);
             this.button_resim.Name = "button_resim";
             this.button_resim.Size = new System.Drawing.Size(75, 23);
-            this.button_resim.TabIndex = 5;
+            this.button_resim.TabIndex = 2;
             this.button_resim.Text = "Resim Yükle";
             this.button_resim.UseVisualStyleBackColor = true;
             this.button_resim.Click += new System.EventHandler(this.button_resim_Click);
@@ -222,22 +214,20 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(825, 348);
-            this.tabControl1.TabIndex = 6;
+            this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Linen;
+            this.tabPage1.BackColor = System.Drawing.Color.Gold;
             this.tabPage1.Controls.Add(this.label44);
             this.tabPage1.Controls.Add(this.comboBox_kangrubu);
             this.tabPage1.Controls.Add(this.textBox_agırlık);
             this.tabPage1.Controls.Add(this.textBox_boy);
             this.tabPage1.Controls.Add(this.textBox_website);
-            this.tabPage1.Controls.Add(this.textBox_iban);
             this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.textBox_eposta);
             this.tabPage1.Controls.Add(this.textBox_adres);
             this.tabPage1.Controls.Add(this.textBox_ceptel);
@@ -272,11 +262,12 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(669, 291);
+            this.label44.Location = new System.Drawing.Point(734, 291);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(132, 13);
+            this.label44.Size = new System.Drawing.Size(61, 13);
             this.label44.TabIndex = 34;
-            this.label44.Text = "Diğer Sekmeye Geçiniz >>";
+            this.label44.Text = "İlerleyiniz>>";
+            this.label44.Click += new System.EventHandler(this.label44_Click);
             // 
             // comboBox_kangrubu
             // 
@@ -290,43 +281,36 @@
             "AB RH -",
             "B RH +",
             "B RH -"});
-            this.comboBox_kangrubu.Location = new System.Drawing.Point(634, 171);
+            this.comboBox_kangrubu.Location = new System.Drawing.Point(634, 133);
             this.comboBox_kangrubu.Name = "comboBox_kangrubu";
             this.comboBox_kangrubu.Size = new System.Drawing.Size(161, 21);
             this.comboBox_kangrubu.TabIndex = 33;
             // 
             // textBox_agırlık
             // 
-            this.textBox_agırlık.Location = new System.Drawing.Point(634, 133);
+            this.textBox_agırlık.Location = new System.Drawing.Point(634, 95);
             this.textBox_agırlık.Name = "textBox_agırlık";
             this.textBox_agırlık.Size = new System.Drawing.Size(161, 20);
             this.textBox_agırlık.TabIndex = 32;
             // 
             // textBox_boy
             // 
-            this.textBox_boy.Location = new System.Drawing.Point(634, 95);
+            this.textBox_boy.Location = new System.Drawing.Point(634, 57);
             this.textBox_boy.Name = "textBox_boy";
             this.textBox_boy.Size = new System.Drawing.Size(161, 20);
             this.textBox_boy.TabIndex = 31;
             // 
             // textBox_website
             // 
-            this.textBox_website.Location = new System.Drawing.Point(634, 57);
+            this.textBox_website.Location = new System.Drawing.Point(634, 19);
             this.textBox_website.Name = "textBox_website";
             this.textBox_website.Size = new System.Drawing.Size(161, 20);
             this.textBox_website.TabIndex = 30;
             // 
-            // textBox_iban
-            // 
-            this.textBox_iban.Location = new System.Drawing.Point(634, 19);
-            this.textBox_iban.Name = "textBox_iban";
-            this.textBox_iban.Size = new System.Drawing.Size(161, 20);
-            this.textBox_iban.TabIndex = 29;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(570, 171);
+            this.label18.Location = new System.Drawing.Point(570, 133);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(58, 13);
             this.label18.TabIndex = 28;
@@ -335,7 +319,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(570, 133);
+            this.label17.Location = new System.Drawing.Point(570, 95);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(35, 13);
             this.label17.TabIndex = 27;
@@ -344,7 +328,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(570, 95);
+            this.label16.Location = new System.Drawing.Point(570, 57);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(25, 13);
             this.label16.TabIndex = 26;
@@ -353,20 +337,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(570, 57);
+            this.label15.Location = new System.Drawing.Point(570, 19);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(54, 13);
             this.label15.TabIndex = 25;
             this.label15.Text = "Web Site:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(570, 19);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(35, 13);
-            this.label14.TabIndex = 24;
-            this.label14.Text = "IBAN:";
             // 
             // textBox_eposta
             // 
@@ -567,12 +542,13 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.Linen;
+            this.tabPage2.BackColor = System.Drawing.Color.Gold;
             this.tabPage2.Controls.Add(this.label45);
             this.tabPage2.Controls.Add(this.textBox_ai_eposta);
             this.tabPage2.Controls.Add(this.textBox_ai_telefon);
             this.tabPage2.Controls.Add(this.textBox_ai_akrabalık);
             this.tabPage2.Controls.Add(this.textBox_ai_adres);
+            this.tabPage2.Controls.Add(this.button_save);
             this.tabPage2.Controls.Add(this.textBox_ai_adsoyad);
             this.tabPage2.Controls.Add(this.label23);
             this.tabPage2.Controls.Add(this.label22);
@@ -589,11 +565,12 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(663, 292);
+            this.label45.Location = new System.Drawing.Point(724, 292);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(132, 13);
+            this.label45.Size = new System.Drawing.Size(61, 13);
             this.label45.TabIndex = 10;
-            this.label45.Text = "Diğer Sekmeye Geçiniz >>";
+            this.label45.Text = "İlerleyiniz>>";
+            this.label45.Click += new System.EventHandler(this.label45_Click);
             // 
             // textBox_ai_eposta
             // 
@@ -678,14 +655,16 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.Linen;
+            this.tabPage3.BackColor = System.Drawing.Color.Gold;
             this.tabPage3.Controls.Add(this.panel_referans);
             this.tabPage3.Controls.Add(this.label46);
             this.tabPage3.Controls.Add(this.textBox_okulpuan);
             this.tabPage3.Controls.Add(this.textBox_okulno);
             this.tabPage3.Controls.Add(this.textBox_okul);
+            this.tabPage3.Controls.Add(this.textBox_iban);
             this.tabPage3.Controls.Add(this.comboBox_sinif);
             this.tabPage3.Controls.Add(this.checkBox_referans);
+            this.tabPage3.Controls.Add(this.label14);
             this.tabPage3.Controls.Add(this.comboBox_bolumadı);
             this.tabPage3.Controls.Add(this.comboBox_sehir);
             this.tabPage3.Controls.Add(this.comboBox_egitim);
@@ -784,11 +763,12 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(664, 290);
+            this.label46.Location = new System.Drawing.Point(743, 290);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(132, 13);
+            this.label46.Size = new System.Drawing.Size(61, 13);
             this.label46.TabIndex = 16;
-            this.label46.Text = "Diğer Sekmeye Geçiniz >>";
+            this.label46.Text = "İlerleyiniz>>";
+            this.label46.Click += new System.EventHandler(this.label46_Click);
             // 
             // textBox_okulpuan
             // 
@@ -810,6 +790,13 @@
             this.textBox_okul.Name = "textBox_okul";
             this.textBox_okul.Size = new System.Drawing.Size(121, 20);
             this.textBox_okul.TabIndex = 13;
+            // 
+            // textBox_iban
+            // 
+            this.textBox_iban.Location = new System.Drawing.Point(423, 209);
+            this.textBox_iban.Name = "textBox_iban";
+            this.textBox_iban.Size = new System.Drawing.Size(141, 20);
+            this.textBox_iban.TabIndex = 29;
             // 
             // comboBox_sinif
             // 
@@ -835,6 +822,15 @@
             this.checkBox_referans.UseVisualStyleBackColor = true;
             this.checkBox_referans.CheckedChanged += new System.EventHandler(this.checkBox_referans_CheckedChanged);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(310, 216);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(35, 13);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "IBAN:";
+            // 
             // comboBox_bolumadı
             // 
             this.comboBox_bolumadı.FormattingEnabled = true;
@@ -846,7 +842,7 @@
             "ENDÜSTRİYEL TASARIM MÜHENDİSLİĞİ",
             "BİLGİSAYAR MÜHENDİSLİĞİ",
             ""});
-            this.comboBox_bolumadı.Location = new System.Drawing.Point(113, 206);
+            this.comboBox_bolumadı.Location = new System.Drawing.Point(113, 208);
             this.comboBox_bolumadı.Name = "comboBox_bolumadı";
             this.comboBox_bolumadı.Size = new System.Drawing.Size(121, 21);
             this.comboBox_bolumadı.TabIndex = 10;
@@ -870,6 +866,7 @@
             this.comboBox_egitim.Name = "comboBox_egitim";
             this.comboBox_egitim.Size = new System.Drawing.Size(121, 21);
             this.comboBox_egitim.TabIndex = 8;
+            this.comboBox_egitim.SelectedIndexChanged += new System.EventHandler(this.comboBox_egitim_SelectedIndexChanged);
             // 
             // label30
             // 
@@ -936,12 +933,13 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.BackColor = System.Drawing.Color.Linen;
+            this.tabPage4.BackColor = System.Drawing.Color.Gold;
+            this.tabPage4.Controls.Add(this.button_kisiselbilgiler_kaydet);
+            this.tabPage4.Controls.Add(this.comboBox_stajyerkonusu);
             this.tabPage4.Controls.Add(this.label_acıklama);
             this.tabPage4.Controls.Add(this.textBox_aciklama);
             this.tabPage4.Controls.Add(this.comboBox_mentor);
             this.tabPage4.Controls.Add(this.label_mentor);
-            this.tabPage4.Controls.Add(this.button_save);
             this.tabPage4.Controls.Add(this.comboBox_sigorta);
             this.tabPage4.Controls.Add(this.textBox_arac);
             this.tabPage4.Controls.Add(this.label43);
@@ -951,7 +949,6 @@
             this.tabPage4.Controls.Add(this.textBox_stajsuresi);
             this.tabPage4.Controls.Add(this.dateTimePicker_bitis);
             this.tabPage4.Controls.Add(this.dateTimePicker_baslangıc);
-            this.tabPage4.Controls.Add(this.textBox_stajkonusu);
             this.tabPage4.Controls.Add(this.comboBox_stajdonemi);
             this.tabPage4.Controls.Add(this.comboBox_stajyili);
             this.tabPage4.Controls.Add(this.comboBox_basvuruturu);
@@ -972,10 +969,18 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Staj Bilgileri";
             // 
+            // comboBox_stajyerkonusu
+            // 
+            this.comboBox_stajyerkonusu.FormattingEnabled = true;
+            this.comboBox_stajyerkonusu.Location = new System.Drawing.Point(377, 37);
+            this.comboBox_stajyerkonusu.Name = "comboBox_stajyerkonusu";
+            this.comboBox_stajyerkonusu.Size = new System.Drawing.Size(149, 21);
+            this.comboBox_stajyerkonusu.TabIndex = 29;
+            // 
             // label_acıklama
             // 
             this.label_acıklama.AutoSize = true;
-            this.label_acıklama.Location = new System.Drawing.Point(266, 291);
+            this.label_acıklama.Location = new System.Drawing.Point(19, 67);
             this.label_acıklama.Name = "label_acıklama";
             this.label_acıklama.Size = new System.Drawing.Size(53, 13);
             this.label_acıklama.TabIndex = 28;
@@ -983,10 +988,10 @@
             // 
             // textBox_aciklama
             // 
-            this.textBox_aciklama.Location = new System.Drawing.Point(377, 280);
+            this.textBox_aciklama.Location = new System.Drawing.Point(122, 67);
             this.textBox_aciklama.Multiline = true;
             this.textBox_aciklama.Name = "textBox_aciklama";
-            this.textBox_aciklama.Size = new System.Drawing.Size(149, 34);
+            this.textBox_aciklama.Size = new System.Drawing.Size(121, 94);
             this.textBox_aciklama.TabIndex = 27;
             // 
             // comboBox_mentor
@@ -994,15 +999,15 @@
             this.comboBox_mentor.FormattingEnabled = true;
             this.comboBox_mentor.Items.AddRange(new object[] {
             "İBRAHİM BÜTGÜL"});
-            this.comboBox_mentor.Location = new System.Drawing.Point(122, 288);
+            this.comboBox_mentor.Location = new System.Drawing.Point(377, 75);
             this.comboBox_mentor.Name = "comboBox_mentor";
-            this.comboBox_mentor.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_mentor.Size = new System.Drawing.Size(149, 21);
             this.comboBox_mentor.TabIndex = 26;
             // 
             // label_mentor
             // 
             this.label_mentor.AutoSize = true;
-            this.label_mentor.Location = new System.Drawing.Point(19, 292);
+            this.label_mentor.Location = new System.Drawing.Point(266, 79);
             this.label_mentor.Name = "label_mentor";
             this.label_mentor.Size = new System.Drawing.Size(43, 13);
             this.label_mentor.TabIndex = 25;
@@ -1010,11 +1015,11 @@
             // 
             // button_save
             // 
-            this.button_save.Location = new System.Drawing.Point(716, 282);
+            this.button_save.Location = new System.Drawing.Point(197, 282);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(75, 23);
             this.button_save.TabIndex = 24;
-            this.button_save.Text = "Save";
+            this.button_save.Text = "KAYDET";
             this.button_save.UseVisualStyleBackColor = true;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
@@ -1024,14 +1029,14 @@
             this.comboBox_sigorta.Items.AddRange(new object[] {
             "VAR",
             "YOK"});
-            this.comboBox_sigorta.Location = new System.Drawing.Point(670, 242);
+            this.comboBox_sigorta.Location = new System.Drawing.Point(670, 224);
             this.comboBox_sigorta.Name = "comboBox_sigorta";
             this.comboBox_sigorta.Size = new System.Drawing.Size(121, 21);
             this.comboBox_sigorta.TabIndex = 23;
             // 
             // textBox_arac
             // 
-            this.textBox_arac.Location = new System.Drawing.Point(670, 175);
+            this.textBox_arac.Location = new System.Drawing.Point(670, 167);
             this.textBox_arac.Name = "textBox_arac";
             this.textBox_arac.Size = new System.Drawing.Size(121, 20);
             this.textBox_arac.TabIndex = 22;
@@ -1039,7 +1044,7 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(552, 250);
+            this.label43.Location = new System.Drawing.Point(552, 224);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(106, 13);
             this.label43.TabIndex = 21;
@@ -1048,7 +1053,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(552, 180);
+            this.label42.Location = new System.Drawing.Point(552, 167);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(69, 13);
             this.label42.TabIndex = 20;
@@ -1060,10 +1065,11 @@
             this.comboBox_servis.Items.AddRange(new object[] {
             "VAR",
             "YOK"});
-            this.comboBox_servis.Location = new System.Drawing.Point(670, 107);
+            this.comboBox_servis.Location = new System.Drawing.Point(670, 109);
             this.comboBox_servis.Name = "comboBox_servis";
             this.comboBox_servis.Size = new System.Drawing.Size(121, 21);
             this.comboBox_servis.TabIndex = 19;
+            this.comboBox_servis.SelectedIndexChanged += new System.EventHandler(this.comboBox_servis_SelectedIndexChanged);
             // 
             // textBox_stajkonuları
             // 
@@ -1074,14 +1080,14 @@
             // 
             // textBox_stajsuresi
             // 
-            this.textBox_stajsuresi.Location = new System.Drawing.Point(377, 243);
+            this.textBox_stajsuresi.Location = new System.Drawing.Point(377, 224);
             this.textBox_stajsuresi.Name = "textBox_stajsuresi";
             this.textBox_stajsuresi.Size = new System.Drawing.Size(149, 20);
             this.textBox_stajsuresi.TabIndex = 17;
             // 
             // dateTimePicker_bitis
             // 
-            this.dateTimePicker_bitis.Location = new System.Drawing.Point(377, 176);
+            this.dateTimePicker_bitis.Location = new System.Drawing.Point(377, 167);
             this.dateTimePicker_bitis.Name = "dateTimePicker_bitis";
             this.dateTimePicker_bitis.Size = new System.Drawing.Size(149, 20);
             this.dateTimePicker_bitis.TabIndex = 16;
@@ -1093,20 +1099,13 @@
             this.dateTimePicker_baslangıc.Size = new System.Drawing.Size(149, 20);
             this.dateTimePicker_baslangıc.TabIndex = 15;
             // 
-            // textBox_stajkonusu
-            // 
-            this.textBox_stajkonusu.Location = new System.Drawing.Point(377, 42);
-            this.textBox_stajkonusu.Name = "textBox_stajkonusu";
-            this.textBox_stajkonusu.Size = new System.Drawing.Size(149, 20);
-            this.textBox_stajkonusu.TabIndex = 14;
-            // 
             // comboBox_stajdonemi
             // 
             this.comboBox_stajdonemi.FormattingEnabled = true;
             this.comboBox_stajdonemi.Items.AddRange(new object[] {
             "KIŞ DÖNEMİ",
             "YAZ DÖNEMİ"});
-            this.comboBox_stajdonemi.Location = new System.Drawing.Point(122, 242);
+            this.comboBox_stajdonemi.Location = new System.Drawing.Point(122, 281);
             this.comboBox_stajdonemi.Name = "comboBox_stajdonemi";
             this.comboBox_stajdonemi.Size = new System.Drawing.Size(121, 21);
             this.comboBox_stajdonemi.TabIndex = 13;
@@ -1145,7 +1144,7 @@
             "2022",
             "2023",
             "2024"});
-            this.comboBox_stajyili.Location = new System.Drawing.Point(122, 174);
+            this.comboBox_stajyili.Location = new System.Drawing.Point(122, 224);
             this.comboBox_stajyili.Name = "comboBox_stajyili";
             this.comboBox_stajyili.Size = new System.Drawing.Size(121, 21);
             this.comboBox_stajyili.TabIndex = 12;
@@ -1159,7 +1158,7 @@
             "İNTERNET",
             "TELEFON",
             "MAİL"});
-            this.comboBox_basvuruturu.Location = new System.Drawing.Point(122, 107);
+            this.comboBox_basvuruturu.Location = new System.Drawing.Point(122, 167);
             this.comboBox_basvuruturu.Name = "comboBox_basvuruturu";
             this.comboBox_basvuruturu.Size = new System.Drawing.Size(121, 21);
             this.comboBox_basvuruturu.TabIndex = 11;
@@ -1179,7 +1178,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(552, 110);
+            this.label41.Location = new System.Drawing.Point(552, 109);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(71, 13);
             this.label41.TabIndex = 9;
@@ -1197,7 +1196,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(266, 250);
+            this.label39.Location = new System.Drawing.Point(266, 224);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(103, 13);
             this.label39.TabIndex = 7;
@@ -1206,7 +1205,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(266, 180);
+            this.label38.Location = new System.Drawing.Point(266, 167);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(29, 13);
             this.label38.TabIndex = 6;
@@ -1233,7 +1232,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(19, 250);
+            this.label35.Location = new System.Drawing.Point(19, 292);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(67, 13);
             this.label35.TabIndex = 3;
@@ -1242,7 +1241,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(19, 180);
+            this.label34.Location = new System.Drawing.Point(19, 229);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(44, 13);
             this.label34.TabIndex = 2;
@@ -1251,7 +1250,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(19, 110);
+            this.label33.Location = new System.Drawing.Point(19, 166);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(71, 13);
             this.label33.TabIndex = 1;
@@ -1268,22 +1267,24 @@
             // 
             // button_update
             // 
-            this.button_update.Location = new System.Drawing.Point(789, 21);
+            this.button_update.BackColor = System.Drawing.Color.Transparent;
+            this.button_update.Location = new System.Drawing.Point(789, 8);
             this.button_update.Name = "button_update";
             this.button_update.Size = new System.Drawing.Size(75, 23);
-            this.button_update.TabIndex = 7;
-            this.button_update.Text = "Update";
-            this.button_update.UseVisualStyleBackColor = true;
+            this.button_update.TabIndex = 4;
+            this.button_update.Text = "GÜNCELLE";
+            this.button_update.UseVisualStyleBackColor = false;
             this.button_update.Click += new System.EventHandler(this.button_update_Click);
             // 
             // button_delete
             // 
-            this.button_delete.Location = new System.Drawing.Point(882, 22);
+            this.button_delete.BackColor = System.Drawing.Color.Transparent;
+            this.button_delete.Location = new System.Drawing.Point(882, 9);
             this.button_delete.Name = "button_delete";
             this.button_delete.Size = new System.Drawing.Size(75, 23);
-            this.button_delete.TabIndex = 8;
-            this.button_delete.Text = "Delete";
-            this.button_delete.UseVisualStyleBackColor = true;
+            this.button_delete.TabIndex = 5;
+            this.button_delete.Text = "SİL";
+            this.button_delete.UseVisualStyleBackColor = false;
             this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
             // button_evrak
@@ -1291,15 +1292,36 @@
             this.button_evrak.Location = new System.Drawing.Point(41, 225);
             this.button_evrak.Name = "button_evrak";
             this.button_evrak.Size = new System.Drawing.Size(75, 23);
-            this.button_evrak.TabIndex = 9;
+            this.button_evrak.TabIndex = 3;
             this.button_evrak.Text = "Evrak Yükle";
             this.button_evrak.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Gold;
+            this.pictureBox1.Image = global::InternFollowProgramming.Properties.Resources.pp;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 64);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(104, 116);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button_kisiselbilgiler_kaydet
+            // 
+            this.button_kisiselbilgiler_kaydet.Location = new System.Drawing.Point(724, 285);
+            this.button_kisiselbilgiler_kaydet.Name = "button_kisiselbilgiler_kaydet";
+            this.button_kisiselbilgiler_kaydet.Size = new System.Drawing.Size(67, 20);
+            this.button_kisiselbilgiler_kaydet.TabIndex = 11;
+            this.button_kisiselbilgiler_kaydet.Text = "KAYDET";
+            this.button_kisiselbilgiler_kaydet.UseVisualStyleBackColor = true;
+            this.button_kisiselbilgiler_kaydet.Click += new System.EventHandler(this.button_kisiselbilgiler_kaydet_Click);
             // 
             // FrmInternInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Orange;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(971, 437);
             this.Controls.Add(this.button_evrak);
             this.Controls.Add(this.button_delete);
@@ -1309,11 +1331,10 @@
             this.Controls.Add(this.panel_adsoyadbul);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FrmInternInformation";
-            this.Text = "FrmInternInformation";
+            this.Text = "AKE STAJYER TAKİP SİSTEMİ/ STAJYER TANIMLAMA";
             this.Load += new System.EventHandler(this.FrmInternInformation_Load);
             this.panel_adsoyadbul.ResumeLayout(false);
             this.panel_adsoyadbul.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -1325,6 +1346,7 @@
             this.panel_referans.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1410,7 +1432,6 @@
         private System.Windows.Forms.TextBox textBox_stajsuresi;
         private System.Windows.Forms.DateTimePicker dateTimePicker_bitis;
         private System.Windows.Forms.DateTimePicker dateTimePicker_baslangıc;
-        private System.Windows.Forms.TextBox textBox_stajkonusu;
         private System.Windows.Forms.ComboBox comboBox_stajdonemi;
         private System.Windows.Forms.ComboBox comboBox_stajyili;
         private System.Windows.Forms.ComboBox comboBox_basvuruturu;
@@ -1445,5 +1466,7 @@
         private System.Windows.Forms.TextBox textBox_r_telefon;
         private System.Windows.Forms.TextBox textBox_r_adres;
         private System.Windows.Forms.TextBox textBox_r_ad;
+        private System.Windows.Forms.ComboBox comboBox_stajyerkonusu;
+        private System.Windows.Forms.Button button_kisiselbilgiler_kaydet;
     }
 }

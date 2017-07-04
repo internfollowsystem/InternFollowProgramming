@@ -13,30 +13,34 @@ namespace InternFollowProgramming
 {
     public partial class FrmHome : Form
     {
+        #region baglantımız
+        //static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=20fbgsbjk07";
+        static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
+        SqlConnection connection = new SqlConnection(conString);
+        SqlCommand command = new SqlCommand();
+        SqlDataAdapter dataadapter;
+        SqlDataReader datareader;
+        DataTable datatable;
         
+        //SqlCommand cmd = new SqlCommand();
+        #endregion
+
         public FrmHome()
         {
             InitializeComponent();
 
-            #region baglantımız
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
-            SqlCommand command = new SqlCommand();
-            command.Connection = connection;
-            #endregion
-
             #region kullanıcı adlarını veritabanından okuyup (SqlDataReader) combobox'a çeken(ExecuteReader) kod.
-
-            connection.Open();
-            command.CommandText = "SELECT *FROM kullanıcı";
+            
+            command.CommandText = "select * from kullanıcı";
             command.CommandType = CommandType.Text;
 
-            SqlDataReader dr;
-            dr = command.ExecuteReader();
+            command.Connection = connection;
+            connection.Open();
+            datareader = command.ExecuteReader();
 
-            while (dr.Read())
+            while (datareader.Read())
             {
-                comboBox_user.Items.Add(dr["kullanıcı_adı"]);
+                comboBox_user.Items.Add(datareader["kullanıcı_adı"]);
             }
 
             connection.Close();
@@ -47,13 +51,8 @@ namespace InternFollowProgramming
           
         }
 
-
-        #region Giriş Butonu
-        private void button_login_Click(object sender, EventArgs e)
+        private void button_login_Click(object sender, EventArgs e) //Giriş Butonu
         {
-
-            string connection = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
-            SqlConnection con = new SqlConnection(connection);
 
             // Boş değer girilmesini engelliyoruz.
             if (String.IsNullOrWhiteSpace(comboBox_user.Text) ||
@@ -64,45 +63,46 @@ namespace InternFollowProgramming
             }
             try
             {
-                // Sql bağlantı cümlemiz.
-
-                con.Open(); // Bağlantıyı aç.
-                                 // Sorgumuz.
-                string sql = "SELECT * FROM KULLANICI WHERE kullanıcı_adı=@kullanıcı_adı AND sifre=@sifre";
+                connection.Open(); // Bağlantıyı aç.
+                string sql = "select* from kullanıcı where kullanıcı_adı=@kullanıcı_adı AND sifre=@sifre";// Sql bağlantı cümlemiz.
                 SqlParameter prms1 = new SqlParameter("@kullanıcı_adı", comboBox_user.Text);
                 SqlParameter prms2 = new SqlParameter("@sifre", textBox_password.Text);
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.Add(prms1);
-                cmd.Parameters.Add(prms2);
-                DataTable dt = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-                con.Close();
+                command = new SqlCommand(sql, connection);
+                command.Parameters.Add(prms1);
+                command.Parameters.Add(prms2);
+                datatable= new DataTable();
+                dataadapter= new SqlDataAdapter(command);
+                dataadapter.Fill(datatable);
+                connection.Close();
 
-                if (dt.Rows.Count > 0)
+                if (datatable.Rows.Count > 0)
                 {
                     //    Giriş gerçekleşti yaptırmak istediğiniz kodu burdan gerçekleştirebilirsiniz.
                     //    Altta yeni form açma işlemi gerçekleştirilmiştir.
                     this.Hide();
-                    FrmScreen frm = new FrmScreen();
-                    frm.Show();
+                    FrmScreen frmscreen = new FrmScreen();
+                    frmscreen.Show();
+                    
                 }
                 else
                 {
                     MessageBox.Show("Veritabanında böyle bir kullanıcı bulunamadı");
+                    FrmScreen frmscreen = new FrmScreen();
+                    frmscreen.Show();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                FrmScreen frmscreen = new FrmScreen();
+                frmscreen.Show();
             }
 
         }
-        #endregion
 
-        private void checkBox_password_CheckedChanged(object sender, EventArgs e)
+        private void checkBox_password_CheckedChanged(object sender, EventArgs e) //Şifrenin görünürlülüğünü checkBox'a göre ayarladığımız kodlar
         {
-            //Şifrenin görünürlüğünü checkBox'a göre ayarladığımız kodlar
+            
             if(checkBox_password.Checked)
             {
                 textBox_password.PasswordChar = '\0';
@@ -112,6 +112,6 @@ namespace InternFollowProgramming
                 textBox_password.PasswordChar = '*';
             }
                 
-        }
+        } 
     }
 }

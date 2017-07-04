@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="INTERN" Class="internclassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ISTSERVER;Initial Catalog=INTERN;Persist Security Info=True;User ID=sa" SettingsObjectName="InternFollowProgramming.Properties.Settings" SettingsPropertyName="INTERNConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IntershipInformation" Member="IntershipInformation">
+    <Type Name="IntershipInformation">
+      <Column Name="stajyer_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="staj_kabul_durumu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_basvuru_turu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_yılı" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_donem" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_konusu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_baslangıc_tarihi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_bitis_tarihi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_süresi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_bas_kalan_sure" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_konuları" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_servis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_plaka" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="staj_durumu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="mentor" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="acıklama" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sigorta_evrak_durumu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="referans_adı" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="referans_telefon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="referans_adres" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="referans_e_posta" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="okul_turu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="okul_adı" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="okul_sehir" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="bolum_adı" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sınıf" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="okul_no" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="okul_puan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tc_kimlikno" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="intern_IntershipInformation" Member="intern" ThisKey="tc_kimlikno" OtherKey="tc_kimlikno" Type="intern" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.intern" Member="intern">
+    <Type Name="intern">
+      <Column Name="tc_kimlikno" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ad_soyad" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="baba_adı" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="anne_adı" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="d_yeri" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="d_tarih" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="uyrugu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cinsiyet" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ev_tel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cep_tel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="adres" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="e_posta" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="web_adres" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="boy" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="agırlık" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="kan_grubu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="iban" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="acil_adsoyad" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="acil_adres" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="acil_akrabalık_derecesi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="acil_telefon_no" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="acil_e_posta" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="intern_IntershipInformation" Member="IntershipInformation" ThisKey="tc_kimlikno" OtherKey="tc_kimlikno" Type="IntershipInformation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.kullanıcı" Member="kullanıcı">
+    <Type Name="kullanıcı">
+      <Column Name="kullanıcı_adı" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="sifre" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
