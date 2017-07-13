@@ -42,8 +42,9 @@
             this.silToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.güncelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_ust = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox_refresh = new System.Windows.Forms.PictureBox();
+            this.label_suanstajyapanlar = new System.Windows.Forms.Label();
+            this.label_stajyer = new System.Windows.Forms.Label();
             this.label_suanstajyer = new System.Windows.Forms.Label();
             this.label_genel = new System.Windows.Forms.Label();
             this.pictureBox_suanstajer = new System.Windows.Forms.PictureBox();
@@ -75,12 +76,14 @@
             this.comboBox_s_donem = new System.Windows.Forms.ComboBox();
             this.comboBox_s_yıl = new System.Windows.Forms.ComboBox();
             this.printDocument_frmscreen = new System.Drawing.Printing.PrintDocument();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_adsoyadara = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.label_aranan_stajyer_sayısı = new System.Windows.Forms.Label();
             this.menuStrip_frmscreen.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel_ust.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_refresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_suanstajer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_genel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yazdır)).BeginInit();
@@ -198,8 +201,9 @@
             // 
             this.panel_ust.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.panel_ust.BackColor = System.Drawing.Color.Black;
-            this.panel_ust.Controls.Add(this.label5);
-            this.panel_ust.Controls.Add(this.label4);
+            this.panel_ust.Controls.Add(this.pictureBox_refresh);
+            this.panel_ust.Controls.Add(this.label_suanstajyapanlar);
+            this.panel_ust.Controls.Add(this.label_stajyer);
             this.panel_ust.Controls.Add(this.label_suanstajyer);
             this.panel_ust.Controls.Add(this.label_genel);
             this.panel_ust.Controls.Add(this.pictureBox_suanstajer);
@@ -222,27 +226,40 @@
             this.panel_ust.Size = new System.Drawing.Size(1350, 81);
             this.panel_ust.TabIndex = 6;
             // 
-            // label5
+            // pictureBox_refresh
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Myriad Pro Light", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(1059, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(13, 15);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "0";
+            this.pictureBox_refresh.Image = global::InternFollowProgramming.Properties.Resources.refresh;
+            this.pictureBox_refresh.Location = new System.Drawing.Point(1142, 18);
+            this.pictureBox_refresh.Name = "pictureBox_refresh";
+            this.pictureBox_refresh.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox_refresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_refresh.TabIndex = 18;
+            this.pictureBox_refresh.TabStop = false;
+            this.pictureBox_refresh.Click += new System.EventHandler(this.pictureBox_refresh_Click);
+            this.pictureBox_refresh.MouseLeave += new System.EventHandler(this.pictureBox_refresh_MouseLeave);
+            this.pictureBox_refresh.MouseHover += new System.EventHandler(this.pictureBox_refresh_MouseHover);
             // 
-            // label4
+            // label_suanstajyapanlar
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Myriad Pro Light", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(387, 13);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 15);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "0";
+            this.label_suanstajyapanlar.AutoSize = true;
+            this.label_suanstajyapanlar.Font = new System.Drawing.Font("Myriad Pro Light", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_suanstajyapanlar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label_suanstajyapanlar.Location = new System.Drawing.Point(1059, 13);
+            this.label_suanstajyapanlar.Name = "label_suanstajyapanlar";
+            this.label_suanstajyapanlar.Size = new System.Drawing.Size(13, 15);
+            this.label_suanstajyapanlar.TabIndex = 17;
+            this.label_suanstajyapanlar.Text = "0";
+            // 
+            // label_stajyer
+            // 
+            this.label_stajyer.AutoSize = true;
+            this.label_stajyer.Font = new System.Drawing.Font("Myriad Pro Light", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_stajyer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label_stajyer.Location = new System.Drawing.Point(387, 13);
+            this.label_stajyer.Name = "label_stajyer";
+            this.label_stajyer.Size = new System.Drawing.Size(13, 15);
+            this.label_stajyer.TabIndex = 16;
+            this.label_stajyer.Text = "0";
             // 
             // label_suanstajyer
             // 
@@ -274,7 +291,7 @@
             // 
             // pictureBox_suanstajer
             // 
-            this.pictureBox_suanstajer.Image = global::InternFollowProgramming.Properties.Resources.şuanstajer;
+            this.pictureBox_suanstajer.Image = global::InternFollowProgramming.Properties.Resources.Sstajyapıyor;
             this.pictureBox_suanstajer.Location = new System.Drawing.Point(997, 13);
             this.pictureBox_suanstajer.Name = "pictureBox_suanstajer";
             this.pictureBox_suanstajer.Size = new System.Drawing.Size(42, 42);
@@ -608,14 +625,14 @@
             this.printDocument_frmscreen.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument_frmscreen_BeginPrint);
             this.printDocument_frmscreen.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_frmscreen_PrintPage);
             // 
-            // textBox1
+            // textBox_adsoyadara
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox1.Location = new System.Drawing.Point(345, 88);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(175, 20);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBox_adsoyadara.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBox_adsoyadara.Location = new System.Drawing.Point(345, 88);
+            this.textBox_adsoyadara.Name = "textBox_adsoyadara";
+            this.textBox_adsoyadara.Size = new System.Drawing.Size(175, 20);
+            this.textBox_adsoyadara.TabIndex = 11;
+            this.textBox_adsoyadara.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label9
             // 
@@ -636,9 +653,21 @@
             this.dataGridView.Location = new System.Drawing.Point(225, 113);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1109, 607);
             this.dataGridView.TabIndex = 13;
+            // 
+            // label_aranan_stajyer_sayısı
+            // 
+            this.label_aranan_stajyer_sayısı.AutoSize = true;
+            this.label_aranan_stajyer_sayısı.Font = new System.Drawing.Font("Myriad Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_aranan_stajyer_sayısı.ForeColor = System.Drawing.Color.Maroon;
+            this.label_aranan_stajyer_sayısı.Location = new System.Drawing.Point(1192, 91);
+            this.label_aranan_stajyer_sayısı.Name = "label_aranan_stajyer_sayısı";
+            this.label_aranan_stajyer_sayısı.Size = new System.Drawing.Size(142, 14);
+            this.label_aranan_stajyer_sayısı.TabIndex = 14;
+            this.label_aranan_stajyer_sayısı.Text = "0 STAJYER BULUNMUŞTUR.";
             // 
             // FrmScreen
             // 
@@ -646,9 +675,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.label_aranan_stajyer_sayısı);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_adsoyadara);
             this.Controls.Add(this.menuStrip_frmscreen);
             this.Controls.Add(this.panel_ust);
             this.Controls.Add(this.panel_alt);
@@ -661,6 +691,7 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel_ust.ResumeLayout(false);
             this.panel_ust.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_refresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_suanstajer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_genel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yazdır)).EndInit();
@@ -709,8 +740,8 @@
         private System.Windows.Forms.PictureBox pictureBox_genel;
         private System.Windows.Forms.Label label_suanstajyer;
         private System.Windows.Forms.Label label_genel;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_suanstajyapanlar;
+        private System.Windows.Forms.Label label_stajyer;
         private System.Windows.Forms.Button button_s_ara;
         private System.Windows.Forms.ComboBox comboBox_s_referans;
         private System.Windows.Forms.ComboBox comboBox_s_stajkonuları;
@@ -724,8 +755,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_adsoyadara;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Label label_aranan_stajyer_sayısı;
+        private System.Windows.Forms.PictureBox pictureBox_refresh;
     }
 }

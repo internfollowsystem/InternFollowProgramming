@@ -223,6 +223,16 @@ namespace InternFollowProgramming.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap refresh {
+            get {
+                object obj = ResourceManager.GetObject("refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap search1 {
             get {
                 object obj = ResourceManager.GetObject("search1", resourceCulture);
@@ -276,6 +286,26 @@ namespace InternFollowProgramming.Properties {
         internal static System.Drawing.Bitmap Sönlisans {
             get {
                 object obj = ResourceManager.GetObject("Sönlisans", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sstajyapıyor {
+            get {
+                object obj = ResourceManager.GetObject("Sstajyapıyor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap stajyapıyor {
+            get {
+                object obj = ResourceManager.GetObject("stajyapıyor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -199,203 +199,7 @@ SELECT tc_kimlikno, ad_soyad, baba_adı, anne_adı, d_yeri, d_tarih, uyrugu, cin
   <xs:element name="INTERNDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="INTERNDataSet" msprop:Generator_UserDSName="INTERNDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="InternshipInformation" msprop:Generator_TableClassName="InternshipInformationDataTable" msprop:Generator_TableVarName="tableInternshipInformation" msprop:Generator_TablePropName="InternshipInformation" msprop:Generator_RowDeletingName="InternshipInformationRowDeleting" msprop:Generator_RowChangingName="InternshipInformationRowChanging" msprop:Generator_RowEvHandlerName="InternshipInformationRowChangeEventHandler" msprop:Generator_RowDeletedName="InternshipInformationRowDeleted" msprop:Generator_UserTableName="InternshipInformation" msprop:Generator_RowChangedName="InternshipInformationRowChanged" msprop:Generator_RowEvArgName="InternshipInformationRowChangeEvent" msprop:Generator_RowClassName="InternshipInformationRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="staj_kabul_durumu" msprop:Generator_ColumnVarNameInTable="columnstaj_kabul_durumu" msprop:Generator_ColumnPropNameInRow="staj_kabul_durumu" msprop:Generator_ColumnPropNameInTable="staj_kabul_durumuColumn" msprop:Generator_UserColumnName="staj_kabul_durumu" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_basvuru_turu" msprop:Generator_ColumnVarNameInTable="columnstaj_basvuru_turu" msprop:Generator_ColumnPropNameInRow="staj_basvuru_turu" msprop:Generator_ColumnPropNameInTable="staj_basvuru_turuColumn" msprop:Generator_UserColumnName="staj_basvuru_turu" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_yılı" msprop:Generator_ColumnVarNameInTable="columnstaj_yılı" msprop:Generator_ColumnPropNameInRow="staj_yılı" msprop:Generator_ColumnPropNameInTable="staj_yılıColumn" msprop:Generator_UserColumnName="staj_yılı" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_donem" msprop:Generator_ColumnVarNameInTable="columnstaj_donem" msprop:Generator_ColumnPropNameInRow="staj_donem" msprop:Generator_ColumnPropNameInTable="staj_donemColumn" msprop:Generator_UserColumnName="staj_donem" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_konusu" msprop:Generator_ColumnVarNameInTable="columnstaj_konusu" msprop:Generator_ColumnPropNameInRow="staj_konusu" msprop:Generator_ColumnPropNameInTable="staj_konusuColumn" msprop:Generator_UserColumnName="staj_konusu" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_baslangıc_tarihi" msprop:Generator_ColumnVarNameInTable="columnstaj_baslangıc_tarihi" msprop:Generator_ColumnPropNameInRow="staj_baslangıc_tarihi" msprop:Generator_ColumnPropNameInTable="staj_baslangıc_tarihiColumn" msprop:Generator_UserColumnName="staj_baslangıc_tarihi" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_bitis_tarihi" msprop:Generator_ColumnVarNameInTable="columnstaj_bitis_tarihi" msprop:Generator_ColumnPropNameInRow="staj_bitis_tarihi" msprop:Generator_ColumnPropNameInTable="staj_bitis_tarihiColumn" msprop:Generator_UserColumnName="staj_bitis_tarihi" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_süresi" msprop:Generator_ColumnVarNameInTable="columnstaj_süresi" msprop:Generator_ColumnPropNameInRow="staj_süresi" msprop:Generator_ColumnPropNameInTable="staj_süresiColumn" msprop:Generator_UserColumnName="staj_süresi" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_bas_kalan_sure" msprop:Generator_ColumnVarNameInTable="columnstaj_bas_kalan_sure" msprop:Generator_ColumnPropNameInRow="staj_bas_kalan_sure" msprop:Generator_ColumnPropNameInTable="staj_bas_kalan_sureColumn" msprop:Generator_UserColumnName="staj_bas_kalan_sure" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_konuları" msprop:Generator_ColumnVarNameInTable="columnstaj_konuları" msprop:Generator_ColumnPropNameInRow="staj_konuları" msprop:Generator_ColumnPropNameInTable="staj_konularıColumn" msprop:Generator_UserColumnName="staj_konuları" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_servis" msprop:Generator_ColumnVarNameInTable="columnstaj_servis" msprop:Generator_ColumnPropNameInRow="staj_servis" msprop:Generator_ColumnPropNameInTable="staj_servisColumn" msprop:Generator_UserColumnName="staj_servis" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_plaka" msprop:Generator_ColumnVarNameInTable="columnstaj_plaka" msprop:Generator_ColumnPropNameInRow="staj_plaka" msprop:Generator_ColumnPropNameInTable="staj_plakaColumn" msprop:Generator_UserColumnName="staj_plaka" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="staj_durumu" msprop:Generator_ColumnVarNameInTable="columnstaj_durumu" msprop:Generator_ColumnPropNameInRow="staj_durumu" msprop:Generator_ColumnPropNameInTable="staj_durumuColumn" msprop:Generator_UserColumnName="staj_durumu" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="mentor" msprop:Generator_ColumnVarNameInTable="columnmentor" msprop:Generator_ColumnPropNameInRow="mentor" msprop:Generator_ColumnPropNameInTable="mentorColumn" msprop:Generator_UserColumnName="mentor" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="acıklama" msprop:Generator_ColumnVarNameInTable="columnacıklama" msprop:Generator_ColumnPropNameInRow="acıklama" msprop:Generator_ColumnPropNameInTable="acıklamaColumn" msprop:Generator_UserColumnName="acıklama" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="sigorta_evrak_durumu" msprop:Generator_ColumnVarNameInTable="columnsigorta_evrak_durumu" msprop:Generator_ColumnPropNameInRow="sigorta_evrak_durumu" msprop:Generator_ColumnPropNameInTable="sigorta_evrak_durumuColumn" msprop:Generator_UserColumnName="sigorta_evrak_durumu" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="referans_adı" msprop:Generator_ColumnVarNameInTable="columnreferans_adı" msprop:Generator_ColumnPropNameInRow="referans_adı" msprop:Generator_ColumnPropNameInTable="referans_adıColumn" msprop:Generator_UserColumnName="referans_adı" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="referans_telefon" msprop:Generator_ColumnVarNameInTable="columnreferans_telefon" msprop:Generator_ColumnPropNameInRow="referans_telefon" msprop:Generator_ColumnPropNameInTable="referans_telefonColumn" msprop:Generator_UserColumnName="referans_telefon" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="referans_adres" msprop:Generator_ColumnVarNameInTable="columnreferans_adres" msprop:Generator_ColumnPropNameInRow="referans_adres" msprop:Generator_ColumnPropNameInTable="referans_adresColumn" msprop:Generator_UserColumnName="referans_adres" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="referans_e_posta" msprop:Generator_ColumnVarNameInTable="columnreferans_e_posta" msprop:Generator_ColumnPropNameInRow="referans_e_posta" msprop:Generator_ColumnPropNameInTable="referans_e_postaColumn" msprop:Generator_UserColumnName="referans_e_posta" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="okul_turu" msprop:Generator_ColumnVarNameInTable="columnokul_turu" msprop:Generator_ColumnPropNameInRow="okul_turu" msprop:Generator_ColumnPropNameInTable="okul_turuColumn" msprop:Generator_UserColumnName="okul_turu" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="okul_adı" msprop:Generator_ColumnVarNameInTable="columnokul_adı" msprop:Generator_ColumnPropNameInRow="okul_adı" msprop:Generator_ColumnPropNameInTable="okul_adıColumn" msprop:Generator_UserColumnName="okul_adı" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="okul_sehir" msprop:Generator_ColumnVarNameInTable="columnokul_sehir" msprop:Generator_ColumnPropNameInRow="okul_sehir" msprop:Generator_ColumnPropNameInTable="okul_sehirColumn" msprop:Generator_UserColumnName="okul_sehir" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="bolum_adı" msprop:Generator_ColumnVarNameInTable="columnbolum_adı" msprop:Generator_ColumnPropNameInRow="bolum_adı" msprop:Generator_ColumnPropNameInTable="bolum_adıColumn" msprop:Generator_UserColumnName="bolum_adı" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="sınıf" msprop:Generator_ColumnVarNameInTable="columnsınıf" msprop:Generator_ColumnPropNameInRow="sınıf" msprop:Generator_ColumnPropNameInTable="sınıfColumn" msprop:Generator_UserColumnName="sınıf" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="okul_no" msprop:Generator_ColumnVarNameInTable="columnokul_no" msprop:Generator_ColumnPropNameInRow="okul_no" msprop:Generator_ColumnPropNameInTable="okul_noColumn" msprop:Generator_UserColumnName="okul_no" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="okul_puan" msprop:Generator_ColumnVarNameInTable="columnokul_puan" msprop:Generator_ColumnPropNameInRow="okul_puan" msprop:Generator_ColumnPropNameInTable="okul_puanColumn" msprop:Generator_UserColumnName="okul_puan" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="tc_kimlikno" msprop:Generator_ColumnVarNameInTable="columntc_kimlikno" msprop:Generator_ColumnPropNameInRow="tc_kimlikno" msprop:Generator_ColumnPropNameInTable="tc_kimliknoColumn" msprop:Generator_UserColumnName="tc_kimlikno" type="xs:long" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="intern" msprop:Generator_TableClassName="internDataTable" msprop:Generator_TableVarName="tableintern" msprop:Generator_TablePropName="intern" msprop:Generator_RowDeletingName="internRowDeleting" msprop:Generator_RowChangingName="internRowChanging" msprop:Generator_RowEvHandlerName="internRowChangeEventHandler" msprop:Generator_RowDeletedName="internRowDeleted" msprop:Generator_UserTableName="intern" msprop:Generator_RowChangedName="internRowChanged" msprop:Generator_RowEvArgName="internRowChangeEvent" msprop:Generator_RowClassName="internRow">
+        <xs:element name="intern" msprop:Generator_TableClassName="internDataTable" msprop:Generator_TableVarName="tableintern" msprop:Generator_RowChangedName="internRowChanged" msprop:Generator_TablePropName="intern" msprop:Generator_RowDeletingName="internRowDeleting" msprop:Generator_RowChangingName="internRowChanging" msprop:Generator_RowEvHandlerName="internRowChangeEventHandler" msprop:Generator_RowDeletedName="internRowDeleted" msprop:Generator_RowClassName="internRow" msprop:Generator_UserTableName="intern" msprop:Generator_RowEvArgName="internRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tc_kimlikno" msprop:Generator_ColumnVarNameInTable="columntc_kimlikno" msprop:Generator_ColumnPropNameInRow="tc_kimlikno" msprop:Generator_ColumnPropNameInTable="tc_kimliknoColumn" msprop:Generator_UserColumnName="tc_kimlikno" type="xs:long" />
@@ -546,6 +350,202 @@ SELECT tc_kimlikno, ad_soyad, baba_adı, anne_adı, d_yeri, d_tarih, uyrugu, cin
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="InternshipInformation" msprop:Generator_TableClassName="InternshipInformationDataTable" msprop:Generator_TableVarName="tableInternshipInformation" msprop:Generator_RowChangedName="InternshipInformationRowChanged" msprop:Generator_TablePropName="InternshipInformation" msprop:Generator_RowDeletingName="InternshipInformationRowDeleting" msprop:Generator_RowChangingName="InternshipInformationRowChanging" msprop:Generator_RowEvHandlerName="InternshipInformationRowChangeEventHandler" msprop:Generator_RowDeletedName="InternshipInformationRowDeleted" msprop:Generator_RowClassName="InternshipInformationRow" msprop:Generator_UserTableName="InternshipInformation" msprop:Generator_RowEvArgName="InternshipInformationRowChangeEvent" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="staj_kabul_durumu" msprop:Generator_ColumnVarNameInTable="columnstaj_kabul_durumu" msprop:Generator_ColumnPropNameInRow="staj_kabul_durumu" msprop:Generator_ColumnPropNameInTable="staj_kabul_durumuColumn" msprop:Generator_UserColumnName="staj_kabul_durumu" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_basvuru_turu" msprop:Generator_ColumnVarNameInTable="columnstaj_basvuru_turu" msprop:Generator_ColumnPropNameInRow="staj_basvuru_turu" msprop:Generator_ColumnPropNameInTable="staj_basvuru_turuColumn" msprop:Generator_UserColumnName="staj_basvuru_turu" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_yılı" msprop:Generator_ColumnVarNameInTable="columnstaj_yılı" msprop:Generator_ColumnPropNameInRow="staj_yılı" msprop:Generator_ColumnPropNameInTable="staj_yılıColumn" msprop:Generator_UserColumnName="staj_yılı" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_donem" msprop:Generator_ColumnVarNameInTable="columnstaj_donem" msprop:Generator_ColumnPropNameInRow="staj_donem" msprop:Generator_ColumnPropNameInTable="staj_donemColumn" msprop:Generator_UserColumnName="staj_donem" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_konusu" msprop:Generator_ColumnVarNameInTable="columnstaj_konusu" msprop:Generator_ColumnPropNameInRow="staj_konusu" msprop:Generator_ColumnPropNameInTable="staj_konusuColumn" msprop:Generator_UserColumnName="staj_konusu" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_baslangıc_tarihi" msprop:Generator_ColumnVarNameInTable="columnstaj_baslangıc_tarihi" msprop:Generator_ColumnPropNameInRow="staj_baslangıc_tarihi" msprop:Generator_ColumnPropNameInTable="staj_baslangıc_tarihiColumn" msprop:Generator_UserColumnName="staj_baslangıc_tarihi" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_bitis_tarihi" msprop:Generator_ColumnVarNameInTable="columnstaj_bitis_tarihi" msprop:Generator_ColumnPropNameInRow="staj_bitis_tarihi" msprop:Generator_ColumnPropNameInTable="staj_bitis_tarihiColumn" msprop:Generator_UserColumnName="staj_bitis_tarihi" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_süresi" msprop:Generator_ColumnVarNameInTable="columnstaj_süresi" msprop:Generator_ColumnPropNameInRow="staj_süresi" msprop:Generator_ColumnPropNameInTable="staj_süresiColumn" msprop:Generator_UserColumnName="staj_süresi" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_bas_kalan_sure" msprop:Generator_ColumnVarNameInTable="columnstaj_bas_kalan_sure" msprop:Generator_ColumnPropNameInRow="staj_bas_kalan_sure" msprop:Generator_ColumnPropNameInTable="staj_bas_kalan_sureColumn" msprop:Generator_UserColumnName="staj_bas_kalan_sure" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_konuları" msprop:Generator_ColumnVarNameInTable="columnstaj_konuları" msprop:Generator_ColumnPropNameInRow="staj_konuları" msprop:Generator_ColumnPropNameInTable="staj_konularıColumn" msprop:Generator_UserColumnName="staj_konuları" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_servis" msprop:Generator_ColumnVarNameInTable="columnstaj_servis" msprop:Generator_ColumnPropNameInRow="staj_servis" msprop:Generator_ColumnPropNameInTable="staj_servisColumn" msprop:Generator_UserColumnName="staj_servis" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_plaka" msprop:Generator_ColumnVarNameInTable="columnstaj_plaka" msprop:Generator_ColumnPropNameInRow="staj_plaka" msprop:Generator_ColumnPropNameInTable="staj_plakaColumn" msprop:Generator_UserColumnName="staj_plaka" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="staj_durumu" msprop:Generator_ColumnVarNameInTable="columnstaj_durumu" msprop:Generator_ColumnPropNameInRow="staj_durumu" msprop:Generator_ColumnPropNameInTable="staj_durumuColumn" msprop:Generator_UserColumnName="staj_durumu" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="mentor" msprop:Generator_ColumnVarNameInTable="columnmentor" msprop:Generator_ColumnPropNameInRow="mentor" msprop:Generator_ColumnPropNameInTable="mentorColumn" msprop:Generator_UserColumnName="mentor" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="acıklama" msprop:Generator_ColumnVarNameInTable="columnacıklama" msprop:Generator_ColumnPropNameInRow="acıklama" msprop:Generator_ColumnPropNameInTable="acıklamaColumn" msprop:Generator_UserColumnName="acıklama" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="sigorta_evrak_durumu" msprop:Generator_ColumnVarNameInTable="columnsigorta_evrak_durumu" msprop:Generator_ColumnPropNameInRow="sigorta_evrak_durumu" msprop:Generator_ColumnPropNameInTable="sigorta_evrak_durumuColumn" msprop:Generator_UserColumnName="sigorta_evrak_durumu" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="referans_adı" msprop:Generator_ColumnVarNameInTable="columnreferans_adı" msprop:Generator_ColumnPropNameInRow="referans_adı" msprop:Generator_ColumnPropNameInTable="referans_adıColumn" msprop:Generator_UserColumnName="referans_adı" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="referans_telefon" msprop:Generator_ColumnVarNameInTable="columnreferans_telefon" msprop:Generator_ColumnPropNameInRow="referans_telefon" msprop:Generator_ColumnPropNameInTable="referans_telefonColumn" msprop:Generator_UserColumnName="referans_telefon" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="referans_adres" msprop:Generator_ColumnVarNameInTable="columnreferans_adres" msprop:Generator_ColumnPropNameInRow="referans_adres" msprop:Generator_ColumnPropNameInTable="referans_adresColumn" msprop:Generator_UserColumnName="referans_adres" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="referans_e_posta" msprop:Generator_ColumnVarNameInTable="columnreferans_e_posta" msprop:Generator_ColumnPropNameInRow="referans_e_posta" msprop:Generator_ColumnPropNameInTable="referans_e_postaColumn" msprop:Generator_UserColumnName="referans_e_posta" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="okul_turu" msprop:Generator_ColumnVarNameInTable="columnokul_turu" msprop:Generator_ColumnPropNameInRow="okul_turu" msprop:Generator_ColumnPropNameInTable="okul_turuColumn" msprop:Generator_UserColumnName="okul_turu" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="okul_adı" msprop:Generator_ColumnVarNameInTable="columnokul_adı" msprop:Generator_ColumnPropNameInRow="okul_adı" msprop:Generator_ColumnPropNameInTable="okul_adıColumn" msprop:Generator_UserColumnName="okul_adı" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="okul_sehir" msprop:Generator_ColumnVarNameInTable="columnokul_sehir" msprop:Generator_ColumnPropNameInRow="okul_sehir" msprop:Generator_ColumnPropNameInTable="okul_sehirColumn" msprop:Generator_UserColumnName="okul_sehir" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="bolum_adı" msprop:Generator_ColumnVarNameInTable="columnbolum_adı" msprop:Generator_ColumnPropNameInRow="bolum_adı" msprop:Generator_ColumnPropNameInTable="bolum_adıColumn" msprop:Generator_UserColumnName="bolum_adı" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="sınıf" msprop:Generator_ColumnVarNameInTable="columnsınıf" msprop:Generator_ColumnPropNameInRow="sınıf" msprop:Generator_ColumnPropNameInTable="sınıfColumn" msprop:Generator_UserColumnName="sınıf" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="okul_no" msprop:Generator_ColumnVarNameInTable="columnokul_no" msprop:Generator_ColumnPropNameInRow="okul_no" msprop:Generator_ColumnPropNameInTable="okul_noColumn" msprop:Generator_UserColumnName="okul_no" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="okul_puan" msprop:Generator_ColumnVarNameInTable="columnokul_puan" msprop:Generator_ColumnPropNameInRow="okul_puan" msprop:Generator_ColumnPropNameInTable="okul_puanColumn" msprop:Generator_UserColumnName="okul_puan" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="tc_kimlikno" msprop:Generator_ColumnVarNameInTable="columntc_kimlikno" msprop:Generator_ColumnPropNameInRow="tc_kimlikno" msprop:Generator_ColumnPropNameInTable="tc_kimliknoColumn" msprop:Generator_UserColumnName="tc_kimlikno" type="xs:long" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -555,5 +555,9 @@ SELECT tc_kimlikno, ad_soyad, baba_adı, anne_adı, d_yeri, d_tarih, uyrugu, cin
       <xs:selector xpath=".//mstns:intern" />
       <xs:field xpath="mstns:tc_kimlikno" />
     </xs:unique>
+    <xs:keyref name="FK_intern_InternshipInformation" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="InternshipInformation" msprop:rel_Generator_ChildPropName="GetInternshipInformationRows" msprop:rel_Generator_UserRelationName="FK_intern_InternshipInformation" msprop:rel_Generator_RelationVarName="relationFK_intern_InternshipInformation" msprop:rel_Generator_UserParentTable="intern" msprop:rel_Generator_ParentPropName="internRow">
+      <xs:selector xpath=".//mstns:InternshipInformation" />
+      <xs:field xpath="mstns:tc_kimlikno" />
+    </xs:keyref>
   </xs:element>
 </xs:schema>

@@ -31,12 +31,14 @@ namespace InternFollowProgramming
         int iCount = 0;
         int numara;// SAĞ TUŞA TIKLAYARAK VERİ SİLME İŞLEMİNDE KULLANDIK
         #endregion
+
         #region baglantımız
-        //static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=20fbgsbjk07";
-        static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
+        static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=20fbgsbjk07";
+        //static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
         SqlConnection connection = new SqlConnection(conString);
         SqlCommand command = new SqlCommand();
         SqlDataAdapter dataadapter;
+        SqlDataReader datareader;
         
         System.Data.DataTable datatable;
         DataSet dataset;
@@ -44,19 +46,25 @@ namespace InternFollowProgramming
 
         //SqlCommand cmd = new SqlCommand();
         #endregion
-     
+
         
         public FrmScreen()
         {
             InitializeComponent();
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM intern where tc_kimlikno IN (SELECT tc_kimlikno FROM InternshipInformation where okul_turu='ÜNİVERSİTE')"; //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            command= new SqlCommand(kayit, connection);//Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            dataadapter= new SqlDataAdapter(command); //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
+            string kayit = "SELECT i.* , s.* FROM intern i Left Join InternInformation s on i.tc_kimlikno=s.tc_kimlikno ";
+            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
+            command = new SqlCommand(kayit, connection);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
+            dataadapter = new SqlDataAdapter(command);
+            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
             datatable = new System.Data.DataTable();
-            dataadapter.Fill(datatable); //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
-            dataGridView.DataSource = dataadapter;//Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
+            dataadapter.Fill(datatable);
+            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
+            dataGridView.DataSource = datatable;
+            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
+            dataadapter.Dispose();
             connection.Close();
 
         }
@@ -64,174 +72,246 @@ namespace InternFollowProgramming
         private void FrmScreen_Load(object sender, EventArgs e)
         {     
             command.Connection = connection;
-            connection.Open();
+            
 
-            command.CommandText = "SELECT *FROM InternshipInformation";
+            command.CommandText = "SELECT * FROM InternInformation";
             command.CommandType = CommandType.Text;
+            int kayitSayisi;
 
-            #region LİSANS LABELA STAJYER SAYISINI AKTARMA
-            //            connection.Open();
-            //            SqlCommand lisans = new SqlCommand();
-            //            lisans.CommandText= "Select Count(*) From IntershipInformation Where okul_turu=”LİSANS”";
-            //            SqlDataReader lsns;
-            //            lsns = lisans.ExecuteReader(); 
-            //            while (lsns.Read())
-            //            {
-            //                label_lisans.Text = lsns["okul_turu"].ToString();
-            //            }
-            //            lsns.Close();
-            //            connection.Close();
+            #region TÜM STAJYERLER LABELA STAJYER SAYISINI AKTARMA     
+            connection.Open();
+            SqlCommand stajyer = new SqlCommand();
+            stajyer.Connection = connection;
+            stajyer.CommandText = "Select Count(tc_kimlikno) From intern ";
+            kayitSayisi = Convert.ToInt32(stajyer.ExecuteScalar());
+            label_stajyer.Text = Convert.ToString(kayitSayisi.ToString());
+            connection.Close();
+            #endregion
+
+            #region LİSANS LABELA STAJYER SAYISINI AKTARMA     
+            connection.Open();
+            SqlCommand lisans = new SqlCommand();
+            lisans.Connection = connection;
+            lisans.CommandText = "Select Count(okul_turu) From InternInformation Where okul_turu= 'Lisans'";
+            kayitSayisi = Convert.ToInt32(lisans.ExecuteScalar());
+            label_lisans.Text = Convert.ToString(kayitSayisi.ToString());
+            connection.Close();
             #endregion
 
             #region ONLİSANS LABELA STAJYER SAYISINI AKTARMA
-            //            connection.Open();
-            //            SqlCommand onlisans = new SqlCommand();
-            //            onlisans.CommandText = "Select Count(*) From IntershipInformation Where okul_turu =”ÖN LİSANS”";
-            //            SqlDataReader nlsns;
-            //            nlsns = onlisans.ExecuteReader();
-            //            while (nlsns.Read())
-            //            {
-            //                label_onlisans.Text = nlsns["okul_turu"].ToString();
-            //            }
-            //            nlsns.Close();
-            //            connection.Close();
+            connection.Open();
+            SqlCommand onlisans = new SqlCommand();
+            onlisans.Connection = connection;
+            onlisans.CommandText = "Select Count(okul_turu) From InternInformation Where okul_turu ='On Lisans'";
+            kayitSayisi = Convert.ToInt32(onlisans.ExecuteScalar());
+            label_onlisans.Text = Convert.ToString(kayitSayisi.ToString());
+            connection.Close();
             #endregion
 
             #region LİSE LABELE STAJYER SAYISINI AKTARMA
-            //            connection.Open();
-            //            SqlCommand lise = new SqlCommand();
-            //            lise.CommandText = "Select Count(*) From IntershipInformation Where okul_turu ='LİSE'";
-            //            SqlDataReader ls;
-            //            ls = lise.ExecuteReader();
-            //            while (ls.Read())
-            //            {
-            //                label_lise.Text = ls["okul_turu"].ToString();
-            //            }
-            //            ls.Close();
-            //            connection.Close();
+            connection.Open();
+            SqlCommand lise = new SqlCommand();
+            lise.Connection = connection;
+            lise.CommandText = "Select Count(okul_turu) From InternInformation Where okul_turu ='Lise'";
+            kayitSayisi = Convert.ToInt32(lise.ExecuteScalar());
+            label_lise.Text = Convert.ToString(kayitSayisi.ToString());
+            connection.Close();
             #endregion
 
-          
-
-
-            //dataadapter= new SqlDataAdapter("Select * from IntershipInformation where staj_yılı Like '%" + comboBox_yıl.Text + "%'", connection);
-
-            //dataset.Clear();
-            //dataadapter.Fill(dataset, "IntershipInformation");
-            //dataGridView.DataSource = dataset.Tables["IntershipInformation"];
-            //dataadapter.Dispose();
+            #region ŞUAN STAJ YAPANLAR LABELA STAJYER SAYISINI AKTARMA     
+            connection.Open();
+            SqlCommand aktif = new SqlCommand();
+            aktif.Connection = connection;
+            aktif.CommandText = "Select Count(staj_durumu) From InternInformation where staj_durumu='STAJ YAPIYOR' ";
+            kayitSayisi = Convert.ToInt32(aktif.ExecuteScalar());
+            label_suanstajyapanlar.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
+            #endregion
 
-            #region RAPORLAMA COMBOBOXLARININ İÇİNE VERİ TABANINDAN VERİ ÇEKMEK
-            connection.Open();  
+
+
+            #region RAPORLAMA COMBOBOXLARININ İÇİNE VERİ TABANINDAN VERİ ÇEKMEK  //TEKRARLANAN VERİLERİ DÜZENLE
+
+            SqlCommand cmd1 = new SqlCommand();
+            SqlCommand cmd2 = new SqlCommand();
+            SqlCommand cmd3 = new SqlCommand();
+            SqlCommand cmd4 = new SqlCommand();
+            SqlCommand cmd5 = new SqlCommand();
+            SqlCommand cmd6 = new SqlCommand();
+            cmd1.Connection = connection;
+            cmd2.Connection = connection;
+            cmd3.Connection = connection;
+            cmd4.Connection = connection;
+            cmd5.Connection = connection;
+            cmd6.Connection = connection;
+            connection.Open();
+            cmd1.CommandText = "SELECT DISTINCT staj_yılı FROM InternInformation";
+            cmd2.CommandText = "SELECT DISTINCT staj_donem FROM InternInformation";
+            cmd3.CommandText = "SELECT DISTINCT okul_adı FROM InternInformation";
+            cmd4.CommandText = "SELECT DISTINCT bolum_adı FROM InternInformation";
+            cmd5.CommandText = "SELECT DISTINCT staj_konusu FROM InternInformation";
+            cmd6.CommandText = "SELECT DISTINCT referans_adı FROM InternInformation";
             SqlDataReader dr;
 
-            dr = command.ExecuteReader();
+            dr = cmd1.ExecuteReader();
             while (dr.Read())
             {
-                comboBox_s_yıl.Items.Add(dr["staj_yılı"]);
+                comboBox_s_yıl.Items.Add(dr["staj_yılı"]);   
+            }
+            dr.Close();
+            dr = cmd2.ExecuteReader();
+            while(dr.Read())
+            {
                 comboBox_s_donem.Items.Add(dr["staj_donem"]);
+            }
+            dr.Close();
+            dr = cmd3.ExecuteReader();
+            while (dr.Read())
+            {
                 comboBox_s_okul.Items.Add(dr["okul_adı"]);
+            }
+            dr.Close();
+            dr = cmd4.ExecuteReader();
+            while (dr.Read())
+            {
                 comboBox_s_bolum.Items.Add(dr["bolum_adı"]);
+            }
+            dr.Close();
+            dr = cmd5.ExecuteReader();
+            while (dr.Read())
+            {
                 comboBox_s_stajkonuları.Items.Add(dr["staj_konusu"]);
+            }
+            dr.Close();
+            dr = cmd6.ExecuteReader();
+            while (dr.Read())
+            {
                 comboBox_s_referans.Items.Add(dr["referans_adı"]);
             }
+            dr.Close();
             connection.Close();
             #endregion
 
-            
-
-
-        }
-         
-        private void onlisansToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            command.Connection = connection;
-            connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where okul_turu='ÖN LİSANS' ";
-            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            command = new SqlCommand(kayit, connection);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            dataadapter = new SqlDataAdapter(command);
-            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
-            datatable = new System.Data.DataTable();
-            dataadapter.Fill(datatable);
-            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
-            dataGridView.DataSource = datatable;
-            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            connection.Close();
-        }
-        private void lisansToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            command.Connection = connection;
-            connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where okul_turu='LİSANS' ";
-            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            command = new SqlCommand(kayit, connection);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            dataadapter= new SqlDataAdapter(command);
-            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
-            System.Data.DataTable dt = new System.Data.DataTable();
-            dataadapter.Fill(dt);
-            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
-            dataGridView.DataSource = dt;
-            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            dataadapter.Dispose();
-            connection.Close();
-           
-        }
-        private void liseToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            command.Connection = connection;
-            connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where okul_turu='LİSE' ";
-            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            command = new SqlCommand(kayit, connection);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            dataadapter= new SqlDataAdapter(command);
-            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
-            datatable = new System.Data.DataTable();
-            dataadapter.Fill(datatable);
-            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
-            dataGridView.DataSource = datatable;
-            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            dataadapter.Dispose();
-            connection.Close();
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
 
+        #region MENÜ BUTONLARI
         private void stajyerYönetimToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmInternInformation frm = new FrmInternInformation();
             frm.Show();
-            
+
         }
 
         private void genelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM intern i Left Join InternshipInformation s on i.tc_kimlikno=s.tc_kimlikno ";
+            string kayit = "SELECT *FROM intern i Left Join InternInformation s on i.tc_kimlikno=s.tc_kimlikno ";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            dataadapter= new SqlDataAdapter(command);
+            dataadapter = new SqlDataAdapter(command);
             //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
-            datatable= new System.Data.DataTable();
+            datatable = new System.Data.DataTable();
             dataadapter.Fill(datatable);
             //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             dataGridView.DataSource = datatable;
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             dataadapter.Dispose();
             connection.Close();
-        }
 
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
+        }
+       
+        private void onlisansToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            command.Connection = connection;
+            connection.Open();
+            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='On Lisans')";
+            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
+            command = new SqlCommand(kayit, connection);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
+            dataadapter = new SqlDataAdapter(command);
+            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
+            datatable = new System.Data.DataTable();
+            dataadapter.Fill(datatable);
+            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
+            dataGridView.DataSource = datatable;
+            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
+            connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
+        }
+        private void lisansToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            command.Connection = connection;
+            connection.Open();
+            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='Lisans')";
+            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
+            command = new SqlCommand(kayit, connection);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
+            dataadapter= new SqlDataAdapter(command);
+            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
+            System.Data.DataTable dt = new System.Data.DataTable();
+            dataadapter.Fill(dt);
+            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
+            dataGridView.DataSource = dt;
+            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
+            dataadapter.Dispose();
+            connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
+
+        }
+        private void liseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            command.Connection = connection;
+            connection.Open();
+            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='Lise')";
+            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
+            command = new SqlCommand(kayit, connection);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
+            dataadapter= new SqlDataAdapter(command);
+            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
+            datatable = new System.Data.DataTable();
+            dataadapter.Fill(datatable);
+            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
+            dataGridView.DataSource = datatable;
+            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
+            dataadapter.Dispose();
+            connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
+        }
+        #endregion
 
         #region ÜST SEKME BUTON ÖZELLİĞİ
         private void pictureBox_genel_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation ";
+            string kayit = "SELECT *FROM intern i Left Join InternInformation s on i.tc_kimlikno=s.tc_kimlikno ";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -244,13 +324,19 @@ namespace InternFollowProgramming
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             dataadapter.Dispose();
             connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
 
         private void label_genel_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation ";
+            string kayit = "SELECT *FROM intern i Left Join InternInformation s on i.tc_kimlikno=s.tc_kimlikno ";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -263,13 +349,19 @@ namespace InternFollowProgramming
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             dataadapter.Dispose();
             connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
 
         private void pictureBox_lisans_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where okul_turu='LİSANS' ";
+            string kayit = "SELECT i.*, s.* FROM intern as i Join InternInformation as s on i.tc_kimlikno=s.tc_kimlikno where s.okul_turu='Lisans' ";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -282,13 +374,19 @@ namespace InternFollowProgramming
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             dataadapter.Dispose();
             connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where okul_turu='LİSANS' ";
+            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -301,13 +399,19 @@ namespace InternFollowProgramming
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             dataadapter.Dispose();
             connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
 
         private void pictureBox_onlisans_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where okul_turu='ÖN LİSANS' ";
+            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='On Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -319,13 +423,19 @@ namespace InternFollowProgramming
             dataGridView.DataSource = datatable;
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where okul_turu='ÖN LİSANS' ";
+            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='On Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -337,13 +447,19 @@ namespace InternFollowProgramming
             dataGridView.DataSource = datatable;
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
 
         private void pictureBox_lise_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where okul_turu='LİSE' ";
+            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='Lise')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -356,13 +472,19 @@ namespace InternFollowProgramming
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             dataadapter.Dispose();
             connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where okul_turu='LİSE' ";
+             string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='Lise')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -375,13 +497,19 @@ namespace InternFollowProgramming
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             dataadapter.Dispose();
             connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
 
         private void pictureBox_suanstajer_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where staj_durumu='ŞUAN STAJ YAPIYOR' ";
+            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_durumu='ŞUAN STAJ YAPIYOR')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -394,13 +522,19 @@ namespace InternFollowProgramming
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             dataadapter.Dispose();
             connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
 
         private void label_suanstajyer_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM InternshipInformation where staj_durumu='ŞUAN STAJ YAPIYOR' ";
+            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_durumu='ŞUAN STAJ YAPIYOR')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -413,6 +547,12 @@ namespace InternFollowProgramming
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             dataadapter.Dispose();
             connection.Close();
+
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
         }
         #endregion
 
@@ -479,14 +619,14 @@ namespace InternFollowProgramming
 
         private void pictureBox_suanstajer_MouseHover(object sender, EventArgs e)
         {
-            pictureBox_suanstajer.Image = Properties.Resources.Bşuanstajer;
+            pictureBox_suanstajer.Image = Properties.Resources.stajyapıyor;
             pictureBox_suanstajer.Height = 52;
             pictureBox_suanstajer.Width = 52;
         }
 
         private void pictureBox_suanstajer_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox_suanstajer.Image = Properties.Resources.şuanstajer;
+            pictureBox_suanstajer.Image = Properties.Resources.Sstajyapıyor;
             pictureBox_suanstajer.Height = 42;
             pictureBox_suanstajer.Width = 42;
         }
@@ -560,6 +700,28 @@ namespace InternFollowProgramming
             pictureBox_suanstajer.Image = Properties.Resources.şuanstajer;
             pictureBox_suanstajer.Height = 42;
             pictureBox_suanstajer.Width = 42;
+        }
+        #endregion
+
+        #region REFRESH MOUSE OLAYLARI & SAYFA YENİLEME
+        private void pictureBox_refresh_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox_refresh.Height = 42;
+            pictureBox_refresh.Width = 42;
+        }
+
+        private void pictureBox_refresh_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox_refresh.Height = 32;
+            pictureBox_refresh.Width = 32;
+        }
+
+        private void pictureBox_refresh_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmScreen frmscreen = new FrmScreen();
+            frmscreen.Show();
+            
         }
         #endregion
 
@@ -793,6 +955,36 @@ namespace InternFollowProgramming
         }
         #endregion
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_adsoyadara.Text == String.Empty)
+            {
+                command.Connection = connection;
+                connection.Open();
+                command.CommandText = "SELECT i.*, s.* FROM intern as i JOIN InternInformation as s on i.tc_kimlikno=s.tc_kimlikno";
+                dataadapter = new SqlDataAdapter(command);
+                datatable = new System.Data.DataTable();
+                dataadapter.Fill(datatable);
+                dataGridView.DataSource = datatable;
+                dataadapter.Dispose();
+                connection.Close();
+            }
+            else
+            {
+                command.Connection = connection;
+                connection.Open();
+                command.CommandText = "SELECT i.*, s.* FROM intern as i JOIN InternInformation as s on i.tc_kimlikno = s.tc_kimlikno where i.ad_soyad in (SELECT ad_soyad FROM intern where ad_soyad LIKE  '%" + textBox_adsoyadara.Text + "%')";
+                dataadapter = new SqlDataAdapter(command);
+                datatable = new System.Data.DataTable();
+                dataadapter.Fill(datatable);
+                dataGridView.DataSource = datatable;
+                dataadapter.Dispose();
+                connection.Close();
+            }
+        }
+
+
+
         private void dataGridView_frmscreen_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)//farenin sağ tuşuna basılmışsa
@@ -807,85 +999,147 @@ namespace InternFollowProgramming
             }
         }
 
-        void Sil(int numara)
-        {
-            try
-            {
-                command.Connection = connection;
-                connection.Open();
-                string stajyer = "DELETE FROM intern where tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation WHERE tc_kimlikno = @tc_kimlikno)";
-                command = new SqlCommand(stajyer, connection);
-                command.Parameters.AddWithValue("@tc_kimlikno", numara);
-                command.ExecuteNonQuery();
-                connection.Close();
-                MessageBox.Show("Kayıt Silinmiştir");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "Kayıt Silinemedi");
-            }
+      //void Sil(int numara)
+      //  {
+      //      try
+      //      {
+      //          command.Connection = connection;
+      //          connection.Open();
+      //          string stajyer = "DELETE FROM intern where tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation WHERE tc_kimlikno = @tc_kimlikno)";
+      //          command = new SqlCommand(stajyer, connection);
+      //          command.Parameters.AddWithValue("@tc_kimlikno", numara);
+      //          command.ExecuteNonQuery();
+      //          connection.Close();
+      //          MessageBox.Show("Kayıt Silinmiştir");
+      //      }
+      //      catch (Exception ex)
+      //      {
+      //          MessageBox.Show(ex.Message + "Kayıt Silinemedi");
+      //      }
 
-        }
+      //  }
         void Doldur()
         {
-            connection.Close();
+            
             connection.Open();
-            dataadapter = new SqlDataAdapter("SELECT *FROM intern i Left Join InternshipInformation s on i.tc_kimlikno=s.tc_kimlikno ", connection);
+            dataadapter = new SqlDataAdapter("SELECT *FROM intern i Left Join InternInformation s on i.tc_kimlikno=s.tc_kimlikno ", connection);
             datatable = new System.Data.DataTable();
             
             dataadapter.Fill(datatable);
-            connection.Close();
             dataGridView.DataSource = datatable;
-
-        }
-
-
-
-        public void digeriniYenile()
-        {
-            command.Connection = connection;
-            connection.Open();
-            dataadapter = new SqlDataAdapter("Select * from InternshipInformation", connection);
-            dataset = new DataSet();
-            dataadapter.Fill(dataset, "InternshipInformation");
-            dataGridView.DataSource = dataset.Tables[0];
+            dataadapter.Dispose();
             connection.Close();
+
         }
-        public void DataGridGuncelle()
-        {
-            commandbuilder = new SqlCommandBuilder(dataadapter);
-            dataadapter.Update(dataset, "InternshipInformation");
-            MessageBox.Show("Kayıt Güncellend");
-            digeriniYenile();
-        }
+
+        //public void digeriniYenile()
+        //{
+        //    command.Connection = connection;
+        //    connection.Open();
+        //    dataadapter = new SqlDataAdapter("Select * from InternInformation", connection);
+        //    dataset = new DataSet();
+        //    dataadapter.Fill(dataset, "InternInformation");
+        //    dataGridView.DataSource = dataset.Tables[0];
+        //    connection.Close();
+        //}
+        //public void DataGridGuncelle()
+        //{
+        //    commandbuilder = new SqlCommandBuilder(dataadapter);
+        //    dataadapter.Update(dataset, "InternInformation");
+        //    MessageBox.Show("Kayıt Güncellendi");
+        //    digeriniYenile();
+        //}
 
         
         private void silToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Sil(numara);
-            Doldur();
+                try
+
+                {
+
+                    DialogResult cevap;
+
+                    cevap = MessageBox.Show("Kaydı silmek istediğinizden eminmisiniz", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (cevap == DialogResult.Yes)
+
+                    {
+
+                        command.Connection = connection;
+
+                        connection.Open();
+
+                        command.CommandText = "DELETE FROM intern where tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation WHERE tc_kimlikno ='" + dataGridView.CurrentRow.Cells[0].Value.ToString() + "'";
+
+                        command.ExecuteNonQuery();
+
+                        connection.Close();
+
+                        Doldur();
+
+                    }
+            
+
+            }
+
+                catch (Exception hata)
+
+                {
+
+                    MessageBox.Show(hata.Message);
+
+                }
             
         }
 
         private void güncelleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataGridGuncelle();
+            //DataGridGuncelle();
         }
 
-        private void button_s_ara_Click(object sender, EventArgs e)
+        private void button_s_ara_Click(object sender, EventArgs e)  //EKSİK OLASILIKLAR VAR EKLE!!
         {
             //command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
             //command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
-            //command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul);
+            //command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
             //command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
             //command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
             //command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
-            if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
+            if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.*, s.* FROM intern as i WHERE tc_kimlikno as s in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                command = new SqlCommand(ara, connection);
+                command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem );
+                command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
+                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
+                command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
+                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
+                command.ExecuteNonQuery();
+                dataadapter = new SqlDataAdapter(command);
+                datatable = new System.Data.DataTable();
+                dataadapter.Fill(datatable);
+                dataGridView.DataSource = datatable;
+                dataadapter.Dispose();
+                connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
+            } //0
+            else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
+            {
+                command.Connection = connection;
+                connection.Open();
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -900,12 +1154,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //1
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -920,12 +1183,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //2
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -940,12 +1212,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //3
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -960,12 +1241,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }//4
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -981,12 +1271,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
+
             } //5
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1003,13 +1303,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1026,12 +1335,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //1 2
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where  staj_donem=@staj_donem and  bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where  staj_donem=@staj_donem and  bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1049,12 +1367,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }//1 3
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1072,12 +1399,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 1 4
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where  staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where  staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1095,12 +1431,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 1 5
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1118,13 +1463,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //1 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1141,12 +1495,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //2 3
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1163,12 +1526,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 2 4
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_adı and  referans_adı=@referans)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_adı and  referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1183,12 +1555,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 2 5
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konularI=@staj_konusu )";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konularI=@staj_konusu )";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1203,13 +1584,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 2 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and staj_konusu=@staj_konusu and referans_adı=@referans)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1224,12 +1614,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
+
             } //3 4
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1244,12 +1644,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 3 5
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu )";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu )";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1264,13 +1673,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 3 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1285,12 +1703,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 4 5
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1305,13 +1732,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 4 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1327,13 +1763,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 5 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
 
@@ -1350,12 +1795,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 2 3
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1372,12 +1826,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 2 4
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where okul_adı=@okul_adı and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1394,12 +1857,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 1 2 5
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where okul_adı=@okul_adı and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
 
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1416,13 +1888,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 2 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1439,12 +1920,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 3 4
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1461,12 +1951,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 3 5
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1483,13 +1982,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 3 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1507,12 +2015,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 1 4 5
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1530,13 +2047,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 1 4 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where  staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where  staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1551,6 +2077,15 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 1 5 6
 
 
@@ -1559,7 +2094,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1576,12 +2111,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //2 3 4
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1598,12 +2142,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //2 3 5
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1620,13 +2173,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //2 3 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1643,12 +2205,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 2 4 5
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1665,13 +2236,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 2 4 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1686,13 +2266,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 2 5 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1707,12 +2296,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //3 4 5
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1727,13 +2325,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //3 4 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_Adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1748,13 +2355,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 3 5 6
 
-            else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
+            else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1768,13 +2384,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 4 5 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
 
@@ -1791,12 +2416,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 2 3 4
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
 
@@ -1813,12 +2447,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 2 3 5
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
 
 
@@ -1835,13 +2478,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 2 3 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where okul_adı=@okul_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1858,12 +2510,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 2 4 5
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where okul_adı=@okul_adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
 
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1880,13 +2541,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 2 4 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
                 command = new SqlCommand(ara, connection);
 
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1903,13 +2573,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 1 2 5 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1926,12 +2605,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 3 4 5
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1948,13 +2636,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 3 4 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_donem=@staj_donem and okul_adı=@okul_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1969,13 +2666,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } // 1 4 5 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1992,12 +2698,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //2 3 4 5
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -2014,12 +2729,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //2 3 4 6
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -2033,13 +2757,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //2 3 5 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -2054,13 +2787,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //3 4 5 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where  referans_adı=@referans_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where  referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
 
@@ -2077,12 +2819,21 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 2 3 4 5
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_konusu=@staj_konusu)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_konusu=@staj_konusu)";
                 command = new SqlCommand(ara, connection);
 
 
@@ -2098,13 +2849,23 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
+
             }// 1 2 3 4 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where okul_adı=@okul_adı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı)";
                 command = new SqlCommand(ara, connection);
 
                command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -2121,15 +2882,24 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 2 4 5 6
 
             else if (comboBox_s_yıl.SelectedItem == null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_donem=@staj_donem)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem)";
                 command = new SqlCommand(ara, connection);
-                command.Parameters.AddWithValue("@staj_donem", comboBox_s_yıl);
+                command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
 
 
 
@@ -2144,13 +2914,22 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             }// 1 3 4 5 6
 
             else if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem == null && comboBox_s_okul.SelectedItem == null && comboBox_s_bolum.SelectedItem == null && comboBox_s_stajkonuları.SelectedItem == null && comboBox_s_referans.SelectedItem == null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation where staj_yılı=@staj_yılı)";
+                string ara = "SELECT * FROM intern WHERE tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -2162,6 +2941,15 @@ namespace InternFollowProgramming
                 dataGridView.DataSource = datatable;
                 dataadapter.Dispose();
                 connection.Close();
+
+                #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+                comboBox_s_yıl.Text = String.Empty;
+                comboBox_s_donem.Text = String.Empty;
+                comboBox_s_okul.Text = String.Empty;
+                comboBox_s_bolum.Text = String.Empty;
+                comboBox_s_stajkonuları.Text = String.Empty;
+                comboBox_s_referans.Text = String.Empty;
+                #endregion
             } //2 3 4 5 6
 
             else
@@ -2169,17 +2957,16 @@ namespace InternFollowProgramming
                 MessageBox.Show("LÜTFEN RAPORLAMA KRİTERİNİ/KRİTERLERİNİ GİRİNİZ !!");
             }
 
+            #region TABLODAKİ VERİ SAYISINI BULAN SORGU
+            int kayitsayisi;
+            kayitsayisi = dataGridView.RowCount;
+            label_aranan_stajyer_sayısı.Text= kayitsayisi + " STAJYER BULUNMUŞTUR";
+            #endregion
+
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if(e.KeyChar == (char)13)
-            //{
-            //    DataGridView dv = dt.DefaultView;
-            //    dv.RowFilter = string.Format("ad_soyad like '%{0}%' OR tc_kimlik_no like '%{0}%'", textBox1.Text);
-            //    dataGridView.DataSource = dv.ToTable();
-            //}
-        }
+       
+       
     }
 }
 

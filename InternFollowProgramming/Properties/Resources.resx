@@ -118,53 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="microsoft-excel-vector" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\microsoft-excel-vector.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Search3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Search3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Slise" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Slise.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="search1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="genel_stajer1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\genel_stajer1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sönlisans" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sönlisans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bön lisans copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bön lisans copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="YAZDIR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\YAZDIR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Slisans" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Slisans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Bşuanstajer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bşuanstajer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pp.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="şuanstajer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\şuanstajer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="search2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="genel_stajer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\genel_stajer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="09dcf03cbd00be808b8602d42c376ba4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\09dcf03cbd00be808b8602d42c376ba4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Sönlisans" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sönlisans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="EXCEL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXCEL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="STAJYERLOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\STAJYERLOGO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bşuanstajer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bşuanstajer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logovektörel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logovektörel.tif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,25 +151,55 @@
   <data name="Bgenel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bgenel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logovektörel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logovektörel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pp.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lisans" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lisans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="STAJYERLOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\STAJYERLOGO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AKE Logo 2007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AKE Logo 2007.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="genel_stajer1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\genel_stajer1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Slise" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Slise.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="09dcf03cbd00be808b8602d42c376ba4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\09dcf03cbd00be808b8602d42c376ba4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logovektörel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logovektörel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="şuanstajer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\şuanstajer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="microsoft-excel-vector" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\microsoft-excel-vector.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Blisans" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Blisans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Sstajyapıyor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sstajyapıyor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Blise copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Blise copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AKE Logo 2007" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AKE Logo 2007.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Bön lisans copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bön lisans copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="EXCEL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EXCEL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="YAZDIR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\YAZDIR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="stajyapıyor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stajyapıyor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

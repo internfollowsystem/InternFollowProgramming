@@ -28,6 +28,8 @@ namespace InternFollowProgramming {
         
         private internDataTable tableintern;
         
+        private global::System.Data.DataRelation relationFK_intern_InternshipInformation;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -218,6 +220,7 @@ namespace InternFollowProgramming {
                     this.tableintern.InitVars();
                 }
             }
+            this.relationFK_intern_InternshipInformation = this.Relations["FK_intern_InternshipInformation"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +235,19 @@ namespace InternFollowProgramming {
             base.Tables.Add(this.tableInternshipInformation);
             this.tableintern = new internDataTable();
             base.Tables.Add(this.tableintern);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_intern_InternshipInformation", new global::System.Data.DataColumn[] {
+                        this.tableintern.tc_kimliknoColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInternshipInformation.tc_kimliknoColumn});
+            this.tableInternshipInformation.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            this.relationFK_intern_InternshipInformation = new global::System.Data.DataRelation("FK_intern_InternshipInformation", new global::System.Data.DataColumn[] {
+                        this.tableintern.tc_kimliknoColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInternshipInformation.tc_kimliknoColumn}, false);
+            this.relationFK_intern_InternshipInformation.Nested = true;
+            this.Relations.Add(this.relationFK_intern_InternshipInformation);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -692,7 +708,7 @@ namespace InternFollowProgramming {
                         string sınıf, 
                         string okul_no, 
                         string okul_puan, 
-                        long tc_kimlikno) {
+                        internRow parentinternRowByFK_intern_InternshipInformation) {
                 InternshipInformationRow rowInternshipInformationRow = ((InternshipInformationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         staj_kabul_durumu,
@@ -722,7 +738,10 @@ namespace InternFollowProgramming {
                         sınıf,
                         okul_no,
                         okul_puan,
-                        tc_kimlikno};
+                        null};
+                if ((parentinternRowByFK_intern_InternshipInformation != null)) {
+                    columnValuesArray[27] = parentinternRowByFK_intern_InternshipInformation[0];
+                }
                 rowInternshipInformationRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInternshipInformationRow);
                 return rowInternshipInformationRow;
@@ -2045,6 +2064,17 @@ namespace InternFollowProgramming {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public internRow internRow {
+                get {
+                    return ((internRow)(this.GetParentRow(this.Table.ParentRelations["FK_intern_InternshipInformation"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_intern_InternshipInformation"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isstaj_kabul_durumuNull() {
                 return this.IsNull(this.tableInternshipInformation.staj_kabul_durumuColumn);
             }
@@ -2979,6 +3009,17 @@ namespace InternFollowProgramming {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setacil_e_postaNull() {
                 this[this.tableintern.acil_e_postaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public InternshipInformationRow[] GetInternshipInformationRows() {
+                if ((this.Table.ChildRelations["FK_intern_InternshipInformation"] == null)) {
+                    return new InternshipInformationRow[0];
+                }
+                else {
+                    return ((InternshipInformationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_intern_InternshipInformation"])));
+                }
             }
         }
         
@@ -4308,21 +4349,21 @@ SELECT tc_kimlikno, ad_soyad, baba_adı, anne_adı, d_yeri, d_tarih, uyrugu, cin
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(INTERNDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._internshipInformationTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.InternshipInformation.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._internshipInformationTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._internTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.intern.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._internTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._internshipInformationTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.InternshipInformation.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._internshipInformationTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -4336,19 +4377,19 @@ SELECT tc_kimlikno, ad_soyad, baba_adı, anne_adı, d_yeri, d_tarih, uyrugu, cin
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(INTERNDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._internshipInformationTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.InternshipInformation.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._internshipInformationTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._internTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.intern.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._internTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._internshipInformationTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.InternshipInformation.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._internshipInformationTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -4362,19 +4403,19 @@ SELECT tc_kimlikno, ad_soyad, baba_adı, anne_adı, d_yeri, d_tarih, uyrugu, cin
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(INTERNDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._internTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.intern.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._internTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._internshipInformationTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.InternshipInformation.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._internshipInformationTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._internTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.intern.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._internTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

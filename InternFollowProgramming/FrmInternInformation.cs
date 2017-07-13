@@ -19,8 +19,8 @@ namespace InternFollowProgramming
     {
 
         #region baglantımız
-        //static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=20fbgsbjk07";
-        static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
+        static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=20fbgsbjk07";
+        //static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
         SqlConnection connection = new SqlConnection(conString);
         SqlCommand command = new SqlCommand();
         SqlDataAdapter dataadapter;
@@ -206,7 +206,7 @@ namespace InternFollowProgramming
 
             cmd.Connection = connection;
             connection.Open();
-            String stajyer_bilgisi = "Insert Into InternshipInformation(staj_kabul_durumu, staj_basvuru_turu, staj_yılı, staj_donem, staj_konusu, staj_baslangıc_tarihi, staj_bitis_tarihi, staj_süresi, staj_bas_kalan_sure, staj_konuları, staj_servis, staj_plaka, staj_durumu, mentor, acıklama, sigorta_evrak_durumu, referans_adı, referans_telefon, referans_adres, referans_e_posta, okul_turu, okul_adı, okul_sehir, bolum_adı, sınıf, okul_no, okul_puan, tc_kimlikno)Values (@staj_kabul_durumu, @staj_basvuru_turu, @staj_yılı, @staj_donem, @staj_konusu, @staj_baslangıc_tarihi, @staj_bitis_tarihi, @staj_süresi, @staj_bas_kalan_sure, @staj_konuları, @staj_servis, @staj_plaka, @staj_durumu, @mentor, @acıklama, @sigorta_evrak_durumu, @referans_adı, @referans_telefon, @referans_adres, @referans_e_posta, @okul_turu, @okul_adı, @okul_sehir, @bolum_adı, @sınıf, @okul_no, @okul_puan, @tc_kimlikno)";
+            String stajyer_bilgisi = "Insert Into InternInformation(staj_kabul_durumu, staj_basvuru_turu, staj_yılı, staj_donem, staj_konusu, staj_baslangıc_tarihi, staj_bitis_tarihi, staj_süresi, staj_bas_kalan_sure, staj_konuları, staj_servis, staj_plaka, staj_durumu, mentor, acıklama, sigorta_evrak_durumu, referans_adı, referans_telefon, referans_adres, referans_e_posta, okul_turu, okul_adı, okul_sehir, bolum_adı, sınıf, okul_no, okul_puan, tc_kimlikno)Values (@staj_kabul_durumu, @staj_basvuru_turu, @staj_yılı, @staj_donem, @staj_konusu, @staj_baslangıc_tarihi, @staj_bitis_tarihi, @staj_süresi, @staj_bas_kalan_sure, @staj_konuları, @staj_servis, @staj_plaka, @staj_durumu, @mentor, @acıklama, @sigorta_evrak_durumu, @referans_adı, @referans_telefon, @referans_adres, @referans_e_posta, @okul_turu, @okul_adı, @okul_sehir, @bolum_adı, @sınıf, @okul_no, @okul_puan, @tc_kimlikno)";
             cmd = new SqlCommand(stajyer_bilgisi, connection);
 
             #region Staja kalan süre ve durum Hesapla
@@ -218,18 +218,18 @@ namespace InternFollowProgramming
 
             if (gunfarki_ilk > 0)
             {
-                durum = "staja başlamadı";
+                durum = "STAJA BASLAMADI";
                 gunfarki_ilk = kalan.Days;
             }
             else if (gunfarki_ilk < 0 || gunfarki_son > 0)
             {
-                durum = "Şuan staj yapıyor";
+                durum = "STAJ YAPIYOR";
 
 
             }
             else if (gunfarki_son < 0)
             {
-                durum = "Stajı Bitti";
+                durum = "STAJI BITTI";
 
             }
             #endregion
@@ -335,7 +335,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string stajyer = "DELETE FROM intern where tc_kimlikno in(SELECT tc_kimlikno FROM InternshipInformation WHERE tc_kimlikno = @tc_kimlikno)";
+                string stajyer = "DELETE FROM intern where tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation WHERE tc_kimlikno = @tc_kimlikno)";
                 command = new SqlCommand(stajyer, connection);
                 command.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
                 command.ExecuteNonQuery();
@@ -349,7 +349,7 @@ namespace InternFollowProgramming
 
             #region eski sorgu
             //connection.Open();
-            ////string stajyer_silme = "DELETE FROM intern WHERE tc_kimlikno IN(SELECT tc_kimlikno FROM InternshipInformation where tc_kimlino='" + textBox_tc + "')";
+            ////string stajyer_silme = "DELETE FROM intern WHERE tc_kimlikno IN(SELECT tc_kimlikno FROM InternInformation where tc_kimlino='" + textBox_tc + "')";
             ////SqlCommand stajyer_komutu = new SqlCommand(stajyer_silme, connection);
 
             //string secmeSorgusu = "SELECT * from intern where tc_kimlikno=@tc_kimlikno";
@@ -371,7 +371,7 @@ namespace InternFollowProgramming
 
             //    if (DialogResult.Yes == durum)
             //    {
-            //        string stajyer_silme = "DELETE FROM intern WHERE tc_kimlikno IN(SELECT tc_kimlikno FROM InternshipInformation where tc_kimlikno=@tc_kimlikno)";
+            //        string stajyer_silme = "DELETE FROM intern WHERE tc_kimlikno IN(SELECT tc_kimlikno FROM InternInformation where tc_kimlikno=@tc_kimlikno)";
             //        SqlCommand stajyer_komutu = new SqlCommand(stajyer_silme, connection);
             //        stajyer_komutu.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
             //        dataadapter = new SqlDataAdapter(stajyer_komutu);
@@ -451,7 +451,7 @@ namespace InternFollowProgramming
                 //command.Parameters.Add(parametre);
 
                 //staj bilgileri  GÜNCELL KOD !!
-                string stajyer_bilgi = "update InternshipInformation set staj_kabul_durumu = @staj_kabul_durumu,staj_basvuru_turu = @staj_basvuru_turu,staj_yılı = @staj_yılı,staj_donem = @staj_donem,staj_konusu = @staj_konusu,staj_baslangıc_tarihi = @staj_baslangıc_tarihi,staj_bitis_tarihi = @staj_bitis_tarihi,staj_süresi = @staj_süresi,staj_bas_kalan_sure = @staj_bas_kalan_sure,staj_konuları=@staj_konuları,staj_servis=@staj_servis,staj_plaka=@staj_plaka,staj_durumu = @staj_durumu,mentor=@mentor,acıklama = @acıklama,sigorta_evrak_durumu=@sigorta_evrak_durumu,referans_adı=@referans_adı,referans_telefon=@referans_telefon,referans_adres=@referans_adres,referans_e_posta=@referans_e_posta,okul_turu = @okul_turu,okul_adı = @okul_adı,okul_sehir = @okul_sehir,bolum_adı = @bolum_adı,sınıf = @sınıf,okul_no = @okul_no,okul_puan = @okul_puan, tc_kimlikno=@tc_kimlikno where tc_kimlikno=@tc_kimlikno";
+                string stajyer_bilgi = "update InternInformation set staj_kabul_durumu = @staj_kabul_durumu,staj_basvuru_turu = @staj_basvuru_turu,staj_yılı = @staj_yılı,staj_donem = @staj_donem,staj_konusu = @staj_konusu,staj_baslangıc_tarihi = @staj_baslangıc_tarihi,staj_bitis_tarihi = @staj_bitis_tarihi,staj_süresi = @staj_süresi,staj_bas_kalan_sure = @staj_bas_kalan_sure,staj_konuları=@staj_konuları,staj_servis=@staj_servis,staj_plaka=@staj_plaka,staj_durumu = @staj_durumu,mentor=@mentor,acıklama = @acıklama,sigorta_evrak_durumu=@sigorta_evrak_durumu,referans_adı=@referans_adı,referans_telefon=@referans_telefon,referans_adres=@referans_adres,referans_e_posta=@referans_e_posta,okul_turu = @okul_turu,okul_adı = @okul_adı,okul_sehir = @okul_sehir,bolum_adı = @bolum_adı,sınıf = @sınıf,okul_no = @okul_no,okul_puan = @okul_puan, tc_kimlikno=@tc_kimlikno where tc_kimlikno=@tc_kimlikno";
                 cmd = new SqlCommand(stajyer_bilgi, connection);
 
 
@@ -467,17 +467,17 @@ namespace InternFollowProgramming
 
                 if (gunfarki_ilk > 0)
                 {
-                    durum = "STAJA BAŞLAMADI";
+                    durum = "STAJA BASLAMADI";
                     gunfarki_ilk = kalan.Days;
                 }
                 else if (gunfarki_ilk < 0 || gunfarki_son > 0)
                 {
-                    durum = "ŞUAN STAJ YAPIYOR";
+                    durum = "STAJ YAPIYOR";
 
                 }
                 else if (gunfarki_son < 0)
                 {
-                    durum = "STAJI BİTTİ";
+                    durum = "STAJI BITTI";
                 }   
                 #endregion
 
@@ -663,7 +663,7 @@ namespace InternFollowProgramming
             #region staj kabul durumu bul
             connection.Open();
             cmd.Connection = connection;
-            string intershipSorgusu = "SELECT * from InternshipInformation where tc_kimlikno=@tc_kimlikno";
+            string intershipSorgusu = "SELECT * from InternInformation where tc_kimlikno=@tc_kimlikno";
             command= new SqlCommand(intershipSorgusu, connection);
             command.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
             dataadapter= new SqlDataAdapter(command);
