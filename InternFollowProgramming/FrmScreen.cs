@@ -43,8 +43,8 @@ namespace InternFollowProgramming
 
         //22 AĞUSTOS 2017 GÜNCEL !! 
         #region baglantımız
-        static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=20fbgsbjk07";
-        //static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
+        //static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=20fbgsbjk07";
+        static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
         SqlConnection connection = new SqlConnection(conString);
         SqlCommand command = new SqlCommand();
         SqlDataAdapter dataadapter;
@@ -396,7 +396,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT i.ad_soyad, s.* FROM intern as i join InternInformation as s on where s.okul_turu in (SELECT okul_turu FROM InternInformation  where okul_turu='Lisans')";
+            string kayit = "SELECT i.ad_soyad, s.* FROM intern as i join InternInformation as s on i.tc_kimlikno=s.tc_kimlikno where s.okul_turu in (SELECT okul_turu FROM InternInformation  where okul_turu='Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -2989,7 +2989,12 @@ namespace InternFollowProgramming
             #endregion
 
         }
-    }
+
+		private void label_aranan_stajyer_sayısı_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
 
 

@@ -21,3 +21,26 @@ C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFoll
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.pdb
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csprojResolveAssemblyReference.cache
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csproj.CoreCompileInputs.cache
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\InternFollowProgramming.exe.config
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\InternFollowProgramming.exe
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\InternFollowProgramming.pdb
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\AdvancedDataGridView.dll
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\Microsoft.Data.Tools.Utilities.dll
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\Microsoft.SqlServer.TransactSql.ScriptDom.dll
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\AdvancedDataGridView.xml
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\fr\AdvancedDataGridView.resources.dll
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\ru\AdvancedDataGridView.resources.dll
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\bin\Debug\tr\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csprojResolveAssemblyReference.cache
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csproj.InternFollowProgramming.exe.config
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmHome.resources
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmInternInformation.resources
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmScreen.resources
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.Properties.Resources.resources
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csproj.GenerateResource.Cache
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csproj.CoreCompileInputs.cache
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.exe
+C:\Users\raporlama1\Source\Repos\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.pdb

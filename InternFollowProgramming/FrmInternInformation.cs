@@ -19,8 +19,8 @@ namespace InternFollowProgramming
     {
 
         #region baglantımız
-        static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=20fbgsbjk07";
-        //static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
+        //static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=20fbgsbjk07";
+        static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
         SqlConnection connection = new SqlConnection(conString);
         SqlCommand command = new SqlCommand();
         SqlDataAdapter dataadapter;
@@ -914,8 +914,27 @@ namespace InternFollowProgramming
 
 
 
-        #endregion
 
-       
-    }
+		#endregion
+
+		private void label2_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label20_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void comboBox_mentor_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label36_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
