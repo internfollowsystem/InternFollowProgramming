@@ -51,9 +51,8 @@ namespace InternFollowProgramming
           
         }
 
-        private void button_login_Click(object sender, EventArgs e) //Giriş Butonu
+        private void pictureBox_giris_Click(object sender, EventArgs e)
         {
-
             // Boş değer girilmesini engelliyoruz.
             if (String.IsNullOrWhiteSpace(comboBox_user.Text) ||
                 String.IsNullOrWhiteSpace(textBox_password.Text))
@@ -70,8 +69,8 @@ namespace InternFollowProgramming
                 command = new SqlCommand(sql, connection);
                 command.Parameters.Add(prms1);
                 command.Parameters.Add(prms2);
-                datatable= new DataTable();
-                dataadapter= new SqlDataAdapter(command);
+                datatable = new DataTable();
+                dataadapter = new SqlDataAdapter(command);
                 dataadapter.Fill(datatable);
                 connection.Close();
 
@@ -82,7 +81,7 @@ namespace InternFollowProgramming
                     this.Hide();
                     FrmScreen frmscreen = new FrmScreen();
                     frmscreen.Show();
-                    
+
                 }
                 else
                 {
@@ -97,21 +96,30 @@ namespace InternFollowProgramming
                 FrmScreen frmscreen = new FrmScreen();
                 frmscreen.Show();
             }
-
         }
 
-        private void checkBox_password_CheckedChanged(object sender, EventArgs e) //Şifrenin görünürlülüğünü checkBox'a göre ayarladığımız kodlar
+        private void pictureBox_password_Click(object sender, EventArgs e)
         {
-            
-            if(checkBox_password.Checked)
+            if (pictureBox_password.Image==Properties.Resources.göster)
             {
-                textBox_password.PasswordChar = '\0';
-            }
-            else
-            {
+                pictureBox_password.Image = Properties.Resources.gizle;
                 textBox_password.PasswordChar = '*';
             }
-                
-        } 
+            else if (pictureBox_password.Image==Properties.Resources.gizle)
+            {
+                pictureBox_password.Image = Properties.Resources.göster;
+                textBox_password.PasswordChar = '\0';
+            }
+        }
+
+        private void pictureBox_giris_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox_giris.Image = Properties.Resources.leaveGiriş1;
+        }
+
+        private void pictureBox_giris_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox_giris.Image = Properties.Resources.Giriş;
+        }
     }
 }

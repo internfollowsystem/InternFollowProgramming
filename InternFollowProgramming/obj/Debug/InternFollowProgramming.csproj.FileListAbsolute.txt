@@ -8,7 +8,6 @@ C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFoll
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\bin\Debug\InternFollowProgramming.exe
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\bin\Debug\InternFollowProgramming.pdb
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\bin\Debug\AdvancedDataGridView.dll
-C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\bin\Debug\Microsoft.Data.Tools.Schema.Sql.dll
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\bin\Debug\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\bin\Debug\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\bin\Debug\Microsoft.Data.Tools.Utilities.dll
@@ -21,3 +20,4 @@ C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFoll
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.exe
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.pdb
 C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csprojResolveAssemblyReference.cache
+C:\Users\Win\Desktop\AKE\Intern Follow System\InternFollowProgramming\InternFollowProgramming\obj\Debug\InternFollowProgramming.csproj.CoreCompileInputs.cache

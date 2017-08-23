@@ -33,5 +33,16 @@ namespace InternFollowProgramming.Properties {
                 return ((string)(this["INTERNConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-PBAHQL4;Initial Catalog=INTERN;Persist Security Info=True;Use" +
+            "r ID=sa;Password=20fbgsbjk07")]
+        public string INTERNConnectionString_onpc {
+            get {
+                return ((string)(this["INTERNConnectionString_onpc"]));
+            }
+        }
     }
 }

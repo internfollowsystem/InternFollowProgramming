@@ -39,7 +39,6 @@
             this.planlamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yoklamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.güncelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_ust = new System.Windows.Forms.Panel();
             this.label_suanstajyapanlar = new System.Windows.Forms.Label();
             this.label_stajyer = new System.Windows.Forms.Label();
@@ -71,6 +70,7 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.label_aranan_stajyer_sayısı = new System.Windows.Forms.Label();
             this.silToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.güncelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox_refresh = new System.Windows.Forms.PictureBox();
             this.pictureBox_suanstajer = new System.Windows.Forms.PictureBox();
             this.pictureBox_genel = new System.Windows.Forms.PictureBox();
@@ -101,7 +101,7 @@
             this.menuStrip_frmscreen.BackColor = System.Drawing.Color.Gold;
             this.menuStrip_frmscreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuStrip_frmscreen.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip_frmscreen.Font = new System.Drawing.Font("Myriad Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip_frmscreen.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.menuStrip_frmscreen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stajyerYönetimToolStripMenuItem,
             this.stajyerTanımlamaToolStripMenuItem,
@@ -112,14 +112,14 @@
             this.menuStrip_frmscreen.Name = "menuStrip_frmscreen";
             this.menuStrip_frmscreen.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip_frmscreen.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip_frmscreen.Size = new System.Drawing.Size(114, 75);
+            this.menuStrip_frmscreen.Size = new System.Drawing.Size(117, 80);
             this.menuStrip_frmscreen.TabIndex = 1;
             this.menuStrip_frmscreen.Text = "menuStrip1";
             // 
             // stajyerYönetimToolStripMenuItem
             // 
             this.stajyerYönetimToolStripMenuItem.Name = "stajyerYönetimToolStripMenuItem";
-            this.stajyerYönetimToolStripMenuItem.Size = new System.Drawing.Size(108, 18);
+            this.stajyerYönetimToolStripMenuItem.Size = new System.Drawing.Size(111, 19);
             this.stajyerYönetimToolStripMenuItem.Text = "STAJYER YÖNETİM";
             this.stajyerYönetimToolStripMenuItem.Click += new System.EventHandler(this.stajyerYönetimToolStripMenuItem_Click);
             // 
@@ -130,49 +130,49 @@
             this.onlisansToolStripMenuItem,
             this.lisansToolStripMenuItem,
             this.liseToolStripMenuItem1});
-            this.stajyerTanımlamaToolStripMenuItem.Font = new System.Drawing.Font("Myriad Pro", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.stajyerTanımlamaToolStripMenuItem.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stajyerTanımlamaToolStripMenuItem.Name = "stajyerTanımlamaToolStripMenuItem";
-            this.stajyerTanımlamaToolStripMenuItem.Size = new System.Drawing.Size(80, 17);
+            this.stajyerTanımlamaToolStripMenuItem.Size = new System.Drawing.Size(86, 19);
             this.stajyerTanımlamaToolStripMenuItem.Text = "RAPORLAMA";
             // 
             // genelToolStripMenuItem
             // 
             this.genelToolStripMenuItem.Name = "genelToolStripMenuItem";
-            this.genelToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.genelToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.genelToolStripMenuItem.Text = "GENEL";
             this.genelToolStripMenuItem.Click += new System.EventHandler(this.genelToolStripMenuItem_Click);
             // 
             // onlisansToolStripMenuItem
             // 
             this.onlisansToolStripMenuItem.Name = "onlisansToolStripMenuItem";
-            this.onlisansToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.onlisansToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.onlisansToolStripMenuItem.Text = "ÖN LİSANS";
             this.onlisansToolStripMenuItem.Click += new System.EventHandler(this.onlisansToolStripMenuItem_Click);
             // 
             // lisansToolStripMenuItem
             // 
             this.lisansToolStripMenuItem.Name = "lisansToolStripMenuItem";
-            this.lisansToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.lisansToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.lisansToolStripMenuItem.Text = "LİSANS";
             this.lisansToolStripMenuItem.Click += new System.EventHandler(this.lisansToolStripMenuItem_Click);
             // 
             // liseToolStripMenuItem1
             // 
             this.liseToolStripMenuItem1.Name = "liseToolStripMenuItem1";
-            this.liseToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
+            this.liseToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
             this.liseToolStripMenuItem1.Text = "LİSE";
             this.liseToolStripMenuItem1.Click += new System.EventHandler(this.liseToolStripMenuItem1_Click);
             // 
             // planlamaToolStripMenuItem
             // 
             this.planlamaToolStripMenuItem.Name = "planlamaToolStripMenuItem";
-            this.planlamaToolStripMenuItem.Size = new System.Drawing.Size(76, 18);
+            this.planlamaToolStripMenuItem.Size = new System.Drawing.Size(77, 19);
             this.planlamaToolStripMenuItem.Text = "PLANLAMA";
             // 
             // yoklamaToolStripMenuItem
             // 
             this.yoklamaToolStripMenuItem.Name = "yoklamaToolStripMenuItem";
-            this.yoklamaToolStripMenuItem.Size = new System.Drawing.Size(70, 18);
+            this.yoklamaToolStripMenuItem.Size = new System.Drawing.Size(71, 19);
             this.yoklamaToolStripMenuItem.Text = "YOKLAMA";
             // 
             // contextMenuStrip1
@@ -182,15 +182,6 @@
             this.güncelleToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(132, 48);
-            // 
-            // güncelleToolStripMenuItem
-            // 
-            this.güncelleToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.edit;
-            this.güncelleToolStripMenuItem.Name = "güncelleToolStripMenuItem";
-            this.güncelleToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.güncelleToolStripMenuItem.Text = "GÜNCELLE";
-            this.güncelleToolStripMenuItem.ToolTipText = "Sadece Stajyer Bilgisi güncellenir, Staj Bilgileri değil !";
-            this.güncelleToolStripMenuItem.Click += new System.EventHandler(this.güncelleToolStripMenuItem_Click);
             // 
             // panel_ust
             // 
@@ -246,11 +237,11 @@
             // label_suanstajyer
             // 
             this.label_suanstajyer.AutoSize = true;
-            this.label_suanstajyer.Font = new System.Drawing.Font("Myriad Pro Light", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label_suanstajyer.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label_suanstajyer.Location = new System.Drawing.Point(969, 63);
+            this.label_suanstajyer.Font = new System.Drawing.Font("Open Sans ExtraBold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_suanstajyer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label_suanstajyer.Location = new System.Drawing.Point(963, 63);
             this.label_suanstajyer.Name = "label_suanstajyer";
-            this.label_suanstajyer.Size = new System.Drawing.Size(109, 13);
+            this.label_suanstajyer.Size = new System.Drawing.Size(110, 13);
             this.label_suanstajyer.TabIndex = 15;
             this.label_suanstajyer.Text = "ŞUAN STAJ YAPANLAR";
             this.label_suanstajyer.Click += new System.EventHandler(this.label_suanstajyer_Click);
@@ -260,11 +251,11 @@
             // label_genel
             // 
             this.label_genel.AutoSize = true;
-            this.label_genel.Font = new System.Drawing.Font("Myriad Pro Light", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label_genel.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label_genel.Location = new System.Drawing.Point(307, 63);
+            this.label_genel.Font = new System.Drawing.Font("Open Sans ExtraBold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_genel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label_genel.Location = new System.Drawing.Point(305, 63);
             this.label_genel.Name = "label_genel";
-            this.label_genel.Size = new System.Drawing.Size(88, 13);
+            this.label_genel.Size = new System.Drawing.Size(83, 13);
             this.label_genel.TabIndex = 14;
             this.label_genel.Text = "TÜM STAJYERLER";
             this.label_genel.Click += new System.EventHandler(this.label_genel_Click);
@@ -308,11 +299,11 @@
             // 
             this.labellise.AutoSize = true;
             this.labellise.BackColor = System.Drawing.Color.Transparent;
-            this.labellise.Font = new System.Drawing.Font("Myriad Pro Light", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labellise.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labellise.Location = new System.Drawing.Point(819, 63);
+            this.labellise.Font = new System.Drawing.Font("Open Sans ExtraBold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labellise.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labellise.Location = new System.Drawing.Point(817, 63);
             this.labellise.Name = "labellise";
-            this.labellise.Size = new System.Drawing.Size(72, 13);
+            this.labellise.Size = new System.Drawing.Size(67, 13);
             this.labellise.TabIndex = 6;
             this.labellise.Text = "LİSE STAJYERİ";
             this.labellise.Click += new System.EventHandler(this.label3_Click);
@@ -323,11 +314,11 @@
             // 
             this.labelonlisans.AutoSize = true;
             this.labelonlisans.BackColor = System.Drawing.Color.Transparent;
-            this.labelonlisans.Font = new System.Drawing.Font("Myriad Pro Light", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelonlisans.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelonlisans.Location = new System.Drawing.Point(636, 63);
+            this.labelonlisans.Font = new System.Drawing.Font("Open Sans ExtraBold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelonlisans.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelonlisans.Location = new System.Drawing.Point(633, 63);
             this.labelonlisans.Name = "labelonlisans";
-            this.labelonlisans.Size = new System.Drawing.Size(103, 13);
+            this.labelonlisans.Size = new System.Drawing.Size(99, 13);
             this.labelonlisans.TabIndex = 5;
             this.labelonlisans.Text = "ÖN LİSANS STAJYERİ";
             this.labelonlisans.Click += new System.EventHandler(this.label2_Click);
@@ -338,11 +329,11 @@
             // 
             this.labellisans.AutoSize = true;
             this.labellisans.BackColor = System.Drawing.Color.Transparent;
-            this.labellisans.Font = new System.Drawing.Font("Myriad Pro Light", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labellisans.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labellisans.Location = new System.Drawing.Point(476, 63);
+            this.labellisans.Font = new System.Drawing.Font("Open Sans ExtraBold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labellisans.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labellisans.Location = new System.Drawing.Point(473, 63);
             this.labellisans.Name = "labellisans";
-            this.labellisans.Size = new System.Drawing.Size(86, 13);
+            this.labellisans.Size = new System.Drawing.Size(82, 13);
             this.labellisans.TabIndex = 4;
             this.labellisans.Text = "LİSANS STAJYERİ";
             this.labellisans.Click += new System.EventHandler(this.label1_Click);
@@ -351,7 +342,7 @@
             // 
             // panel_alt
             // 
-            this.panel_alt.BackColor = System.Drawing.Color.Black;
+            this.panel_alt.BackColor = System.Drawing.Color.Beige;
             this.panel_alt.Controls.Add(this.label8);
             this.panel_alt.Controls.Add(this.label7);
             this.panel_alt.Controls.Add(this.label6);
@@ -365,74 +356,75 @@
             this.panel_alt.Controls.Add(this.comboBox_s_okul);
             this.panel_alt.Controls.Add(this.comboBox_s_donem);
             this.panel_alt.Controls.Add(this.comboBox_s_yıl);
+            this.panel_alt.Font = new System.Drawing.Font("Source Code Pro", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.panel_alt.Location = new System.Drawing.Point(12, 113);
             this.panel_alt.Name = "panel_alt";
-            this.panel_alt.Size = new System.Drawing.Size(184, 616);
+            this.panel_alt.Size = new System.Drawing.Size(184, 539);
             this.panel_alt.TabIndex = 7;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Myriad Pro Cond", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Gold;
+            this.label8.Font = new System.Drawing.Font("Open Sans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label8.Location = new System.Drawing.Point(20, 443);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 15);
+            this.label8.Size = new System.Drawing.Size(54, 13);
             this.label8.TabIndex = 12;
             this.label8.Text = "REFERANS:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Myriad Pro Cond", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Gold;
+            this.label7.Font = new System.Drawing.Font("Open Sans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label7.Location = new System.Drawing.Point(20, 363);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 15);
+            this.label7.Size = new System.Drawing.Size(54, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "STAJ TÜRÜ:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Myriad Pro Cond", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Gold;
+            this.label6.Font = new System.Drawing.Font("Open Sans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label6.Location = new System.Drawing.Point(20, 281);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 15);
+            this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "BÖLÜM ADI:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Myriad Pro Cond", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gold;
+            this.label3.Font = new System.Drawing.Font("Open Sans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label3.Location = new System.Drawing.Point(20, 204);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 15);
+            this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "OKUL ADI:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Myriad Pro Cond", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gold;
+            this.label2.Font = new System.Drawing.Font("Open Sans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label2.Location = new System.Drawing.Point(20, 124);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 15);
+            this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "STAJ DÖNEMİ:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Myriad Pro Cond", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gold;
+            this.label1.Font = new System.Drawing.Font("Open Sans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(20, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 15);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "STAJ YILI:";
             // 
@@ -440,11 +432,11 @@
             // 
             this.button_s_ara.BackColor = System.Drawing.Color.Transparent;
             this.button_s_ara.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button_s_ara.Font = new System.Drawing.Font("Myriad Pro", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_s_ara.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button_s_ara.ForeColor = System.Drawing.Color.Black;
-            this.button_s_ara.Location = new System.Drawing.Point(87, 496);
+            this.button_s_ara.Location = new System.Drawing.Point(23, 496);
             this.button_s_ara.Name = "button_s_ara";
-            this.button_s_ara.Size = new System.Drawing.Size(68, 21);
+            this.button_s_ara.Size = new System.Drawing.Size(132, 27);
             this.button_s_ara.TabIndex = 6;
             this.button_s_ara.Text = "Stajyer Ara";
             this.button_s_ara.UseVisualStyleBackColor = false;
@@ -455,7 +447,7 @@
             this.comboBox_s_referans.FormattingEnabled = true;
             this.comboBox_s_referans.Location = new System.Drawing.Point(20, 460);
             this.comboBox_s_referans.Name = "comboBox_s_referans";
-            this.comboBox_s_referans.Size = new System.Drawing.Size(135, 21);
+            this.comboBox_s_referans.Size = new System.Drawing.Size(135, 22);
             this.comboBox_s_referans.TabIndex = 5;
             // 
             // comboBox_s_stajkonuları
@@ -463,7 +455,7 @@
             this.comboBox_s_stajkonuları.FormattingEnabled = true;
             this.comboBox_s_stajkonuları.Location = new System.Drawing.Point(20, 382);
             this.comboBox_s_stajkonuları.Name = "comboBox_s_stajkonuları";
-            this.comboBox_s_stajkonuları.Size = new System.Drawing.Size(135, 21);
+            this.comboBox_s_stajkonuları.Size = new System.Drawing.Size(135, 22);
             this.comboBox_s_stajkonuları.TabIndex = 4;
             // 
             // comboBox_s_bolum
@@ -471,7 +463,7 @@
             this.comboBox_s_bolum.FormattingEnabled = true;
             this.comboBox_s_bolum.Location = new System.Drawing.Point(20, 304);
             this.comboBox_s_bolum.Name = "comboBox_s_bolum";
-            this.comboBox_s_bolum.Size = new System.Drawing.Size(135, 21);
+            this.comboBox_s_bolum.Size = new System.Drawing.Size(135, 22);
             this.comboBox_s_bolum.TabIndex = 3;
             // 
             // comboBox_s_okul
@@ -479,7 +471,7 @@
             this.comboBox_s_okul.FormattingEnabled = true;
             this.comboBox_s_okul.Location = new System.Drawing.Point(20, 226);
             this.comboBox_s_okul.Name = "comboBox_s_okul";
-            this.comboBox_s_okul.Size = new System.Drawing.Size(135, 21);
+            this.comboBox_s_okul.Size = new System.Drawing.Size(135, 22);
             this.comboBox_s_okul.TabIndex = 2;
             // 
             // comboBox_s_donem
@@ -487,7 +479,7 @@
             this.comboBox_s_donem.FormattingEnabled = true;
             this.comboBox_s_donem.Location = new System.Drawing.Point(20, 148);
             this.comboBox_s_donem.Name = "comboBox_s_donem";
-            this.comboBox_s_donem.Size = new System.Drawing.Size(135, 21);
+            this.comboBox_s_donem.Size = new System.Drawing.Size(135, 22);
             this.comboBox_s_donem.TabIndex = 1;
             // 
             // comboBox_s_yıl
@@ -517,34 +509,35 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Myriad Pro Light", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label9.Font = new System.Drawing.Font("Open Sans SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label9.ForeColor = System.Drawing.Color.DimGray;
             this.label9.Location = new System.Drawing.Point(225, 91);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(110, 15);
+            this.label9.Size = new System.Drawing.Size(112, 15);
             this.label9.TabIndex = 12;
             this.label9.Text = "TC / AD SOYAD ARA:";
             // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.BackgroundColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView.Location = new System.Drawing.Point(225, 113);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(1109, 607);
+            this.dataGridView.Size = new System.Drawing.Size(1109, 539);
             this.dataGridView.TabIndex = 13;
             // 
             // label_aranan_stajyer_sayısı
             // 
             this.label_aranan_stajyer_sayısı.AutoSize = true;
-            this.label_aranan_stajyer_sayısı.Font = new System.Drawing.Font("Myriad Pro", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_aranan_stajyer_sayısı.ForeColor = System.Drawing.Color.Maroon;
-            this.label_aranan_stajyer_sayısı.Location = new System.Drawing.Point(1192, 91);
+            this.label_aranan_stajyer_sayısı.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_aranan_stajyer_sayısı.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label_aranan_stajyer_sayısı.Location = new System.Drawing.Point(1189, 91);
             this.label_aranan_stajyer_sayısı.Name = "label_aranan_stajyer_sayısı";
-            this.label_aranan_stajyer_sayısı.Size = new System.Drawing.Size(142, 14);
+            this.label_aranan_stajyer_sayısı.Size = new System.Drawing.Size(145, 15);
             this.label_aranan_stajyer_sayısı.TabIndex = 14;
             this.label_aranan_stajyer_sayısı.Text = "0 STAJYER BULUNMUŞTUR.";
             // 
@@ -555,6 +548,15 @@
             this.silToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.silToolStripMenuItem.Text = "SİL";
             this.silToolStripMenuItem.Click += new System.EventHandler(this.silToolStripMenuItem_Click);
+            // 
+            // güncelleToolStripMenuItem
+            // 
+            this.güncelleToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.edit;
+            this.güncelleToolStripMenuItem.Name = "güncelleToolStripMenuItem";
+            this.güncelleToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.güncelleToolStripMenuItem.Text = "GÜNCELLE";
+            this.güncelleToolStripMenuItem.ToolTipText = "Sadece Stajyer Bilgisi güncellenir, Staj Bilgileri değil !";
+            this.güncelleToolStripMenuItem.Click += new System.EventHandler(this.güncelleToolStripMenuItem_Click);
             // 
             // pictureBox_refresh
             // 
@@ -571,7 +573,7 @@
             // 
             // pictureBox_suanstajer
             // 
-            this.pictureBox_suanstajer.Image = global::InternFollowProgramming.Properties.Resources.Sstajyapıyor;
+            this.pictureBox_suanstajer.Image = global::InternFollowProgramming.Properties.Resources.yeni_staj_yapıyor2;
             this.pictureBox_suanstajer.Location = new System.Drawing.Point(997, 13);
             this.pictureBox_suanstajer.Name = "pictureBox_suanstajer";
             this.pictureBox_suanstajer.Size = new System.Drawing.Size(42, 42);
@@ -584,7 +586,7 @@
             // 
             // pictureBox_genel
             // 
-            this.pictureBox_genel.Image = global::InternFollowProgramming.Properties.Resources.genel_stajer1;
+            this.pictureBox_genel.Image = global::InternFollowProgramming.Properties.Resources.Yeni_genel_stajyer1;
             this.pictureBox_genel.Location = new System.Drawing.Point(325, 13);
             this.pictureBox_genel.Name = "pictureBox_genel";
             this.pictureBox_genel.Size = new System.Drawing.Size(42, 42);
@@ -623,7 +625,7 @@
             // 
             // pictureBox_lise
             // 
-            this.pictureBox_lise.Image = global::InternFollowProgramming.Properties.Resources.Slise;
+            this.pictureBox_lise.Image = global::InternFollowProgramming.Properties.Resources.yeni_lise_stajyer1;
             this.pictureBox_lise.Location = new System.Drawing.Point(829, 13);
             this.pictureBox_lise.Name = "pictureBox_lise";
             this.pictureBox_lise.Size = new System.Drawing.Size(42, 42);
@@ -636,7 +638,7 @@
             // 
             // pictureBox_onlisans
             // 
-            this.pictureBox_onlisans.Image = global::InternFollowProgramming.Properties.Resources.Sönlisans;
+            this.pictureBox_onlisans.Image = global::InternFollowProgramming.Properties.Resources.yeni_önlisans_stajyer1;
             this.pictureBox_onlisans.Location = new System.Drawing.Point(661, 13);
             this.pictureBox_onlisans.Name = "pictureBox_onlisans";
             this.pictureBox_onlisans.Size = new System.Drawing.Size(42, 42);
@@ -650,7 +652,7 @@
             // pictureBox_lisans
             // 
             this.pictureBox_lisans.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_lisans.Image = global::InternFollowProgramming.Properties.Resources.Slisans;
+            this.pictureBox_lisans.Image = global::InternFollowProgramming.Properties.Resources.yeni_lisans_stajyer1;
             this.pictureBox_lisans.Location = new System.Drawing.Point(493, 13);
             this.pictureBox_lisans.Name = "pictureBox_lisans";
             this.pictureBox_lisans.Size = new System.Drawing.Size(42, 42);
@@ -676,7 +678,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.ClientSize = new System.Drawing.Size(1350, 657);
             this.Controls.Add(this.label_aranan_stajyer_sayısı);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label9);

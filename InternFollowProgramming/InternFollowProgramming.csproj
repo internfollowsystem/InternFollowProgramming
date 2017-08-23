@@ -105,6 +105,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>INTERNDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="INTERNDataSet_onpc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INTERNDataSet_onpc.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmHome.resx">
@@ -144,6 +149,17 @@
     </None>
     <None Include="INTERNDataSet.xss">
       <DependentUpon>INTERNDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="INTERNDataSet_onpc.xsc">
+      <DependentUpon>INTERNDataSet_onpc.xsd</DependentUpon>
+    </None>
+    <None Include="INTERNDataSet_onpc.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>INTERNDataSet_onpc.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="INTERNDataSet_onpc.xss">
+      <DependentUpon>INTERNDataSet_onpc.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -283,6 +299,138 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\277118.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RESİM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2771181.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete_Icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\STAJYERLOGO1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ara.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ara1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ekle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kaydet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ekle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sfile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pic1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera-5-xxl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera-5-xxl1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\updatefile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SAVEDARKYELLOW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SAVEYELLOW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera-5-xxl2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete_Icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\uppp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Yeni_genel_stajyer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yeni_lisans_stajyer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yeni_lise_stajyer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yeni_önlisans_stajyer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yeni_staj_yapıyor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yeni_staj_yapıyor1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Yeni_genel_stajyer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yeni_lisans_stajyer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yeni_lise_stajyer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yeni_önlisans_stajyer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yeni_staj_yapıyor2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Giriş.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gizle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\göster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leaveGiriş.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leaveGiriş1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
