@@ -21,8 +21,8 @@ namespace InternFollowProgramming
         #region YAPILACAKLAR
         //  1.Görsel butonlara photoshoptan yazı eklenip daha estetik ve kullanıcı odaklı arayüzü hazırlanacak.
         //  2. Güncelleme işleminde datagridview üzerindeki stajyerler güncelleniyor ama staj bilgileri güncellenmiyordu. sütun adları değiştiği için kodlarıda değişecek ve staj bilgileri tc_kimlikno üzerinden değil id üzerinden güncelleme yapacak.
-        //  3. Raporlamada ki SQL sorgularını daha kullanıcı odaklı bir hale getirdik. tüm olasılıklar için bu kodu uygulayacağız.
-        //  4.StripCoolMenu'den stajbilgisi sil özelliği olsun. (Kullanıcı odaklı)
+        // BİTTİ 3. Raporlamada ki SQL sorgularını daha kullanıcı odaklı bir hale getirdik. tüm olasılıklar için bu kodu uygulayacağız.
+        //  BİTTİ 4.StripCoolMenu'den stajbilgisi sil özelliği olsun. (Kullanıcı odaklı)
         //  5.stajyer göster form ekranı olsun.(Kullanıcı Odaklı)
 #endregion
 
@@ -62,7 +62,7 @@ namespace InternFollowProgramming
             InitializeComponent();
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT * FROM intern";
+            string kayit = "SELECT * FROM stajyer";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -83,7 +83,7 @@ namespace InternFollowProgramming
             command.Connection = connection;
 
 
-            command.CommandText = "SELECT * FROM intern";
+            command.CommandText = "SELECT * FROM stajyer";
             command.CommandType = CommandType.Text;
             
 
@@ -91,7 +91,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand stajyer = new SqlCommand();
             stajyer.Connection = connection;
-            stajyer.CommandText = "Select Count(tc_kimlikno) From intern ";
+            stajyer.CommandText = "Select Count(tc_kimlikno) FROM stajyer ";
             kayitSayisi = Convert.ToInt32(stajyer.ExecuteScalar());
             label_stajyer.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -101,7 +101,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand lisans = new SqlCommand();
             lisans.Connection = connection;
-            lisans.CommandText = "SELECT Count(tc_kimlikno) FROM InternInformation where okul_turu='Lisans'";
+            lisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu='Lisans'";
             kayitSayisi = Convert.ToInt32(lisans.ExecuteScalar());
             label_lisans.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -111,7 +111,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand onlisans = new SqlCommand();
             onlisans.Connection = connection;
-            onlisans.CommandText = "SELECT Count(tc_kimlikno) FROM InternInformation where okul_turu= 'On Lisans'";
+            onlisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'On Lisans'";
             kayitSayisi = Convert.ToInt32(onlisans.ExecuteScalar());
             label_onlisans.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -121,7 +121,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand lise = new SqlCommand();
             lise.Connection = connection;
-            lise.CommandText = "SELECT Count(tc_kimlikno) FROM InternInformation where okul_turu= 'Lise'";
+            lise.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'Lise'";
             kayitSayisi = Convert.ToInt32(lise.ExecuteScalar());
             label_lise.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -131,7 +131,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand aktif = new SqlCommand();
             aktif.Connection = connection;
-            aktif.CommandText = "SELECT count(tc_kimlikno) FROM InternInformation where staj_durumu= 'STAJ YAPIYOR'";
+            aktif.CommandText = "SELECT count(tc_kimlikno) FROM stajbilgileri where staj_yapmadurumu= 'STAJ YAPIYOR'";
             kayitSayisi = Convert.ToInt32(aktif.ExecuteScalar());
             label_suanstajyapanlar.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -154,12 +154,12 @@ namespace InternFollowProgramming
             cmd5.Connection = connection;
             cmd6.Connection = connection;
             connection.Open();
-            cmd1.CommandText = "SELECT DISTINCT staj_yılı FROM InternInformation";
-            cmd2.CommandText = "SELECT DISTINCT staj_donem FROM InternInformation";
-            cmd3.CommandText = "SELECT DISTINCT okul_adı FROM InternInformation";
-            cmd4.CommandText = "SELECT DISTINCT bolum_adı FROM InternInformation";
-            cmd5.CommandText = "SELECT DISTINCT staj_konusu FROM InternInformation";
-            cmd6.CommandText = "SELECT DISTINCT referans_adı FROM InternInformation";
+            cmd1.CommandText = "SELECT DISTINCT staj_yılı FROM stajbilgileri";
+            cmd2.CommandText = "SELECT DISTINCT staj_donem FROM stajbilgileri";
+            cmd3.CommandText = "SELECT DISTINCT okul_adı FROM stajbilgileri";
+            cmd4.CommandText = "SELECT DISTINCT bolum_adı FROM stajbilgileri";
+            cmd5.CommandText = "SELECT DISTINCT staj_turu FROM stajbilgileri";
+            cmd6.CommandText = "SELECT DISTINCT referans_adı FROM stajbilgileri";
             SqlDataReader dr;
 
             dr = cmd1.ExecuteReader();
@@ -189,7 +189,7 @@ namespace InternFollowProgramming
             dr = cmd5.ExecuteReader();
             while (dr.Read())
             {
-                comboBox_s_stajkonuları.Items.Add(dr["staj_konusu"]);
+                comboBox_s_stajkonuları.Items.Add(dr["staj_turu"]);
             }
             dr.Close();
             dr = cmd6.ExecuteReader();
@@ -220,7 +220,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT *FROM intern i Left Join InternInformation s on i.tc_kimlikno=s.tc_kimlikno ";
+            string kayit = "SELECT *FROM stajyer i Left Join stajbilgileri s on i.tc_kimlikno=s.tc_kimlikno ";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -245,7 +245,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='On Lisans')";
+            string kayit = "SELECT i.* FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='On Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -268,7 +268,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='Lisans')";
+            string kayit = "SELECT i.* FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -293,7 +293,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT * FROM intern where tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_turu='Lise')";
+            string kayit = "SELECT i.* FROM stajyer as i  JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='Lise')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -321,7 +321,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT * FROM intern";
+            string kayit = "SELECT * FROM stajyer";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -346,7 +346,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT * FROM intern ";
+            string kayit = "SELECT * FROM stajyer ";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -371,7 +371,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT i.ad_soyad, s.* FROM intern as i join InternInformation as s on i.tc_kimlikno = s.tc_kimlikno where s.okul_turu in (SELECT okul_turu FROM InternInformation  where okul_turu='Lisans')";
+            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -396,7 +396,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT i.ad_soyad, s.* FROM intern as i join InternInformation as s on i.tc_kimlikno=s.tc_kimlikno where s.okul_turu in (SELECT okul_turu FROM InternInformation  where okul_turu='Lisans')";
+            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -421,7 +421,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT i.ad_soyad, s.* FROM intern as i join InternInformation as s on i.tc_kimlikno = s.tc_kimlikno where s.okul_turu in (SELECT okul_turu FROM InternInformation where okul_turu='On Lisans')";
+            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='On Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -445,7 +445,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT i.ad_soyad, s.* FROM intern as i join InternInformation as s on i.tc_kimlikno = s.tc_kimlikno where s.okul_turu in (SELECT okul_turu FROM InternInformation where okul_turu='On Lisans')";
+            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='On Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -469,7 +469,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT i.ad_soyad, s.* FROM intern as i join InternInformation as s on i.tc_kimlikno = s.tc_kimlikno where s.okul_turu in (SELECT okul_turu FROM InternInformation  where okul_turu='Lise')";
+            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lise')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -494,7 +494,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT i.ad_soyad, s.* FROM intern as i join InternInformation as s on i.tc_kimlikno = s.tc_kimlikno where s.okul_turu in (SELECT okul_turu FROM InternInformation where okul_turu='Lise')";
+            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='Lise')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -519,7 +519,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT i.ad_soyad, s.* FROM intern as i join InternInformation as s on i.tc_kimlikno = s.tc_kimlikno where s.staj_durumu in (SELECT staj_durumu FROM InternInformation  where staj_durumu='STAJ YAPIYOR')";
+            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.staj_yapmadurumu in (SELECT staj_yapmadurumu FROM stajbilgileri  where staj_yapmadurumu='STAJ YAPIYOR')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -544,7 +544,7 @@ namespace InternFollowProgramming
         {
             command.Connection = connection;
             connection.Open();
-            string kayit = "SELECT i.ad_soyad, s.* FROM intern as i join InternInformation as s on i.tc_kimlikno = s.tc_kimlikno where s.staj_durumu in (SELECT staj_durumu FROM InternInformation where staj_durumu='STAJ YAPIYOR')";
+            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.staj_yapmadurumu in (SELECT staj_yapmadurumu FROM stajbilgileri where staj_yapmadurumu='STAJ YAPIYOR')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -974,7 +974,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                command.CommandText = "SELECT i.*, s.* FROM intern as i Left JOIN InternInformation as s on i.tc_kimlikno=s.tc_kimlikno";
+                command.CommandText = "SELECT i.*, s.* FROM stajyer as i Left Join stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno";
                 dataadapter = new SqlDataAdapter(command);
                 datatable = new System.Data.DataTable();
                 dataadapter.Fill(datatable);
@@ -986,7 +986,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                command.CommandText = "SELECT i.*, s.* FROM intern as i Left JOIN InternInformation as s on i.tc_kimlikno = s.tc_kimlikno where i.ad_soyad in (SELECT ad_soyad FROM intern where ad_soyad LIKE  '%" + textBox_adsoyadara.Text + "%')";
+                command.CommandText = "SELECT i.*, s.* FROM stajyer as i Left Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where i.adı_soyadı in (SELECT adı_soyadı FROM stajyer where adı_soyadı LIKE  '%" + textBox_adsoyadara.Text + "%')";
                 dataadapter = new SqlDataAdapter(command);
                 datatable = new System.Data.DataTable();
                 dataadapter.Fill(datatable);
@@ -1002,14 +1002,14 @@ namespace InternFollowProgramming
             command.Connection = connection;
             connection.Open();
             string secili = dataGridView.CurrentRow.Cells[0].Value.ToString();
-            command.CommandText = "DELETE FROM intern where tc_kimlikno=@tc_kimlikno";
+            command.CommandText = "DELETE FROM stajyer where tc_kimlikno=@tc_kimlikno";
             command.Parameters.AddWithValue("@tc_kimlikno", secili);
             command.ExecuteNonQuery();
             command.Parameters.Clear();
             MessageBox.Show("STAJYER SİLİNDİ");
 
             datatable= new System.Data.DataTable();
-            dataadapter= new SqlDataAdapter("SELECT i.* , s.* FROM intern i Left Join InternInformation s on i.tc_kimlikno=s.tc_kimlikno ",connection);
+            dataadapter= new SqlDataAdapter("SELECT i.* , s.* FROM stajyer i Left Join stajbilgileri s on i.tc_kimlikno=s.tc_kimlikno ",connection);
             dataadapter.Fill(datatable);
             dataGridView.DataSource = datatable;
             dataadapter.Dispose();
@@ -1019,7 +1019,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand stajyer = new SqlCommand();
             stajyer.Connection = connection;
-            stajyer.CommandText = "Select Count(tc_kimlikno) From intern ";
+            stajyer.CommandText = "Select Count(tc_kimlikno) FROM stajyer ";
             kayitSayisi = Convert.ToInt32(stajyer.ExecuteScalar());
             label_stajyer.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -1029,7 +1029,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand lisans = new SqlCommand();
             lisans.Connection = connection;
-            lisans.CommandText = "SELECT Count(tc_kimlikno) FROM InternInformation where okul_turu='Lisans'";
+            lisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu='Lisans'";
             kayitSayisi = Convert.ToInt32(lisans.ExecuteScalar());
             label_lisans.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -1039,7 +1039,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand onlisans = new SqlCommand();
             onlisans.Connection = connection;
-            onlisans.CommandText = "SELECT Count(tc_kimlikno) FROM InternInformation where okul_turu= 'On Lisans'";
+            onlisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'On Lisans'";
             kayitSayisi = Convert.ToInt32(onlisans.ExecuteScalar());
             label_onlisans.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -1049,7 +1049,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand lise = new SqlCommand();
             lise.Connection = connection;
-            lise.CommandText = "SELECT Count(tc_kimlikno) FROM InternInformation where okul_turu= 'Lise'";
+            lise.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'Lise'";
             kayitSayisi = Convert.ToInt32(lise.ExecuteScalar());
             label_lise.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -1059,7 +1059,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand aktif = new SqlCommand();
             aktif.Connection = connection;
-            aktif.CommandText = "SELECT count(tc_kimlikno) FROM InternInformation where staj_durumu= 'STAJ YAPIYOR'";
+            aktif.CommandText = "SELECT count(tc_kimlikno) FROM stajbilgileri where staj_yapmadurumu= 'STAJ YAPIYOR'";
             kayitSayisi = Convert.ToInt32(aktif.ExecuteScalar());
             label_suanstajyapanlar.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -1076,7 +1076,7 @@ namespace InternFollowProgramming
                 }
 
                 // müşteriler tablomuzun ilgili alanlarını değiştirecek olan güncelleme sorgusu.
-                string stajyer = "update intern set tc_kimlikno=@tc_kimlikno,ad_soyad=@ad_soyad,baba_adı=@baba_adı,anne_adı=@anne_adı,d_yeri=@d_yeri,d_tarih=@d_tarih,uyrugu=@uyrugu,cinsiyet=@cinsiyet,ev_tel=@ev_tel,cep_tel=@cep_tel,adres=@adres,e_posta=@e_posta,web_adres=@web_adres,boy=@boy,agırlık=@agırlık,kan_grubu=@kan_grubu,iban=@iban, acil_adsoyad=@acil_adsoyad,acil_adres=@acil_adres,acil_akrabalık_derecesi=@acil_akrabalık_derecesi, acil_telefon_no=@acil_telefon_no, acil_e_posta=@acil_e_posta  where tc_kimlikno=@tc_kimlikno";
+                string stajyer = "update intern set tc_kimlikno=@tc_kimlikno,adı_soyadı=@adı_soyadı,baba_adı=@baba_adı,anne_adı=@anne_adı,d_yeri=@d_yeri,d_tarih=@d_tarih,uyrugu=@uyrugu,cinsiyet=@cinsiyet,ev_tel=@ev_tel,cep_tel=@cep_tel,adres=@adres,e_posta=@e_posta,web_adres=@web_adres,boy=@boy,agırlık=@agırlık,kan_grubu=@kan_grubu,iban=@iban, acil_adsoyad=@acil_adsoyad,acil_adres=@acil_adres,acil_akrabalık_derecesi=@acil_akrabalık_derecesi, acil_telefon_no=@acil_telefon_no, acil_e_posta=@acil_e_posta  where tc_kimlikno=@tc_kimlikno";
                 command = new SqlCommand(stajyer, connection);
 
                 //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -1084,7 +1084,7 @@ namespace InternFollowProgramming
 
                 //kişisel veriler GÜNCELL KOD !!
                 command.Parameters.AddWithValue("@tc_kimlikno", dataGridView.CurrentRow.Cells[0].Value.ToString());
-                command.Parameters.AddWithValue("@ad_soyad", dataGridView.CurrentRow.Cells[1].Value.ToString());
+                command.Parameters.AddWithValue("@adı_soyadı", dataGridView.CurrentRow.Cells[1].Value.ToString());
                 command.Parameters.AddWithValue("@baba_adı", dataGridView.CurrentRow.Cells[2].Value.ToString());
                 command.Parameters.AddWithValue("@anne_adı", dataGridView.CurrentRow.Cells[3].Value.ToString());
                 command.Parameters.AddWithValue("@d_yeri", dataGridView.CurrentRow.Cells[4].Value.ToString());
@@ -1121,27 +1121,97 @@ namespace InternFollowProgramming
             }
 
         }
-        //22AGUSTOS RAPORLAMA GÜNCEL DEĞİL SADECE COPY-PASTE OLACAK
+
+        private void stajsilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            command.Connection = connection;
+            connection.Open();
+            string secili = dataGridView.CurrentRow.Cells[3].Value.ToString();
+            command.CommandText = "DELETE FROM stajbilgileri where staj_id=@staj_id";
+            command.Parameters.AddWithValue("@staj_id", secili);
+            command.ExecuteNonQuery();
+            command.Parameters.Clear();
+            MessageBox.Show("STAJ SİLİNDİ");
+
+            datatable = new System.Data.DataTable();
+            dataadapter = new SqlDataAdapter("SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno", connection);
+            dataadapter.Fill(datatable);
+            dataGridView.DataSource = datatable;
+            dataadapter.Dispose();
+            connection.Close();
+
+            #region TÜM STAJYERLER LABELA STAJYER SAYISINI AKTARMA     
+            connection.Open();
+            SqlCommand stajyer = new SqlCommand();
+            stajyer.Connection = connection;
+            stajyer.CommandText = "Select Count(tc_kimlikno) FROM stajyer ";
+            kayitSayisi = Convert.ToInt32(stajyer.ExecuteScalar());
+            label_stajyer.Text = Convert.ToString(kayitSayisi.ToString());
+            connection.Close();
+            #endregion
+
+            #region LİSANS LABELA STAJYER SAYISINI AKTARMA     
+            connection.Open();
+            SqlCommand lisans = new SqlCommand();
+            lisans.Connection = connection;
+            lisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu='Lisans'";
+            kayitSayisi = Convert.ToInt32(lisans.ExecuteScalar());
+            label_lisans.Text = Convert.ToString(kayitSayisi.ToString());
+            connection.Close();
+            #endregion
+
+            #region ONLİSANS LABELA STAJYER SAYISINI AKTARMA
+            connection.Open();
+            SqlCommand onlisans = new SqlCommand();
+            onlisans.Connection = connection;
+            onlisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'On Lisans'";
+            kayitSayisi = Convert.ToInt32(onlisans.ExecuteScalar());
+            label_onlisans.Text = Convert.ToString(kayitSayisi.ToString());
+            connection.Close();
+            #endregion
+
+            #region LİSE LABELE STAJYER SAYISINI AKTARMA
+            connection.Open();
+            SqlCommand lise = new SqlCommand();
+            lise.Connection = connection;
+            lise.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'Lise'";
+            kayitSayisi = Convert.ToInt32(lise.ExecuteScalar());
+            label_lise.Text = Convert.ToString(kayitSayisi.ToString());
+            connection.Close();
+            #endregion
+
+            #region ŞUAN STAJ YAPANLAR LABELA STAJYER SAYISINI AKTARMA     
+            connection.Open();
+            SqlCommand aktif = new SqlCommand();
+            aktif.Connection = connection;
+            aktif.CommandText = "SELECT count(tc_kimlikno) FROM stajbilgileri where staj_yapmadurumu= 'STAJ YAPIYOR'";
+            kayitSayisi = Convert.ToInt32(aktif.ExecuteScalar());
+            label_suanstajyapanlar.Text = Convert.ToString(kayitSayisi.ToString());
+            connection.Close();
+            #endregion
+        }
+
+        //22AGUSTOS RAPORLAMA GÜNCEL DEĞİL SADECE COPY-PASTE OLACAK  ---- 23ağustos güncel gibi ama kontrol ett
         private void button_s_ara_Click(object sender, EventArgs e)  //RAPORLAMA
         {
             //command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
             //command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
             //command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
             //command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-            //command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+            //command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
             //command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
             if (comboBox_s_yıl.SelectedItem != null && comboBox_s_donem.SelectedItem != null && comboBox_s_okul.SelectedItem != null && comboBox_s_bolum.SelectedItem != null && comboBox_s_stajkonuları.SelectedItem != null && comboBox_s_referans.SelectedItem != null)
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.ad_soyad, s.* FROM intern as i RIGHT JOIN InternInformation as s on i.tc_kimlikno=s.tc_kimlikno where i.tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
                 command.ExecuteNonQuery();
                 dataadapter = new SqlDataAdapter(command);
@@ -1164,13 +1234,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
                 command.ExecuteNonQuery();
                 dataadapter = new SqlDataAdapter(command);
@@ -1193,13 +1263,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in(SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
                 command.ExecuteNonQuery();
                 dataadapter = new SqlDataAdapter(command);
@@ -1222,13 +1292,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
 
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
                 command.ExecuteNonQuery();
                 dataadapter = new SqlDataAdapter(command);
@@ -1251,13 +1321,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
                 command.ExecuteNonQuery();
                 dataadapter = new SqlDataAdapter(command);
@@ -1280,7 +1350,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı)  and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1311,13 +1381,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -1343,12 +1413,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
 
@@ -1374,13 +1444,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where  staj_donem=@staj_donem and  bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
 
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
 
@@ -1406,13 +1476,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı)  and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
 
@@ -1438,7 +1508,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where  staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1470,13 +1540,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -1503,12 +1573,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
 
@@ -1534,12 +1604,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
 
@@ -1565,7 +1635,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_adı and  referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1594,13 +1664,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_adı and staj_konularI=@staj_konusu )";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
                 command.ExecuteNonQuery();
                 dataadapter = new SqlDataAdapter(command);
@@ -1624,13 +1694,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
 
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
                 command.ExecuteNonQuery();
                 dataadapter = new SqlDataAdapter(command);
@@ -1654,7 +1724,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1683,13 +1753,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu )";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
 
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
                 command.ExecuteNonQuery();
                 dataadapter = new SqlDataAdapter(command);
@@ -1713,7 +1783,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1742,13 +1812,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
                 command.ExecuteNonQuery();
                 dataadapter = new SqlDataAdapter(command);
@@ -1772,7 +1842,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -1803,12 +1873,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
 
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
 
@@ -1834,12 +1904,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
 
@@ -1865,7 +1935,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -1896,12 +1966,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -1928,12 +1998,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
 
@@ -1959,7 +2029,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -1990,12 +2060,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -2022,7 +2092,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı)  and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -2054,13 +2124,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı)  and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -2087,7 +2157,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where  staj_donem=@staj_donem and okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -2119,12 +2189,11 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
-                command = new SqlCommand(ara, connection);
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
 
@@ -2150,7 +2219,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -2181,12 +2250,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -2213,7 +2282,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -2244,13 +2313,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
 
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -2276,7 +2345,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -2306,7 +2375,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -2335,13 +2404,13 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
 
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
                 command.ExecuteNonQuery();
                 dataadapter = new SqlDataAdapter(command);
@@ -2365,7 +2434,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -2395,7 +2464,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_donem=@staj_donem and okul_adı=@okul_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)  and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -2424,12 +2493,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_konusu=@staj_konusu and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
 
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
                 command.Parameters.AddWithValue("@referans_adı", comboBox_s_referans.SelectedItem);
 
 
@@ -2455,7 +2524,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where bolum_adı=@bolum_Adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
 
@@ -2486,12 +2555,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where bolum_adı=@bolum_Adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) ";
                 command = new SqlCommand(ara, connection);
 
 
                 command.Parameters.AddWithValue("@bolum_adı", comboBox_s_bolum.SelectedItem);
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -2518,7 +2587,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -2549,12 +2618,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -2581,7 +2650,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where okul_adı=@okul_adı and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -2613,7 +2682,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem)  and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -2644,12 +2713,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -2676,7 +2745,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_donem=@staj_donem and okul_adı=@okul_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where  s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem) and s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -2706,7 +2775,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -2737,12 +2806,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -2768,7 +2837,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.*, s.* FROM intern as i  JOIN InternInformation as s on s.tc_kimlikno in (SELECT tc_kimlikno FROM InternInformation where staj_yılı=@staj_yılı and bolum_adı=@bolum_Adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.bolum_adı in (SELECT bolum_adı FROM stajbilgileri where bolum_adı=@bolum_adı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -2797,7 +2866,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.ad_soyad, s.* FROM intern as i JOIN InternInformation as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM InternInformation where staj_yılı=@staj_yılı) and s.staj_donem in (SELECT staj_donem FROM InternInformation where  staj_donem=@staj_donem)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.staj_donem in (SELECT staj_donem FROM stajbilgileri where  staj_donem=@staj_donem)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
@@ -2827,7 +2896,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.ad_soyad, s.* FROM intern as i JOIN InternInformation as s on i.tc_kimlikno=s.tc_kimlikno where s.referans_adı in (SELECT referans_adı FROM InternInformation where  referans_adı=@referans_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.referans_adı in (SELECT referans_adı FROM stajbilgileri where  referans_adı=@referans_adı)";
                 command = new SqlCommand(ara, connection);
 
 
@@ -2858,12 +2927,12 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.ad_soyad, s.* FROM intern as i JOIN InternInformation as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_konusu in (SELECT staj_konusu FROM InternInformation where staj_konusu=@staj_konusu)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu)";
                 command = new SqlCommand(ara, connection);
 
 
 
-                command.Parameters.AddWithValue("@staj_konusu", comboBox_s_stajkonuları.SelectedItem);
+                command.Parameters.AddWithValue("@staj_turu", comboBox_s_stajkonuları.SelectedItem);
 
 
 
@@ -2890,7 +2959,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.ad_soyad, s.* FROM intern as i JOIN InternInformation as s on i.tc_kimlikno=s.tc_kimlikno where s.okul_adı in (SELECT okul_adı FROM InternInformation where okul_adı=@okul_adı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.okul_adı in (SELECT okul_adı FROM stajbilgileri where okul_adı=@okul_adı)";
                 command = new SqlCommand(ara, connection);
 
                 command.Parameters.AddWithValue("@okul_adı", comboBox_s_okul.SelectedItem);
@@ -2922,7 +2991,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.ad_soyad, s.* FROM intern as i JOIN InternInformation as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM InternInformation where staj_donem=@staj_donem)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_donem in (SELECT staj_donem FROM stajbilgileri where staj_donem=@staj_donem)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_donem", comboBox_s_donem.SelectedItem);
 
@@ -2954,7 +3023,7 @@ namespace InternFollowProgramming
             {
                 command.Connection = connection;
                 connection.Open();
-                string ara = "SELECT i.ad_soyad, s.* FROM intern as i JOIN InternInformation as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in(SELECT staj_yılı FROM InternInformation where staj_yılı=@staj_yılı)";
+                string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,staj_acıklama FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in(SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı)";
                 command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
@@ -2990,11 +3059,8 @@ namespace InternFollowProgramming
 
         }
 
-		private void label_aranan_stajyer_sayısı_Click(object sender, EventArgs e)
-		{
-
-		}
-	}
+      
+    }
 }
 
 

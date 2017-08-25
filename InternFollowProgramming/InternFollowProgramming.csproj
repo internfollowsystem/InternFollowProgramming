@@ -432,6 +432,27 @@
   <ItemGroup>
     <None Include="Resources\leaveGiriş1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXCELYAZILI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\REFRESHYAZILI.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YAZDIRYAZILI.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\REFRESHYAZILI1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_delete %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_delete copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_delete1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>

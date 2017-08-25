@@ -40,7 +40,7 @@ namespace InternFollowProgramming
 
             while (datareader.Read())
             {
-                comboBox_user.Items.Add(datareader["kullanıcı_adı"]);
+                comboBox_user.Items.Add(datareader["adı"]);
             }
 
             connection.Close();
@@ -63,9 +63,9 @@ namespace InternFollowProgramming
             try
             {
                 connection.Open(); // Bağlantıyı aç.
-                string sql = "select* from kullanıcı where kullanıcı_adı=@kullanıcı_adı AND sifre=@sifre";// Sql bağlantı cümlemiz.
-                SqlParameter prms1 = new SqlParameter("@kullanıcı_adı", comboBox_user.Text);
-                SqlParameter prms2 = new SqlParameter("@sifre", textBox_password.Text);
+                string sql = "select* from kullanıcı where adı=@adı AND sifresi=@sifresi";// Sql bağlantı cümlemiz.
+                SqlParameter prms1 = new SqlParameter("@adı", comboBox_user.Text);
+                SqlParameter prms2 = new SqlParameter("@sifresi", textBox_password.Text);
                 command = new SqlCommand(sql, connection);
                 command.Parameters.Add(prms1);
                 command.Parameters.Add(prms2);
