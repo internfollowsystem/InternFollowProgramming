@@ -35,6 +35,7 @@ namespace InternFollowProgramming
         {
             InitializeComponent();
 
+
             pictureBox_güncelle.Enabled = false; //Form açıldığında güncelle butonu pasif olsun.
             pictureBox_stajyer_sil.Enabled = false; //Form açıldığında delete butonu pasif olsun.
             panel_referans.Enabled = false;//Form açıldığında referans paneli pasif olsun.
@@ -47,6 +48,7 @@ namespace InternFollowProgramming
             tabControl_bilgigiriş.TabPages[4].Enabled = false;//Form açıldığında iban textBoxı pasif olsun.
             panel_stajbilgidosya.Enabled = false;
 
+
         }
 
         private void FrmInternInformation_Load(object sender, EventArgs e)
@@ -56,13 +58,12 @@ namespace InternFollowProgramming
 
         #region BUTONLAR
 
-        //KAYDET BUTONU 25 AGUSTOS GÜNCEL !!
+        //STAJYER KAYDET BUTONU 25 AGUSTOS GÜNCEL !!
         private void pictureBox_kaydet_Click(object sender, EventArgs e)
         {
 
-
             string adsoyad;
-            string tckimlik;    
+            string tckimlik;
             tckimlik = textBox_tc.Text;
             adsoyad = textBox_adsoyad.Text;
 
@@ -74,7 +75,7 @@ namespace InternFollowProgramming
             {
                 MessageBox.Show("Lütfen Ad Soyad alanını doldurunuz !");
             }
-           
+
 
             else
             {
@@ -138,7 +139,7 @@ namespace InternFollowProgramming
                                 command.Parameters.AddWithValue("@ikametgah", textBox_adres.Text);
                                 command.Parameters.AddWithValue("@e_posta", textBox_eposta.Text);
                                 command.Parameters.AddWithValue("@boy", textBox_boy.Text);
-                                command.Parameters.AddWithValue("@agırlık", textBox_agırlık.Text);               
+                                command.Parameters.AddWithValue("@agırlık", textBox_agırlık.Text);
 
                                 //acil durum irtibat GÜNCELL KOD !!
                                 command.Parameters.AddWithValue("@acil_adsoyad", textBox_ai_adsoyad.Text);
@@ -182,21 +183,22 @@ namespace InternFollowProgramming
                     }
                 }
             }
+
         }
 
-        //STAJYER KAYDET 25 AGUSTOS GÜNCEL !!
+        //STAJ KAYDET 25 AGUSTOS GÜNCEL !!
         private void pictureBox_stajbilgisi_kaydet_Click(object sender, EventArgs e)
         {
-#region Doldurulması Zorunlu Alanlar
+            #region Doldurulması Zorunlu Alanlar
             string stajyili = comboBox_stajyili.Text;
             string stajdonemi = comboBox_stajdonemi.Text;
             string okuladı = comboBox_okuladı.Text;
             string bolumadı = comboBox_bolumadı.Text;
             string stajturu = comboBox_stajturu.Text;
             string referansadı = textBox_r_ad.Text;
-            if(panel_referans.Enabled==true)
+            if (panel_referans.Enabled == true)
             {
-                if(referansadı.Length==0)
+                if (referansadı.Length == 0)
                 {
                     MessageBox.Show("Lütfen Referans Adı alanını doldurunuz !");
                 }
@@ -222,7 +224,7 @@ namespace InternFollowProgramming
             {
                 MessageBox.Show("Lütfen Staj Türü alanını doldurunuz !");
             }
-#endregion
+            #endregion
 
             command.Connection = connection;
             cmd.Connection = connection;
@@ -230,7 +232,7 @@ namespace InternFollowProgramming
             String stajyer_bilgisi = "Insert Into stajbilgileri(tc_kimlikno,egitim_durumu,okul_adı,bolum_adı,sınıf,okul_no,sehir,okul_puanı,okul_acıklama,banka_adı,şube_kodu,hesap_no,iban_no,staj_kabuldurumu,staj_donem,baslangıc_tarihi,bitis_tarihi,staj_yılı,staj_yapmadurumu,staj_suresi,servis_imkanı,arac_plaka,mentör,sigorta_evrak,basvuru_turu,referans_adı,referans_adres,referans_telefon,referans_eposta,staj_acıklama,staj_turu,staj_icerigi,staj_kalan_sure) VALUES (@tc_kimlikno,@egitim_durumu,@okul_adı,@bolum_adı,@sınıf,@okul_no,@sehir,@okul_puanı,@okul_acıklama,@banka_adı,@şube_kodu,@hesap_no,@iban_no,@staj_kabuldurumu,@staj_donem,@baslangıc_tarihi,@bitis_tarihi,@staj_yılı,@staj_yapmadurumu,@staj_suresi,@servis_imkanı,@arac_plaka,@mentör,@sigorta_evrak,@basvuru_turu,@referans_adı,@referans_adres,@referans_telefon,@referans_eposta,@staj_acıklama,@staj_turu,@staj_icerigi,@staj_kalan_sure)";
             cmd = new SqlCommand(stajyer_bilgisi, connection);
 
-#region Staja kalan süre ve durum Hesapla
+            #region Staja kalan süre ve durum Hesapla
             TimeSpan kalan = dateTimePicker_baslangıc.Value - DateTime.Today;
             TimeSpan son = dateTimePicker_bitis.Value - DateTime.Today;
             int gunfarki_ilk = kalan.Days;
@@ -344,9 +346,9 @@ namespace InternFollowProgramming
             comboBox_stajturu.Text = "";
             comboBox_stajyili.Text = "";
         }
-       
-       
-        //SİL BUTONU 
+
+
+        //STAJYER SİL BUTONU:28 AGUSTOS PAZARTESİ GÜNCEL
         private void pictureBox_sil_Click(object sender, EventArgs e)
         {
             try
@@ -364,56 +366,10 @@ namespace InternFollowProgramming
             {
                 MessageBox.Show(ex.Message + "Kayıt Silinemedi");
             }
-
-            #region eski sorgu
-            //connection.Open();
-            ////string stajyer_silme = "DELETE FROM intern WHERE tc_kimlikno IN(SELECT tc_kimlikno FROM InternInformation where tc_kimlino='" + textBox_tc + "')";
-            ////SqlCommand stajyer_komutu = new SqlCommand(stajyer_silme, connection);
-
-            //string secmeSorgusu = "SELECT * from intern where tc_kimlikno=@tc_kimlikno";
-
-            //command = new SqlCommand(secmeSorgusu, connection);
-            //command.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
-
-
-            //dataadapter = new SqlDataAdapter(command);
-            //datareader = command.ExecuteReader();
-
-            //if (datareader.Read())
-            //{
-            //    string isim = datareader["ad_soyad"].ToString();
-            //    datareader.Close();
-
-
-            //    DialogResult durum = MessageBox.Show(isim + " kaydını silmek istediğinizden emin misiniz?", "Silme Onayı", MessageBoxButtons.YesNo);
-
-            //    if (DialogResult.Yes == durum)
-            //    {
-            //        string stajyer_silme = "DELETE FROM intern WHERE tc_kimlikno IN(SELECT tc_kimlikno FROM InternInformation where tc_kimlikno=@tc_kimlikno)";
-            //        SqlCommand stajyer_komutu = new SqlCommand(stajyer_silme, connection);
-            //        stajyer_komutu.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
-            //        dataadapter = new SqlDataAdapter(stajyer_komutu);
-            //        datareader = stajyer_komutu.ExecuteReader();
-
-            //        //string stajyer_bilgi_silme = "DELETE from InternshipInfprmation where tc_kimlikno='" + textBox_tc.Text + "'";
-            //        //SqlCommand stajyer_bilgi_komutu = new SqlCommand(stajyer_silme, connection);
-            //        datareader.Close();
-            //        stajyer_komutu.ExecuteNonQuery();
-            //        MessageBox.Show("Kayıt Silindi...");
-
-            //        textBox_tcbul.Clear();
-            //        connection.Close();
-
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Stajyer Bulunamadı.");
-            //    connection.Close();
-            //}
-            #endregion
+          
         }
 
+        //STAJ SİL BUTONU :28 AGUSTOS PAZARTESİ GÜNCEL
         private void pictureBox_stajsil_Click(object sender, EventArgs e)
         {
             try
@@ -431,9 +387,10 @@ namespace InternFollowProgramming
             {
                 MessageBox.Show(ex.Message + "İşlem gerçekleşememiştir");
             }
+
         }
 
-        //GÜNCELLEME BUTONU 
+        //STAJYER GÜNCELLEME BUTONU :25 AGUSTOS CUMA GÜNCEL ama her defasında yen resim seçmek gerekiyor.   ****
         private void pictureBox_güncelle_Click(object sender, EventArgs e)
         {
             try
@@ -443,13 +400,8 @@ namespace InternFollowProgramming
                     connection.Open();
                 }
 
-                // müşteriler tablomuzun ilgili alanlarını değiştirecek olan güncelleme sorgusu.
-                string stajyer = "update stajyer set tc_kimlikno=@tc_kimlikno,adı_soyadı=@adı_soyadı,baba_adı=@baba_adı,anne_adı=@anne_adı,d_yeri=@d_yeri,d_tarih=@d_tarih,uyrugu=@uyrugu,cinsiyet=@cinsiyet,ev_telefonu=@ev_telefonu,cep_telefonu=@cep_telefonu,adres=@adres,e_posta=@e_posta,web_site=@web_site,boy=@boy,agırlık=@agırlık,kan_grubu=@kan_grubu,iban=@iban, acil_adsoyad=@acil_adsoyad,acil_adres=@acil_adres,acil_akrabalık_derecesi=@acil_akrabalık_derecesi, acil_telefon_no=@acil_telefon_no, acil_eposta=@acil_eposta  where tc_kimlikno=@tc_kimlikno";
+                string stajyer = "update stajyer set tc_kimlikno=@tc_kimlikno,adı_soyadı=@adı_soyadı,baba_adı=@baba_adı,anne_adı=@anne_adı,dogum_yeri=@dogum_yeri,dogum_tarihi=@dogum_tarihi,uyrugu=@uyrugu,cinsiyet=@cinsiyet,ev_telefonu=@ev_telefonu,cep_telefonu=@cep_telefonu,ikametgah=@ikametgah,e_posta=@e_posta,web_site=@web_site,boy=@boy,agırlık=@agırlık,kan_grubu=@kan_grubu, acil_adsoyad=@acil_adsoyad,acil_adres=@acil_adres,acil_yakınlıgı=@acil_yakınlıgı, acil_telefon=@acil_telefon, acil_eposta=@acil_eposta  where tc_kimlikno=@tc_kimlikno";
                 command = new SqlCommand(stajyer, connection);
-
-                //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-                //Parametrelerimize Form üzerinde ki kontrollerden girilen verileri aktarıyoruz.
-
                 //kişisel veriler GÜNCELL KOD !!
                 command.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
                 command.Parameters.AddWithValue("@adı_soyadı", textBox_adsoyad.Text);
@@ -468,7 +420,6 @@ namespace InternFollowProgramming
                 command.Parameters.AddWithValue("@boy", textBox_boy.Text);
                 command.Parameters.AddWithValue("@agırlık", textBox_agırlık.Text);
 
-                //acil durum irtibat GÜNCELL KOD !!
                 command.Parameters.AddWithValue("@acil_adsoyad", textBox_ai_adsoyad.Text);
                 command.Parameters.AddWithValue("@acil_adres", textBox_ai_adres.Text);
                 command.Parameters.AddWithValue("@acil_yakınlıgı", textBox_ai_akrabalık.Text);
@@ -479,17 +430,19 @@ namespace InternFollowProgramming
                 command.Parameters.AddWithValue("@lise_adı", textBox_lise.Text);
                 command.Parameters.AddWithValue("@universite", textBox_universite.Text);
 
+
+                byte[] resim = null;
+                FileStream fileStream = new FileStream(yol, FileMode.Open, FileAccess.Read);
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+                resim = binaryReader.ReadBytes((int)fileStream.Length);
+
+                command.Parameters.AddWithValue("@resim", resim);
+
                 command.ExecuteNonQuery();
-               //command.Parameters.AddWithValue("@resim", resim);
-
-                
-
-         
-                
-                //Veritabanında değişiklik yapacak komut işlemi bu satırda gerçekleşiyor.
                 connection.Close();
-                MessageBox.Show("Stajyer Bilgileri Güncellendi");
 
+                MessageBox.Show("Stajyer Bilgileri Güncellendi");
+                #region verileri sil
                 //textBox_okulpuan.Clear();
                 //textBox_okulno.Clear();
                 //textBox_lise.Clear();
@@ -536,12 +489,129 @@ namespace InternFollowProgramming
                 //comboBox_stajdonemi.Text = "";
                 //comboBox_stajturu.Text = "";
                 //comboBox_stajyili.Text = "";
-
+                #endregion
             }
             catch (Exception hata)
             {
                 MessageBox.Show("İşlem Sırasında Hata Oluştu." + hata.Message);
             }
+
+        }
+
+        private void pictureBox_stajgüncelle_Click(object sender, EventArgs e)
+        {
+
+            #region Doldurulması Zorunlu Alanlar
+            string stajyili = comboBox_stajyili.Text;
+            string stajdonemi = comboBox_stajdonemi.Text;
+            string okuladı = comboBox_okuladı.Text;
+            string bolumadı = comboBox_bolumadı.Text;
+            string stajturu = comboBox_stajturu.Text;
+            string referansadı = textBox_r_ad.Text;
+            if (panel_referans.Enabled == true)
+            {
+                if (referansadı.Length == 0)
+                {
+                    MessageBox.Show("Lütfen Referans Adı alanını doldurunuz !");
+                }
+            }
+
+            if (stajyili.Length == 0)
+            {
+                MessageBox.Show("Lütfen Staj Yıl alanını doldurunuz !");
+            }
+            if (stajdonemi.Length == 0)
+            {
+                MessageBox.Show("Lütfen Staj Dönemi alanını doldurunuz !");
+            }
+            if (okuladı.Length == 0)
+            {
+                MessageBox.Show("Lütfen Okul Adı alanını doldurunuz !");
+            }
+            if (bolumadı.Length == 0)
+            {
+                MessageBox.Show("Lütfen Bolum Adı alanını doldurunuz !");
+            }
+            if (stajturu.Length == 0)
+            {
+                MessageBox.Show("Lütfen Staj Türü alanını doldurunuz !");
+            }
+            #endregion
+
+            cmd.Connection = connection;
+            connection.Open();
+            String stajbilgisi = "Update stajbilgileri set tc_kimlikno=@tc_kimlikno,egitim_durumu=@egitim_durumu ,okul_adı=@okul_adı ,bolum_adı=@bolum_adı,sınıf=@sınıf,okul_no=@okul_no, sehir=@sehir ,okul_puanı=@okul_puanı ,okul_acıklama=@okul_acıklama ,banka_adı=@banka_adı ,şube_kodu=şube_kodu ,hesap_no=@hesap_no ,iban_no=@iban_no ,staj_kabuldurumu=@staj_kabuldurumu,staj_donem=@staj_donem ,baslangıc_tarihi=@baslangıc_tarihi ,bitis_tarihi=@bitis_tarihi , staj_yılı=@staj_yılı ,staj_yapmadurumu=@staj_yapmadurumu,staj_suresi=@staj_suresi,servis_imkanı=@servis_imkanı ,arac_plaka=@arac_plaka ,mentör=@mentör,sigorta_evrak=@sigorta_evrak ,basvuru_turu=@basvuru_turu ,referans_adı=@referans_adı ,referans_adres=@referans_adres,referans_telefon=@referans_telefon ,referans_eposta=@referans_eposta ,staj_acıklama=@staj_acıklama ,staj_turu=@staj_turu ,staj_icerigi=@staj_icerigi ,staj_kalan_sure=@staj_kalan_sure where staj_id=@staj_id";
+            cmd = new SqlCommand(stajbilgisi, connection);
+
+            #region Staja kalan süre ve durum Hesapla
+            TimeSpan kalan = dateTimePicker_baslangıc.Value - DateTime.Today;
+            TimeSpan son = dateTimePicker_bitis.Value - DateTime.Today;
+            int gunfarki_ilk = kalan.Days;
+            int gunfarki_son = son.Days;
+            string durum = "";
+
+            if (gunfarki_ilk > 0)
+            {
+                durum = "STAJA BASLAMADI";
+                gunfarki_ilk = kalan.Days;
+            }
+            else if (gunfarki_ilk < 0 || gunfarki_son > 0)
+            {
+                durum = "STAJ YAPIYOR";
+
+
+            }
+            else if (gunfarki_son < 0)
+            {
+                durum = "STAJI BITTI";
+
+            }
+            #endregion
+
+            cmd.Parameters.AddWithValue("@staj_id", label_kod.Text);
+            cmd.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
+            cmd.Parameters.AddWithValue("@egitim_durumu", comboBox_egitim.Text);
+            cmd.Parameters.AddWithValue("@okul_adı", comboBox_okuladı.Text);
+            cmd.Parameters.AddWithValue("@bolum_adı", comboBox_bolumadı.Text);
+            cmd.Parameters.AddWithValue("@sınıf", comboBox_sinif.Text);
+            cmd.Parameters.AddWithValue("@okul_no", textBox_okulno.Text);
+            cmd.Parameters.AddWithValue("@sehir", comboBox_sehir.Text);
+            cmd.Parameters.AddWithValue("@okul_puanı", textBox_okulpuan.Text);
+            cmd.Parameters.AddWithValue("@okul_acıklama", textBox_okulacıklama.Text);
+            cmd.Parameters.AddWithValue("@banka_adı", textBox_bankaadı.Text);
+            cmd.Parameters.AddWithValue("@şube_kodu", textBox_subekodu.Text);
+            cmd.Parameters.AddWithValue("@hesap_no", textBox_hesapno.Text);
+            cmd.Parameters.AddWithValue("@iban_no", textBox_iban.Text);
+            cmd.Parameters.AddWithValue("@staj_kabuldurumu", comboBox_kabuldurumu.Text);
+            cmd.Parameters.AddWithValue("@staj_donem", comboBox_stajdonemi.Text);
+            cmd.Parameters.AddWithValue("@baslangıc_tarihi", dateTimePicker_baslangıc.Text);
+            cmd.Parameters.AddWithValue("@bitis_tarihi", dateTimePicker_bitis.Text);
+            cmd.Parameters.AddWithValue("@staj_yılı", comboBox_stajyili.Text);
+            cmd.Parameters.AddWithValue("@staj_yapmadurumu", durum);
+            cmd.Parameters.AddWithValue("@staj_suresi", textBox_stajsuresi.Text);
+            cmd.Parameters.AddWithValue("@servis_imkanı", comboBox_servis.Text);
+            cmd.Parameters.AddWithValue("@arac_plaka", textBox_aracplaka.Text);
+            cmd.Parameters.AddWithValue("@mentör", comboBox_mentor.Text);
+
+
+            cmd.Parameters.AddWithValue("@sigorta_evrak", comboBox_sigorta.Text);
+            cmd.Parameters.AddWithValue("@basvuru_turu", comboBox_basvuruturu.Text);
+            cmd.Parameters.AddWithValue("@referans_adı", textBox_r_ad.Text);
+            cmd.Parameters.AddWithValue("@referans_adres", textBox_r_adres.Text);
+            cmd.Parameters.AddWithValue("@referans_telefon", textBox_r_telefon.Text);
+            cmd.Parameters.AddWithValue("@referans_eposta", textBox_r_eposta.Text);
+            cmd.Parameters.AddWithValue("@staj_acıklama", textBox_staj_aciklama.Text);
+            cmd.Parameters.AddWithValue("@staj_turu", comboBox_stajturu.Text);
+            string icerik = "";
+            cmd.Parameters.AddWithValue("@staj_icerigi", icerik);
+            cmd.Parameters.AddWithValue("@staj_kalan_sure", gunfarki_ilk);
+
+
+            cmd.ExecuteNonQuery();
+            connection.Close();
+
+            MessageBox.Show("Staj Bilgileri Kaydedildi !");
+
         }
 
         //RESİM SEÇME BUTONU  
@@ -620,13 +690,13 @@ namespace InternFollowProgramming
                 }
             }
         
-        //25 AGUSTOS STAJYER BUL BUTONU GÜNCEL !!
+        //STAJYER BUL BUTONU GÜNCEL !!
         private void pictureBox_bul_Click(object sender, EventArgs e)
         {
 
             pictureBox_güncelle.Enabled = true;
             pictureBox_stajyer_sil.Enabled = true;
-            pictureBox_stajbilgisi_kaydet.Enabled = false;
+            pictureBox_stajbilgisi_kaydet.Enabled = true;
             pictureBox_dosya.Enabled = true;
             pictureBox_dosyayukle.Enabled = true;
             tabControl_bilgigiriş.TabPages[2].Enabled = true;
@@ -634,7 +704,6 @@ namespace InternFollowProgramming
             tabControl_bilgigiriş.TabPages[4].Enabled = true;
             listBox_dosya.Enabled = true;
             panel_stajbilgidosya.Enabled = true;
-
 
             #region Stajyer bul.
             connection.Open();
@@ -708,23 +777,96 @@ namespace InternFollowProgramming
             
         }
 
+        //STAJ KODU GETİR KODU
+        private void comboBox_staj_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sql = "Select staj_id from stajbilgileri where tc_kimlikno=@tc_kimlikno and staj_turu=@staj_turu";
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Connection = connection;
+            command.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
+            command.Parameters.AddWithValue("@staj_turu", comboBox_staj.Text);
+            connection.Open();
+            SqlDataReader datareader;
+            dataadapter = new SqlDataAdapter(command);
+            datareader = command.ExecuteReader();
+            while (datareader.Read())
+            {
 
+                label_kod.Text = datareader["staj_id"].ToString();
 
+            }
+            datareader.Close();
+            connection.Close();
+        }
+
+        //STAJ BUL BUTONU GÜNCEL
         private void pictureBox_staj_Click(object sender, EventArgs e)
         {
+           
             listBox_dosya.Enabled = false;//Form açıldığında iban textBoxı pasif olsun.
-
-            #region DÖKÜMANLARI LİSTBOX'A AKTAR
-            string list = "SELECT * From [file] where tc_kimlikno=@tc_kimlikno";
-            cmd = new SqlCommand(list, connection);
-            cmd.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
+            command.Connection = connection;
+            connection.Open();
+            string staj = "SELECT staj_id, tc_kimlikno,egitim_durumu,okul_adı,bolum_adı,sınıf,okul_no,sehir,okul_puanı,okul_acıklama,banka_adı,şube_kodu,hesap_no,iban_no,staj_kabuldurumu,staj_donem,baslangıc_tarihi,bitis_tarihi,staj_yılı,staj_yapmadurumu,staj_suresi,servis_imkanı,arac_plaka,mentör,sigorta_evrak,basvuru_turu,referans_adı,referans_adres,referans_telefon,referans_eposta,staj_acıklama,staj_turu,staj_icerigi,staj_kalan_sure FROM stajbilgileri where tc_kimlikno=@tc_kimlikno and staj_turu=@staj_turu";
+            command = new SqlCommand(staj, connection);
+            command.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
+            command.Parameters.AddWithValue("@staj_turu", comboBox_staj.Text);
             SqlDataReader dr;
-            dr = cmd.ExecuteReader();
+            dataadapter = new SqlDataAdapter(command);
+            dr = command.ExecuteReader();
             while (dr.Read())
             {
-                listBox_dosya.Items.Add(dr["dosya_adı"]);
+                label_kod.Text = dr["staj_id"].ToString();
+                textBox_tc.Text = dr["tc_kimlikno"].ToString();
+                comboBox_kabuldurumu.Text = dr["staj_kabuldurumu"].ToString();
+                comboBox_stajdonemi.Text = dr["staj_donem"].ToString();
+                dateTimePicker_baslangıc.Text = dr["baslangıc_tarihi"].ToString();
+                dateTimePicker_bitis.Text = dr["bitis_tarihi"].ToString();
+                textBox_stajyapmadurumu.Text = dr["staj_yapmadurumu"].ToString();
+                textBox_stajsuresi.Text = dr["staj_suresi"].ToString();
+                comboBox_servis.Text = dr["servis_imkanı"].ToString();
+                textBox_aracplaka.Text = dr["arac_plaka"].ToString();
+                comboBox_mentor.Text = dr["mentör"].ToString();
+                comboBox_sigorta.Text = dr["sigorta_evrak"].ToString();
+                comboBox_stajyili.Text = dr["staj_yılı"].ToString();
+                comboBox_basvuruturu.Text = dr["basvuru_turu"].ToString();
+                textBox_r_ad.Text = dr["referans_adı"].ToString();
+                textBox_r_adres.Text = dr["referans_adres"].ToString();
+                textBox_r_eposta.Text = dr["referans_eposta"].ToString();
+                textBox_r_telefon.Text = dr["referans_telefon"].ToString();
+                textBox_staj_aciklama.Text = dr["staj_acıklama"].ToString();
+                comboBox_egitim.Text = dr["egitim_durumu"].ToString();
+                comboBox_okuladı.Text = dr["okul_adı"].ToString();
+                comboBox_bolumadı.Text = dr["bolum_adı"].ToString();
+                comboBox_sinif.Text = dr["sınıf"].ToString();
+                textBox_okulno.Text = dr["okul_no"].ToString();
+                comboBox_sehir.Text = dr["sehir"].ToString();
+                textBox_okulpuan.Text = dr["okul_puanı"].ToString();
+                textBox_okulacıklama.Text = dr["okul_acıklama"].ToString();
+                textBox_bankaadı.Text = dr["banka_adı"].ToString();
+                textBox_subekodu.Text = dr["şube_kodu"].ToString();
+                textBox_hesapno.Text = dr["hesap_no"].ToString();
+                textBox_iban.Text = dr["iban_no"].ToString();
+                comboBox_stajturu.Text = dr["staj_turu"].ToString();
+                checkBox1.Text = dr["staj_icerigi"].ToString();
+                label_kalansure.Text = dr["staj_kalan_sure"].ToString();
+
             }
             dr.Close();
+            connection.Close();
+
+           
+
+            #region DÖKÜMANLARI LİSTBOX'A AKTAR
+            //string list = "SELECT * From [file] where tc_kimlikno=@tc_kimlikno";
+            //cmd = new SqlCommand(list, connection);
+            //cmd.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
+            //SqlDataReader datareader;
+            //datareader = cmd.ExecuteReader();
+            //while (datareader.Read())
+            //{
+            //    listBox_dosya.Items.Add(datareader["dosya_adı"]);
+            //}
+            //dr.Close();
             #endregion
         }
 
@@ -732,9 +874,12 @@ namespace InternFollowProgramming
         #endregion
 
         #region SEÇİMLERE BAĞLI OLARAK AKTİF/PASİFLİK DURUMLARI
-        private void checkBox_referans_CheckedChanged(object sender, EventArgs e)
+
+        private void comboBox_basvuruturu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBox_basvuruturu.SelectedItem=="REFERANS")
+
+
+            if (comboBox_basvuruturu.Text == "REFERANS")
             {
                 panel_referans.Enabled = true;
             }
@@ -742,8 +887,8 @@ namespace InternFollowProgramming
             {
                 panel_referans.Enabled = false;
             }
-        }
 
+        }
         private void comboBox_servis_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -760,7 +905,7 @@ namespace InternFollowProgramming
 
         private void comboBox_egitim_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox_okuladı.Text == "LİSE")
+            if (comboBox_egitim.Text == "Lise")
             {
                 textBox_iban.Enabled = true;
             }
@@ -933,18 +1078,8 @@ namespace InternFollowProgramming
 		#endregion
 
 		
-        private void comboBox_basvuruturu_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if (comboBox_basvuruturu.SelectedItem == "REFERANS")
-            {
-                panel_referans.Enabled = true;
-            }
-            else if(comboBox_basvuruturu.SelectedItem != "REFERANS")
-                panel_referans.Enabled = false;
-            
-        }
-
        
+
+        
     }
 }

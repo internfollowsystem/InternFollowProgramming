@@ -453,6 +453,54 @@
   <ItemGroup>
     <None Include="Resources\file_delete1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AKESTAJYERLOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yenile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stajsil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AKESTAJYERLOGO1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kişibul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\düzenle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stajbul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dosyayukle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yenile1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yazdır.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excelkaydet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kişibul1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\STAJYERBUL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bstajyerbul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sstajyerbul.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
