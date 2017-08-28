@@ -563,6 +563,16 @@ namespace InternFollowProgramming.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap mailgönder {
+            get {
+                object obj = ResourceManager.GetObject("mailgönder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap microsoft_excel_vector {
             get {
                 object obj = ResourceManager.GetObject("microsoft-excel-vector", resourceCulture);
@@ -763,9 +773,29 @@ namespace InternFollowProgramming.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap stajsil1 {
+            get {
+                object obj = ResourceManager.GetObject("stajsil1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap stajyapıyor {
             get {
                 object obj = ResourceManager.GetObject("stajyapıyor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap STAJYER_GÖSTER {
+            get {
+                object obj = ResourceManager.GetObject("STAJYER GÖSTER", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

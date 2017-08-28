@@ -501,6 +501,15 @@
   <ItemGroup>
     <None Include="Resources\sstajyerbul.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stajsil1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\STAJYER GÖSTER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mailgönder.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>

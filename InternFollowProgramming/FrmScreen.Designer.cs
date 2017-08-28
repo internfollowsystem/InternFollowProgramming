@@ -39,7 +39,6 @@
             this.planlamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yoklamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.sTAJYERGÖSTERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_ust = new System.Windows.Forms.Panel();
             this.label_suanstajyapanlar = new System.Windows.Forms.Label();
             this.label_stajyer = new System.Windows.Forms.Label();
@@ -73,7 +72,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.silToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.güncelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stajsilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sTAJYERGÖSTERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mailGönderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox_refresh = new System.Windows.Forms.PictureBox();
             this.pictureBox_suanstajer = new System.Windows.Forms.PictureBox();
             this.pictureBox_genel = new System.Windows.Forms.PictureBox();
@@ -83,6 +83,8 @@
             this.pictureBox_onlisans = new System.Windows.Forms.PictureBox();
             this.pictureBox_lisans = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.stajyerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip_frmscreen.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel_ust.SuspendLayout();
@@ -182,18 +184,12 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.silToolStripMenuItem,
+            this.sTAJYERGÖSTERToolStripMenuItem,
+            this.mailGönderToolStripMenuItem,
             this.güncelleToolStripMenuItem,
-            this.stajsilToolStripMenuItem,
-            this.sTAJYERGÖSTERToolStripMenuItem});
+            this.silToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(166, 92);
-            // 
-            // sTAJYERGÖSTERToolStripMenuItem
-            // 
-            this.sTAJYERGÖSTERToolStripMenuItem.Name = "sTAJYERGÖSTERToolStripMenuItem";
-            this.sTAJYERGÖSTERToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.sTAJYERGÖSTERToolStripMenuItem.Text = "STAJYER GÖSTER";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 92);
             // 
             // panel_ust
             // 
@@ -229,7 +225,7 @@
             this.label_suanstajyapanlar.AutoSize = true;
             this.label_suanstajyapanlar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_suanstajyapanlar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_suanstajyapanlar.Location = new System.Drawing.Point(1059, 13);
+            this.label_suanstajyapanlar.Location = new System.Drawing.Point(1028, 9);
             this.label_suanstajyapanlar.Name = "label_suanstajyapanlar";
             this.label_suanstajyapanlar.Size = new System.Drawing.Size(15, 15);
             this.label_suanstajyapanlar.TabIndex = 17;
@@ -240,7 +236,7 @@
             this.label_stajyer.AutoSize = true;
             this.label_stajyer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_stajyer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_stajyer.Location = new System.Drawing.Point(387, 13);
+            this.label_stajyer.Location = new System.Drawing.Point(352, 9);
             this.label_stajyer.Name = "label_stajyer";
             this.label_stajyer.Size = new System.Drawing.Size(15, 15);
             this.label_stajyer.TabIndex = 16;
@@ -251,7 +247,7 @@
             this.label_suanstajyer.AutoSize = true;
             this.label_suanstajyer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_suanstajyer.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label_suanstajyer.Location = new System.Drawing.Point(981, 36);
+            this.label_suanstajyer.Location = new System.Drawing.Point(963, 38);
             this.label_suanstajyer.Name = "label_suanstajyer";
             this.label_suanstajyer.Size = new System.Drawing.Size(93, 13);
             this.label_suanstajyer.TabIndex = 15;
@@ -265,7 +261,7 @@
             this.label_genel.AutoSize = true;
             this.label_genel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_genel.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label_genel.Location = new System.Drawing.Point(310, 36);
+            this.label_genel.Location = new System.Drawing.Point(316, 38);
             this.label_genel.Name = "label_genel";
             this.label_genel.Size = new System.Drawing.Size(43, 13);
             this.label_genel.TabIndex = 14;
@@ -279,7 +275,7 @@
             this.label_lise.AutoSize = true;
             this.label_lise.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_lise.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_lise.Location = new System.Drawing.Point(891, 13);
+            this.label_lise.Location = new System.Drawing.Point(859, 9);
             this.label_lise.Name = "label_lise";
             this.label_lise.Size = new System.Drawing.Size(15, 15);
             this.label_lise.TabIndex = 9;
@@ -290,7 +286,7 @@
             this.label_onlisans.AutoSize = true;
             this.label_onlisans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_onlisans.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_onlisans.Location = new System.Drawing.Point(724, 13);
+            this.label_onlisans.Location = new System.Drawing.Point(690, 9);
             this.label_onlisans.Name = "label_onlisans";
             this.label_onlisans.Size = new System.Drawing.Size(15, 15);
             this.label_onlisans.TabIndex = 8;
@@ -301,7 +297,7 @@
             this.label_lisans.AutoSize = true;
             this.label_lisans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_lisans.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_lisans.Location = new System.Drawing.Point(557, 13);
+            this.label_lisans.Location = new System.Drawing.Point(521, 9);
             this.label_lisans.Name = "label_lisans";
             this.label_lisans.Size = new System.Drawing.Size(15, 15);
             this.label_lisans.TabIndex = 7;
@@ -313,7 +309,7 @@
             this.labellise.BackColor = System.Drawing.Color.Transparent;
             this.labellise.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labellise.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.labellise.Location = new System.Drawing.Point(827, 36);
+            this.labellise.Location = new System.Drawing.Point(826, 38);
             this.labellise.Name = "labellise";
             this.labellise.Size = new System.Drawing.Size(30, 13);
             this.labellise.TabIndex = 6;
@@ -328,7 +324,7 @@
             this.labelonlisans.BackColor = System.Drawing.Color.Transparent;
             this.labelonlisans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelonlisans.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.labelonlisans.Location = new System.Drawing.Point(639, 36);
+            this.labelonlisans.Location = new System.Drawing.Point(641, 38);
             this.labelonlisans.Name = "labelonlisans";
             this.labelonlisans.Size = new System.Drawing.Size(64, 13);
             this.labelonlisans.TabIndex = 5;
@@ -343,7 +339,7 @@
             this.labellisans.BackColor = System.Drawing.Color.Transparent;
             this.labellisans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labellisans.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.labellisans.Location = new System.Drawing.Point(478, 36);
+            this.labellisans.Location = new System.Drawing.Point(483, 38);
             this.labellisans.Name = "labellisans";
             this.labellisans.Size = new System.Drawing.Size(45, 13);
             this.labellisans.TabIndex = 4;
@@ -566,33 +562,41 @@
             // 
             // silToolStripMenuItem
             // 
-            this.silToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon;
+            this.silToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stajyerToolStripMenuItem,
+            this.stajToolStripMenuItem});
+            this.silToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
             this.silToolStripMenuItem.Name = "silToolStripMenuItem";
-            this.silToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.silToolStripMenuItem.Text = "SİL";
-            this.silToolStripMenuItem.Click += new System.EventHandler(this.silToolStripMenuItem_Click);
+            this.silToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.silToolStripMenuItem.Text = "Sil";
             // 
             // güncelleToolStripMenuItem
             // 
-            this.güncelleToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.edit;
+            this.güncelleToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.edit2;
             this.güncelleToolStripMenuItem.Name = "güncelleToolStripMenuItem";
-            this.güncelleToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.güncelleToolStripMenuItem.Text = "GÜNCELLE";
+            this.güncelleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.güncelleToolStripMenuItem.Text = "Güncelle";
             this.güncelleToolStripMenuItem.ToolTipText = "Sadece Stajyer Bilgisi güncellenir, Staj Bilgileri değil !";
             this.güncelleToolStripMenuItem.Click += new System.EventHandler(this.güncelleToolStripMenuItem_Click);
             // 
-            // stajsilToolStripMenuItem
+            // sTAJYERGÖSTERToolStripMenuItem
             // 
-            this.stajsilToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.file_delete;
-            this.stajsilToolStripMenuItem.Name = "stajsilToolStripMenuItem";
-            this.stajsilToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.stajsilToolStripMenuItem.Text = "STAJ SİL";
-            this.stajsilToolStripMenuItem.Click += new System.EventHandler(this.stajsilToolStripMenuItem_Click);
+            this.sTAJYERGÖSTERToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.STAJYER_GÖSTER;
+            this.sTAJYERGÖSTERToolStripMenuItem.Name = "sTAJYERGÖSTERToolStripMenuItem";
+            this.sTAJYERGÖSTERToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sTAJYERGÖSTERToolStripMenuItem.Text = "Stajyer Göster";
+            // 
+            // mailGönderToolStripMenuItem
+            // 
+            this.mailGönderToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.mailgönder;
+            this.mailGönderToolStripMenuItem.Name = "mailGönderToolStripMenuItem";
+            this.mailGönderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mailGönderToolStripMenuItem.Text = "Mail Gönder";
             // 
             // pictureBox_refresh
             // 
             this.pictureBox_refresh.Image = global::InternFollowProgramming.Properties.Resources.yenile1;
-            this.pictureBox_refresh.Location = new System.Drawing.Point(1184, 12);
+            this.pictureBox_refresh.Location = new System.Drawing.Point(1153, 12);
             this.pictureBox_refresh.Name = "pictureBox_refresh";
             this.pictureBox_refresh.Size = new System.Drawing.Size(25, 25);
             this.pictureBox_refresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -631,7 +635,7 @@
             // pictureBox_yazdır
             // 
             this.pictureBox_yazdır.Image = global::InternFollowProgramming.Properties.Resources.yazdır;
-            this.pictureBox_yazdır.Location = new System.Drawing.Point(1237, 12);
+            this.pictureBox_yazdır.Location = new System.Drawing.Point(1206, 12);
             this.pictureBox_yazdır.Name = "pictureBox_yazdır";
             this.pictureBox_yazdır.Size = new System.Drawing.Size(25, 25);
             this.pictureBox_yazdır.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -644,7 +648,7 @@
             // pictureBox_excel
             // 
             this.pictureBox_excel.Image = global::InternFollowProgramming.Properties.Resources.excelkaydet;
-            this.pictureBox_excel.Location = new System.Drawing.Point(1290, 12);
+            this.pictureBox_excel.Location = new System.Drawing.Point(1259, 12);
             this.pictureBox_excel.Name = "pictureBox_excel";
             this.pictureBox_excel.Size = new System.Drawing.Size(25, 25);
             this.pictureBox_excel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -704,6 +708,20 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // stajyerToolStripMenuItem
+            // 
+            this.stajyerToolStripMenuItem.Name = "stajyerToolStripMenuItem";
+            this.stajyerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stajyerToolStripMenuItem.Text = "Stajyer";
+            this.stajyerToolStripMenuItem.Click += new System.EventHandler(this.stajyerToolStripMenuItem_Click);
+            // 
+            // stajToolStripMenuItem
+            // 
+            this.stajToolStripMenuItem.Name = "stajToolStripMenuItem";
+            this.stajToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stajToolStripMenuItem.Text = "Staj";
+            this.stajToolStripMenuItem.Click += new System.EventHandler(this.stajToolStripMenuItem_Click);
+            // 
             // FrmScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -720,6 +738,7 @@
             this.Controls.Add(this.panel_ust);
             this.MainMenuStrip = this.menuStrip_frmscreen;
             this.Name = "FrmScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AKE STAJYER TAKİP SİSTEMİ";
             this.Load += new System.EventHandler(this.FrmScreen_Load);
             this.menuStrip_frmscreen.ResumeLayout(false);
@@ -797,8 +816,10 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label label_aranan_stajyer_sayısı;
         private System.Windows.Forms.PictureBox pictureBox_refresh;
-        private System.Windows.Forms.ToolStripMenuItem stajsilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sTAJYERGÖSTERToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripMenuItem mailGönderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stajyerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stajToolStripMenuItem;
     }
 }

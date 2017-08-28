@@ -997,7 +997,7 @@ namespace InternFollowProgramming
         }
 
         //22 AĞUSTOS 2017 GÜNCEL !! 
-        private void silToolStripMenuItem_Click(object sender, EventArgs e)// SAĞ TIKLA DATAGRİDVİEW ÜZERİNDEN STAJYER SİLİYORUZ.
+        private void stajyerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
@@ -1008,8 +1008,8 @@ namespace InternFollowProgramming
             command.Parameters.Clear();
             MessageBox.Show("STAJYER SİLİNDİ");
 
-            datatable= new System.Data.DataTable();
-            dataadapter= new SqlDataAdapter("SELECT i.* , s.* FROM stajyer i Left Join stajbilgileri s on i.tc_kimlikno=s.tc_kimlikno ",connection);
+            datatable = new System.Data.DataTable();
+            dataadapter = new SqlDataAdapter("SELECT i.* , s.* FROM stajyer i Left Join stajbilgileri s on i.tc_kimlikno=s.tc_kimlikno ", connection);
             dataadapter.Fill(datatable);
             dataGridView.DataSource = datatable;
             dataadapter.Dispose();
@@ -1065,68 +1065,12 @@ namespace InternFollowProgramming
             connection.Close();
             #endregion
         }
-        //22 AĞUSTOS 2017  ## ##bu kısım komple değişikliğe uğrayacak
-        private void güncelleToolStripMenuItem_Click(object sender, EventArgs e) // GÜNCELLEME
-        {
-            try
-            {
-                if (connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
 
-                // müşteriler tablomuzun ilgili alanlarını değiştirecek olan güncelleme sorgusu.
-                string stajyer = "update intern set tc_kimlikno=@tc_kimlikno,adı_soyadı=@adı_soyadı,baba_adı=@baba_adı,anne_adı=@anne_adı,d_yeri=@d_yeri,d_tarih=@d_tarih,uyrugu=@uyrugu,cinsiyet=@cinsiyet,ev_tel=@ev_tel,cep_tel=@cep_tel,adres=@adres,e_posta=@e_posta,web_adres=@web_adres,boy=@boy,agırlık=@agırlık,kan_grubu=@kan_grubu,iban=@iban, acil_adsoyad=@acil_adsoyad,acil_adres=@acil_adres,acil_akrabalık_derecesi=@acil_akrabalık_derecesi, acil_telefon_no=@acil_telefon_no, acil_e_posta=@acil_e_posta  where tc_kimlikno=@tc_kimlikno";
-                command = new SqlCommand(stajyer, connection);
-
-                //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-                //Parametrelerimize Form üzerinde ki kontrollerden girilen verileri aktarıyoruz.
-
-                //kişisel veriler GÜNCELL KOD !!
-                command.Parameters.AddWithValue("@tc_kimlikno", dataGridView.CurrentRow.Cells[0].Value.ToString());
-                command.Parameters.AddWithValue("@adı_soyadı", dataGridView.CurrentRow.Cells[1].Value.ToString());
-                command.Parameters.AddWithValue("@baba_adı", dataGridView.CurrentRow.Cells[2].Value.ToString());
-                command.Parameters.AddWithValue("@anne_adı", dataGridView.CurrentRow.Cells[3].Value.ToString());
-                command.Parameters.AddWithValue("@d_yeri", dataGridView.CurrentRow.Cells[4].Value.ToString());
-                command.Parameters.AddWithValue("@d_tarih", dataGridView.CurrentRow.Cells[5].Value.ToString());
-                command.Parameters.AddWithValue("@uyrugu", dataGridView.CurrentRow.Cells[6].Value.ToString());
-                command.Parameters.AddWithValue("@cinsiyet", dataGridView.CurrentRow.Cells[7].Value.ToString());
-                command.Parameters.AddWithValue("@ev_tel", dataGridView.CurrentRow.Cells[8].Value.ToString());
-                command.Parameters.AddWithValue("@cep_tel", dataGridView.CurrentRow.Cells[9].Value.ToString());
-                command.Parameters.AddWithValue("@adres", dataGridView.CurrentRow.Cells[10].Value.ToString());
-                command.Parameters.AddWithValue("@e_posta", dataGridView.CurrentRow.Cells[11].Value.ToString());
-                command.Parameters.AddWithValue("@web_adres", dataGridView.CurrentRow.Cells[12].Value.ToString());
-                command.Parameters.AddWithValue("@boy", dataGridView.CurrentRow.Cells[13].Value.ToString());
-                command.Parameters.AddWithValue("@agırlık", dataGridView.CurrentRow.Cells[14].Value.ToString());
-                command.Parameters.AddWithValue("@kan_grubu", dataGridView.CurrentRow.Cells[15].Value.ToString());
-                command.Parameters.AddWithValue("@iban", dataGridView.CurrentRow.Cells[16].Value.ToString());
-
-                //acil durum irtibat GÜNCELL KOD !!
-                command.Parameters.AddWithValue("@acil_adsoyad", dataGridView.CurrentRow.Cells[17].Value.ToString());
-                command.Parameters.AddWithValue("@acil_adres", dataGridView.CurrentRow.Cells[18].Value.ToString());
-                command.Parameters.AddWithValue("@acil_akrabalık_derecesi", dataGridView.CurrentRow.Cells[19].Value.ToString());
-                command.Parameters.AddWithValue("@acil_telefon_no", dataGridView.CurrentRow.Cells[20].Value.ToString());
-                command.Parameters.AddWithValue("@acil_e_posta", dataGridView.CurrentRow.Cells[21].Value.ToString());
-
-                command.ExecuteNonQuery();
-
-
-                //Veritabanında değişiklik yapacak komut işlemi bu satırda gerçekleşiyor.
-                connection.Close();
-                MessageBox.Show("Stajyer Bilgileri Güncellendi");
-            }
-            catch (Exception hata)
-            {
-                MessageBox.Show("İşlem Sırasında Hata Oluştu." + hata.Message);
-            }
-
-        }
-
-        private void stajsilToolStripMenuItem_Click(object sender, EventArgs e)
+        private void stajToolStripMenuItem_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
             connection.Open();
-            string secili = dataGridView.CurrentRow.Cells[3].Value.ToString();
+           string secili = dataGridView.CurrentRow.Cells[3].Value.ToString();
             command.CommandText = "DELETE FROM stajbilgileri where staj_id=@staj_id";
             command.Parameters.AddWithValue("@staj_id", secili);
             command.ExecuteNonQuery();
@@ -1190,6 +1134,64 @@ namespace InternFollowProgramming
             connection.Close();
             #endregion
         }
+       
+        //22 AĞUSTOS 2017  ## ##bu kısım komple değişikliğe uğrayacak
+        private void güncelleToolStripMenuItem_Click(object sender, EventArgs e) // GÜNCELLEME
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+
+                // müşteriler tablomuzun ilgili alanlarını değiştirecek olan güncelleme sorgusu.
+                string stajyer = "update intern set tc_kimlikno=@tc_kimlikno,adı_soyadı=@adı_soyadı,baba_adı=@baba_adı,anne_adı=@anne_adı,d_yeri=@d_yeri,d_tarih=@d_tarih,uyrugu=@uyrugu,cinsiyet=@cinsiyet,ev_tel=@ev_tel,cep_tel=@cep_tel,adres=@adres,e_posta=@e_posta,web_adres=@web_adres,boy=@boy,agırlık=@agırlık,kan_grubu=@kan_grubu,iban=@iban, acil_adsoyad=@acil_adsoyad,acil_adres=@acil_adres,acil_akrabalık_derecesi=@acil_akrabalık_derecesi, acil_telefon_no=@acil_telefon_no, acil_e_posta=@acil_e_posta  where tc_kimlikno=@tc_kimlikno";
+                command = new SqlCommand(stajyer, connection);
+
+                //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
+                //Parametrelerimize Form üzerinde ki kontrollerden girilen verileri aktarıyoruz.
+
+                //kişisel veriler GÜNCELL KOD !!
+                command.Parameters.AddWithValue("@tc_kimlikno", dataGridView.CurrentRow.Cells[0].Value.ToString());
+                command.Parameters.AddWithValue("@adı_soyadı", dataGridView.CurrentRow.Cells[1].Value.ToString());
+                command.Parameters.AddWithValue("@baba_adı", dataGridView.CurrentRow.Cells[2].Value.ToString());
+                command.Parameters.AddWithValue("@anne_adı", dataGridView.CurrentRow.Cells[3].Value.ToString());
+                command.Parameters.AddWithValue("@d_yeri", dataGridView.CurrentRow.Cells[4].Value.ToString());
+                command.Parameters.AddWithValue("@d_tarih", dataGridView.CurrentRow.Cells[5].Value.ToString());
+                command.Parameters.AddWithValue("@uyrugu", dataGridView.CurrentRow.Cells[6].Value.ToString());
+                command.Parameters.AddWithValue("@cinsiyet", dataGridView.CurrentRow.Cells[7].Value.ToString());
+                command.Parameters.AddWithValue("@ev_tel", dataGridView.CurrentRow.Cells[8].Value.ToString());
+                command.Parameters.AddWithValue("@cep_tel", dataGridView.CurrentRow.Cells[9].Value.ToString());
+                command.Parameters.AddWithValue("@adres", dataGridView.CurrentRow.Cells[10].Value.ToString());
+                command.Parameters.AddWithValue("@e_posta", dataGridView.CurrentRow.Cells[11].Value.ToString());
+                command.Parameters.AddWithValue("@web_adres", dataGridView.CurrentRow.Cells[12].Value.ToString());
+                command.Parameters.AddWithValue("@boy", dataGridView.CurrentRow.Cells[13].Value.ToString());
+                command.Parameters.AddWithValue("@agırlık", dataGridView.CurrentRow.Cells[14].Value.ToString());
+                command.Parameters.AddWithValue("@kan_grubu", dataGridView.CurrentRow.Cells[15].Value.ToString());
+                command.Parameters.AddWithValue("@iban", dataGridView.CurrentRow.Cells[16].Value.ToString());
+
+                //acil durum irtibat GÜNCELL KOD !!
+                command.Parameters.AddWithValue("@acil_adsoyad", dataGridView.CurrentRow.Cells[17].Value.ToString());
+                command.Parameters.AddWithValue("@acil_adres", dataGridView.CurrentRow.Cells[18].Value.ToString());
+                command.Parameters.AddWithValue("@acil_akrabalık_derecesi", dataGridView.CurrentRow.Cells[19].Value.ToString());
+                command.Parameters.AddWithValue("@acil_telefon_no", dataGridView.CurrentRow.Cells[20].Value.ToString());
+                command.Parameters.AddWithValue("@acil_e_posta", dataGridView.CurrentRow.Cells[21].Value.ToString());
+
+                command.ExecuteNonQuery();
+
+
+                //Veritabanında değişiklik yapacak komut işlemi bu satırda gerçekleşiyor.
+                connection.Close();
+                MessageBox.Show("Stajyer Bilgileri Güncellendi");
+            }
+            catch (Exception hata)
+            {
+                MessageBox.Show("İşlem Sırasında Hata Oluştu." + hata.Message);
+            }
+
+        }
+
 
         //22AGUSTOS RAPORLAMA GÜNCEL DEĞİL SADECE COPY-PASTE OLACAK  ---- 23ağustos güncel gibi ama kontrol ett
         private void button_s_ara_Click(object sender, EventArgs e)  //RAPORLAMA

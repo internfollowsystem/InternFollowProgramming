@@ -634,62 +634,40 @@ namespace InternFollowProgramming
                 MessageBox.Show(ex.Message+"Resim yüklenemedi");
             }
         }
-        
+      
         //DOSYA SEÇME BUTONU 
         private void pictureBox_dosya_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "pdf dosyalar |*.pdf";
-            dialog.Title = "SELECT file dosya_adı ";
-            if (dialog.ShowDialog() == DialogResult.OK)
-
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                yol= Path.GetFileName(dialog.FileName);
-                byte[] Dosya = null;
-                Dosya = File.ReadAllBytes(dialog.FileName);
-                textBox_dosya.Text = yol;
+                string dosyayolu = openFileDialog1.FileName.ToString();
+                textBox_dosya.Text =Path.GetFullPath(dosyayolu);
             }
+      
+        }
+
+        
+        private void button8_Click(object sender, EventArgs e)
+        {
+            
         }
 
         //DOSYA YÜKLEME BUTONU
         private void pictureBox_fileupdate_Click(object sender, EventArgs e)
         {
-             try
-                {
-                    string dosya_uzantisi = openFileDialog_dosya.Filter;
-                    DateTime yukleme_tarihi = DateTime.Today;
-                    command.Connection = connection;
-                    cmd.Connection = connection;
-                    connection.Open();
-                    string files = "insert into [file] (tc_kimlikno, dosya_adı, dosya_uzantisi, yukleme_tarihi) Values (@tc_kimlikno, @dosya_adı, @dosya_uzantisi, @yukleme_tarihi )";
-                    command = new SqlCommand(files, connection);
-                    command.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
-                    command.Parameters.AddWithValue("@dosya_adı", textBox_dosya.Text);
-                    command.Parameters.AddWithValue("@dosya_uzantisi", dosya_uzantisi);
-                    command.Parameters.AddWithValue("@yukleme_tarihi", yukleme_tarihi);
-                    command.ExecuteNonQuery();
 
-                    MessageBox.Show("DÖKÜMAN EKLENDİ");
-                listBox_dosya.Items.Clear();
-                string list = "SELECT * From [file] where tc_kimlikno=@tc_kimlikno";
-                cmd = new SqlCommand(list, connection);
-                cmd.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
-                SqlDataReader dr;
-                dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    listBox_dosya.Items.Add(dr["dosya_adı"]);
-                }
-                dr.Close();
-                connection.Close();
-            }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message + "Dosya yüklenemedi");
-                    connection.Close();
-                }
-            }
-        
+
+            //Directory.CreateDirectory("C:Users\\Win\\Desktop\\AKE\\document\\" + textBox_tc.Text);
+            //string dosyaAdi = Path.GetFileName(textBox_dosya.Text);
+            //File.Copy(@"" + textBox_dosya.Text, @"" + @"C:Users\\Win\\Desktop\\AKE\\document\\" + textBox_tc.Text + "\\" + dosyaAdi);
+            //MessageBox.Show("Başarılı olarak kaydedildi." + textBox_tc.Text);
+
+            Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text);
+            string dosyaAdi = Path.GetFileName(textBox_dosya.Text);
+            File.Move(@"" + textBox_dosya.Text, @"" + @"O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "\\" + dosyaAdi);
+            MessageBox.Show("Başarılı olarak kaydedildi." + textBox_tc.Text);
+        }
+
         //STAJYER BUL BUTONU GÜNCEL !!
         private void pictureBox_bul_Click(object sender, EventArgs e)
         {
@@ -1075,11 +1053,11 @@ namespace InternFollowProgramming
 
 
 
-		#endregion
 
-		
+
+
+
+        #endregion
        
-
-        
     }
 }
