@@ -202,8 +202,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.checkBox_image = new System.Windows.Forms.CheckBox();
-            this.label_dosyayolu = new System.Windows.Forms.Label();
+            this.label_resimyolu = new System.Windows.Forms.Label();
             this.panel_adsoyadbul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yenile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_sil)).BeginInit();
@@ -315,8 +314,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Beige;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label_dosyayolu);
-            this.panel1.Controls.Add(this.checkBox_image);
+            this.panel1.Controls.Add(this.label_resimyolu);
             this.panel1.Controls.Add(this.pictureBox_resim);
             this.panel1.Controls.Add(this.listBox_dosya);
             this.panel1.Controls.Add(this.pictureBox_stajyer_resim);
@@ -1992,24 +1990,14 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // checkBox_image
+            // label_resimyolu
             // 
-            this.checkBox_image.AutoSize = true;
-            this.checkBox_image.Location = new System.Drawing.Point(167, 26);
-            this.checkBox_image.Name = "checkBox_image";
-            this.checkBox_image.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_image.TabIndex = 32;
-            this.checkBox_image.UseVisualStyleBackColor = true;
-            this.checkBox_image.Visible = false;
-            // 
-            // label_dosyayolu
-            // 
-            this.label_dosyayolu.AutoSize = true;
-            this.label_dosyayolu.Location = new System.Drawing.Point(14, 173);
-            this.label_dosyayolu.Name = "label_dosyayolu";
-            this.label_dosyayolu.Size = new System.Drawing.Size(0, 13);
-            this.label_dosyayolu.TabIndex = 33;
-            this.label_dosyayolu.Visible = false;
+            this.label_resimyolu.AutoSize = true;
+            this.label_resimyolu.Location = new System.Drawing.Point(14, 173);
+            this.label_resimyolu.Name = "label_resimyolu";
+            this.label_resimyolu.Size = new System.Drawing.Size(0, 13);
+            this.label_resimyolu.TabIndex = 33;
+            this.label_resimyolu.Visible = false;
             // 
             // FrmInternInformation
             // 
@@ -2243,7 +2231,6 @@
         private System.Windows.Forms.ListBox listBox_icerikler;
         private System.Windows.Forms.Button button_icerikcıkart;
         private System.Windows.Forms.TextBox textBox_stajicerigi;
-        private System.Windows.Forms.CheckBox checkBox_image;
-        private System.Windows.Forms.Label label_dosyayolu;
+        private System.Windows.Forms.Label label_resimyolu;
     }
 }
