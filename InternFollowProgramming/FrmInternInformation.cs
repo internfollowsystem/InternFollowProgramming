@@ -47,6 +47,7 @@ namespace InternFollowProgramming
             tabControl_bilgigiriş.TabPages[4].Enabled = false;//Form açıldığında iban textBoxı pasif olsun.
             panel_stajbilgidosya.Enabled = false;
             panel_stajicerigi.Enabled = false;
+            textBox_stajyapmadurumu.Visible = false;
 
 
         }
@@ -55,113 +56,141 @@ namespace InternFollowProgramming
         {
             #region COMBOBAXIN İÇİNE VERİ ÇEKME
             connection.Open();
-
-            SqlCommand cmd1 = new SqlCommand("SELECT * FROM ortaokuladı",connection);
-            datareader = cmd1.ExecuteReader();
-            while (datareader.Read())
+            SqlCommand cmd1 = new SqlCommand("SELECT * FROM ortaokuladı", connection);
+            SqlDataReader dr1;
+            dr1 = cmd1.ExecuteReader();
+            while (dr1.Read())
             {
-                comboBox_ortaokul.Items.Add(datareader["id"].ToString());
+                comboBox_ortaokul.Items.Add(dr1["id"].ToString());
             }
-            datareader.Close();
-           
-
-            SqlCommand cmd2 = new SqlCommand("SELECT * FROM liseadı", connection);
-            datareader = cmd2.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_lise.Items.Add(datareader["id"].ToString());
-            }
-            datareader.Close();
-
-            SqlCommand cmd3 = new SqlCommand("SELECT * FROM universiteadı", connection);  
-            datareader = cmd3.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_universite.Items.Add(datareader["id"].ToString());
-            }
-            datareader.Close();
-
-            SqlCommand cmd4 = new SqlCommand("SELECT * FROM stajkabuldurumu", connection);
-            datareader = cmd4.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_kabuldurumu.Items.Add(datareader["id"].ToString());
-            }
-            datareader.Close();
-
-            SqlCommand cmd5 = new SqlCommand("SELECT * FROM stajdonemi", connection);
-            datareader = cmd5.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_stajdonemi.Items.Add(datareader["id"].ToString());
-            }
-            datareader.Close();
-
-            SqlCommand cmd6 = new SqlCommand("SELECT * FROM mentöradı", connection);
-            datareader = cmd6.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_mentor.Items.Add(datareader["id"].ToString());
-            }
-            datareader.Close();
-
-            SqlCommand cmd7 = new SqlCommand("SELECT * FROM aracplaka", connection);
-            datareader = cmd7.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_aracplaka.Items.Add(datareader["id"].ToString());
-            }
-            datareader.Close();
-
-            SqlCommand cmd8 = new SqlCommand("SELECT * FROM basvuruturu", connection);
-            datareader = cmd8.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_basvuruturu.Items.Add(datareader["id"].ToString());
-            }
-            datareader.Close();
-
-            SqlCommand cmd9 = new SqlCommand("SELECT * FROM egitimdurumu", connection);
-            datareader = cmd9.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_egitimdurumu.Items.Add(datareader["id"].ToString());
-            }
-            datareader.Close();
+            dr1.Close();
             connection.Close();
 
-            
-            SqlCommand cmd12 = new SqlCommand("SELECT * FROM bolumadı", connection);
             connection.Open();
-            datareader = cmd12.ExecuteReader();
-            while (datareader.Read())
+            SqlCommand cmd2 = new SqlCommand("SELECT * FROM liseadı", connection);
+            SqlDataReader dr2;
+            dr2 = cmd2.ExecuteReader();
+            while (dr2.Read())
             {
-                comboBox_bolumadı.Items.Add(datareader["id"].ToString());
+                comboBox_lise.Items.Add(dr2["id"].ToString());
             }
-            datareader.Close();
-            
-
-            SqlCommand cmd13 = new SqlCommand("SELECT * FROM sınıf", connection);
-            datareader = cmd13.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_sinif.Items.Add(datareader["id"].ToString());
-            }
-            datareader.Close();
-
-            SqlCommand cmd14 = new SqlCommand("SELECT * FROM stajturu", connection);
-            datareader = cmd14.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_stajturu.Items.Add(datareader["id"].ToString());
-            }
-            datareader.Close();
-
+            dr2.Close();
             connection.Close();
+
+            connection.Open();
+            SqlCommand cmd3 = new SqlCommand("SELECT * FROM universiteadı", connection);
+            SqlDataReader dr3;
+            dr3 = cmd3.ExecuteReader();
+            while (dr3.Read())
+            {
+                comboBox_universite.Items.Add(dr3["id"].ToString());
+            }
+            dr3.Close();
+            connection.Close();
+
+            connection.Open();
+            SqlCommand cmd4 = new SqlCommand("SELECT * FROM stajkabuldurumu", connection);
+            SqlDataReader dr4;
+            dr4 = cmd4.ExecuteReader();
+            while (dr4.Read())
+            {
+                comboBox_kabuldurumu.Items.Add(dr4["id"].ToString());
+            }
+            dr4.Close();
+            connection.Close();
+
+            connection.Open();
+            SqlCommand cmd5 = new SqlCommand("SELECT * FROM stajdonemi", connection);
+            SqlDataReader dr5;
+            dr5 = cmd5.ExecuteReader();
+            while (dr5.Read())
+            {
+                comboBox_stajdonemi.Items.Add(dr5["id"].ToString());
+            }
+            dr5.Close();
+            connection.Close();
+
+            connection.Open();
+            SqlCommand cmd6 = new SqlCommand("SELECT * FROM mentöradı", connection);
+            SqlDataReader dr6;
+            dr6 = cmd6.ExecuteReader();
+            while (dr6.Read())
+            {
+                comboBox_mentor.Items.Add(dr6["id"].ToString());
+            }
+            dr6.Close();
+            connection.Close();
+
+            connection.Open();
+            SqlCommand cmd7 = new SqlCommand("SELECT * FROM aracplaka", connection);
+            SqlDataReader dr7;
+            dr7 = cmd7.ExecuteReader();
+            while (dr7.Read())
+            {
+                comboBox_aracplaka.Items.Add(dr7["id"].ToString());
+            }
+            dr7.Close();
+            connection.Close();
+
+            connection.Open();
+            SqlCommand cmd8 = new SqlCommand("SELECT * FROM basvuruturu", connection);
+            SqlDataReader dr8;
+            dr8= cmd8.ExecuteReader();
+            while (dr8.Read())
+            {
+                comboBox_basvuruturu.Items.Add(dr8["id"].ToString());
+            }
+            dr8.Close();
+            connection.Close();
+
+            //connection.Open();
+            //SqlCommand cmd9 = new SqlCommand("SELECT * FROM egitimdurumu", connection);
+            //SqlDataReader dr9;
+            //dr9 = cmd9.ExecuteReader();
+            //while (dr9.Read())
+            //{
+            //    comboBox_egitimdurumu.Items.Add(dr9["id"].ToString());
+            //}
+            //dr9.Close();
+            //connection.Close();
+
+            connection.Open();
+            SqlCommand cmd12 = new SqlCommand("SELECT * FROM bolumadı", connection);
+            SqlDataReader dr12;
+            dr12 = cmd12.ExecuteReader();
+            while (dr12.Read())
+            {
+                comboBox_bolumadı.Items.Add(dr12["id"].ToString());
+            }
+            dr12.Close();
+            connection.Close();
+
+            connection.Open();
+            SqlCommand cmd13 = new SqlCommand("SELECT * FROM sınıf", connection);
+            SqlDataReader dr13;
+            dr13 = cmd13.ExecuteReader();
+            while (dr13.Read())
+            {
+                comboBox_sinif.Items.Add(dr13["id"].ToString());
+            }
+            dr13.Close();
+            connection.Close();
+
+            //connection.Open();
+            //SqlCommand cmd14 = new SqlCommand("SELECT * FROM stajturu", connection);
+            //SqlDataReader dr14;
+            //dr14 = cmd14.ExecuteReader();
+            //while (dr14.Read())
+            //{
+            //    comboBox_stajturu.Items.Add(dr14["id"].ToString());
+            //}
+            //dr14.Close();
+            //connection.Close();
+
             #endregion
         }
 
-       
+
 
         #region STAJ İÇERİĞİ EKLEME İŞLEMLERİ
 
@@ -692,24 +721,6 @@ namespace InternFollowProgramming
                 command.Parameters.AddWithValue("@universite", comboBox_universite.Text);
                 command.Parameters.AddWithValue("@resim", label_dosyayolu.Text);
 
-                //if (checkBox_image.Checked==true)
-                //{
-                //    byte[] resim = null;
-                //    FileStream fileStream = new FileStream(yol, FileMode.Open, FileAccess.Read);
-                //    BinaryReader binaryReader = new BinaryReader(fileStream);
-                //    resim = binaryReader.ReadBytes((int)fileStream.Length);
-                //    command.Parameters.AddWithValue("@resim", resim);
-                //}
-                //else
-                //{
-                //    byte[] resim = null;
-                //    yol = pictureBox_stajyer_resim.ImageLocation;
-                //    FileStream fileStream = new FileStream(yol, FileMode.Open, FileAccess.Read);
-                //    BinaryReader binaryReader = new BinaryReader(fileStream);
-                //    resim = binaryReader.ReadBytes((int)fileStream.Length);
-                //    command.Parameters.AddWithValue("@resim", resim);
-                //}
-
                 command.ExecuteNonQuery();
                 connection.Close();
 
@@ -938,13 +949,6 @@ namespace InternFollowProgramming
         //DOSYA YÜKLEME BUTONU GÜNCEL!!
         private void pictureBox_fileupdate_Click(object sender, EventArgs e)
         {
-
-
-            //Directory.CreateDirectory("C:Users\\Win\\Desktop\\AKE\\document\\" + textBox_tc.Text);
-            //string dosyaAdi = Path.GetFileName(textBox_dosya.Text);
-            //File.Copy(@"" + textBox_dosya.Text, @"" + @"C:Users\\Win\\Desktop\\AKE\\document\\" + textBox_tc.Text + "\\" + dosyaAdi);
-            //MessageBox.Show("Başarılı olarak kaydedildi." + textBox_tc.Text);
-
             Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text);
             string dosyaAdi = Path.GetFileName(textBox_dosya.Text);
             File.Move(@"" + textBox_dosya.Text, @"" + @"O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "\\" + dosyaAdi);
@@ -981,36 +985,36 @@ namespace InternFollowProgramming
             command.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
 
             dataadapter = new SqlDataAdapter(command);
-            datareader = command.ExecuteReader();
-            if (datareader.Read())
+            SqlDataReader drstajyer = command.ExecuteReader();
+            if (drstajyer.Read())
                 {
-                    textBox_tc.Text = datareader["tc_kimlikno"].ToString();   //Datareader ile okunan müşteri tc_kimlino ile isim değişkenine atadım.       
-                    textBox_adsoyad.Text = datareader["adı_soyadı"].ToString();
-                    textBox_baba.Text = datareader["baba_adı"].ToString();
-                    textBox_anne.Text = datareader["anne_adı"].ToString();
-                    textBox_dyeri.Text = datareader["dogum_yeri"].ToString();
-                    dateTimePicker_dtarih.Text = datareader["dogum_tarihi"].ToString();
-                    textBox_uyrugu.Text = datareader["uyrugu"].ToString();
-                    textBox_website.Text = datareader["web_site"].ToString();
-                    comboBox_kangrubu.Text = datareader["kan_grubu"].ToString();
-                    comboBox_cinsiyet.Text = datareader["cinsiyet"].ToString();
-                    textBox_evtel.Text = datareader["ev_telefonu"].ToString();
-                    textBox_ceptel.Text = datareader["cep_telefonu"].ToString();
-                    textBox_adres.Text = datareader["ikametgah"].ToString();
-                    textBox_eposta.Text = datareader["e_posta"].ToString();
-                    textBox_boy.Text = datareader["boy"].ToString();
-                    textBox_agırlık.Text = datareader["agırlık"].ToString();
-                    textBox_ai_adsoyad.Text = datareader["acil_adsoyad"].ToString();
-                    textBox_ai_adres.Text = datareader["acil_adres"].ToString();
-                    textBox_ai_akrabalık.Text = datareader["acil_yakınlıgı"].ToString();
-                    textBox_ai_eposta.Text = datareader["acil_eposta"].ToString();
-                    textBox_ai_telefon.Text = datareader["acil_telefon"].ToString();
-                    comboBox_ortaokul.Text = datareader["ortaokul_adı"].ToString();
-                    comboBox_lise.Text = datareader["lise_adı"].ToString();
-                    comboBox_universite.Text = datareader["universite_adı"].ToString();
-                    label_dosyayolu.Text = datareader["resim"].ToString();
+                    textBox_tc.Text = drstajyer["tc_kimlikno"].ToString();   //Datareader ile okunan müşteri tc_kimlino ile isim değişkenine atadım.       
+                    textBox_adsoyad.Text = drstajyer["adı_soyadı"].ToString();
+                    textBox_baba.Text = drstajyer["baba_adı"].ToString();
+                    textBox_anne.Text = drstajyer["anne_adı"].ToString();
+                    textBox_dyeri.Text = drstajyer["dogum_yeri"].ToString();
+                    dateTimePicker_dtarih.Text = drstajyer["dogum_tarihi"].ToString();
+                    textBox_uyrugu.Text = drstajyer["uyrugu"].ToString();
+                    textBox_website.Text = drstajyer["web_site"].ToString();
+                    comboBox_kangrubu.Text = drstajyer["kan_grubu"].ToString();
+                    comboBox_cinsiyet.Text = drstajyer["cinsiyet"].ToString();
+                    textBox_evtel.Text = drstajyer["ev_telefonu"].ToString();
+                    textBox_ceptel.Text = drstajyer["cep_telefonu"].ToString();
+                    textBox_adres.Text = drstajyer["ikametgah"].ToString();
+                    textBox_eposta.Text = drstajyer["e_posta"].ToString();
+                    textBox_boy.Text = drstajyer["boy"].ToString();
+                    textBox_agırlık.Text = drstajyer["agırlık"].ToString();
+                    textBox_ai_adsoyad.Text = drstajyer["acil_adsoyad"].ToString();
+                    textBox_ai_adres.Text = drstajyer["acil_adres"].ToString();
+                    textBox_ai_akrabalık.Text = drstajyer["acil_yakınlıgı"].ToString();
+                    textBox_ai_eposta.Text = drstajyer["acil_eposta"].ToString();
+                    textBox_ai_telefon.Text = drstajyer["acil_telefon"].ToString();
+                    comboBox_ortaokul.Text = drstajyer["ortaokul_adı"].ToString();
+                    comboBox_lise.Text = drstajyer["lise_adı"].ToString();
+                    comboBox_universite.Text = drstajyer["universite_adı"].ToString();
+                    label_dosyayolu.Text = drstajyer["resim"].ToString();
                     pictureBox_stajyer_resim.ImageLocation = label_dosyayolu.Text;
-                    //byte[] resim = (byte[])(datareader["resim"]);
+                    //byte[] resim = (byte[])(drstajyer["resim"]);
 
                     //if (resim == null)
                     //    pictureBox_stajyer_resim.Image = null;
@@ -1026,18 +1030,19 @@ namespace InternFollowProgramming
             {
                 MessageBox.Show("Kayıtlı Stajyer Bulunamadı");
             }
+            drstajyer.Close();
             #endregion
-            datareader.Close();
+
             #region COMBOBOX'IN İÇİNE STAJ BİLGİLERİNİ ÇEK
             string staj = "SELECT staj_turu FROM stajbilgileri where tc_kimlikno=@tc_kimlikno";
             cmd = new SqlCommand(staj, connection);
             cmd.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
+            datareader = cmd.ExecuteReader();
+            while (datareader.Read())
             {
-                comboBox_staj.Items.Add(dr["staj_turu"]);
+                comboBox_staj.Items.Add(datareader["staj_turu"]);
             }
-            dr.Close();
+            datareader.Close();
             connection.Close();
             #endregion
 
@@ -1063,21 +1068,21 @@ namespace InternFollowProgramming
             command.Parameters.AddWithValue("@staj_turu", comboBox_staj.Text);
             connection.Open();
             dataadapter = new SqlDataAdapter(command);
-            datareader = command.ExecuteReader();
-            while (datareader.Read())
+            SqlDataReader stajkodu = command.ExecuteReader();
+            while (stajkodu.Read())
             {
 
-                label_kod.Text = datareader["staj_id"].ToString();
+                label_kod.Text = stajkodu["staj_id"].ToString();
 
             }
-            datareader.Close();
+            stajkodu.Close();
             connection.Close();
         }
 
         //STAJ BUL BUTONU GÜNCEL
         private void pictureBox_staj_Click(object sender, EventArgs e)
         {
-
+            textBox_stajyapmadurumu.Visible = true;
             listBox_dosya.Enabled = false;//Form açıldığında iban textBoxı pasif olsun.
             string staj = "SELECT staj_id, tc_kimlikno,egitim_durumu,okul_adı,bolum_adı,sınıf,okul_no,sehir,okul_puanı,okul_acıklama,banka_adı,şube_kodu,hesap_no,iban_no,staj_kabuldurumu,staj_donem,baslangıc_tarihi,bitis_tarihi,staj_yılı,staj_yapmadurumu,staj_suresi,servis_imkanı,arac_plaka,mentör,sigorta_evrak,basvuru_turu,referans_adı,referans_adres,referans_telefon,referans_eposta,staj_acıklama,staj_turu,staj_icerigi, staj_kalan_sure FROM stajbilgileri where tc_kimlikno=@tc_kimlikno and staj_id=@staj_id";
             command = new SqlCommand(staj, connection);
@@ -1087,50 +1092,49 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-            SqlDataReader dr;
+           
             dataadapter = new SqlDataAdapter(command);
-            dr = command.ExecuteReader();
-            while (dr.Read()== true)
+            SqlDataReader drstaj= command.ExecuteReader();
+            while (drstaj.Read()== true)
             {
-                label_kod.Text = dr["staj_id"].ToString();
-                textBox_tc.Text = dr["tc_kimlikno"].ToString();
-                comboBox_kabuldurumu.Text = dr["staj_kabuldurumu"].ToString();
-                comboBox_stajdonemi.Text = dr["staj_donem"].ToString();
-                dateTimePicker_baslangıc.Text = dr["baslangıc_tarihi"].ToString();
-                dateTimePicker_bitis.Text = dr["bitis_tarihi"].ToString();
-                textBox_stajyapmadurumu.Text = dr["staj_yapmadurumu"].ToString();
-                textBox_stajsuresi.Text = dr["staj_suresi"].ToString();
-                comboBox_servis.Text = dr["servis_imkanı"].ToString();
-                comboBox_aracplaka.Text = dr["arac_plaka"].ToString();
-                comboBox_mentor.Text = dr["mentör"].ToString();
-                comboBox_sigorta.Text = dr["sigorta_evrak"].ToString();
-                comboBox_stajyili.Text = dr["staj_yılı"].ToString();
-                comboBox_basvuruturu.Text = dr["basvuru_turu"].ToString();
-                textBox_r_ad.Text = dr["referans_adı"].ToString();
-                textBox_r_adres.Text = dr["referans_adres"].ToString();
-                textBox_r_eposta.Text = dr["referans_eposta"].ToString();
-                textBox_r_telefon.Text = dr["referans_telefon"].ToString();
-                textBox_staj_aciklama.Text = dr["staj_acıklama"].ToString();
-                comboBox_egitimdurumu.Text = dr["egitim_durumu"].ToString();
-                comboBox_okuladı.Text = dr["okul_adı"].ToString();
-                comboBox_bolumadı.Text = dr["bolum_adı"].ToString();
-                comboBox_sinif.Text = dr["sınıf"].ToString();
-                textBox_okulno.Text = dr["okul_no"].ToString();
-                comboBox_sehir.Text = dr["sehir"].ToString();
-                textBox_okulpuan.Text = dr["okul_puanı"].ToString();
-                textBox_okulacıklama.Text = dr["okul_acıklama"].ToString();
-                textBox_bankaadı.Text = dr["banka_adı"].ToString();
-                textBox_subekodu.Text = dr["şube_kodu"].ToString();
-                textBox_hesapno.Text = dr["hesap_no"].ToString();
-                textBox_iban.Text = dr["iban_no"].ToString();
-                label_kalansure.Text = dr["staj_kalan_sure"].ToString();
-                comboBox_stajturu.Text = dr["staj_turu"].ToString();
-                
-               
+                label_kod.Text = drstaj["staj_id"].ToString();
+                textBox_tc.Text = drstaj["tc_kimlikno"].ToString();
+                comboBox_kabuldurumu.Text = drstaj["staj_kabuldurumu"].ToString();
+                comboBox_stajdonemi.Text = drstaj["staj_donem"].ToString();
+                dateTimePicker_baslangıc.Text = drstaj["baslangıc_tarihi"].ToString();
+                dateTimePicker_bitis.Text = drstaj["bitis_tarihi"].ToString();
+                textBox_stajyapmadurumu.Text = drstaj["staj_yapmadurumu"].ToString();
+                textBox_stajsuresi.Text = drstaj["staj_suresi"].ToString();
+                comboBox_servis.Text = drstaj["servis_imkanı"].ToString();
+                comboBox_aracplaka.Text = drstaj["arac_plaka"].ToString();
+                comboBox_mentor.Text = drstaj["mentör"].ToString();
+                comboBox_sigorta.Text = drstaj["sigorta_evrak"].ToString();
+                comboBox_stajyili.Text = drstaj["staj_yılı"].ToString();
+                comboBox_basvuruturu.Text = drstaj["basvuru_turu"].ToString();
+                textBox_r_ad.Text = drstaj["referans_adı"].ToString();
+                textBox_r_adres.Text = drstaj["referans_adres"].ToString();
+                textBox_r_eposta.Text = drstaj["referans_eposta"].ToString();
+                textBox_r_telefon.Text = drstaj["referans_telefon"].ToString();
+                textBox_staj_aciklama.Text = drstaj["staj_acıklama"].ToString();
+                comboBox_egitimdurumu.Text = drstaj["egitim_durumu"].ToString();
+                comboBox_okuladı.Text = drstaj["okul_adı"].ToString();
+                comboBox_bolumadı.Text = drstaj["bolum_adı"].ToString();
+                comboBox_sinif.Text = drstaj["sınıf"].ToString();
+                textBox_okulno.Text = drstaj["okul_no"].ToString();
+                comboBox_sehir.Text = drstaj["sehir"].ToString();
+                textBox_okulpuan.Text = drstaj["okul_puanı"].ToString();
+                textBox_okulacıklama.Text = drstaj["okul_acıklama"].ToString();
+                textBox_bankaadı.Text = drstaj["banka_adı"].ToString();
+                textBox_subekodu.Text = drstaj["şube_kodu"].ToString();
+                textBox_hesapno.Text = drstaj["hesap_no"].ToString();
+                textBox_iban.Text = drstaj["iban_no"].ToString();
+                label_kalansure.Text = drstaj["staj_kalan_sure"].ToString();
+                comboBox_stajturu.Text = drstaj["staj_turu"].ToString();
             }
-            dr.Close();
+            drstaj.Close();
             connection.Close();
-            tabControl_bilgigiriş.Show();
+
+            tabControl_bilgigiriş.SelectedTab = tabPage_staj;
             #region DÖKÜMANLARI LİSTBOX'A AKTAR
             //string list = "SELECT * From [file] where tc_kimlikno=@tc_kimlikno";
             //cmd = new SqlCommand(list, connection);
@@ -1139,7 +1143,7 @@ namespace InternFollowProgramming
             //datareader = cmd.ExecuteReader();
             //while (datareader.Read())
             //{
-            //    listBox_dosya.Items.Add(dr["dosya_adı"]);
+            //    listBox_dosya.Items.Add(drstaj["dosya_adı"]);
             //}
             //dr.Close();
             #endregion
@@ -1277,20 +1281,18 @@ namespace InternFollowProgramming
 
         private void label45_Click(object sender, EventArgs e)
         {
-            tabControl_bilgigiriş.SelectedTab = tabPage_okul; //Pages üzerindende aynı şekildegeçişleri sağlayabiliriz. Alternatif gösterim
+            tabControl_bilgigiriş.SelectedTab = tabPage_staj; //Pages üzerindende aynı şekildegeçişleri sağlayabiliriz. Alternatif gösterim
         }
 
-        private void label46_Click(object sender, EventArgs e)
+        private void label54_Click(object sender, EventArgs e)
         {
             tabControl_bilgigiriş.SelectedIndex = 3;
         }
 
-
-
-
-
-
-
+        private void label46_Click(object sender, EventArgs e)
+        {
+            tabControl_bilgigiriş.SelectedIndex = 4;
+        }
 
         #endregion
 
@@ -1573,35 +1575,86 @@ namespace InternFollowProgramming
 
         private void comboBox_egitimdurumu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (connection.State == ConnectionState.Closed)
-            {
-                connection.Open();
-            }
+           
             if (comboBox_egitimdurumu.Text == "Lise")
             {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 comboBox_okuladı.Items.Clear();
                 SqlCommand cmd11 = new SqlCommand("SELECT id FROM liseadı", connection);
                 dataadapter = new SqlDataAdapter(cmd11);
-                datareader = cmd11.ExecuteReader();
-                while (datareader.Read())
+                SqlDataReader dr11 = cmd11.ExecuteReader();
+                while (dr11.Read())
                 {
-                    comboBox_okuladı.Items.Add(datareader["id"].ToString());
+                    comboBox_okuladı.Items.Add(dr11["id"].ToString());
                 }
-                datareader.Close();
+                dr11.Close();
+                connection.Close();
             }
             else if (comboBox_egitimdurumu.Text != "Lise")
             {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 comboBox_okuladı.Items.Clear();
                 SqlCommand cmd10 = new SqlCommand("SELECT id FROM universiteadı", connection);
-                SqlDataReader dr;
-                dataadapter= new SqlDataAdapter(cmd10);
-                dr = cmd10.ExecuteReader();
-                while (dr.Read())
+                dataadapter = new SqlDataAdapter(cmd10);
+                SqlDataReader dr10 = cmd10.ExecuteReader();
+                while (dr10.Read())
                 {
-                    comboBox_okuladı.Items.Add(dr["id"].ToString());
+                    comboBox_okuladı.Items.Add(dr10["id"].ToString());
                 }
-                dr.Close();
+                dr10.Close();
+                connection.Close();
             }
+
+        }
+
+        private void comboBox_egitimdurumu_Click(object sender, EventArgs e)
+        {
+            comboBox_egitimdurumu.Items.Clear();
+            connection.Open();
+            SqlCommand cmd9 = new SqlCommand("SELECT * FROM egitimdurumu", connection);
+            SqlDataReader dr9;
+            dr9 = cmd9.ExecuteReader();
+            while (dr9.Read())
+            {
+                comboBox_egitimdurumu.Items.Add(dr9["id"].ToString());
+            }
+            dr9.Close();
+            connection.Close();
+        }
+
+        private void comboBox_stajturu_Click(object sender, EventArgs e)
+        {
+            comboBox_stajturu.Items.Clear();
+            connection.Open();
+            SqlCommand cmd14 = new SqlCommand("SELECT * FROM stajturu", connection);
+            SqlDataReader dr14;
+            dr14 = cmd14.ExecuteReader();
+            while (dr14.Read())
+            {
+                comboBox_stajturu.Items.Add(dr14["id"].ToString());
+            }
+            dr14.Close();
+            connection.Close();
+        }
+
+        private void comboBox_sehir_Click(object sender, EventArgs e)
+        {
+            comboBox_sehir.Items.Clear();
+            connection.Open();
+            SqlCommand cmd15 = new SqlCommand("SELECT isim FROM iller", connection);
+            SqlDataReader dr15;
+            dr15 = cmd15.ExecuteReader();
+            while (dr15.Read())
+            {
+                comboBox_sehir.Items.Add(dr15["isim"].ToString());
+            }
+            dr15.Close();
             connection.Close();
         }
     }

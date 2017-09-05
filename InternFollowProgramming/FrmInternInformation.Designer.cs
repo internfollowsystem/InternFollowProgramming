@@ -511,6 +511,7 @@
             this.label54.Size = new System.Drawing.Size(71, 25);
             this.label54.TabIndex = 45;
             this.label54.Text = "İleri >>";
+            this.label54.Click += new System.EventHandler(this.label54_Click);
             // 
             // button_basvuruturu
             // 
@@ -909,6 +910,7 @@
             this.comboBox_egitimdurumu.Size = new System.Drawing.Size(293, 23);
             this.comboBox_egitimdurumu.TabIndex = 41;
             this.comboBox_egitimdurumu.SelectedIndexChanged += new System.EventHandler(this.comboBox_egitimdurumu_SelectedIndexChanged);
+            this.comboBox_egitimdurumu.Click += new System.EventHandler(this.comboBox_egitimdurumu_Click);
             // 
             // label_okuladı
             // 
@@ -1095,6 +1097,7 @@
             this.comboBox_sehir.Name = "comboBox_sehir";
             this.comboBox_sehir.Size = new System.Drawing.Size(121, 23);
             this.comboBox_sehir.TabIndex = 9;
+            this.comboBox_sehir.Click += new System.EventHandler(this.comboBox_sehir_Click);
             // 
             // comboBox_okuladı
             // 
@@ -1867,6 +1870,7 @@
             this.comboBox_stajturu.Size = new System.Drawing.Size(161, 23);
             this.comboBox_stajturu.TabIndex = 41;
             this.comboBox_stajturu.SelectedIndexChanged += new System.EventHandler(this.comboBox_stajturu_SelectedIndexChanged);
+            this.comboBox_stajturu.Click += new System.EventHandler(this.comboBox_stajturu_Click);
             // 
             // label_stajturu
             // 
