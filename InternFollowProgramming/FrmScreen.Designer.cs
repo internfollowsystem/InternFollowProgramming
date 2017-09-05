@@ -39,17 +39,31 @@
             this.planlamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yoklamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sTAJYERGÖSTERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mailGönderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.silToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stajyerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_ust = new System.Windows.Forms.Panel();
+            this.pictureBox_refresh = new System.Windows.Forms.PictureBox();
             this.label_suanstajyapanlar = new System.Windows.Forms.Label();
             this.label_stajyer = new System.Windows.Forms.Label();
             this.label_suanstajyer = new System.Windows.Forms.Label();
             this.label_genel = new System.Windows.Forms.Label();
+            this.pictureBox_suanstajer = new System.Windows.Forms.PictureBox();
+            this.pictureBox_genel = new System.Windows.Forms.PictureBox();
+            this.pictureBox_yazdır = new System.Windows.Forms.PictureBox();
+            this.pictureBox_excel = new System.Windows.Forms.PictureBox();
             this.label_lise = new System.Windows.Forms.Label();
             this.label_onlisans = new System.Windows.Forms.Label();
             this.label_lisans = new System.Windows.Forms.Label();
             this.labellise = new System.Windows.Forms.Label();
             this.labelonlisans = new System.Windows.Forms.Label();
             this.labellisans = new System.Windows.Forms.Label();
+            this.pictureBox_lise = new System.Windows.Forms.PictureBox();
+            this.pictureBox_onlisans = new System.Windows.Forms.PictureBox();
+            this.pictureBox_lisans = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_alt = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -69,28 +83,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.label_aranan_stajyer_sayısı = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.silToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.güncelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sTAJYERGÖSTERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mailGönderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox_refresh = new System.Windows.Forms.PictureBox();
-            this.pictureBox_suanstajer = new System.Windows.Forms.PictureBox();
-            this.pictureBox_genel = new System.Windows.Forms.PictureBox();
-            this.pictureBox_yazdır = new System.Windows.Forms.PictureBox();
-            this.pictureBox_excel = new System.Windows.Forms.PictureBox();
-            this.pictureBox_lise = new System.Windows.Forms.PictureBox();
-            this.pictureBox_onlisans = new System.Windows.Forms.PictureBox();
-            this.pictureBox_lisans = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.stajyerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip_frmscreen.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel_ust.SuspendLayout();
-            this.panel_alt.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_refresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_suanstajer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_genel)).BeginInit();
@@ -100,6 +97,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_onlisans)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_lisans)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel_alt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip_frmscreen
@@ -186,10 +186,48 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sTAJYERGÖSTERToolStripMenuItem,
             this.mailGönderToolStripMenuItem,
-            this.güncelleToolStripMenuItem,
             this.silToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
+            // 
+            // sTAJYERGÖSTERToolStripMenuItem
+            // 
+            this.sTAJYERGÖSTERToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.STAJYER_GÖSTER;
+            this.sTAJYERGÖSTERToolStripMenuItem.Name = "sTAJYERGÖSTERToolStripMenuItem";
+            this.sTAJYERGÖSTERToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sTAJYERGÖSTERToolStripMenuItem.Text = "Stajyer Göster";
+            // 
+            // mailGönderToolStripMenuItem
+            // 
+            this.mailGönderToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.mailgönder;
+            this.mailGönderToolStripMenuItem.Name = "mailGönderToolStripMenuItem";
+            this.mailGönderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mailGönderToolStripMenuItem.Text = "Mail Gönder";
+            this.mailGönderToolStripMenuItem.Click += new System.EventHandler(this.mailGönderToolStripMenuItem_Click);
+            // 
+            // silToolStripMenuItem
+            // 
+            this.silToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stajyerToolStripMenuItem,
+            this.stajToolStripMenuItem});
+            this.silToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
+            this.silToolStripMenuItem.Name = "silToolStripMenuItem";
+            this.silToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.silToolStripMenuItem.Text = "Sil";
+            // 
+            // stajyerToolStripMenuItem
+            // 
+            this.stajyerToolStripMenuItem.Name = "stajyerToolStripMenuItem";
+            this.stajyerToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.stajyerToolStripMenuItem.Text = "Stajyer";
+            this.stajyerToolStripMenuItem.Click += new System.EventHandler(this.stajyerToolStripMenuItem_Click);
+            // 
+            // stajToolStripMenuItem
+            // 
+            this.stajToolStripMenuItem.Name = "stajToolStripMenuItem";
+            this.stajToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.stajToolStripMenuItem.Text = "Staj";
+            this.stajToolStripMenuItem.Click += new System.EventHandler(this.stajToolStripMenuItem_Click);
             // 
             // panel_ust
             // 
@@ -219,6 +257,20 @@
             this.panel_ust.Name = "panel_ust";
             this.panel_ust.Size = new System.Drawing.Size(1350, 53);
             this.panel_ust.TabIndex = 6;
+            // 
+            // pictureBox_refresh
+            // 
+            this.pictureBox_refresh.Image = global::InternFollowProgramming.Properties.Resources.yenile1;
+            this.pictureBox_refresh.Location = new System.Drawing.Point(1153, 12);
+            this.pictureBox_refresh.Name = "pictureBox_refresh";
+            this.pictureBox_refresh.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_refresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_refresh.TabIndex = 18;
+            this.pictureBox_refresh.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_refresh, "YENİLE");
+            this.pictureBox_refresh.Click += new System.EventHandler(this.pictureBox_refresh_Click);
+            this.pictureBox_refresh.MouseLeave += new System.EventHandler(this.pictureBox_refresh_MouseLeave);
+            this.pictureBox_refresh.MouseHover += new System.EventHandler(this.pictureBox_refresh_MouseHover);
             // 
             // label_suanstajyapanlar
             // 
@@ -269,6 +321,60 @@
             this.label_genel.Click += new System.EventHandler(this.label_genel_Click);
             this.label_genel.MouseLeave += new System.EventHandler(this.label_genel_MouseLeave);
             this.label_genel.MouseHover += new System.EventHandler(this.label_genel_MouseHover);
+            // 
+            // pictureBox_suanstajer
+            // 
+            this.pictureBox_suanstajer.Image = global::InternFollowProgramming.Properties.Resources.yeni_staj_yapıyor2;
+            this.pictureBox_suanstajer.Location = new System.Drawing.Point(997, 12);
+            this.pictureBox_suanstajer.Name = "pictureBox_suanstajer";
+            this.pictureBox_suanstajer.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_suanstajer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_suanstajer.TabIndex = 13;
+            this.pictureBox_suanstajer.TabStop = false;
+            this.pictureBox_suanstajer.Click += new System.EventHandler(this.pictureBox_suanstajer_Click);
+            this.pictureBox_suanstajer.MouseLeave += new System.EventHandler(this.pictureBox_suanstajer_MouseLeave);
+            this.pictureBox_suanstajer.MouseHover += new System.EventHandler(this.pictureBox_suanstajer_MouseHover);
+            // 
+            // pictureBox_genel
+            // 
+            this.pictureBox_genel.Image = global::InternFollowProgramming.Properties.Resources.Yeni_genel_stajyer1;
+            this.pictureBox_genel.Location = new System.Drawing.Point(325, 12);
+            this.pictureBox_genel.Name = "pictureBox_genel";
+            this.pictureBox_genel.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_genel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_genel.TabIndex = 12;
+            this.pictureBox_genel.TabStop = false;
+            this.pictureBox_genel.Click += new System.EventHandler(this.pictureBox_genel_Click);
+            this.pictureBox_genel.MouseLeave += new System.EventHandler(this.pictureBox_genel_MouseLeave);
+            this.pictureBox_genel.MouseHover += new System.EventHandler(this.pictureBox_genel_MouseHover);
+            // 
+            // pictureBox_yazdır
+            // 
+            this.pictureBox_yazdır.Image = global::InternFollowProgramming.Properties.Resources.yazdır;
+            this.pictureBox_yazdır.Location = new System.Drawing.Point(1206, 12);
+            this.pictureBox_yazdır.Name = "pictureBox_yazdır";
+            this.pictureBox_yazdır.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_yazdır.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_yazdır.TabIndex = 11;
+            this.pictureBox_yazdır.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_yazdır, "YAZDIR");
+            this.pictureBox_yazdır.Click += new System.EventHandler(this.pictureBox_yazdır_Click);
+            this.pictureBox_yazdır.MouseLeave += new System.EventHandler(this.pictureBox_yazdır_MouseLeave);
+            this.pictureBox_yazdır.MouseHover += new System.EventHandler(this.pictureBox_yazdır_MouseHover);
+            // 
+            // pictureBox_excel
+            // 
+            this.pictureBox_excel.Image = global::InternFollowProgramming.Properties.Resources.excelkaydet;
+            this.pictureBox_excel.Location = new System.Drawing.Point(1259, 12);
+            this.pictureBox_excel.Name = "pictureBox_excel";
+            this.pictureBox_excel.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_excel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_excel.TabIndex = 10;
+            this.pictureBox_excel.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_excel, "EXCELE KAYDET");
+            this.pictureBox_excel.Click += new System.EventHandler(this.pictureBox_excel_Click);
+            this.pictureBox_excel.MouseLeave += new System.EventHandler(this.pictureBox_excel_MouseLeave);
+            this.pictureBox_excel.MouseHover += new System.EventHandler(this.pictureBox_excel_MouseHover);
             // 
             // label_lise
             // 
@@ -347,6 +453,56 @@
             this.labellisans.Click += new System.EventHandler(this.label1_Click);
             this.labellisans.MouseLeave += new System.EventHandler(this.labellisans_MouseLeave);
             this.labellisans.MouseHover += new System.EventHandler(this.labellisans_MouseHover);
+            // 
+            // pictureBox_lise
+            // 
+            this.pictureBox_lise.Image = global::InternFollowProgramming.Properties.Resources.yeni_lise_stajyer1;
+            this.pictureBox_lise.Location = new System.Drawing.Point(829, 12);
+            this.pictureBox_lise.Name = "pictureBox_lise";
+            this.pictureBox_lise.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_lise.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_lise.TabIndex = 3;
+            this.pictureBox_lise.TabStop = false;
+            this.pictureBox_lise.Click += new System.EventHandler(this.pictureBox_lise_Click);
+            this.pictureBox_lise.MouseLeave += new System.EventHandler(this.pictureBox_lise_MouseLeave);
+            this.pictureBox_lise.MouseHover += new System.EventHandler(this.pictureBox_lise_MouseHover);
+            // 
+            // pictureBox_onlisans
+            // 
+            this.pictureBox_onlisans.Image = global::InternFollowProgramming.Properties.Resources.yeni_önlisans_stajyer1;
+            this.pictureBox_onlisans.Location = new System.Drawing.Point(661, 12);
+            this.pictureBox_onlisans.Name = "pictureBox_onlisans";
+            this.pictureBox_onlisans.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_onlisans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_onlisans.TabIndex = 2;
+            this.pictureBox_onlisans.TabStop = false;
+            this.pictureBox_onlisans.Click += new System.EventHandler(this.pictureBox_onlisans_Click);
+            this.pictureBox_onlisans.MouseLeave += new System.EventHandler(this.pictureBox_onlisans_MouseLeave);
+            this.pictureBox_onlisans.MouseHover += new System.EventHandler(this.pictureBox_onlisans_MouseHover);
+            // 
+            // pictureBox_lisans
+            // 
+            this.pictureBox_lisans.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_lisans.Image = global::InternFollowProgramming.Properties.Resources.yeni_lisans_stajyer1;
+            this.pictureBox_lisans.Location = new System.Drawing.Point(493, 12);
+            this.pictureBox_lisans.Name = "pictureBox_lisans";
+            this.pictureBox_lisans.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_lisans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_lisans.TabIndex = 1;
+            this.pictureBox_lisans.TabStop = false;
+            this.pictureBox_lisans.Click += new System.EventHandler(this.pictureBox_lisans_Click);
+            this.pictureBox_lisans.MouseLeave += new System.EventHandler(this.pictureBox_lisans_MouseLeave);
+            this.pictureBox_lisans.MouseHover += new System.EventHandler(this.pictureBox_lisans_MouseHover);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::InternFollowProgramming.Properties.Resources.AKESTAJYERLOGO1;
+            this.pictureBox1.Location = new System.Drawing.Point(32, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel_alt
             // 
@@ -560,168 +716,6 @@
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
             // 
-            // silToolStripMenuItem
-            // 
-            this.silToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stajyerToolStripMenuItem,
-            this.stajToolStripMenuItem});
-            this.silToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
-            this.silToolStripMenuItem.Name = "silToolStripMenuItem";
-            this.silToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.silToolStripMenuItem.Text = "Sil";
-            // 
-            // güncelleToolStripMenuItem
-            // 
-            this.güncelleToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.edit2;
-            this.güncelleToolStripMenuItem.Name = "güncelleToolStripMenuItem";
-            this.güncelleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.güncelleToolStripMenuItem.Text = "Güncelle";
-            this.güncelleToolStripMenuItem.ToolTipText = "Sadece Stajyer Bilgisi güncellenir, Staj Bilgileri değil !";
-            this.güncelleToolStripMenuItem.Click += new System.EventHandler(this.güncelleToolStripMenuItem_Click);
-            // 
-            // sTAJYERGÖSTERToolStripMenuItem
-            // 
-            this.sTAJYERGÖSTERToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.STAJYER_GÖSTER;
-            this.sTAJYERGÖSTERToolStripMenuItem.Name = "sTAJYERGÖSTERToolStripMenuItem";
-            this.sTAJYERGÖSTERToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sTAJYERGÖSTERToolStripMenuItem.Text = "Stajyer Göster";
-            // 
-            // mailGönderToolStripMenuItem
-            // 
-            this.mailGönderToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.mailgönder;
-            this.mailGönderToolStripMenuItem.Name = "mailGönderToolStripMenuItem";
-            this.mailGönderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.mailGönderToolStripMenuItem.Text = "Mail Gönder";
-            // 
-            // pictureBox_refresh
-            // 
-            this.pictureBox_refresh.Image = global::InternFollowProgramming.Properties.Resources.yenile1;
-            this.pictureBox_refresh.Location = new System.Drawing.Point(1153, 12);
-            this.pictureBox_refresh.Name = "pictureBox_refresh";
-            this.pictureBox_refresh.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_refresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_refresh.TabIndex = 18;
-            this.pictureBox_refresh.TabStop = false;
-            this.pictureBox_refresh.Click += new System.EventHandler(this.pictureBox_refresh_Click);
-            this.pictureBox_refresh.MouseLeave += new System.EventHandler(this.pictureBox_refresh_MouseLeave);
-            this.pictureBox_refresh.MouseHover += new System.EventHandler(this.pictureBox_refresh_MouseHover);
-            // 
-            // pictureBox_suanstajer
-            // 
-            this.pictureBox_suanstajer.Image = global::InternFollowProgramming.Properties.Resources.yeni_staj_yapıyor2;
-            this.pictureBox_suanstajer.Location = new System.Drawing.Point(997, 12);
-            this.pictureBox_suanstajer.Name = "pictureBox_suanstajer";
-            this.pictureBox_suanstajer.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_suanstajer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_suanstajer.TabIndex = 13;
-            this.pictureBox_suanstajer.TabStop = false;
-            this.pictureBox_suanstajer.Click += new System.EventHandler(this.pictureBox_suanstajer_Click);
-            this.pictureBox_suanstajer.MouseLeave += new System.EventHandler(this.pictureBox_suanstajer_MouseLeave);
-            this.pictureBox_suanstajer.MouseHover += new System.EventHandler(this.pictureBox_suanstajer_MouseHover);
-            // 
-            // pictureBox_genel
-            // 
-            this.pictureBox_genel.Image = global::InternFollowProgramming.Properties.Resources.Yeni_genel_stajyer1;
-            this.pictureBox_genel.Location = new System.Drawing.Point(325, 12);
-            this.pictureBox_genel.Name = "pictureBox_genel";
-            this.pictureBox_genel.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_genel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_genel.TabIndex = 12;
-            this.pictureBox_genel.TabStop = false;
-            this.pictureBox_genel.Click += new System.EventHandler(this.pictureBox_genel_Click);
-            this.pictureBox_genel.MouseLeave += new System.EventHandler(this.pictureBox_genel_MouseLeave);
-            this.pictureBox_genel.MouseHover += new System.EventHandler(this.pictureBox_genel_MouseHover);
-            // 
-            // pictureBox_yazdır
-            // 
-            this.pictureBox_yazdır.Image = global::InternFollowProgramming.Properties.Resources.yazdır;
-            this.pictureBox_yazdır.Location = new System.Drawing.Point(1206, 12);
-            this.pictureBox_yazdır.Name = "pictureBox_yazdır";
-            this.pictureBox_yazdır.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_yazdır.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_yazdır.TabIndex = 11;
-            this.pictureBox_yazdır.TabStop = false;
-            this.pictureBox_yazdır.Click += new System.EventHandler(this.pictureBox_yazdır_Click);
-            this.pictureBox_yazdır.MouseLeave += new System.EventHandler(this.pictureBox_yazdır_MouseLeave);
-            this.pictureBox_yazdır.MouseHover += new System.EventHandler(this.pictureBox_yazdır_MouseHover);
-            // 
-            // pictureBox_excel
-            // 
-            this.pictureBox_excel.Image = global::InternFollowProgramming.Properties.Resources.excelkaydet;
-            this.pictureBox_excel.Location = new System.Drawing.Point(1259, 12);
-            this.pictureBox_excel.Name = "pictureBox_excel";
-            this.pictureBox_excel.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_excel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_excel.TabIndex = 10;
-            this.pictureBox_excel.TabStop = false;
-            this.pictureBox_excel.Click += new System.EventHandler(this.pictureBox_excel_Click);
-            this.pictureBox_excel.MouseLeave += new System.EventHandler(this.pictureBox_excel_MouseLeave);
-            this.pictureBox_excel.MouseHover += new System.EventHandler(this.pictureBox_excel_MouseHover);
-            // 
-            // pictureBox_lise
-            // 
-            this.pictureBox_lise.Image = global::InternFollowProgramming.Properties.Resources.yeni_lise_stajyer1;
-            this.pictureBox_lise.Location = new System.Drawing.Point(829, 12);
-            this.pictureBox_lise.Name = "pictureBox_lise";
-            this.pictureBox_lise.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_lise.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_lise.TabIndex = 3;
-            this.pictureBox_lise.TabStop = false;
-            this.pictureBox_lise.Click += new System.EventHandler(this.pictureBox_lise_Click);
-            this.pictureBox_lise.MouseLeave += new System.EventHandler(this.pictureBox_lise_MouseLeave);
-            this.pictureBox_lise.MouseHover += new System.EventHandler(this.pictureBox_lise_MouseHover);
-            // 
-            // pictureBox_onlisans
-            // 
-            this.pictureBox_onlisans.Image = global::InternFollowProgramming.Properties.Resources.yeni_önlisans_stajyer1;
-            this.pictureBox_onlisans.Location = new System.Drawing.Point(661, 12);
-            this.pictureBox_onlisans.Name = "pictureBox_onlisans";
-            this.pictureBox_onlisans.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_onlisans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_onlisans.TabIndex = 2;
-            this.pictureBox_onlisans.TabStop = false;
-            this.pictureBox_onlisans.Click += new System.EventHandler(this.pictureBox_onlisans_Click);
-            this.pictureBox_onlisans.MouseLeave += new System.EventHandler(this.pictureBox_onlisans_MouseLeave);
-            this.pictureBox_onlisans.MouseHover += new System.EventHandler(this.pictureBox_onlisans_MouseHover);
-            // 
-            // pictureBox_lisans
-            // 
-            this.pictureBox_lisans.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_lisans.Image = global::InternFollowProgramming.Properties.Resources.yeni_lisans_stajyer1;
-            this.pictureBox_lisans.Location = new System.Drawing.Point(493, 12);
-            this.pictureBox_lisans.Name = "pictureBox_lisans";
-            this.pictureBox_lisans.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_lisans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_lisans.TabIndex = 1;
-            this.pictureBox_lisans.TabStop = false;
-            this.pictureBox_lisans.Click += new System.EventHandler(this.pictureBox_lisans_Click);
-            this.pictureBox_lisans.MouseLeave += new System.EventHandler(this.pictureBox_lisans_MouseLeave);
-            this.pictureBox_lisans.MouseHover += new System.EventHandler(this.pictureBox_lisans_MouseHover);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::InternFollowProgramming.Properties.Resources.AKESTAJYERLOGO1;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // stajyerToolStripMenuItem
-            // 
-            this.stajyerToolStripMenuItem.Name = "stajyerToolStripMenuItem";
-            this.stajyerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.stajyerToolStripMenuItem.Text = "Stajyer";
-            this.stajyerToolStripMenuItem.Click += new System.EventHandler(this.stajyerToolStripMenuItem_Click);
-            // 
-            // stajToolStripMenuItem
-            // 
-            this.stajToolStripMenuItem.Name = "stajToolStripMenuItem";
-            this.stajToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.stajToolStripMenuItem.Text = "Staj";
-            this.stajToolStripMenuItem.Click += new System.EventHandler(this.stajToolStripMenuItem_Click);
-            // 
             // FrmScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -746,10 +740,6 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel_ust.ResumeLayout(false);
             this.panel_ust.PerformLayout();
-            this.panel_alt.ResumeLayout(false);
-            this.panel_alt.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_refresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_suanstajer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_genel)).EndInit();
@@ -759,6 +749,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_onlisans)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_lisans)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel_alt.ResumeLayout(false);
+            this.panel_alt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -791,7 +785,6 @@
         private System.Drawing.Printing.PrintDocument printDocument_frmscreen;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem silToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem güncelleToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox_suanstajer;
         private System.Windows.Forms.PictureBox pictureBox_genel;
         private System.Windows.Forms.Label label_suanstajyer;
@@ -821,5 +814,6 @@
         private System.Windows.Forms.ToolStripMenuItem mailGönderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stajyerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stajToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -98,20 +98,6 @@ namespace InternFollowProgramming
             }
         }
 
-        private void pictureBox_password_Click(object sender, EventArgs e)
-        {
-            if (pictureBox_password.Image==Properties.Resources.göster)
-            {
-                pictureBox_password.Image = Properties.Resources.gizle;
-                textBox_password.PasswordChar = '*';
-            }
-            else if (pictureBox_password.Image==Properties.Resources.gizle)
-            {
-                pictureBox_password.Image = Properties.Resources.göster;
-                textBox_password.PasswordChar = '\0';
-            }
-        }
-
         private void pictureBox_giris_MouseHover(object sender, EventArgs e)
         {
             pictureBox_giris.Image = Properties.Resources.leaveGiriş1;
@@ -120,6 +106,20 @@ namespace InternFollowProgramming
         private void pictureBox_giris_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_giris.Image = Properties.Resources.Giriş;
+        }
+
+        private void checkBox_visible_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_visible.Checked== true)
+            {
+                pictureBox_password.Image = Properties.Resources.göster;
+                textBox_password.PasswordChar = '\0';
+            }
+            else if (checkBox_visible.Checked == false)
+            {
+                pictureBox_password.Image = Properties.Resources.gizle;
+                textBox_password.PasswordChar = '*';
+            }
         }
     }
 }

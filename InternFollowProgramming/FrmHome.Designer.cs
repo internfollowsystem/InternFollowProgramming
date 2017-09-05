@@ -32,13 +32,15 @@
             this.panel_ust = new System.Windows.Forms.Panel();
             this.pictureBox_logo = new System.Windows.Forms.PictureBox();
             this.panel_alt = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox_visible = new System.Windows.Forms.CheckBox();
             this.pictureBox_password = new System.Windows.Forms.PictureBox();
             this.pictureBox_giris = new System.Windows.Forms.PictureBox();
             this.comboBox_user = new System.Windows.Forms.ComboBox();
             this.label_password = new System.Windows.Forms.Label();
             this.label2_user = new System.Windows.Forms.Label();
             this.textBox_password = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel_ust.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logo)).BeginInit();
             this.panel_alt.SuspendLayout();
@@ -63,7 +65,9 @@
             // panel_alt
             // 
             this.panel_alt.BackColor = System.Drawing.Color.Gold;
-            this.panel_alt.Controls.Add(this.checkBox1);
+            this.panel_alt.Controls.Add(this.label2);
+            this.panel_alt.Controls.Add(this.label1);
+            this.panel_alt.Controls.Add(this.checkBox_visible);
             this.panel_alt.Controls.Add(this.pictureBox_password);
             this.panel_alt.Controls.Add(this.pictureBox_giris);
             this.panel_alt.Controls.Add(this.comboBox_user);
@@ -73,12 +77,13 @@
             resources.ApplyResources(this.panel_alt, "panel_alt");
             this.panel_alt.Name = "panel_alt";
             // 
-            // checkBox1
+            // checkBox_visible
             // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.BackgroundImage = global::InternFollowProgramming.Properties.Resources.gizle;
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBox_visible, "checkBox_visible");
+            this.checkBox_visible.BackgroundImage = global::InternFollowProgramming.Properties.Resources.gizle;
+            this.checkBox_visible.Name = "checkBox_visible";
+            this.checkBox_visible.UseVisualStyleBackColor = true;
+            this.checkBox_visible.CheckedChanged += new System.EventHandler(this.checkBox_visible_CheckedChanged);
             // 
             // pictureBox_password
             // 
@@ -86,7 +91,6 @@
             resources.ApplyResources(this.pictureBox_password, "pictureBox_password");
             this.pictureBox_password.Name = "pictureBox_password";
             this.pictureBox_password.TabStop = false;
-            this.pictureBox_password.Click += new System.EventHandler(this.pictureBox_password_Click);
             // 
             // pictureBox_giris
             // 
@@ -121,6 +125,16 @@
             resources.ApplyResources(this.textBox_password, "textBox_password");
             this.textBox_password.Name = "textBox_password";
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
             // FrmHome
             // 
             resources.ApplyResources(this, "$this");
@@ -149,7 +163,9 @@
         private System.Windows.Forms.PictureBox pictureBox_logo;
         private System.Windows.Forms.PictureBox pictureBox_password;
         private System.Windows.Forms.PictureBox pictureBox_giris;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox_visible;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
 

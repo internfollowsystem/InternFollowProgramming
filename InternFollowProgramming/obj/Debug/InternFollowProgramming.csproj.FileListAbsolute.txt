@@ -73,14 +73,11 @@ C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\InternFollowP
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\AdvancedDataGridView.dll
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll
-C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\Microsoft.Data.Tools.Utilities.dll
-C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\Microsoft.SqlServer.TransactSql.ScriptDom.dll
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\AdvancedDataGridView.xml
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\fr\AdvancedDataGridView.resources.dll
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\ru\AdvancedDataGridView.resources.dll
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\bin\Debug\tr\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
-C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.csprojResolveAssemblyReference.cache
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.csproj.InternFollowProgramming.exe.config
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmHome.resources
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmInternInformation.resources
@@ -90,3 +87,5 @@ C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowP
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.csproj.CoreCompileInputs.cache
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.exe
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.pdb
+C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.ComboBoxEKLE.resources
+C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmMail.resources

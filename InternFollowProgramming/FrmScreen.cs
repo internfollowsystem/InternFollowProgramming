@@ -19,7 +19,7 @@ namespace InternFollowProgramming
     public partial class FrmScreen : Form
     {
         #region YAPILACAKLAR
-        //  1.Görsel butonlara photoshoptan yazı eklenip daha estetik ve kullanıcı odaklı arayüzü hazırlanacak.
+        //  BİTTİ1.Görsel butonlara photoshoptan yazı eklenip daha estetik ve kullanıcı odaklı arayüzü hazırlanacak.
         //  2. Güncelleme işleminde datagridview üzerindeki stajyerler güncelleniyor ama staj bilgileri güncellenmiyordu. sütun adları değiştiği için kodlarıda değişecek ve staj bilgileri tc_kimlikno üzerinden değil id üzerinden güncelleme yapacak.
         // BİTTİ 3. Raporlamada ki SQL sorgularını daha kullanıcı odaklı bir hale getirdik. tüm olasılıklar için bu kodu uygulayacağız.
         //  BİTTİ 4.StripCoolMenu'den stajbilgisi sil özelliği olsun. (Kullanıcı odaklı)
@@ -37,7 +37,6 @@ namespace InternFollowProgramming
         bool bFirstPage = false; //Used to check whether we are printing first page
         bool bNewPage = false;// Used to check whether we are printing a new page
         int iHeaderHeight = 0;
-        int iCount = 0;
         int numara;// SAĞ TUŞA TIKLAYARAK VERİ SİLME İŞLEMİNDE KULLANDIK
         #endregion
 
@@ -48,13 +47,9 @@ namespace InternFollowProgramming
         SqlConnection connection = new SqlConnection(conString);
         SqlCommand command = new SqlCommand();
         SqlDataAdapter dataadapter;
-        SqlDataReader datareader;
-
         System.Data.DataTable datatable;
-        DataSet dataset;
-        SqlCommandBuilder commandbuilder;
-
-        //SqlCommand cmd = new SqlCommand();
+        DataSet ds;
+       
         #endregion
         int kayitSayisi;
         public FrmScreen()//22 AĞUSTOS 2017 GÜNCEL !!
@@ -319,8 +314,10 @@ namespace InternFollowProgramming
         #region ÜST SEKME BUTON ÖZELLİĞİ  
         private void pictureBox_genel_Click(object sender, EventArgs e)
         {
-            command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string kayit = "SELECT * FROM stajyer";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
@@ -328,9 +325,10 @@ namespace InternFollowProgramming
             dataadapter = new SqlDataAdapter(command);
             //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
             datatable = new System.Data.DataTable();
-            dataadapter.Fill(datatable);
+            ds = new DataSet();
+            dataadapter.Fill(ds,"stajyer");
             //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
-            dataGridView.DataSource = datatable;
+            dataGridView.DataSource = ds.Tables[0];
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             dataadapter.Dispose();
             connection.Close();
@@ -344,8 +342,10 @@ namespace InternFollowProgramming
 
         private void label_genel_Click(object sender, EventArgs e)
         {
-            command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string kayit = "SELECT * FROM stajyer ";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
@@ -369,8 +369,10 @@ namespace InternFollowProgramming
 
         private void pictureBox_lisans_Click(object sender, EventArgs e)
         {
-            command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
@@ -394,8 +396,10 @@ namespace InternFollowProgramming
 
         private void label1_Click(object sender, EventArgs e)
         {
-            command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
@@ -419,8 +423,10 @@ namespace InternFollowProgramming
 
         private void pictureBox_onlisans_Click(object sender, EventArgs e)
         {
-            command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='On Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
@@ -443,8 +449,10 @@ namespace InternFollowProgramming
 
         private void label2_Click(object sender, EventArgs e)
         {
-            command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='On Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
@@ -467,8 +475,10 @@ namespace InternFollowProgramming
 
         private void pictureBox_lise_Click(object sender, EventArgs e)
         {
-            command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lise')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
@@ -492,8 +502,10 @@ namespace InternFollowProgramming
 
         private void label3_Click(object sender, EventArgs e)
         {
-            command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='Lise')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
@@ -517,8 +529,10 @@ namespace InternFollowProgramming
 
         private void pictureBox_suanstajer_Click(object sender, EventArgs e)
         {
-            command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.staj_yapmadurumu in (SELECT staj_yapmadurumu FROM stajbilgileri  where staj_yapmadurumu='STAJ YAPIYOR')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
@@ -542,8 +556,10 @@ namespace InternFollowProgramming
 
         private void label_suanstajyer_Click(object sender, EventArgs e)
         {
-            command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.staj_yapmadurumu in (SELECT staj_yapmadurumu FROM stajbilgileri where staj_yapmadurumu='STAJ YAPIYOR')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
@@ -571,144 +587,144 @@ namespace InternFollowProgramming
         private void pictureBox_lisans_MouseHover(object sender, EventArgs e)
         {
             pictureBox_lisans.Image = Properties.Resources.Slisans;
-            pictureBox_lisans.Height = 52;
-            pictureBox_lisans.Width = 52;
+            pictureBox_lisans.Height = 30;
+            pictureBox_lisans.Width = 30;
         }
 
         private void pictureBox_onlisans_MouseHover(object sender, EventArgs e)
         {
             pictureBox_onlisans.Image = Properties.Resources.Sönlisans;
-            pictureBox_onlisans.Height = 52;
-            pictureBox_onlisans.Width = 52;
+            pictureBox_onlisans.Height = 30;
+            pictureBox_onlisans.Width = 30;
 
         }
 
         private void pictureBox_lise_MouseHover(object sender, EventArgs e)
         {
             pictureBox_lise.Image = Properties.Resources.Slise;
-            pictureBox_lise.Height = 52;
-            pictureBox_lise.Width = 52;
+            pictureBox_lise.Height = 30;
+            pictureBox_lise.Width = 30;
         }
 
         private void pictureBox_lisans_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_lisans.Image = Properties.Resources.yeni_lisans_stajyer1;
-            pictureBox_lisans.Height = 42;
-            pictureBox_lisans.Width = 42;
+            pictureBox_lisans.Height = 25;
+            pictureBox_lisans.Width = 25;
         }
 
         private void pictureBox_onlisans_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_onlisans.Image = Properties.Resources.yeni_önlisans_stajyer1;
-            pictureBox_onlisans.Height = 42;
-            pictureBox_onlisans.Width = 42;
+            pictureBox_onlisans.Height = 25;
+            pictureBox_onlisans.Width = 25;
         }
 
         private void pictureBox_lise_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_lise.Image = Properties.Resources.yeni_lise_stajyer1;
-            pictureBox_lise.Height = 42;
-            pictureBox_lise.Width = 42;
+            pictureBox_lise.Height = 25;
+            pictureBox_lise.Width = 25;
         }
 
         private void pictureBox_genel_MouseHover(object sender, EventArgs e)
         {
             pictureBox_genel.Image = Properties.Resources.genel_stajer;
-            pictureBox_genel.Height = 52;
-            pictureBox_genel.Width = 52;
+            pictureBox_genel.Height = 30;
+            pictureBox_genel.Width = 30;
         }
 
         private void pictureBox_genel_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_genel.Image = Properties.Resources.Yeni_genel_stajyer1;
-            pictureBox_genel.Height = 42;
-            pictureBox_genel.Width = 42;
+            pictureBox_genel.Height = 25;
+            pictureBox_genel.Width = 25;
         }
 
 
         private void pictureBox_suanstajer_MouseHover(object sender, EventArgs e)
         {
             pictureBox_suanstajer.Image = Properties.Resources.Sstajyapıyor;
-            pictureBox_suanstajer.Height = 52;
-            pictureBox_suanstajer.Width = 52;
+            pictureBox_suanstajer.Height = 30;
+            pictureBox_suanstajer.Width = 30;
         }
 
         private void pictureBox_suanstajer_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_suanstajer.Image = Properties.Resources.yeni_staj_yapıyor2;
-            pictureBox_suanstajer.Height = 42;
-            pictureBox_suanstajer.Width = 42;
+            pictureBox_suanstajer.Height = 25;
+            pictureBox_suanstajer.Width = 25;
         }
 
 
         private void label_genel_MouseHover(object sender, EventArgs e)
         {
             pictureBox_genel.Image = Properties.Resources.genel_stajer;
-            pictureBox_genel.Height = 52;
-            pictureBox_genel.Width = 52;
+            pictureBox_genel.Height = 30;
+            pictureBox_genel.Width = 30;
         }
 
         private void label_genel_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_genel.Image = Properties.Resources.Yeni_genel_stajyer1;
-            pictureBox_genel.Height = 42;
-            pictureBox_genel.Width = 42;
+            pictureBox_genel.Height = 25;
+            pictureBox_genel.Width = 25;
         }
 
         private void labellisans_MouseHover(object sender, EventArgs e)
         {
             pictureBox_lisans.Image = Properties.Resources.Slisans;
-            pictureBox_lisans.Height = 52;
-            pictureBox_lisans.Width = 52;
+            pictureBox_lisans.Height = 30;
+            pictureBox_lisans.Width = 30;
         }
 
         private void labellisans_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_lisans.Image = Properties.Resources.yeni_lisans_stajyer1;
-            pictureBox_lisans.Height = 42;
-            pictureBox_lisans.Width = 42;
+            pictureBox_lisans.Height = 25;
+            pictureBox_lisans.Width = 25;
         }
 
         private void labelonlisans_MouseHover(object sender, EventArgs e)
         {
             pictureBox_onlisans.Image = Properties.Resources.Sönlisans;
-            pictureBox_onlisans.Height = 52;
-            pictureBox_onlisans.Width = 52;
+            pictureBox_onlisans.Height = 30;
+            pictureBox_onlisans.Width = 30;
         }
 
         private void labelonlisans_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_onlisans.Image = Properties.Resources.yeni_önlisans_stajyer1;
-            pictureBox_onlisans.Height = 42;
-            pictureBox_onlisans.Width = 42;
+            pictureBox_onlisans.Height = 25;
+            pictureBox_onlisans.Width = 25;
         }
 
         private void labellise_MouseHover(object sender, EventArgs e)
         {
             pictureBox_lise.Image = Properties.Resources.Slise;
-            pictureBox_lise.Height = 52;
-            pictureBox_lise.Width = 52;
+            pictureBox_lise.Height = 30;
+            pictureBox_lise.Width = 30;
         }
 
         private void labellise_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_lise.Image = Properties.Resources.yeni_lise_stajyer1;
-            pictureBox_lise.Height = 42;
-            pictureBox_lise.Width = 42;
+            pictureBox_lise.Height = 25;
+            pictureBox_lise.Width = 25;
         }
 
         private void label_suanstajyer_MouseHover(object sender, EventArgs e)
         {
             pictureBox_suanstajer.Image = Properties.Resources.Sstajyapıyor;
-            pictureBox_suanstajer.Height = 52;
-            pictureBox_suanstajer.Width = 52;
+            pictureBox_suanstajer.Height = 30;
+            pictureBox_suanstajer.Width = 30;
         }
 
         private void label_suanstajyer_MouseLeave(object sender, EventArgs e)
         {
             pictureBox_suanstajer.Image = Properties.Resources.yeni_staj_yapıyor2;
-            pictureBox_suanstajer.Height = 42;
-            pictureBox_suanstajer.Width = 42;
+            pictureBox_suanstajer.Height = 25;
+            pictureBox_suanstajer.Width = 25;
         }
         #endregion//22 AĞUSTOS 2017 GÜNCEL !!
 
@@ -716,14 +732,14 @@ namespace InternFollowProgramming
         #region REFRESH MOUSE OLAYLARI & SAYFA YENİLEME
         private void pictureBox_refresh_MouseHover(object sender, EventArgs e)
         {
-            pictureBox_refresh.Height = 42;
-            pictureBox_refresh.Width = 42;
+            pictureBox_refresh.Height = 30;
+            pictureBox_refresh.Width = 30;
         }
 
         private void pictureBox_refresh_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox_refresh.Height = 32;
-            pictureBox_refresh.Width = 32;
+            pictureBox_refresh.Height = 25;
+            pictureBox_refresh.Width = 25;
         }
 
         private void pictureBox_refresh_Click(object sender, EventArgs e)
@@ -773,7 +789,7 @@ namespace InternFollowProgramming
                 arrColumnLefts.Clear();
                 arrColumnWidths.Clear();
                 iCellHeight = 0;
-                iCount = 0;
+                
                 bFirstPage = true;
                 bNewPage = true;
 
@@ -912,14 +928,14 @@ namespace InternFollowProgramming
 
         private void pictureBox_yazdır_MouseHover(object sender, EventArgs e)
         {
-            pictureBox_yazdır.Height = 42;
-            pictureBox_yazdır.Width = 42;
+            pictureBox_yazdır.Height = 30;
+            pictureBox_yazdır.Width = 30;
         }
 
         private void pictureBox_yazdır_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox_yazdır.Height = 32;
-            pictureBox_yazdır.Width = 32;
+            pictureBox_yazdır.Height = 25;
+            pictureBox_yazdır.Width = 25;
         }
         #endregion
 
@@ -927,14 +943,14 @@ namespace InternFollowProgramming
         #region EXCEL MOUSE OLAYLARI & EXCELE KAYDETME
         private void pictureBox_excel_MouseHover(object sender, EventArgs e)
         {
-            pictureBox_excel.Height = 42;
-            pictureBox_excel.Width = 42;
+            pictureBox_excel.Height = 30;
+            pictureBox_excel.Width = 30;
         }
 
         private void pictureBox_excel_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox_excel.Height = 32;
-            pictureBox_excel.Width = 32;
+            pictureBox_excel.Height = 25;
+            pictureBox_excel.Width = 25;
         }
 
         private void pictureBox_excel_Click(object sender, EventArgs e)
@@ -973,7 +989,10 @@ namespace InternFollowProgramming
             if (textBox_adsoyadara.Text == String.Empty)
             {
                 command.Connection = connection;
-                connection.Open();
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 command.CommandText = "SELECT i.*, s.* FROM stajyer as i Left Join stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno";
                 dataadapter = new SqlDataAdapter(command);
                 datatable = new System.Data.DataTable();
@@ -985,7 +1004,10 @@ namespace InternFollowProgramming
             else
             {
                 command.Connection = connection;
-                connection.Open();
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 command.CommandText = "SELECT i.*, s.* FROM stajyer as i Left Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where i.adı_soyadı in (SELECT adı_soyadı FROM stajyer where adı_soyadı LIKE  '%" + textBox_adsoyadara.Text + "%')";
                 dataadapter = new SqlDataAdapter(command);
                 datatable = new System.Data.DataTable();
@@ -1000,10 +1022,14 @@ namespace InternFollowProgramming
         private void stajyerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string secili = dataGridView.CurrentRow.Cells[0].Value.ToString();
+            numara = Convert.ToInt32(secili);
             command.CommandText = "DELETE FROM stajyer where tc_kimlikno=@tc_kimlikno";
-            command.Parameters.AddWithValue("@tc_kimlikno", secili);
+            command.Parameters.AddWithValue("@tc_kimlikno", numara);
             command.ExecuteNonQuery();
             command.Parameters.Clear();
             MessageBox.Show("STAJYER SİLİNDİ");
@@ -1068,17 +1094,17 @@ namespace InternFollowProgramming
 
         private void stajToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            connection.Close();
             command.Connection = connection;
             connection.Open();
-           string secili = dataGridView.CurrentRow.Cells[3].Value.ToString();
             command.CommandText = "DELETE FROM stajbilgileri where staj_id=@staj_id";
-            command.Parameters.AddWithValue("@staj_id", secili);
+            command.Parameters.AddWithValue("@staj_id", dataGridView.CurrentRow.Cells[2].ColumnIndex);
             command.ExecuteNonQuery();
             command.Parameters.Clear();
             MessageBox.Show("STAJ SİLİNDİ");
 
             datatable = new System.Data.DataTable();
-            dataadapter = new SqlDataAdapter("SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno", connection);
+            dataadapter = new SqlDataAdapter("SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno", connection);
             dataadapter.Fill(datatable);
             dataGridView.DataSource = datatable;
             dataadapter.Dispose();
@@ -1135,64 +1161,6 @@ namespace InternFollowProgramming
             #endregion
         }
        
-        //22 AĞUSTOS 2017  ## ##bu kısım komple değişikliğe uğrayacak
-        private void güncelleToolStripMenuItem_Click(object sender, EventArgs e) // GÜNCELLEME
-        {
-            try
-            {
-                if (connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
-
-                // müşteriler tablomuzun ilgili alanlarını değiştirecek olan güncelleme sorgusu.
-                string stajyer = "update intern set tc_kimlikno=@tc_kimlikno,adı_soyadı=@adı_soyadı,baba_adı=@baba_adı,anne_adı=@anne_adı,d_yeri=@d_yeri,d_tarih=@d_tarih,uyrugu=@uyrugu,cinsiyet=@cinsiyet,ev_tel=@ev_tel,cep_tel=@cep_tel,adres=@adres,e_posta=@e_posta,web_adres=@web_adres,boy=@boy,agırlık=@agırlık,kan_grubu=@kan_grubu,iban=@iban, acil_adsoyad=@acil_adsoyad,acil_adres=@acil_adres,acil_akrabalık_derecesi=@acil_akrabalık_derecesi, acil_telefon_no=@acil_telefon_no, acil_e_posta=@acil_e_posta  where tc_kimlikno=@tc_kimlikno";
-                command = new SqlCommand(stajyer, connection);
-
-                //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-                //Parametrelerimize Form üzerinde ki kontrollerden girilen verileri aktarıyoruz.
-
-                //kişisel veriler GÜNCELL KOD !!
-                command.Parameters.AddWithValue("@tc_kimlikno", dataGridView.CurrentRow.Cells[0].Value.ToString());
-                command.Parameters.AddWithValue("@adı_soyadı", dataGridView.CurrentRow.Cells[1].Value.ToString());
-                command.Parameters.AddWithValue("@baba_adı", dataGridView.CurrentRow.Cells[2].Value.ToString());
-                command.Parameters.AddWithValue("@anne_adı", dataGridView.CurrentRow.Cells[3].Value.ToString());
-                command.Parameters.AddWithValue("@d_yeri", dataGridView.CurrentRow.Cells[4].Value.ToString());
-                command.Parameters.AddWithValue("@d_tarih", dataGridView.CurrentRow.Cells[5].Value.ToString());
-                command.Parameters.AddWithValue("@uyrugu", dataGridView.CurrentRow.Cells[6].Value.ToString());
-                command.Parameters.AddWithValue("@cinsiyet", dataGridView.CurrentRow.Cells[7].Value.ToString());
-                command.Parameters.AddWithValue("@ev_tel", dataGridView.CurrentRow.Cells[8].Value.ToString());
-                command.Parameters.AddWithValue("@cep_tel", dataGridView.CurrentRow.Cells[9].Value.ToString());
-                command.Parameters.AddWithValue("@adres", dataGridView.CurrentRow.Cells[10].Value.ToString());
-                command.Parameters.AddWithValue("@e_posta", dataGridView.CurrentRow.Cells[11].Value.ToString());
-                command.Parameters.AddWithValue("@web_adres", dataGridView.CurrentRow.Cells[12].Value.ToString());
-                command.Parameters.AddWithValue("@boy", dataGridView.CurrentRow.Cells[13].Value.ToString());
-                command.Parameters.AddWithValue("@agırlık", dataGridView.CurrentRow.Cells[14].Value.ToString());
-                command.Parameters.AddWithValue("@kan_grubu", dataGridView.CurrentRow.Cells[15].Value.ToString());
-                command.Parameters.AddWithValue("@iban", dataGridView.CurrentRow.Cells[16].Value.ToString());
-
-                //acil durum irtibat GÜNCELL KOD !!
-                command.Parameters.AddWithValue("@acil_adsoyad", dataGridView.CurrentRow.Cells[17].Value.ToString());
-                command.Parameters.AddWithValue("@acil_adres", dataGridView.CurrentRow.Cells[18].Value.ToString());
-                command.Parameters.AddWithValue("@acil_akrabalık_derecesi", dataGridView.CurrentRow.Cells[19].Value.ToString());
-                command.Parameters.AddWithValue("@acil_telefon_no", dataGridView.CurrentRow.Cells[20].Value.ToString());
-                command.Parameters.AddWithValue("@acil_e_posta", dataGridView.CurrentRow.Cells[21].Value.ToString());
-
-                command.ExecuteNonQuery();
-
-
-                //Veritabanında değişiklik yapacak komut işlemi bu satırda gerçekleşiyor.
-                connection.Close();
-                MessageBox.Show("Stajyer Bilgileri Güncellendi");
-            }
-            catch (Exception hata)
-            {
-                MessageBox.Show("İşlem Sırasında Hata Oluştu." + hata.Message);
-            }
-
-        }
-
-
         //22AGUSTOS RAPORLAMA GÜNCEL DEĞİL SADECE COPY-PASTE OLACAK  ---- 23ağustos güncel gibi ama kontrol ett
         private void button_s_ara_Click(object sender, EventArgs e)  //RAPORLAMA
         {
@@ -2192,6 +2160,7 @@ namespace InternFollowProgramming
                 command.Connection = connection;
                 connection.Open();
                 string ara = "SELECT i.adı_soyadı, i.tc_kimlikno, i.cinsiyet, s.staj_id, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı, s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.staj_yılı in (SELECT staj_yılı FROM stajbilgileri where staj_yılı=@staj_yılı) and s.staj_turu in (SELECT staj_turu FROM stajbilgileri where staj_turu=@staj_turu) and s.referans_adı in (SELECT referans_adı FROM stajbilgileri where referans_adı=@referans_adı)";
+                command = new SqlCommand(ara, connection);
                 command.Parameters.AddWithValue("@staj_yılı", comboBox_s_yıl.SelectedItem);
 
 
@@ -3061,7 +3030,32 @@ namespace InternFollowProgramming
 
         }
 
-      
+        public static string gonderilecekveri;
+        private void mailGönderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string secili = dataGridView.CurrentRow.Cells[0].Value.ToString();
+            command = new SqlCommand("SELECT e_posta FROM stajyer where tc_kimlikno=@tc_kimlikno", connection);
+            connection.Open();
+            command.Parameters.AddWithValue("tc_kimlikno", secili);
+            dataadapter = new SqlDataAdapter(command);
+            SqlDataReader datareader = command.ExecuteReader();
+            while (datareader.Read())
+            {
+                gonderilecekveri = datareader["e_posta"].ToString();
+            }
+            datareader.Close();
+
+            if (gonderilecekveri == String.Empty)
+            {
+                MessageBox.Show("Stajyerin kayıtlı mail adresi bulunmamakta");
+            }
+            else
+            {
+                FrmMail frm = new FrmMail();
+                frm.Show();
+            }
+        }
+
     }
 }
 
