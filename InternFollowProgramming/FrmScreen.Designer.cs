@@ -85,6 +85,8 @@
             this.label_aranan_stajyer_sayısı = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label_tcsil = new System.Windows.Forms.Label();
+            this.label_idsil = new System.Windows.Forms.Label();
             this.menuStrip_frmscreen.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel_ust.SuspendLayout();
@@ -188,20 +190,21 @@
             this.mailGönderToolStripMenuItem,
             this.silToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 70);
             // 
             // sTAJYERGÖSTERToolStripMenuItem
             // 
             this.sTAJYERGÖSTERToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.STAJYER_GÖSTER;
             this.sTAJYERGÖSTERToolStripMenuItem.Name = "sTAJYERGÖSTERToolStripMenuItem";
-            this.sTAJYERGÖSTERToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sTAJYERGÖSTERToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.sTAJYERGÖSTERToolStripMenuItem.Text = "Stajyer Göster";
+            this.sTAJYERGÖSTERToolStripMenuItem.Click += new System.EventHandler(this.sTAJYERGÖSTERToolStripMenuItem_Click);
             // 
             // mailGönderToolStripMenuItem
             // 
             this.mailGönderToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.mailgönder;
             this.mailGönderToolStripMenuItem.Name = "mailGönderToolStripMenuItem";
-            this.mailGönderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mailGönderToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.mailGönderToolStripMenuItem.Text = "Mail Gönder";
             this.mailGönderToolStripMenuItem.Click += new System.EventHandler(this.mailGönderToolStripMenuItem_Click);
             // 
@@ -212,7 +215,7 @@
             this.stajToolStripMenuItem});
             this.silToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
             this.silToolStripMenuItem.Name = "silToolStripMenuItem";
-            this.silToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.silToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.silToolStripMenuItem.Text = "Sil";
             // 
             // stajyerToolStripMenuItem
@@ -297,11 +300,12 @@
             // label_suanstajyer
             // 
             this.label_suanstajyer.AutoSize = true;
-            this.label_suanstajyer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_suanstajyer.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label_suanstajyer.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_suanstajyer.ForeColor = System.Drawing.Color.DarkGoldenrod;
             this.label_suanstajyer.Location = new System.Drawing.Point(963, 38);
             this.label_suanstajyer.Name = "label_suanstajyer";
-            this.label_suanstajyer.Size = new System.Drawing.Size(93, 13);
+            this.label_suanstajyer.Size = new System.Drawing.Size(96, 11);
             this.label_suanstajyer.TabIndex = 15;
             this.label_suanstajyer.Text = "STAJ YAPANLAR";
             this.label_suanstajyer.Click += new System.EventHandler(this.label_suanstajyer_Click);
@@ -311,11 +315,12 @@
             // label_genel
             // 
             this.label_genel.AutoSize = true;
-            this.label_genel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_genel.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label_genel.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_genel.ForeColor = System.Drawing.Color.DarkGoldenrod;
             this.label_genel.Location = new System.Drawing.Point(316, 38);
             this.label_genel.Name = "label_genel";
-            this.label_genel.Size = new System.Drawing.Size(43, 13);
+            this.label_genel.Size = new System.Drawing.Size(40, 11);
             this.label_genel.TabIndex = 14;
             this.label_genel.Text = "GENEL";
             this.label_genel.Click += new System.EventHandler(this.label_genel_Click);
@@ -412,12 +417,12 @@
             // labellise
             // 
             this.labellise.AutoSize = true;
-            this.labellise.BackColor = System.Drawing.Color.Transparent;
-            this.labellise.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labellise.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.labellise.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labellise.ForeColor = System.Drawing.Color.DarkGoldenrod;
             this.labellise.Location = new System.Drawing.Point(826, 38);
             this.labellise.Name = "labellise";
-            this.labellise.Size = new System.Drawing.Size(30, 13);
+            this.labellise.Size = new System.Drawing.Size(33, 11);
             this.labellise.TabIndex = 6;
             this.labellise.Text = "LİSE";
             this.labellise.Click += new System.EventHandler(this.label3_Click);
@@ -427,12 +432,12 @@
             // labelonlisans
             // 
             this.labelonlisans.AutoSize = true;
-            this.labelonlisans.BackColor = System.Drawing.Color.Transparent;
-            this.labelonlisans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelonlisans.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.labelonlisans.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelonlisans.ForeColor = System.Drawing.Color.DarkGoldenrod;
             this.labelonlisans.Location = new System.Drawing.Point(641, 38);
             this.labelonlisans.Name = "labelonlisans";
-            this.labelonlisans.Size = new System.Drawing.Size(64, 13);
+            this.labelonlisans.Size = new System.Drawing.Size(68, 11);
             this.labelonlisans.TabIndex = 5;
             this.labelonlisans.Text = "ÖN LİSANS";
             this.labelonlisans.Click += new System.EventHandler(this.label2_Click);
@@ -442,12 +447,12 @@
             // labellisans
             // 
             this.labellisans.AutoSize = true;
-            this.labellisans.BackColor = System.Drawing.Color.Transparent;
-            this.labellisans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labellisans.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.labellisans.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labellisans.ForeColor = System.Drawing.Color.DarkGoldenrod;
             this.labellisans.Location = new System.Drawing.Point(483, 38);
             this.labellisans.Name = "labellisans";
-            this.labellisans.Size = new System.Drawing.Size(45, 13);
+            this.labellisans.Size = new System.Drawing.Size(47, 11);
             this.labellisans.TabIndex = 4;
             this.labellisans.Text = "LİSANS";
             this.labellisans.Click += new System.EventHandler(this.label1_Click);
@@ -608,6 +613,8 @@
             // 
             // comboBox_s_referans
             // 
+            this.comboBox_s_referans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.comboBox_s_referans.ForeColor = System.Drawing.Color.Black;
             this.comboBox_s_referans.FormattingEnabled = true;
             this.comboBox_s_referans.Location = new System.Drawing.Point(20, 460);
             this.comboBox_s_referans.Name = "comboBox_s_referans";
@@ -616,6 +623,8 @@
             // 
             // comboBox_s_stajkonuları
             // 
+            this.comboBox_s_stajkonuları.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.comboBox_s_stajkonuları.ForeColor = System.Drawing.Color.Black;
             this.comboBox_s_stajkonuları.FormattingEnabled = true;
             this.comboBox_s_stajkonuları.Location = new System.Drawing.Point(20, 382);
             this.comboBox_s_stajkonuları.Name = "comboBox_s_stajkonuları";
@@ -624,6 +633,8 @@
             // 
             // comboBox_s_bolum
             // 
+            this.comboBox_s_bolum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.comboBox_s_bolum.ForeColor = System.Drawing.Color.Black;
             this.comboBox_s_bolum.FormattingEnabled = true;
             this.comboBox_s_bolum.Location = new System.Drawing.Point(20, 304);
             this.comboBox_s_bolum.Name = "comboBox_s_bolum";
@@ -632,6 +643,8 @@
             // 
             // comboBox_s_okul
             // 
+            this.comboBox_s_okul.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.comboBox_s_okul.ForeColor = System.Drawing.Color.Black;
             this.comboBox_s_okul.FormattingEnabled = true;
             this.comboBox_s_okul.Location = new System.Drawing.Point(20, 226);
             this.comboBox_s_okul.Name = "comboBox_s_okul";
@@ -640,6 +653,8 @@
             // 
             // comboBox_s_donem
             // 
+            this.comboBox_s_donem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.comboBox_s_donem.ForeColor = System.Drawing.Color.Black;
             this.comboBox_s_donem.FormattingEnabled = true;
             this.comboBox_s_donem.Location = new System.Drawing.Point(20, 148);
             this.comboBox_s_donem.Name = "comboBox_s_donem";
@@ -648,12 +663,12 @@
             // 
             // comboBox_s_yıl
             // 
-            this.comboBox_s_yıl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.comboBox_s_yıl.ForeColor = System.Drawing.Color.Gold;
+            this.comboBox_s_yıl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.comboBox_s_yıl.ForeColor = System.Drawing.Color.Black;
             this.comboBox_s_yıl.FormattingEnabled = true;
             this.comboBox_s_yıl.Location = new System.Drawing.Point(20, 70);
             this.comboBox_s_yıl.Name = "comboBox_s_yıl";
-            this.comboBox_s_yıl.Size = new System.Drawing.Size(135, 24);
+            this.comboBox_s_yıl.Size = new System.Drawing.Size(135, 21);
             this.comboBox_s_yıl.TabIndex = 0;
             // 
             // printDocument_frmscreen
@@ -716,12 +731,34 @@
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
             // 
+            // label_tcsil
+            // 
+            this.label_tcsil.AutoSize = true;
+            this.label_tcsil.Location = new System.Drawing.Point(646, 66);
+            this.label_tcsil.Name = "label_tcsil";
+            this.label_tcsil.Size = new System.Drawing.Size(19, 13);
+            this.label_tcsil.TabIndex = 16;
+            this.label_tcsil.Text = "tc:";
+            this.label_tcsil.Visible = false;
+            // 
+            // label_idsil
+            // 
+            this.label_idsil.AutoSize = true;
+            this.label_idsil.Location = new System.Drawing.Point(830, 66);
+            this.label_idsil.Name = "label_idsil";
+            this.label_idsil.Size = new System.Drawing.Size(18, 13);
+            this.label_idsil.TabIndex = 17;
+            this.label_idsil.Text = "id:";
+            this.label_idsil.Visible = false;
+            // 
             // FrmScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1350, 657);
+            this.Controls.Add(this.label_idsil);
+            this.Controls.Add(this.label_tcsil);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.menuStrip_frmscreen);
             this.Controls.Add(this.label_aranan_stajyer_sayısı);
@@ -786,7 +823,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem silToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox_suanstajer;
-        private System.Windows.Forms.PictureBox pictureBox_genel;
         private System.Windows.Forms.Label label_suanstajyer;
         private System.Windows.Forms.Label label_genel;
         private System.Windows.Forms.Label label_suanstajyapanlar;
@@ -815,5 +851,8 @@
         private System.Windows.Forms.ToolStripMenuItem stajyerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stajToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label_tcsil;
+        private System.Windows.Forms.Label label_idsil;
+        private System.Windows.Forms.PictureBox pictureBox_genel;
     }
 }

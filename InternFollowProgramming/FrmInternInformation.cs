@@ -27,9 +27,6 @@ namespace InternFollowProgramming
         SqlDataReader datareader;
         SqlCommand cmd = new SqlCommand();
         #endregion
-
-
-        string yol = "";
         public FrmInternInformation()
         {
             InitializeComponent();
@@ -315,6 +312,7 @@ namespace InternFollowProgramming
 
         #region BUTONLAR
 
+          #region Kaydet Butonları
         //STAJYER KAYDET BUTONU 25 AGUSTOS GÜNCEL !!
         private void pictureBox_kaydet_Click(object sender, EventArgs e)
         {
@@ -437,10 +435,10 @@ namespace InternFollowProgramming
                 }
             }
 
-            Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
-            string resimAdi = Path.GetFileName(label_resimyolu.Text);
-            File.Copy(@"" + textBox_dosya.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi);
-            MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
+           // Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
+            //string resimAdi = Path.GetFileName(label_resimyolu.Text);
+            //File.Copy(@"" + textBox_dosya.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi);
+            //MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
         }
 
         //STAJ KAYDET 25 AGUSTOS GÜNCEL !!
@@ -502,10 +500,11 @@ namespace InternFollowProgramming
                 gunfarki_ilk = kalan.Days;
                 gunfarki_ilk.ToString();
             }
-            else if (gunfarki_ilk < 0 || gunfarki_son > 0)
+            else if (gunfarki_ilk < 0 && gunfarki_son > 0)
             {
                 durum = "STAJ YAPIYOR";
-
+                gunfarki_ilk = kalan.Days;
+                gunfarki_ilk.ToString();
 
             }
             else if (gunfarki_son < 0)
@@ -538,8 +537,6 @@ namespace InternFollowProgramming
             cmd.Parameters.AddWithValue("@servis_imkanı", comboBox_servis.Text);
             cmd.Parameters.AddWithValue("@arac_plaka", comboBox_aracplaka.Text);
             cmd.Parameters.AddWithValue("@mentör", comboBox_mentor.Text);
-
-            //okul bilgileri  GÜNCELL KOD !!
             cmd.Parameters.AddWithValue("@sigorta_evrak", comboBox_sigorta.Text);
             cmd.Parameters.AddWithValue("@basvuru_turu", comboBox_basvuruturu.Text);
             cmd.Parameters.AddWithValue("@referans_adı", textBox_r_ad.Text);
@@ -548,8 +545,6 @@ namespace InternFollowProgramming
             cmd.Parameters.AddWithValue("@referans_eposta", textBox_r_eposta.Text);
             cmd.Parameters.AddWithValue("@staj_acıklama", textBox_staj_aciklama.Text);
             cmd.Parameters.AddWithValue("@staj_turu", comboBox_stajturu.Text);
-
-
             cmd.Parameters.AddWithValue("@staj_icerigi", textBox_stajicerigi.Text);
             cmd.Parameters.AddWithValue("@staj_kalan_sure", gunfarki_ilk);
 
@@ -562,7 +557,7 @@ namespace InternFollowProgramming
             string staj = "SELECT DISTINCT staj_turu FROM stajbilgileri where tc_kimlikno=@tc_kimlikno";
             cmd = new SqlCommand(staj, connection);
             connection.Open();
-            cmd.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
+            cmd.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
             datareader = cmd.ExecuteReader();
             while (datareader.Read())
             {
@@ -573,55 +568,10 @@ namespace InternFollowProgramming
             #endregion
 
             MessageBox.Show("Staj Bilgileri Kaydedildi !");
-
-
-            textBox_okulpuan.Clear();
-            textBox_okulno.Clear();
-
-            textBox_r_eposta.Clear();
-            textBox_r_adres.Clear();
-            textBox_r_telefon.Clear();
-            textBox_r_ad.Clear();
-            textBox_staj_aciklama.Clear();
-
-
-            textBox_ai_eposta.Clear();
-            textBox_ai_telefon.Clear();
-            textBox_ai_akrabalık.Clear();
-            textBox_ai_adres.Clear();
-            textBox_ai_adsoyad.Clear();
-            textBox_ai_adres.Clear();
-            textBox_tc.Clear();
-            textBox_adsoyad.Clear();
-            textBox_baba.Clear();
-            textBox_anne.Clear();
-            textBox_dyeri.Clear();
-            textBox_uyrugu.Clear();
-            textBox_evtel.Clear();
-            textBox_ceptel.Clear();
-            textBox_adres.Clear();
-            textBox_eposta.Clear();
-            textBox_website.Clear();
-            textBox_boy.Clear();
-            textBox_agırlık.Clear();
-            textBox_iban.Clear();
-
-            comboBox_basvuruturu.Text = "";
-            comboBox_bolumadı.Text = "";
-            comboBox_cinsiyet.Text = "";
-            comboBox_okuladı.Text = "";
-            comboBox_kabuldurumu.Text = "";
-            comboBox_kangrubu.Text = "";
-            comboBox_mentor.Text = "";
-            comboBox_sehir.Text = "";
-            comboBox_servis.Text = "";
-            comboBox_sigorta.Text = "";
-            comboBox_sinif.Text = "";
-            comboBox_stajdonemi.Text = "";
-            comboBox_stajturu.Text = "";
-            comboBox_stajyili.Text = "";
         }
+        #endregion
 
+          #region Sil Butonları
         //STAJYER SİL BUTONU:28 AGUSTOS PAZARTESİ GÜNCEL
         private void pictureBox_sil_Click(object sender, EventArgs e)
         {
@@ -678,6 +628,10 @@ namespace InternFollowProgramming
             connection.Close();
             #endregion
         }
+
+        #endregion
+
+          #region Güncelle Butonu
 
         //STAJYER GÜNCELLEME BUTONU :25 AGUSTOS CUMA GÜNCEL 
         private void pictureBox_güncelle_Click(object sender, EventArgs e)
@@ -863,6 +817,8 @@ namespace InternFollowProgramming
             #endregion
 
         }
+
+#endregion
 
         //RESİM SEÇME BUTONU  
         private void pictureBox_resim_Click_1(object sender, EventArgs e)
@@ -1350,13 +1306,13 @@ namespace InternFollowProgramming
 
         private void pictureBox_kaydet_MouseHover(object sender, EventArgs e)
         {
-            pictureBox_stajyer_kaydet.Width = 30;
-            pictureBox_stajyer_kaydet.Height = 30;
+            pictureBox_stajyer_kaydet.Width = 70;
+            pictureBox_stajyer_kaydet.Height = 35;
         }
 
         private void pictureBox_kaydet_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox_stajyer_kaydet.Width = 25;
+            pictureBox_stajyer_kaydet.Width = 60;
             pictureBox_stajyer_kaydet.Height = 25;
         }
 
@@ -1543,6 +1499,42 @@ namespace InternFollowProgramming
             pictureBox_yenile.Height = 25;
         }
 
+        private void pictureBox_stajsil_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox_stajsil.Width = 30;
+            pictureBox_stajsil.Height = 30;
+        }
+
+        private void pictureBox_stajsil_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox_stajsil.Width = 25;
+            pictureBox_stajsil.Height = 25;
+        }
+
+        private void pictureBox_stajgüncelle_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox_stajgüncelle.Width = 30;
+            pictureBox_stajgüncelle.Height = 30;
+        }
+
+        private void pictureBox_stajgüncelle_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox_stajgüncelle.Width = 25;
+            pictureBox_stajgüncelle.Height = 25;
+        }
+
+        private void pictureBox_stajbilgisi_kaydet_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox_stajbilgisi_kaydet.Width = 134;
+            pictureBox_stajbilgisi_kaydet.Height = 43;
+        }
+
+        private void pictureBox_stajbilgisi_kaydet_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox_stajbilgisi_kaydet.Width = 124;
+            pictureBox_stajbilgisi_kaydet.Height = 33;
+        }
+
         #endregion
 
         private void comboBox_egitimdurumu_SelectedIndexChanged(object sender, EventArgs e)
@@ -1712,6 +1704,9 @@ namespace InternFollowProgramming
             comboBox_stajyili.Text = "";
             #endregion
         }
+
+
+     
     }
 }
 

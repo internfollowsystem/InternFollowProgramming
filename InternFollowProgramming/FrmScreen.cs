@@ -20,10 +20,8 @@ namespace InternFollowProgramming
     {
         #region YAPILACAKLAR
         //  BİTTİ1.Görsel butonlara photoshoptan yazı eklenip daha estetik ve kullanıcı odaklı arayüzü hazırlanacak.
-        //  2. Güncelleme işleminde datagridview üzerindeki stajyerler güncelleniyor ama staj bilgileri güncellenmiyordu. sütun adları değiştiği için kodlarıda değişecek ve staj bilgileri tc_kimlikno üzerinden değil id üzerinden güncelleme yapacak.
-        // BİTTİ 3. Raporlamada ki SQL sorgularını daha kullanıcı odaklı bir hale getirdik. tüm olasılıklar için bu kodu uygulayacağız.
         //  BİTTİ 4.StripCoolMenu'den stajbilgisi sil özelliği olsun. (Kullanıcı odaklı)
-        //  5.stajyer göster form ekranı olsun.(Kullanıcı Odaklı)
+        //  BİTTİ 5.stajyer göster form ekranı olsun.(Kullanıcı Odaklı)
 #endregion
 
         //22 AĞUSTOS 2017 GÜNCEL !! 
@@ -373,7 +371,7 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lisans')";
+            string kayit = "SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -400,7 +398,7 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lisans')";
+            string kayit = "SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -427,7 +425,7 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='On Lisans')";
+            string kayit = "SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='On Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -453,7 +451,7 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='On Lisans')";
+            string kayit = "SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='On Lisans')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -479,7 +477,7 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lise')";
+            string kayit = "SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri  where egitim_durumu='Lise')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -506,7 +504,7 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='Lise')";
+            string kayit = "SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.egitim_durumu in (SELECT egitim_durumu FROM stajbilgileri where egitim_durumu='Lise')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -533,7 +531,7 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.staj_yapmadurumu in (SELECT staj_yapmadurumu FROM stajbilgileri  where staj_yapmadurumu='STAJ YAPIYOR')";
+            string kayit = "SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.staj_yapmadurumu in (SELECT staj_yapmadurumu FROM stajbilgileri  where staj_yapmadurumu='STAJ YAPIYOR')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -560,7 +558,7 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-            string kayit = "SELECT i.adı_soyadı, s.* FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.staj_yapmadurumu in (SELECT staj_yapmadurumu FROM stajbilgileri where staj_yapmadurumu='STAJ YAPIYOR')";
+            string kayit = "SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i Join stajbilgileri as s on i.tc_kimlikno = s.tc_kimlikno where s.staj_yapmadurumu in (SELECT staj_yapmadurumu FROM stajbilgileri where staj_yapmadurumu='STAJ YAPIYOR')";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             command = new SqlCommand(kayit, connection);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -1026,10 +1024,10 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-            string secili = dataGridView.CurrentRow.Cells[0].Value.ToString();
-            numara = Convert.ToInt32(secili);
+           label_tcsil.Text= dataGridView.CurrentRow.Cells[0].Value.ToString();
+           
             command.CommandText = "DELETE FROM stajyer where tc_kimlikno=@tc_kimlikno";
-            command.Parameters.AddWithValue("@tc_kimlikno", numara);
+            command.Parameters.AddWithValue("@tc_kimlikno",label_tcsil.Text);
             command.ExecuteNonQuery();
             command.Parameters.Clear();
             MessageBox.Show("STAJYER SİLİNDİ");
@@ -1094,11 +1092,12 @@ namespace InternFollowProgramming
 
         private void stajToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            label_idsil.Text = dataGridView.CurrentRow.Cells[2].Value.ToString();
             connection.Close();
             command.Connection = connection;
             connection.Open();
             command.CommandText = "DELETE FROM stajbilgileri where staj_id=@staj_id";
-            command.Parameters.AddWithValue("@staj_id", dataGridView.CurrentRow.Cells[2].ColumnIndex);
+            command.Parameters.AddWithValue("@staj_id", label_idsil.Text);
             command.ExecuteNonQuery();
             command.Parameters.Clear();
             MessageBox.Show("STAJ SİLİNDİ");
@@ -3053,9 +3052,37 @@ namespace InternFollowProgramming
             {
                 FrmMail frm = new FrmMail();
                 frm.Show();
+                
             }
+            connection.Close();
         }
 
+        private void sTAJYERGÖSTERToolStripMenuItem_Click(object sender, EventArgs e)
+        {         
+            label_tcsil.Text = dataGridView.CurrentRow.Cells[0].Value.ToString();
+            command = new SqlCommand("SELECT tc_kimlikno FROM stajyer where tc_kimlikno=@tc_kimlikno", connection);
+            connection.Open();
+            command.Parameters.AddWithValue("tc_kimlikno", label_tcsil.Text);
+            dataadapter = new SqlDataAdapter(command);
+            SqlDataReader datareader = command.ExecuteReader();
+            while (datareader.Read())
+            {
+                gonderilecekveri = datareader["tc_kimlikno"].ToString();
+            }
+            datareader.Close();
+
+            if (gonderilecekveri == "tc:")
+            {
+                MessageBox.Show("Stajyer tc'si alınamadı");
+            }
+            else
+            {
+                FrmStajyerBilgiEkrani sbe = new FrmStajyerBilgiEkrani();
+                sbe.Show();
+
+            }
+            connection.Close();
+        }
     }
 }
 

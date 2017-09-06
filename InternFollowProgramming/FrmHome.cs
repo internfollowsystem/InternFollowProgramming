@@ -109,12 +109,12 @@ namespace InternFollowProgramming
         {
             if (checkBox_visible.Checked== true)
             {
-                pictureBox_password.Image = Properties.Resources.göster;
+                pictureBox_password.Image = Properties.Resources.göster_copy;
                 textBox_password.PasswordChar = '\0';
             }
             else if (checkBox_visible.Checked == false)
             {
-                pictureBox_password.Image = Properties.Resources.gizle;
+                pictureBox_password.Image = Properties.Resources.gizle1;
                 textBox_password.PasswordChar = '*';
             }
         }

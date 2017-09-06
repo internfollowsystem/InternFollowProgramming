@@ -453,9 +453,29 @@ namespace InternFollowProgramming.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap gizle1 {
+            get {
+                object obj = ResourceManager.GetObject("gizle1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap göster {
             get {
                 object obj = ResourceManager.GetObject("göster", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap göster_copy {
+            get {
+                object obj = ResourceManager.GetObject("göster copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

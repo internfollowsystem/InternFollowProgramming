@@ -148,6 +148,9 @@
     <None Include="internclasses.dbml.layout">
       <DependentUpon>internclasses.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="FrmStajyerBilgiEkrani.resx">
+      <DependentUpon>FrmStajyerBilgiEkrani.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -536,6 +539,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\yenile2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gizle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\göster copy.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

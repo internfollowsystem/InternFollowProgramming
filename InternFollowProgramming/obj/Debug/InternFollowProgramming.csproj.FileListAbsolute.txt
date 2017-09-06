@@ -90,3 +90,4 @@ C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowP
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.ComboBoxEKLE.resources
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmMail.resources
 C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.csprojResolveAssemblyReference.cache
+C:\Users\Win\Desktop\AKE\stajyer\InternFollowProgramming\obj\Debug\InternFollowProgramming.FrmStajyerBilgiEkrani.resources

@@ -32,6 +32,8 @@
             this.panel_ust = new System.Windows.Forms.Panel();
             this.pictureBox_logo = new System.Windows.Forms.PictureBox();
             this.panel_alt = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.checkBox_visible = new System.Windows.Forms.CheckBox();
             this.pictureBox_password = new System.Windows.Forms.PictureBox();
             this.pictureBox_giris = new System.Windows.Forms.PictureBox();
@@ -39,8 +41,6 @@
             this.label_password = new System.Windows.Forms.Label();
             this.label2_user = new System.Windows.Forms.Label();
             this.textBox_password = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel_ust.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logo)).BeginInit();
             this.panel_alt.SuspendLayout();
@@ -77,6 +77,16 @@
             resources.ApplyResources(this.panel_alt, "panel_alt");
             this.panel_alt.Name = "panel_alt";
             // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // checkBox_visible
             // 
             resources.ApplyResources(this.checkBox_visible, "checkBox_visible");
@@ -87,7 +97,7 @@
             // 
             // pictureBox_password
             // 
-            this.pictureBox_password.Image = global::InternFollowProgramming.Properties.Resources.gizle;
+            this.pictureBox_password.Image = global::InternFollowProgramming.Properties.Resources.gizle1;
             resources.ApplyResources(this.pictureBox_password, "pictureBox_password");
             this.pictureBox_password.Name = "pictureBox_password";
             this.pictureBox_password.TabStop = false;
@@ -124,16 +134,6 @@
             this.textBox_password.BackColor = System.Drawing.SystemColors.InactiveBorder;
             resources.ApplyResources(this.textBox_password, "textBox_password");
             this.textBox_password.Name = "textBox_password";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
             // 
             // FrmHome
             // 
