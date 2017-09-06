@@ -36,6 +36,7 @@
             this.pictureBox_güncelle = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label_resimyolu = new System.Windows.Forms.Label();
             this.pictureBox_resim = new System.Windows.Forms.PictureBox();
             this.listBox_dosya = new System.Windows.Forms.ListBox();
             this.pictureBox_stajyer_resim = new System.Windows.Forms.PictureBox();
@@ -202,7 +203,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label_resimyolu = new System.Windows.Forms.Label();
+            this.button_stajsııfırla = new System.Windows.Forms.Button();
+            this.button_stajyertemizle = new System.Windows.Forms.Button();
             this.panel_adsoyadbul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yenile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_sil)).BeginInit();
@@ -248,6 +250,7 @@
             // panel_adsoyadbul
             // 
             this.panel_adsoyadbul.BackColor = System.Drawing.Color.Black;
+            this.panel_adsoyadbul.Controls.Add(this.button_stajsııfırla);
             this.panel_adsoyadbul.Controls.Add(this.pictureBox_yenile);
             this.panel_adsoyadbul.Controls.Add(this.pictureBox_stajyer_sil);
             this.panel_adsoyadbul.Controls.Add(this.pictureBox_güncelle);
@@ -322,6 +325,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(184, 379);
             this.panel1.TabIndex = 10;
+            // 
+            // label_resimyolu
+            // 
+            this.label_resimyolu.AutoSize = true;
+            this.label_resimyolu.Location = new System.Drawing.Point(14, 173);
+            this.label_resimyolu.Name = "label_resimyolu";
+            this.label_resimyolu.Size = new System.Drawing.Size(0, 13);
+            this.label_resimyolu.TabIndex = 33;
+            this.label_resimyolu.Visible = false;
             // 
             // pictureBox_resim
             // 
@@ -1990,14 +2002,25 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label_resimyolu
+            // button_stajsııfırla
             // 
-            this.label_resimyolu.AutoSize = true;
-            this.label_resimyolu.Location = new System.Drawing.Point(14, 173);
-            this.label_resimyolu.Name = "label_resimyolu";
-            this.label_resimyolu.Size = new System.Drawing.Size(0, 13);
-            this.label_resimyolu.TabIndex = 33;
-            this.label_resimyolu.Visible = false;
+            this.button_stajsııfırla.Location = new System.Drawing.Point(939, 12);
+            this.button_stajsııfırla.Name = "button_stajsııfırla";
+            this.button_stajsııfırla.Size = new System.Drawing.Size(20, 23);
+            this.button_stajsııfırla.TabIndex = 39;
+            this.button_stajsııfırla.Text = "Temizle";
+            this.button_stajsııfırla.UseVisualStyleBackColor = true;
+            this.button_stajsııfırla.Click += new System.EventHandler(this.button_stajsııfırla_Click);
+            // 
+            // button_stajyertemizle
+            // 
+            this.button_stajyertemizle.Location = new System.Drawing.Point(796, 77);
+            this.button_stajyertemizle.Name = "button_stajyertemizle";
+            this.button_stajyertemizle.Size = new System.Drawing.Size(75, 23);
+            this.button_stajyertemizle.TabIndex = 39;
+            this.button_stajyertemizle.Text = "button1";
+            this.button_stajyertemizle.UseVisualStyleBackColor = true;
+            this.button_stajyertemizle.Click += new System.EventHandler(this.button_stajyertemizle_Click);
             // 
             // FrmInternInformation
             // 
@@ -2005,6 +2028,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1086, 520);
+            this.Controls.Add(this.button_stajyertemizle);
             this.Controls.Add(this.panel_stajbilgidosya);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -2232,5 +2256,7 @@
         private System.Windows.Forms.Button button_icerikcıkart;
         private System.Windows.Forms.TextBox textBox_stajicerigi;
         private System.Windows.Forms.Label label_resimyolu;
+        private System.Windows.Forms.Button button_stajsııfırla;
+        private System.Windows.Forms.Button button_stajyertemizle;
     }
 }

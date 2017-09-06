@@ -374,7 +374,7 @@ namespace InternFollowProgramming
                                 command.Connection = connection;
                                 connection.Open();
 
-                                String stajyer = "Insert Into stajyer (tc_kimlikno,adı_soyadı,baba_adı,anne_adı,dogum_yeri,dogum_tarihi,uyrugu, web_site,kan_grubu,cinsiyet,ev_telefonu,cep_telefonu,ikametgah,e_posta,boy,agırlık,acil_adsoyad,acil_adres,acil_yakınlıgı,acil_eposta, acil_telefon, ortaokul_adı, lise_adı, universite_adı) Values (@tc_kimlikno , @adı_soyadı , @baba_adı , @anne_adı , @dogum_yeri , @dogum_tarihi ,@uyrugu, @web_site, @kan_grubu , @cinsiyet , @ev_telefonu , @cep_telefonu , @ikametgah , @e_posta , @boy , @agırlık , @acil_adsoyad,@acil_adres,@acil_yakınlıgı ,@acil_eposta, @acil_telefon, @ortaokul_adı, @lise_adı, @universite_adı);
+                                String stajyer = "Insert Into stajyer (tc_kimlikno,adı_soyadı,baba_adı,anne_adı,dogum_yeri,dogum_tarihi,uyrugu, web_site,kan_grubu,cinsiyet,ev_telefonu,cep_telefonu,ikametgah,e_posta,boy,agırlık,acil_adsoyad,acil_adres,acil_yakınlıgı,acil_eposta, acil_telefon, ortaokul_adı, lise_adı, universite_adı) Values (@tc_kimlikno , @adı_soyadı , @baba_adı , @anne_adı , @dogum_yeri , @dogum_tarihi ,@uyrugu, @web_site, @kan_grubu , @cinsiyet , @ev_telefonu , @cep_telefonu , @ikametgah , @e_posta , @boy , @agırlık , @acil_adsoyad,@acil_adres,@acil_yakınlıgı ,@acil_eposta, @acil_telefon, @ortaokul_adı, @lise_adı, @universite_adı)";
                                 command = new SqlCommand(stajyer, connection);
                                 //kişisel veriler GÜNCELL KOD !!
                                 command.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
@@ -679,7 +679,7 @@ namespace InternFollowProgramming
             #endregion
         }
 
-        //STAJYER GÜNCELLEME BUTONU :25 AGUSTOS CUMA GÜNCEL ama her defasında yen resim seçmek gerekiyor.   ****
+        //STAJYER GÜNCELLEME BUTONU :25 AGUSTOS CUMA GÜNCEL 
         private void pictureBox_güncelle_Click(object sender, EventArgs e)
         {
             try
@@ -724,54 +724,7 @@ namespace InternFollowProgramming
                 connection.Close();
 
                 MessageBox.Show("Stajyer Bilgileri Güncellendi");
-                #region verileri sil
-                //textBox_okulpuan.Clear();
-                //textBox_okulno.Clear();
-                //comboBox_lise.Clear();
-                //textBox_r_eposta.Clear();
-                //textBox_r_adres.Clear();
-                //textBox_r_telefon.Clear();
-                //textBox_r_ad.Clear();
-                //textBox_staj_aciklama.Clear();
-                //textBox_arac.Clear();
-                //textBox_stajkonuları.Clear();
-                //textBox_stajsuresi.Clear();
-                //textBox_ai_eposta.Clear();
-                //textBox_ai_telefon.Clear();
-                //textBox_ai_akrabalık.Clear();
-                //textBox_ai_adres.Clear();
-                //textBox_ai_adsoyad.Clear();
-                //textBox_ai_adres.Clear();
-                //textBox_tc.Clear();
-                //textBox_adsoyad.Clear();
-                //textBox_baba.Clear();
-                //textBox_anne.Clear();
-                //textBox_dyeri.Clear();
-                //textBox_uyrugu.Clear();
-                //textBox_evtel.Clear();
-                //textBox_ceptel.Clear();
-                //textBox_adres.Clear();
-                //textBox_eposta.Clear();
-                //textBox_website.Clear();
-                //textBox_boy.Clear();
-                //textBox_agırlık.Clear();
-                //textBox_iban.Clear();
 
-                //comboBox_basvuruturu.Text = "";
-                //comboBox_bolumadı.Text = "";
-                //comboBox_cinsiyet.Text = "";
-                //comboBox_okuladı.Text = "";
-                //comboBox_kabuldurumu.Text = "";
-                //comboBox_kangrubu.Text = "";
-                //comboBox_mentor.Text = "";
-                //comboBox_sehir.Text = "";
-                //comboBox_servis.Text = "";
-                //comboBox_sigorta.Text = "";
-                //comboBox_sinif.Text = "";
-                //comboBox_stajdonemi.Text = "";
-                //comboBox_stajturu.Text = "";
-                //comboBox_stajyili.Text = "";
-                #endregion
             }
             catch (Exception hata)
             {
@@ -919,6 +872,8 @@ namespace InternFollowProgramming
                 string dosyayolu = openFileDialog1.FileName.ToString();
                 textBox_dosya.Text = Path.GetFullPath(dosyayolu);
             }
+
+            #region ESKİ KOD
             //try
             //{
             //    OpenFileDialog dialog = new OpenFileDialog();
@@ -935,7 +890,7 @@ namespace InternFollowProgramming
             //{
             //    MessageBox.Show(ex.Message + "Resim yüklenemedi");
             //}
-
+#endregion
 
         }
 
@@ -964,6 +919,8 @@ namespace InternFollowProgramming
         {
             System.Diagnostics.Process.Start("O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + textBox_adsoyad.Text);
         }
+
+        #region VERİTABANINDAN BULMA İŞLEMLERİ
         int i;
         //STAJYER BUL BUTONU GÜNCEL !!
         private void pictureBox_bul_Click(object sender, EventArgs e)
@@ -1043,33 +1000,27 @@ namespace InternFollowProgramming
             #endregion
 
             #region Dosyaları Listele
-            string[] images = Directory.GetFiles( @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text +"\\", "*.jpg");
 
-            int j = Directory.GetFiles( @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text+"\\", "*.*", SearchOption.AllDirectories).Length;
+            string ResimYolu =@"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\"+label_resimyolu.Text;
 
-            label_resimyolu.Text = j.ToString();
-
-            if (i != j)
-
+            if (System.IO.File.Exists(ResimYolu))
             {
+                string[] images = Directory.GetFiles(@"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\", "*.jpg");
 
-                pictureBox_stajyer_resim.BackgroundImage = Image.FromFile(images[i]);
+                int j = Directory.GetFiles(@"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\", "*.*", SearchOption.AllDirectories).Length;
 
-                i++;
+                label_resimyolu.Text = j.ToString();
 
+                if (i != j)
+                {
+                    pictureBox_stajyer_resim.BackgroundImage = Image.FromFile(images[i]);
+                    i++;
+                }
+                else
+                {
+                    i = 0;
+                }
             }
-
-            else
-
-            {
-
-                i = 0;
-
-            }
-
-
-
-            label3.Text = i.ToString();
             #endregion
         }
 
@@ -1150,18 +1101,25 @@ namespace InternFollowProgramming
             connection.Close();
 
             tabControl_bilgigiriş.SelectedTab = tabPage_staj;
-            #region DÖKÜMANLARI LİSTBOX'A AKTAR
-            listBox_dosya.Items.Clear();
-            //GetFiles metodu dosyaları temsil eder. Belirtilen Dizindeki Dosyaları Dizi olarak döndürür
-            string[] dosyalar = System.IO.Directory.GetFiles("O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + textBox_adsoyad.Text);
-            for (int j = 0; j < dosyalar.Length; j++)
-            {
-                //klasörler dizisinin i. elemanı listboxa ekle
-                listBox_dosya.Items.Add(dosyalar[j]);
 
+            #region DÖKÜMANLARI LİSTBOX'A AKTAR
+
+            listBox_dosya.Items.Clear(); // Listbox'ın içini temizle
+            string DosyaYolu = "O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text;
+             if (Directory.Exists(DosyaYolu))
+            {
+                //GetFiles metodu dosyaları temsil eder. Belirtilen Dizindeki Dosyaları Dizi olarak döndürür
+                string[] dosyalar = System.IO.Directory.GetFiles("O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text);
+                for (int j = 0; j < dosyalar.Length; j++)
+                {
+                    //klasörler dizisinin i. elemanı listboxa ekle
+                    listBox_dosya.Items.Add(dosyalar[j]);
+                }
             }
             #endregion
         }
+#endregion
+
         #region ARTI BUTONLARI
         private void button_ortaokul_Click(object sender, EventArgs e)
         {
@@ -1240,6 +1198,7 @@ namespace InternFollowProgramming
             cmbx.Show();
         }
         #endregion
+
         #endregion
 
         #region SEÇİMLERE BAĞLI OLARAK AKTİF/PASİFLİK DURUMLARI
@@ -1669,6 +1628,89 @@ namespace InternFollowProgramming
             }
             dr15.Close();
             connection.Close();
+        }
+
+        private void button_stajsııfırla_Click(object sender, EventArgs e)
+        {
+            textBox_tc.Clear();
+            textBox_adsoyad.Clear();
+            textBox_baba.Clear();
+            textBox_anne.Clear();
+            textBox_dyeri.Clear();
+            dateTimePicker_dtarih.DataBindings.Clear();
+            textBox_uyrugu.Clear();
+            textBox_website.Clear();
+            comboBox_cinsiyet.Text = "";
+            comboBox_kangrubu.Text = "";
+            comboBox_ortaokul.Text = "";
+            comboBox_lise.Text = "";
+            comboBox_universite.Text = "";
+            textBox_evtel.Clear();
+            textBox_ceptel.Clear();
+            textBox_adres.Clear();
+            textBox_eposta.Clear();
+            textBox_boy.Clear();
+            textBox_agırlık.Clear();
+            textBox_ai_adsoyad.Clear();
+            textBox_ai_akrabalık.Clear();
+            textBox_ai_adres.Clear();
+            textBox_ai_eposta.Clear();
+            textBox_ai_telefon.Clear();
+            textBox_adres.Clear();
+            textBox_agırlık.Clear();
+        }
+
+        private void button_stajyertemizle_Click(object sender, EventArgs e)
+        {
+            #region verileri sil
+            textBox_okulpuan.Clear();
+            textBox_okulno.Clear();
+            
+            textBox_r_eposta.Clear();
+            textBox_r_adres.Clear();
+            textBox_r_telefon.Clear();
+            textBox_r_ad.Clear();
+            textBox_staj_aciklama.Clear();
+            comboBox_aracplaka.Text = "";
+            comboBox_stajturu.Text = "";
+            textBox_stajsuresi.Clear();
+            textBox_ai_eposta.Clear();
+            textBox_ai_telefon.Clear();
+            textBox_ai_akrabalık.Clear();
+            textBox_ai_adres.Clear();
+            textBox_ai_adsoyad.Clear();
+            textBox_ai_adres.Clear();
+            textBox_tc.Clear();
+            textBox_adsoyad.Clear();
+            textBox_baba.Clear();
+            textBox_anne.Clear();
+            textBox_dyeri.Clear();
+            textBox_uyrugu.Clear();
+            textBox_evtel.Clear();
+            textBox_ceptel.Clear();
+            textBox_adres.Clear();
+            textBox_eposta.Clear();
+            textBox_website.Clear();
+            textBox_boy.Clear();
+            textBox_agırlık.Clear();
+            textBox_iban.Clear();
+
+            comboBox_lise.Text = "";
+            comboBox_basvuruturu.Text = "";
+            comboBox_bolumadı.Text = "";
+            comboBox_cinsiyet.Text = "";
+            comboBox_okuladı.Text = "";
+            comboBox_kabuldurumu.Text = "";
+            comboBox_kangrubu.Text = "";
+            comboBox_mentor.Text = "";
+            comboBox_sehir.Text = "";
+            comboBox_servis.Text = "";
+            comboBox_sigorta.Text = "";
+            comboBox_sinif.Text = "";
+            comboBox_stajdonemi.Text = "";
+            comboBox_stajturu.Text = "";
+            comboBox_stajyili.Text = "";
+            #endregion
         }
     }
 }

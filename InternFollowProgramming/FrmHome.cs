@@ -54,8 +54,7 @@ namespace InternFollowProgramming
         private void pictureBox_giris_Click(object sender, EventArgs e)
         {
             // Boş değer girilmesini engelliyoruz.
-            if (String.IsNullOrWhiteSpace(comboBox_user.Text) ||
-                String.IsNullOrWhiteSpace(textBox_password.Text))
+            if (String.IsNullOrWhiteSpace(comboBox_user.Text) || String.IsNullOrWhiteSpace(textBox_password.Text))
             {
                 MessageBox.Show("Giriş Başarısız! Eksiksiz Giriniz!", "..:: HATA ::..",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -86,15 +85,13 @@ namespace InternFollowProgramming
                 else
                 {
                     MessageBox.Show("Veritabanında böyle bir kullanıcı bulunamadı");
-                    FrmScreen frmscreen = new FrmScreen();
-                    frmscreen.Show();
+                   
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                FrmScreen frmscreen = new FrmScreen();
-                frmscreen.Show();
+               
             }
         }
 
