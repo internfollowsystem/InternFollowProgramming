@@ -29,6 +29,7 @@ namespace InternFollowProgramming
             InitializeComponent();
         }
 
+
         private void comboBox_cmbx_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBox_cmbx.Items.Clear();
@@ -96,11 +97,14 @@ namespace InternFollowProgramming
             textBox_cmbxveri.Clear();
         }
 
+        string secili;
         private void listBox_cmbx_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBox_cmbxveri.Text = listBox_cmbx.SelectedItem.ToString();
+            secili = listBox_cmbx.SelectedItem.ToString();
         }
 
+        
         private void SilToolStripMenuItem_Click(object sender, EventArgs e)
         {
             command.Connection = connection;
@@ -134,6 +138,37 @@ namespace InternFollowProgramming
            
             Application.Exit();
            
+        }
+
+        private void GüncelleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+
+            command.Connection = connection;
+            connection.Open();
+            string cmbxverisil = " UPDATE " + comboBox_cmbx.Text + "  SET id=@id where id=@idd";
+            command = new SqlCommand(cmbxverisil, connection);
+            secili = listBox_cmbx.SelectedItem.ToString();
+            command.Parameters.AddWithValue("@id", textBox_cmbxveri.Text);
+            command.Parameters.AddWithValue("@idd", secili);
+            command.ExecuteNonQuery();
+
+            MessageBox.Show("VERİNİZ GÜNCELLENMİŞTİR");
+
+            listBox_cmbx.Items.Clear();
+            #region COMBOBOX'A VERİ ÇEKME
+            string cmbxveri = "SELECT * FROM " + comboBox_cmbx.SelectedItem + "";
+            command = new SqlCommand(cmbxveri, connection);
+
+            datareader = command.ExecuteReader();
+            while (datareader.Read())
+            {
+                listBox_cmbx.Items.Add(datareader["id"]);
+            }
+            datareader.Close();
+            #endregion
+
+            connection.Close();
         }
     }
 }

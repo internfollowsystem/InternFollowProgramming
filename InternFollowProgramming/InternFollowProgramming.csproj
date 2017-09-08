@@ -546,6 +546,9 @@
   <ItemGroup>
     <None Include="Resources\göster copy.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\düzenle1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>

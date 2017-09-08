@@ -127,6 +127,9 @@
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="stajsil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stajsil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="RESİM" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RESİM.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,11 +139,11 @@
   <data name="stajbul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stajbul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="yeni_lisans_stajyer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yeni_lisans_stajyer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="camera-5-xxl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\camera-5-xxl1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Delete_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ekle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ekle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,11 +205,14 @@
   <data name="update2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\update2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gizle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gizle1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mailgönder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mailgönder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="excelkaydet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\excelkaydet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Delete_Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Delete_Icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="leaveGiriş1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\leaveGiriş1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,8 +229,14 @@
   <data name="EXCELYAZILI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EXCELYAZILI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Yeni_genel_stajyer1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yeni_genel_stajyer1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="göster copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\göster copy.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SAVEDARKYELLOW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SAVEDARKYELLOW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -277,17 +289,14 @@
   <data name="update1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\update1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="genel_stajer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\genel_stajer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="lisans" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lisans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Bön lisans copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bön lisans copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AKESTAJYERLOGO1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AKESTAJYERLOGO1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="yenile2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yenile2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="yeni_önlisans_stajyer1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yeni_önlisans_stajyer1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -331,20 +340,20 @@
   <data name="gizle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gizle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="STAJYER GÖSTER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\STAJYER GÖSTER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Blisans" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Blisans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ara1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ara1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Yeni_genel_stajyer1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Yeni_genel_stajyer1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="yeni_lisans_stajyer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeni_lisans_stajyer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logovektörel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logovektörel.tif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mailgönder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mailgönder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ara1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ara1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="file_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\file_delete1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -358,8 +367,8 @@
   <data name="yenile1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yenile1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stajsil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stajsil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="genel_stajer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\genel_stajer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dosyayukle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dosyayukle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -388,11 +397,8 @@
   <data name="stajyapıyor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stajyapıyor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="yenile2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yenile2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="STAJYER GÖSTER" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\STAJYER GÖSTER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AKESTAJYERLOGO1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AKESTAJYERLOGO1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="REFRESHYAZILI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\REFRESHYAZILI.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -400,8 +406,8 @@
   <data name="277118" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\277118.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Delete_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Delete_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Delete_Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete_Icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -421,10 +427,7 @@
   <data name="pp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pp.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gizle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gizle1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="göster copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\göster copy.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="düzenle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\düzenle1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -32,14 +32,15 @@
             this.comboBox_cmbx = new System.Windows.Forms.ComboBox();
             this.listBox_cmbx = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.SilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button_ekle = new System.Windows.Forms.Button();
             this.textBox_cmbxveri = new System.Windows.Forms.TextBox();
             this.button_cıkıs = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.SilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GüncelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -82,17 +83,10 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SilToolStripMenuItem});
+            this.SilToolStripMenuItem,
+            this.GüncelleToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(90, 26);
-            // 
-            // SilToolStripMenuItem
-            // 
-            this.SilToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
-            this.SilToolStripMenuItem.Name = "SilToolStripMenuItem";
-            this.SilToolStripMenuItem.Size = new System.Drawing.Size(89, 22);
-            this.SilToolStripMenuItem.Text = "SİL";
-            this.SilToolStripMenuItem.Click += new System.EventHandler(this.SilToolStripMenuItem_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(132, 48);
             // 
             // button_ekle
             // 
@@ -134,16 +128,6 @@
             this.panel1.Size = new System.Drawing.Size(440, 56);
             this.panel1.TabIndex = 7;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::InternFollowProgramming.Properties.Resources.AKESTAJYERLOGO1;
-            this.pictureBox1.Location = new System.Drawing.Point(25, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -163,6 +147,32 @@
             this.label2.Size = new System.Drawing.Size(110, 16);
             this.label2.TabIndex = 9;
             this.label2.Text = "Seçim Nesnesi Yaz!";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::InternFollowProgramming.Properties.Resources.AKESTAJYERLOGO1;
+            this.pictureBox1.Location = new System.Drawing.Point(25, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // SilToolStripMenuItem
+            // 
+            this.SilToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
+            this.SilToolStripMenuItem.Name = "SilToolStripMenuItem";
+            this.SilToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.SilToolStripMenuItem.Text = "SİL";
+            this.SilToolStripMenuItem.Click += new System.EventHandler(this.SilToolStripMenuItem_Click);
+            // 
+            // GüncelleToolStripMenuItem
+            // 
+            this.GüncelleToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.düzenle1;
+            this.GüncelleToolStripMenuItem.Name = "GüncelleToolStripMenuItem";
+            this.GüncelleToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.GüncelleToolStripMenuItem.Text = "GÜNCELLE";
+            this.GüncelleToolStripMenuItem.Click += new System.EventHandler(this.GüncelleToolStripMenuItem_Click);
             // 
             // ComboBoxEKLE
             // 
@@ -203,5 +213,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem GüncelleToolStripMenuItem;
     }
 }
