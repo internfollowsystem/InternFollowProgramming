@@ -606,7 +606,7 @@ namespace InternFollowProgramming
                 connection.Close();
 
 
-                if(label_resimyolu.Text!=String.Empty)
+                if(label_resimyolu.Text!=string.Empty)
                 {
                     Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
                     string resimAdi = Path.GetFileName(label_resimyolu.Text);
@@ -761,8 +761,9 @@ namespace InternFollowProgramming
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string dosyayolu = openFileDialog1.FileName.ToString();
-                textBox_dosya.Text = Path.GetFullPath(dosyayolu);
+                string resimyolu = openFileDialog1.FileName.ToString();
+                label_resimyolu.Text = Path.GetFullPath(resimyolu);
+                pictureBox_stajyer_resim.ImageLocation = label_resimyolu.Text;
             }
 
             #region ESKİ KOD
@@ -892,29 +893,9 @@ namespace InternFollowProgramming
             connection.Close();
             #endregion
 
-            #region Dosyaları Listele
-
-            string ResimYolu =@"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\"+label_resimyolu.Text;
-
-            if (System.IO.File.Exists(ResimYolu))
-            {
-                string[] images = Directory.GetFiles(@"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\", "*.jpg");
-
-                int j = Directory.GetFiles(@"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\", "*.*", SearchOption.AllDirectories).Length;
-
-                label_resimyolu.Text = j.ToString();
-
-                if (i != j)
-                {
-                    label_resimyolu.Text = Image.FromFile(images[i]).ToString();
-                    pictureBox_stajyer_resim.ImageLocation = label_resimyolu.Text;
-                    i++;
-                }
-                else
-                {
-                    i = 0;
-                }
-            }
+            #region Resmi Göster
+            string ResimYolu =@"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg";
+            pictureBox_stajyer_resim.ImageLocation = ResimYolu;
             #endregion
         }
 
