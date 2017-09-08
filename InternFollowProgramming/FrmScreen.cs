@@ -3083,6 +3083,16 @@ namespace InternFollowProgramming
             }
             connection.Close();
         }
+
+        private void label_hata_MouseHover(object sender, EventArgs e)
+        {
+            label_hata.Font = new System.Drawing.Font(label_hata.Font, label_hata.Font.Style ^ FontStyle.Underline);
+        }
+
+        private void label_hata_MouseLeave(object sender, EventArgs e)
+        {
+            label_hata.Font = new System.Drawing.Font(label_hata.Font, label_hata.Font.Style ); 
+        }
     }
 }
 

@@ -359,10 +359,14 @@ namespace InternFollowProgramming
                 }
             }
 
-            Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
-            string resimAdi = Path.GetFileName(label_resimyolu.Text);
-            File.Copy(@"" + label_resimyolu.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi);
-            MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
+            if(label_resimyolu.Text!=string.Empty)
+            {
+                Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
+                string resimAdi = Path.GetFileName(label_resimyolu.Text);
+                File.Copy(@"" + label_resimyolu.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel");
+                MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
+            }
+            
         }
 
         //STAJ KAYDET 25 AGUSTOS GÜNCEL !!
@@ -604,10 +608,10 @@ namespace InternFollowProgramming
 
                 if(label_resimyolu.Text!=String.Empty)
                 {
-                    // Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
-                    //string resimAdi = Path.GetFileName(label_resimyolu.Text);
-                    //File.Copy(@"" + label_resimyolu.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi);
-                    //MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
+                    Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
+                    string resimAdi = Path.GetFileName(label_resimyolu.Text);
+                    File.Copy(@"" + label_resimyolu.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi);
+                    MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
                 }
                 MessageBox.Show("Stajyer Bilgileri Güncellendi");
 
@@ -788,6 +792,7 @@ namespace InternFollowProgramming
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string dosyayolu = openFileDialog1.FileName.ToString();
+                label_dosya.Text = Path.GetFullPath(dosyayolu);
                 textBox_dosya.Text = Path.GetFullPath(dosyayolu);
             }
 
@@ -798,7 +803,7 @@ namespace InternFollowProgramming
         {
             Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text);
             string dosyaAdi = Path.GetFileName(textBox_dosya.Text);
-            File.Copy(@"" + textBox_dosya.Text, @"" + @"O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text + "\\" + dosyaAdi);
+            File.Copy(@"" + label_dosya.Text, @"" + @"O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text + "\\" + dosyaAdi);
             MessageBox.Show(textBox_adsoyad.Text + "'in Dökumanı başarılı olarak kaydedildi.");
         }
 
@@ -994,11 +999,11 @@ namespace InternFollowProgramming
             #region DÖKÜMANLARI LİSTBOX'A AKTAR
 
             listBox_dosya.Items.Clear(); // Listbox'ın içini temizle
-            string DosyaYolu = "O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text;
+            string DosyaYolu = "O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_staj.Text;
              if (Directory.Exists(DosyaYolu))
             {
                 //GetFiles metodu dosyaları temsil eder. Belirtilen Dizindeki Dosyaları Dizi olarak döndürür
-                string[] dosyalar = System.IO.Directory.GetFiles("O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text);
+                string[] dosyalar = System.IO.Directory.GetFiles("O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_staj.Text);
                 for (int j = 0; j < dosyalar.Length; j++)
                 {
                     //klasörler dizisinin i. elemanı listboxa ekle

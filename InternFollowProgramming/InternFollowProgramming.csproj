@@ -549,6 +549,9 @@
   <ItemGroup>
     <None Include="Resources\düzenle1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Presentation-Icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
