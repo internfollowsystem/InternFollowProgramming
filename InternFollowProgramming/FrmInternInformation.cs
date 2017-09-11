@@ -528,7 +528,8 @@ namespace InternFollowProgramming
                 connection.Close();
                 MessageBox.Show("Kayıt Silinmiştir");
 
-                File.Delete("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg");
+                Directory.Delete("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text, true);
+                Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text, true);
             }
             catch (Exception ex)
             {
@@ -572,7 +573,7 @@ namespace InternFollowProgramming
             connection.Close();
             #endregion
 
-            Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text);
+            Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text, true);
         }
 
         #endregion
@@ -821,16 +822,24 @@ namespace InternFollowProgramming
         //DOSYA YÜKLEME BUTONU GÜNCEL!!
         private void pictureBox_fileupdate_Click(object sender, EventArgs e)
         {
-            Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text);
-            string dosyaAdi = Path.GetFileName(textBox_dosya.Text);
-            File.Copy(@"" + label_dosya.Text, @"" + @"O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text + "\\" + dosyaAdi);
-            MessageBox.Show(textBox_adsoyad.Text + "'in Dökumanı başarılı olarak kaydedildi.");
+            if(textBox_dosya.Text!=string.Empty)
+            {
+                Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text);
+                string dosyaAdi = Path.GetFileName(textBox_dosya.Text);
+                File.Copy(@"" + label_dosya.Text, @"" + @"O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text + "\\" + dosyaAdi);
+                MessageBox.Show(textBox_adsoyad.Text + "'in Dökumanı başarılı olarak kaydedildi.");
+            }
+            else
+            {
+                MessageBox.Show("Lütfen Dosya Seçiniz !");
+            }
+           
         }
 
         //LİSTBOX'TAN KLASÖR AÇ OLAYI: 28 AGUSTOS PAZAR GÜNCEL!!
         private void listBox_dosya_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            System.Diagnostics.Process.Start("O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + textBox_adsoyad.Text);
+            System.Diagnostics.Process.Start("O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text);
         }
 
         #region VERİTABANINDAN BULMA İŞLEMLERİ
@@ -1904,7 +1913,6 @@ namespace InternFollowProgramming
             comboBox_stajyili.Text = "";
 #endregion
         }
-
     }
 }
 

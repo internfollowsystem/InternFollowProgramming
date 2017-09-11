@@ -1102,7 +1102,8 @@ namespace InternFollowProgramming
             #endregion
 
             string secili= dataGridView.CurrentRow.Cells[0].Value.ToString();
-            File.Delete("O:STAJER_TAKIP\\StajyerGörselleri\\" + secili + "\\kişiselgörsel.jpg");
+            Directory.Delete("O:STAJER_TAKIP\\StajyerGörselleri\\" + secili, true);
+            Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + secili + "_" + stajturu, true);
         }
 
         private void stajToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1176,7 +1177,7 @@ namespace InternFollowProgramming
 
             string secili = dataGridView.CurrentRow.Cells[0].Value.ToString();
             string stajturu = dataGridView.CurrentRow.Cells[4].Value.ToString();
-            Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + secili + "_" + stajturu);
+            Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + secili + "_" + stajturu,true);
         }
        
         //22AGUSTOS RAPORLAMA GÜNCEL DEĞİL SADECE COPY-PASTE OLACAK  ---- 23ağustos güncel gibi ama kontrol ett
