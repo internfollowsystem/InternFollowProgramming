@@ -363,7 +363,8 @@ namespace InternFollowProgramming
             {
                 Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
                 string resimAdi = Path.GetFileName(label_resimyolu.Text);
-                File.Copy(@"" + label_resimyolu.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel");
+                File.Copy(@"" + label_resimyolu.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\"+resimAdi);
+                File.Move("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi, "O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg");
                 MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
             }
             
@@ -802,7 +803,7 @@ namespace InternFollowProgramming
         //DOSYA YÜKLEME BUTONU GÜNCEL!!
         private void pictureBox_fileupdate_Click(object sender, EventArgs e)
         {
-            Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text);
+            Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text);
             string dosyaAdi = Path.GetFileName(textBox_dosya.Text);
             File.Copy(@"" + label_dosya.Text, @"" + @"O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text + "\\" + dosyaAdi);
             MessageBox.Show(textBox_adsoyad.Text + "'in Dökumanı başarılı olarak kaydedildi.");
@@ -979,11 +980,12 @@ namespace InternFollowProgramming
             connection.Close();
 
             tabControl_bilgigiriş.SelectedTab = tabPage_okul;
+            listBox_dosya.Enabled = true;
 
             #region DÖKÜMANLARI LİSTBOX'A AKTAR
 
             listBox_dosya.Items.Clear(); // Listbox'ın içini temizle
-            string DosyaYolu = "O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_staj.Text;
+            string DosyaYolu = "O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text;
              if (Directory.Exists(DosyaYolu))
             {
                 //GetFiles metodu dosyaları temsil eder. Belirtilen Dizindeki Dosyaları Dizi olarak döndürür
