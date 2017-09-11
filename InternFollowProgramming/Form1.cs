@@ -19,6 +19,12 @@ namespace InternFollowProgramming
             InitializeComponent();
         }
 
+
+        private void FrmMail_Load(object sender, EventArgs e)
+        {
+            textBox_aposta.Text = FrmScreen.gonderilecekveri;
+        }
+
         private void button_mailgonder_Click(object sender, EventArgs e)
         {
             SmtpClient client = new SmtpClient();
@@ -30,11 +36,7 @@ namespace InternFollowProgramming
             mm.Subject = textBox_mkonusu.Text;
             mm.Body = textBox_micerigi.Text;
             client.Send(mm);
-        }
-
-        private void FrmMail_Load(object sender, EventArgs e)
-        {
-            textBox_aposta.Text = FrmScreen.gonderilecekveri;
+            MessageBox.Show("Mailiniz iletilmştir.");
         }
     }
 }

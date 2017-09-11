@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox_logo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox_logo.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 27</value>
@@ -124,7 +128,6 @@
   <data name="pictureBox_logo.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 98</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pictureBox_logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
   </data>
@@ -168,65 +171,134 @@
   <data name="&gt;&gt;panel_ust.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label_sifre.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 180</value>
+  <data name="label_sifre.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 19</value>
+  <data name="label_sifre.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 23</value>
   </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="label_sifre.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 19</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Şifre mi unuttum?</value>
+  <data name="label_sifre.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
+  <data name="label_sifre.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+  <data name="&gt;&gt;label_sifre.Name" xml:space="preserve">
+    <value>label_sifre</value>
+  </data>
+  <data name="&gt;&gt;label_sifre.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label_sifre.Parent" xml:space="preserve">
     <value>panel_alt</value>
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label_sifre.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label_mail.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>283, 180</value>
+  <data name="label_mail.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 19</value>
+  <data name="label_mail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="label_mail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 19</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Yeni Kayıt</value>
+  <data name="label_mail.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="label_mail.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+  <data name="&gt;&gt;label_mail.Name" xml:space="preserve">
+    <value>label_mail</value>
+  </data>
+  <data name="&gt;&gt;label_mail.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label_mail.Parent" xml:space="preserve">
     <value>panel_alt</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label_mail.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="label_sifremiunuttum.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_sifremiunuttum.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_sifremiunuttum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>60, 185</value>
+  </data>
+  <data name="label_sifremiunuttum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 19</value>
+  </data>
+  <data name="label_sifremiunuttum.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="label_sifremiunuttum.Text" xml:space="preserve">
+    <value>Şifre mi unuttum?</value>
+  </data>
+  <data name="&gt;&gt;label_sifremiunuttum.Name" xml:space="preserve">
+    <value>label_sifremiunuttum</value>
+  </data>
+  <data name="&gt;&gt;label_sifremiunuttum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_sifremiunuttum.Parent" xml:space="preserve">
+    <value>panel_alt</value>
+  </data>
+  <data name="&gt;&gt;label_sifremiunuttum.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label_yenikayit.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_yenikayit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_yenikayit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 185</value>
+  </data>
+  <data name="label_yenikayit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 19</value>
+  </data>
+  <data name="label_yenikayit.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="label_yenikayit.Text" xml:space="preserve">
+    <value>Yeni Kayıt</value>
+  </data>
+  <data name="&gt;&gt;label_yenikayit.Name" xml:space="preserve">
+    <value>label_yenikayit</value>
+  </data>
+  <data name="&gt;&gt;label_yenikayit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_yenikayit.Parent" xml:space="preserve">
+    <value>panel_alt</value>
+  </data>
+  <data name="&gt;&gt;label_yenikayit.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="checkBox_visible.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBox_visible.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
+  </data>
+  <data name="checkBox_visible.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="checkBox_visible.Location" type="System.Drawing.Point, System.Drawing">
     <value>360, 106</value>
@@ -247,7 +319,10 @@
     <value>panel_alt</value>
   </data>
   <data name="&gt;&gt;checkBox_visible.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
+  </data>
+  <data name="pictureBox_password.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="pictureBox_password.Location" type="System.Drawing.Point, System.Drawing">
     <value>381, 102</value>
@@ -271,7 +346,10 @@
     <value>panel_alt</value>
   </data>
   <data name="&gt;&gt;pictureBox_password.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
+  </data>
+  <data name="pictureBox_giris.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="pictureBox_giris.Location" type="System.Drawing.Point, System.Drawing">
     <value>64, 148</value>
@@ -295,7 +373,7 @@
     <value>panel_alt</value>
   </data>
   <data name="&gt;&gt;pictureBox_giris.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="comboBox_user.Location" type="System.Drawing.Point, System.Drawing">
     <value>173, 53</value>
@@ -316,13 +394,16 @@
     <value>panel_alt</value>
   </data>
   <data name="&gt;&gt;comboBox_user.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="label_password.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label_password.Font" type="System.Drawing.Font, System.Drawing">
     <value>Open Sans, 9pt</value>
+  </data>
+  <data name="label_password.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label_password.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 104</value>
@@ -346,13 +427,16 @@
     <value>panel_alt</value>
   </data>
   <data name="&gt;&gt;label_password.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label2_user.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label2_user.Font" type="System.Drawing.Font, System.Drawing">
     <value>Open Sans, 9pt</value>
+  </data>
+  <data name="label2_user.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label2_user.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 58</value>
@@ -376,7 +460,7 @@
     <value>panel_alt</value>
   </data>
   <data name="&gt;&gt;label2_user.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="textBox_password.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Hiragana</value>
@@ -400,7 +484,7 @@
     <value>panel_alt</value>
   </data>
   <data name="&gt;&gt;textBox_password.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="panel_alt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -437,6 +521,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>428, 370</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

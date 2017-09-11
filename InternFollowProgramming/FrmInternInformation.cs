@@ -881,6 +881,7 @@ namespace InternFollowProgramming
             #endregion
 
             #region COMBOBOX'IN İÇİNE STAJ BİLGİLERİNİ ÇEK
+            comboBox_staj.Items.Clear();
             string staj = "SELECT staj_turu FROM stajbilgileri where tc_kimlikno=@tc_kimlikno";
             cmd = new SqlCommand(staj, connection);
             cmd.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
@@ -897,6 +898,8 @@ namespace InternFollowProgramming
             string ResimYolu =@"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg";
             pictureBox_stajyer_resim.ImageLocation = ResimYolu;
             #endregion
+
+            tabControl_bilgigiriş.SelectedTab = tabPage_genel;
         }
 
         //STAJ KODU GETİR KODU
@@ -975,7 +978,7 @@ namespace InternFollowProgramming
             drstaj.Close();
             connection.Close();
 
-            tabControl_bilgigiriş.SelectedTab = tabPage_staj;
+            tabControl_bilgigiriş.SelectedTab = tabPage_okul;
 
             #region DÖKÜMANLARI LİSTBOX'A AKTAR
 
@@ -1471,22 +1474,47 @@ namespace InternFollowProgramming
 
         private void pictureBox_stajbilgisi_kaydet_MouseHover(object sender, EventArgs e)
         {
-            pictureBox_stajbilgisi_kaydet.Width = 134;
-            pictureBox_stajbilgisi_kaydet.Height = 43;
+            pictureBox_stajbilgisi_kaydet.Width = 65;
+            pictureBox_stajbilgisi_kaydet.Height = 30;
         }
 
         private void pictureBox_stajbilgisi_kaydet_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox_stajbilgisi_kaydet.Width = 124;
-            pictureBox_stajbilgisi_kaydet.Height = 33;
+            pictureBox_stajbilgisi_kaydet.Width = 60;
+            pictureBox_stajbilgisi_kaydet.Height = 25;
         }
 
+
+
+        private void pictureBox_sıfırla_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox_sıfırla.Width = 65;
+            pictureBox_sıfırla.Height = 30;
+        }
+
+        private void pictureBox_sıfırla_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox_sıfırla.Width = 60;
+            pictureBox_sıfırla.Height = 25;
+        }
+
+        private void pictureBox_stajsıfırla_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox_stajsıfırla.Width = 65;
+            pictureBox_stajsıfırla.Height = 30;
+        }
+
+        private void pictureBox_stajsıfırla_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox_stajsıfırla.Width = 60;
+            pictureBox_stajsıfırla.Height = 25;
+        }
         #endregion
 
         private void comboBox_egitimdurumu_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (comboBox_egitimdurumu.Text == "Lise")
+            if (comboBox_egitimdurumu.Text == "LİSE")
             {
                 if (connection.State == ConnectionState.Closed)
                 {
@@ -1505,7 +1533,7 @@ namespace InternFollowProgramming
 
                 panel_bankabilgileri.Enabled = true;
             }
-            else if (comboBox_egitimdurumu.Text != "Lise")
+            else if (comboBox_egitimdurumu.Text != "LİSE")
             {
                 if (connection.State == ConnectionState.Closed)
                 {
@@ -1570,90 +1598,6 @@ namespace InternFollowProgramming
             dr15.Close();
             connection.Close();
         }
-
-        private void button_stajsııfırla_Click(object sender, EventArgs e)
-        {
-            textBox_tc.Clear();
-            textBox_adsoyad.Clear();
-            textBox_baba.Clear();
-            textBox_anne.Clear();
-            textBox_dyeri.Clear();
-            dateTimePicker_dtarih.DataBindings.Clear();
-            textBox_uyrugu.Clear();
-            textBox_website.Clear();
-            comboBox_cinsiyet.Text = "";
-            comboBox_kangrubu.Text = "";
-            comboBox_ortaokul.Text = "";
-            comboBox_lise.Text = "";
-            comboBox_universite.Text = "";
-            textBox_evtel.Clear();
-            textBox_ceptel.Clear();
-            textBox_adres.Clear();
-            textBox_eposta.Clear();
-            textBox_boy.Clear();
-            textBox_agırlık.Clear();
-            textBox_ai_adsoyad.Clear();
-            textBox_ai_akrabalık.Clear();
-            textBox_ai_adres.Clear();
-            textBox_ai_eposta.Clear();
-            textBox_ai_telefon.Clear();
-            textBox_adres.Clear();
-            textBox_agırlık.Clear();
-        }
-
-        private void button_stajyertemizle_Click(object sender, EventArgs e)
-        {
-            #region verileri sil
-            textBox_okulpuan.Clear();
-            textBox_okulno.Clear();
-            
-            textBox_r_eposta.Clear();
-            textBox_r_adres.Clear();
-            textBox_r_telefon.Clear();
-            textBox_r_ad.Clear();
-            textBox_staj_aciklama.Clear();
-            comboBox_aracplaka.Text = "";
-            comboBox_stajturu.Text = "";
-            textBox_stajsuresi.Clear();
-            textBox_ai_eposta.Clear();
-            textBox_ai_telefon.Clear();
-            textBox_ai_akrabalık.Clear();
-            textBox_ai_adres.Clear();
-            textBox_ai_adsoyad.Clear();
-            textBox_ai_adres.Clear();
-            textBox_tc.Clear();
-            textBox_adsoyad.Clear();
-            textBox_baba.Clear();
-            textBox_anne.Clear();
-            textBox_dyeri.Clear();
-            textBox_uyrugu.Clear();
-            textBox_evtel.Clear();
-            textBox_ceptel.Clear();
-            textBox_adres.Clear();
-            textBox_eposta.Clear();
-            textBox_website.Clear();
-            textBox_boy.Clear();
-            textBox_agırlık.Clear();
-            textBox_iban.Clear();
-
-            comboBox_lise.Text = "";
-            comboBox_basvuruturu.Text = "";
-            comboBox_bolumadı.Text = "";
-            comboBox_cinsiyet.Text = "";
-            comboBox_okuladı.Text = "";
-            comboBox_kabuldurumu.Text = "";
-            comboBox_kangrubu.Text = "";
-            comboBox_mentor.Text = "";
-            comboBox_sehir.Text = "";
-            comboBox_servis.Text = "";
-            comboBox_sigorta.Text = "";
-            comboBox_sinif.Text = "";
-            comboBox_stajdonemi.Text = "";
-            comboBox_stajturu.Text = "";
-            comboBox_stajyili.Text = "";
-            #endregion
-        }
-
 
         private void comboBox_ortaokul_Click(object sender, EventArgs e)
         {
@@ -1842,8 +1786,94 @@ namespace InternFollowProgramming
             dr13.Close();
             connection.Close();
         }
-  
-        
+
+        private void pictureBox_sıfırla_Click(object sender, EventArgs e)
+        {
+            textBox_tcbul.Clear();
+            textBox_tc.Clear();
+            textBox_adsoyad.Clear();
+            textBox_baba.Clear();
+            textBox_anne.Clear();
+            textBox_dyeri.Clear();
+            dateTimePicker_dtarih.DataBindings.Clear();
+            textBox_uyrugu.Clear();
+            textBox_website.Clear();
+            comboBox_cinsiyet.Text = "";
+            comboBox_kangrubu.Text = "";
+            comboBox_ortaokul.Text = "";
+            comboBox_lise.Text = "";
+            comboBox_universite.Text = "";
+            textBox_evtel.Clear();
+            textBox_ceptel.Clear();
+            textBox_adres.Clear();
+            textBox_eposta.Clear();
+            textBox_boy.Clear();
+            textBox_agırlık.Clear();
+            textBox_ai_adsoyad.Clear();
+            textBox_ai_akrabalık.Clear();
+            textBox_ai_adres.Clear();
+            textBox_ai_eposta.Clear();
+            textBox_ai_telefon.Clear();
+            textBox_adres.Clear();
+            textBox_agırlık.Clear();
+        }
+
+        private void pictureBox_stajsıfırla_Click(object sender, EventArgs e)
+        {
+            #region  verileri sil
+            label_kod.Text = "00";
+            textBox_okulpuan.Clear();
+            textBox_okulno.Clear();
+            comboBox_egitimdurumu.ResetText();
+            label_kalansure.Text = "";
+            textBox_stajyapmadurumu.Text = "";
+            textBox_r_eposta.Clear();
+            textBox_r_adres.Clear();
+            textBox_r_telefon.Clear();
+            textBox_r_ad.Clear();
+            textBox_staj_aciklama.Clear();
+            comboBox_aracplaka.Text = "";
+            comboBox_stajturu.Text = "";
+            textBox_stajsuresi.Clear();
+            textBox_ai_eposta.Clear();
+            textBox_ai_telefon.Clear();
+            textBox_ai_akrabalık.Clear();
+            textBox_ai_adres.Clear();
+            textBox_ai_adsoyad.Clear();
+            textBox_ai_adres.Clear();
+            textBox_tc.Clear();
+            textBox_adsoyad.Clear();
+            textBox_baba.Clear();
+            textBox_anne.Clear();
+            textBox_dyeri.Clear();
+            textBox_uyrugu.Clear();
+            textBox_evtel.Clear();
+            textBox_ceptel.Clear();
+            textBox_adres.Clear();
+            textBox_eposta.Clear();
+            textBox_website.Clear();
+            textBox_boy.Clear();
+            textBox_agırlık.Clear();
+            textBox_iban.Clear();
+
+            comboBox_lise.Text = "";
+            comboBox_basvuruturu.Text = "";
+            comboBox_bolumadı.Text = "";
+            comboBox_cinsiyet.Text = "";
+            comboBox_okuladı.Text = "";
+            comboBox_kabuldurumu.Text = "";
+            comboBox_kangrubu.Text = "";
+            comboBox_mentor.Text = "";
+            comboBox_sehir.Text = "";
+            comboBox_servis.Text = "";
+            comboBox_sigorta.Text = "";
+            comboBox_sinif.Text = "";
+            comboBox_stajdonemi.Text = "";
+            comboBox_stajturu.Text = "";
+            comboBox_stajyili.Text = "";
+#endregion
+        }
+
     }
 }
 

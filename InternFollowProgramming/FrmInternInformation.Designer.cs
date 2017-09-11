@@ -31,19 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.textBox_tcbul = new System.Windows.Forms.TextBox();
             this.panel_adsoyadbul = new System.Windows.Forms.Panel();
-            this.button_stajsııfırla = new System.Windows.Forms.Button();
-            this.pictureBox_yenile = new System.Windows.Forms.PictureBox();
-            this.pictureBox_stajyer_sil = new System.Windows.Forms.PictureBox();
-            this.pictureBox_güncelle = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label_resimyolu = new System.Windows.Forms.Label();
-            this.pictureBox_resim = new System.Windows.Forms.PictureBox();
             this.listBox_dosya = new System.Windows.Forms.ListBox();
-            this.pictureBox_stajyer_resim = new System.Windows.Forms.PictureBox();
             this.textBox_dosya = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox_bul = new System.Windows.Forms.PictureBox();
             this.comboBox_staj = new System.Windows.Forms.ComboBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog_dosya = new System.Windows.Forms.OpenFileDialog();
@@ -139,7 +131,6 @@
             this.label_acil_yakınlıgı = new System.Windows.Forms.Label();
             this.label_acil_telefon = new System.Windows.Forms.Label();
             this.label_acil_adsoyad = new System.Windows.Forms.Label();
-            this.pictureBox_stajyer_kaydet = new System.Windows.Forms.PictureBox();
             this.tabPage_genel = new System.Windows.Forms.TabPage();
             this.comboBox_universite = new System.Windows.Forms.ComboBox();
             this.comboBox_lise = new System.Windows.Forms.ComboBox();
@@ -196,47 +187,58 @@
             this.button_stajturu = new System.Windows.Forms.Button();
             this.comboBox_stajturu = new System.Windows.Forms.ComboBox();
             this.label_stajturu = new System.Windows.Forms.Label();
-            this.pictureBox_stajbilgisi_kaydet = new System.Windows.Forms.PictureBox();
             this.label_staj_kodu = new System.Windows.Forms.Label();
             this.label_kod = new System.Windows.Forms.Label();
             this.panel_stajbilgidosya = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label_dosya = new System.Windows.Forms.Label();
             this.pictureBox_stajgüncelle = new System.Windows.Forms.PictureBox();
             this.pictureBox_stajsil = new System.Windows.Forms.PictureBox();
             this.pictureBox_dosyayukle = new System.Windows.Forms.PictureBox();
             this.pictureBox_staj = new System.Windows.Forms.PictureBox();
             this.pictureBox_dosya = new System.Windows.Forms.PictureBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button_stajyertemizle = new System.Windows.Forms.Button();
-            this.label_dosya = new System.Windows.Forms.Label();
+            this.pictureBox_bul = new System.Windows.Forms.PictureBox();
+            this.pictureBox_resim = new System.Windows.Forms.PictureBox();
+            this.pictureBox_stajyer_resim = new System.Windows.Forms.PictureBox();
+            this.pictureBox_sıfırla = new System.Windows.Forms.PictureBox();
+            this.pictureBox_stajyer_kaydet = new System.Windows.Forms.PictureBox();
+            this.pictureBox_stajsıfırla = new System.Windows.Forms.PictureBox();
+            this.pictureBox_stajbilgisi_kaydet = new System.Windows.Forms.PictureBox();
+            this.pictureBox_yenile = new System.Windows.Forms.PictureBox();
+            this.pictureBox_stajyer_sil = new System.Windows.Forms.PictureBox();
+            this.pictureBox_güncelle = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel_adsoyadbul.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yenile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_sil)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_güncelle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_resim)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_resim)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_bul)).BeginInit();
             this.tabPage_staj.SuspendLayout();
             this.panel_referans.SuspendLayout();
             this.tabPage_okul.SuspendLayout();
             this.panel_bankabilgileri.SuspendLayout();
             this.tabPage_acil.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_kaydet)).BeginInit();
             this.tabPage_genel.SuspendLayout();
             this.tabControl_bilgigiriş.SuspendLayout();
             this.tabPage_işakış.SuspendLayout();
             this.panel_stajicerigi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajbilgisi_kaydet)).BeginInit();
             this.panel_stajbilgidosya.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajgüncelle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajsil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dosyayukle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_staj)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dosya)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_bul)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_resim)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_resim)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sıfırla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_kaydet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajsıfırla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajbilgisi_kaydet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yenile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_sil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_güncelle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox_tcbul
@@ -255,7 +257,6 @@
             // panel_adsoyadbul
             // 
             this.panel_adsoyadbul.BackColor = System.Drawing.Color.Black;
-            this.panel_adsoyadbul.Controls.Add(this.button_stajsııfırla);
             this.panel_adsoyadbul.Controls.Add(this.pictureBox_yenile);
             this.panel_adsoyadbul.Controls.Add(this.pictureBox_stajyer_sil);
             this.panel_adsoyadbul.Controls.Add(this.pictureBox_güncelle);
@@ -265,68 +266,6 @@
             this.panel_adsoyadbul.Name = "panel_adsoyadbul";
             this.panel_adsoyadbul.Size = new System.Drawing.Size(1086, 50);
             this.panel_adsoyadbul.TabIndex = 2;
-            // 
-            // button_stajsııfırla
-            // 
-            this.button_stajsııfırla.Location = new System.Drawing.Point(828, 14);
-            this.button_stajsııfırla.Name = "button_stajsııfırla";
-            this.button_stajsııfırla.Size = new System.Drawing.Size(131, 23);
-            this.button_stajsııfırla.TabIndex = 39;
-            this.button_stajsııfırla.Text = "Stajyer Bilgileri Temizle";
-            this.button_stajsııfırla.UseVisualStyleBackColor = true;
-            this.button_stajsııfırla.Click += new System.EventHandler(this.button_stajsııfırla_Click);
-            // 
-            // pictureBox_yenile
-            // 
-            this.pictureBox_yenile.Image = global::InternFollowProgramming.Properties.Resources.yenile2;
-            this.pictureBox_yenile.Location = new System.Drawing.Point(1045, 12);
-            this.pictureBox_yenile.Name = "pictureBox_yenile";
-            this.pictureBox_yenile.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_yenile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_yenile.TabIndex = 5;
-            this.pictureBox_yenile.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox_yenile, "YENİLE");
-            this.pictureBox_yenile.Click += new System.EventHandler(this.pictureBox_yenile_Click);
-            this.pictureBox_yenile.MouseLeave += new System.EventHandler(this.pictureBox_yenile_MouseLeave);
-            this.pictureBox_yenile.MouseHover += new System.EventHandler(this.pictureBox_yenile_MouseHover);
-            // 
-            // pictureBox_stajyer_sil
-            // 
-            this.pictureBox_stajyer_sil.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
-            this.pictureBox_stajyer_sil.Location = new System.Drawing.Point(1005, 12);
-            this.pictureBox_stajyer_sil.Name = "pictureBox_stajyer_sil";
-            this.pictureBox_stajyer_sil.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_stajyer_sil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_stajyer_sil.TabIndex = 4;
-            this.pictureBox_stajyer_sil.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox_stajyer_sil, "STAJYER SİL");
-            this.pictureBox_stajyer_sil.Click += new System.EventHandler(this.pictureBox_sil_Click);
-            this.pictureBox_stajyer_sil.MouseLeave += new System.EventHandler(this.pictureBox_sil_MouseLeave);
-            this.pictureBox_stajyer_sil.MouseHover += new System.EventHandler(this.pictureBox_sil_MouseHover);
-            // 
-            // pictureBox_güncelle
-            // 
-            this.pictureBox_güncelle.Image = global::InternFollowProgramming.Properties.Resources.uppp;
-            this.pictureBox_güncelle.Location = new System.Drawing.Point(965, 12);
-            this.pictureBox_güncelle.Name = "pictureBox_güncelle";
-            this.pictureBox_güncelle.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_güncelle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_güncelle.TabIndex = 3;
-            this.pictureBox_güncelle.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox_güncelle, "STAJYER GÜNCELLE");
-            this.pictureBox_güncelle.Click += new System.EventHandler(this.pictureBox_güncelle_Click);
-            this.pictureBox_güncelle.MouseLeave += new System.EventHandler(this.pictureBox_güncelle_MouseLeave);
-            this.pictureBox_güncelle.MouseHover += new System.EventHandler(this.pictureBox_güncelle_MouseHover);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::InternFollowProgramming.Properties.Resources.AKESTAJYERLOGO1;
-            this.pictureBox2.Location = new System.Drawing.Point(28, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(150, 25);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
             // 
             // panel1
             // 
@@ -350,22 +289,6 @@
             this.label_resimyolu.TabIndex = 33;
             this.label_resimyolu.Visible = false;
             // 
-            // pictureBox_resim
-            // 
-            this.pictureBox_resim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox_resim.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_resim.Image = global::InternFollowProgramming.Properties.Resources.camera;
-            this.pictureBox_resim.Location = new System.Drawing.Point(136, 23);
-            this.pictureBox_resim.Name = "pictureBox_resim";
-            this.pictureBox_resim.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_resim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_resim.TabIndex = 6;
-            this.pictureBox_resim.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox_resim, "RESİM EKLE");
-            this.pictureBox_resim.Click += new System.EventHandler(this.pictureBox_resim_Click_1);
-            this.pictureBox_resim.MouseLeave += new System.EventHandler(this.pictureBox_resim_MouseLeave);
-            this.pictureBox_resim.MouseHover += new System.EventHandler(this.pictureBox_resim_MouseHover);
-            // 
             // listBox_dosya
             // 
             this.listBox_dosya.FormattingEnabled = true;
@@ -374,17 +297,6 @@
             this.listBox_dosya.Size = new System.Drawing.Size(145, 173);
             this.listBox_dosya.TabIndex = 31;
             this.listBox_dosya.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox_dosya_MouseDoubleClick);
-            // 
-            // pictureBox_stajyer_resim
-            // 
-            this.pictureBox_stajyer_resim.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_stajyer_resim.Image = global::InternFollowProgramming.Properties.Resources.ara1;
-            this.pictureBox_stajyer_resim.Location = new System.Drawing.Point(17, 23);
-            this.pictureBox_stajyer_resim.Name = "pictureBox_stajyer_resim";
-            this.pictureBox_stajyer_resim.Size = new System.Drawing.Size(145, 147);
-            this.pictureBox_stajyer_resim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_stajyer_resim.TabIndex = 0;
-            this.pictureBox_stajyer_resim.TabStop = false;
             // 
             // textBox_dosya
             // 
@@ -405,21 +317,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(184, 57);
             this.panel2.TabIndex = 11;
-            // 
-            // pictureBox_bul
-            // 
-            this.pictureBox_bul.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_bul.Image = global::InternFollowProgramming.Properties.Resources.sstajyerbul;
-            this.pictureBox_bul.Location = new System.Drawing.Point(139, 12);
-            this.pictureBox_bul.Name = "pictureBox_bul";
-            this.pictureBox_bul.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_bul.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_bul.TabIndex = 10;
-            this.pictureBox_bul.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox_bul, "STAJYER BUL");
-            this.pictureBox_bul.Click += new System.EventHandler(this.pictureBox_bul_Click);
-            this.pictureBox_bul.MouseLeave += new System.EventHandler(this.pictureBox_bul_MouseLeave);
-            this.pictureBox_bul.MouseHover += new System.EventHandler(this.pictureBox_bul_MouseHover);
             // 
             // comboBox_staj
             // 
@@ -1257,6 +1154,7 @@
             // tabPage_acil
             // 
             this.tabPage_acil.BackColor = System.Drawing.Color.Beige;
+            this.tabPage_acil.Controls.Add(this.pictureBox_sıfırla);
             this.tabPage_acil.Controls.Add(this.label2);
             this.tabPage_acil.Controls.Add(this.label_acil_adres);
             this.tabPage_acil.Controls.Add(this.label45);
@@ -1284,7 +1182,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(278, 301);
+            this.label2.Location = new System.Drawing.Point(714, 321);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 21);
             this.label2.TabIndex = 44;
@@ -1306,7 +1204,7 @@
             this.label45.BackColor = System.Drawing.Color.Transparent;
             this.label45.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label45.ForeColor = System.Drawing.Color.Black;
-            this.label45.Location = new System.Drawing.Point(337, 301);
+            this.label45.Location = new System.Drawing.Point(773, 321);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(54, 21);
             this.label45.TabIndex = 10;
@@ -1384,21 +1282,6 @@
             this.label_acil_adsoyad.Size = new System.Drawing.Size(72, 15);
             this.label_acil_adsoyad.TabIndex = 0;
             this.label_acil_adsoyad.Text = "Adı Soyadı*:";
-            // 
-            // pictureBox_stajyer_kaydet
-            // 
-            this.pictureBox_stajyer_kaydet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_stajyer_kaydet.Image = global::InternFollowProgramming.Properties.Resources.SAVEDARKYELLOW;
-            this.pictureBox_stajyer_kaydet.Location = new System.Drawing.Point(212, 279);
-            this.pictureBox_stajyer_kaydet.Name = "pictureBox_stajyer_kaydet";
-            this.pictureBox_stajyer_kaydet.Size = new System.Drawing.Size(60, 25);
-            this.pictureBox_stajyer_kaydet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_stajyer_kaydet.TabIndex = 25;
-            this.pictureBox_stajyer_kaydet.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox_stajyer_kaydet, "STAJYER KAYDET");
-            this.pictureBox_stajyer_kaydet.Click += new System.EventHandler(this.pictureBox_kaydet_Click);
-            this.pictureBox_stajyer_kaydet.MouseLeave += new System.EventHandler(this.pictureBox_kaydet_MouseLeave);
-            this.pictureBox_stajyer_kaydet.MouseHover += new System.EventHandler(this.pictureBox_kaydet_MouseHover);
             // 
             // tabPage_genel
             // 
@@ -1811,6 +1694,7 @@
             // tabPage_işakış
             // 
             this.tabPage_işakış.BackColor = System.Drawing.Color.Beige;
+            this.tabPage_işakış.Controls.Add(this.pictureBox_stajsıfırla);
             this.tabPage_işakış.Controls.Add(this.label4);
             this.tabPage_işakış.Controls.Add(this.label_stajicerigi);
             this.tabPage_işakış.Controls.Add(this.panel_stajicerigi);
@@ -1829,11 +1713,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(748, 321);
+            this.label4.Location = new System.Drawing.Point(748, 323);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 21);
+            this.label4.Size = new System.Drawing.Size(56, 21);
             this.label4.TabIndex = 46;
             this.label4.Text = "<< geri";
             // 
@@ -1858,13 +1742,13 @@
             this.panel_stajicerigi.Controls.Add(this.listBox_icerikler);
             this.panel_stajicerigi.Location = new System.Drawing.Point(108, 66);
             this.panel_stajicerigi.Name = "panel_stajicerigi";
-            this.panel_stajicerigi.Size = new System.Drawing.Size(616, 286);
+            this.panel_stajicerigi.Size = new System.Drawing.Size(568, 286);
             this.panel_stajicerigi.TabIndex = 44;
             // 
             // textBox_stajicerigi
             // 
             this.textBox_stajicerigi.ForeColor = System.Drawing.Color.Turquoise;
-            this.textBox_stajicerigi.Location = new System.Drawing.Point(383, 226);
+            this.textBox_stajicerigi.Location = new System.Drawing.Point(341, 226);
             this.textBox_stajicerigi.Name = "textBox_stajicerigi";
             this.textBox_stajicerigi.Size = new System.Drawing.Size(214, 21);
             this.textBox_stajicerigi.TabIndex = 7;
@@ -1883,14 +1767,14 @@
             // 
             this.listBox_stajicerigi.FormattingEnabled = true;
             this.listBox_stajicerigi.ItemHeight = 15;
-            this.listBox_stajicerigi.Location = new System.Drawing.Point(383, 21);
+            this.listBox_stajicerigi.Location = new System.Drawing.Point(341, 21);
             this.listBox_stajicerigi.Name = "listBox_stajicerigi";
             this.listBox_stajicerigi.Size = new System.Drawing.Size(214, 199);
             this.listBox_stajicerigi.TabIndex = 5;
             // 
             // button_kaldır
             // 
-            this.button_kaldır.Location = new System.Drawing.Point(278, 59);
+            this.button_kaldır.Location = new System.Drawing.Point(256, 59);
             this.button_kaldır.Name = "button_kaldır";
             this.button_kaldır.Size = new System.Drawing.Size(75, 25);
             this.button_kaldır.TabIndex = 4;
@@ -1900,7 +1784,7 @@
             // 
             // button_aktar
             // 
-            this.button_aktar.Location = new System.Drawing.Point(278, 21);
+            this.button_aktar.Location = new System.Drawing.Point(256, 21);
             this.button_aktar.Name = "button_aktar";
             this.button_aktar.Size = new System.Drawing.Size(75, 23);
             this.button_aktar.TabIndex = 3;
@@ -1964,21 +1848,6 @@
             this.label_stajturu.TabIndex = 40;
             this.label_stajturu.Text = "Staj Türü:";
             // 
-            // pictureBox_stajbilgisi_kaydet
-            // 
-            this.pictureBox_stajbilgisi_kaydet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_stajbilgisi_kaydet.Image = global::InternFollowProgramming.Properties.Resources.SAVEDARKYELLOW;
-            this.pictureBox_stajbilgisi_kaydet.Location = new System.Drawing.Point(664, 21);
-            this.pictureBox_stajbilgisi_kaydet.Name = "pictureBox_stajbilgisi_kaydet";
-            this.pictureBox_stajbilgisi_kaydet.Size = new System.Drawing.Size(60, 25);
-            this.pictureBox_stajbilgisi_kaydet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_stajbilgisi_kaydet.TabIndex = 43;
-            this.pictureBox_stajbilgisi_kaydet.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox_stajbilgisi_kaydet, "STAJ KAYDET");
-            this.pictureBox_stajbilgisi_kaydet.Click += new System.EventHandler(this.pictureBox_stajbilgisi_kaydet_Click);
-            this.pictureBox_stajbilgisi_kaydet.MouseLeave += new System.EventHandler(this.pictureBox_stajbilgisi_kaydet_MouseLeave);
-            this.pictureBox_stajbilgisi_kaydet.MouseHover += new System.EventHandler(this.pictureBox_stajbilgisi_kaydet_MouseHover);
-            // 
             // label_staj_kodu
             // 
             this.label_staj_kodu.AutoSize = true;
@@ -2012,6 +1881,19 @@
             this.panel_stajbilgidosya.Name = "panel_stajbilgidosya";
             this.panel_stajbilgidosya.Size = new System.Drawing.Size(661, 35);
             this.panel_stajbilgidosya.TabIndex = 38;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label_dosya
+            // 
+            this.label_dosya.AutoSize = true;
+            this.label_dosya.Location = new System.Drawing.Point(488, 54);
+            this.label_dosya.Name = "label_dosya";
+            this.label_dosya.Size = new System.Drawing.Size(0, 13);
+            this.label_dosya.TabIndex = 40;
+            this.label_dosya.Visible = false;
             // 
             // pictureBox_stajgüncelle
             // 
@@ -2088,28 +1970,159 @@
             this.pictureBox_dosya.MouseLeave += new System.EventHandler(this.pictureBox_dosya_MouseLeave);
             this.pictureBox_dosya.MouseHover += new System.EventHandler(this.pictureBox_dosya_MouseHover);
             // 
-            // openFileDialog1
+            // pictureBox_bul
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.pictureBox_bul.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_bul.Image = global::InternFollowProgramming.Properties.Resources.sstajyerbul;
+            this.pictureBox_bul.Location = new System.Drawing.Point(139, 12);
+            this.pictureBox_bul.Name = "pictureBox_bul";
+            this.pictureBox_bul.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_bul.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_bul.TabIndex = 10;
+            this.pictureBox_bul.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_bul, "STAJYER BUL");
+            this.pictureBox_bul.Click += new System.EventHandler(this.pictureBox_bul_Click);
+            this.pictureBox_bul.MouseLeave += new System.EventHandler(this.pictureBox_bul_MouseLeave);
+            this.pictureBox_bul.MouseHover += new System.EventHandler(this.pictureBox_bul_MouseHover);
             // 
-            // button_stajyertemizle
+            // pictureBox_resim
             // 
-            this.button_stajyertemizle.Location = new System.Drawing.Point(713, 77);
-            this.button_stajyertemizle.Name = "button_stajyertemizle";
-            this.button_stajyertemizle.Size = new System.Drawing.Size(151, 23);
-            this.button_stajyertemizle.TabIndex = 39;
-            this.button_stajyertemizle.Text = "Staj Bilgileri Temizle";
-            this.button_stajyertemizle.UseVisualStyleBackColor = true;
-            this.button_stajyertemizle.Click += new System.EventHandler(this.button_stajyertemizle_Click);
+            this.pictureBox_resim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox_resim.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_resim.Image = global::InternFollowProgramming.Properties.Resources.camera;
+            this.pictureBox_resim.Location = new System.Drawing.Point(136, 23);
+            this.pictureBox_resim.Name = "pictureBox_resim";
+            this.pictureBox_resim.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_resim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_resim.TabIndex = 6;
+            this.pictureBox_resim.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_resim, "RESİM EKLE");
+            this.pictureBox_resim.Click += new System.EventHandler(this.pictureBox_resim_Click_1);
+            this.pictureBox_resim.MouseLeave += new System.EventHandler(this.pictureBox_resim_MouseLeave);
+            this.pictureBox_resim.MouseHover += new System.EventHandler(this.pictureBox_resim_MouseHover);
             // 
-            // label_dosya
+            // pictureBox_stajyer_resim
             // 
-            this.label_dosya.AutoSize = true;
-            this.label_dosya.Location = new System.Drawing.Point(488, 54);
-            this.label_dosya.Name = "label_dosya";
-            this.label_dosya.Size = new System.Drawing.Size(0, 13);
-            this.label_dosya.TabIndex = 40;
-            this.label_dosya.Visible = false;
+            this.pictureBox_stajyer_resim.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_stajyer_resim.Image = global::InternFollowProgramming.Properties.Resources.ara1;
+            this.pictureBox_stajyer_resim.Location = new System.Drawing.Point(17, 23);
+            this.pictureBox_stajyer_resim.Name = "pictureBox_stajyer_resim";
+            this.pictureBox_stajyer_resim.Size = new System.Drawing.Size(145, 147);
+            this.pictureBox_stajyer_resim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_stajyer_resim.TabIndex = 0;
+            this.pictureBox_stajyer_resim.TabStop = false;
+            // 
+            // pictureBox_sıfırla
+            // 
+            this.pictureBox_sıfırla.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_sıfırla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_sıfırla.Image = global::InternFollowProgramming.Properties.Resources.temizle;
+            this.pictureBox_sıfırla.Location = new System.Drawing.Point(287, 279);
+            this.pictureBox_sıfırla.Name = "pictureBox_sıfırla";
+            this.pictureBox_sıfırla.Size = new System.Drawing.Size(60, 25);
+            this.pictureBox_sıfırla.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_sıfırla.TabIndex = 45;
+            this.pictureBox_sıfırla.TabStop = false;
+            this.pictureBox_sıfırla.Click += new System.EventHandler(this.pictureBox_sıfırla_Click);
+            this.pictureBox_sıfırla.MouseLeave += new System.EventHandler(this.pictureBox_sıfırla_MouseLeave);
+            this.pictureBox_sıfırla.MouseHover += new System.EventHandler(this.pictureBox_sıfırla_MouseHover);
+            // 
+            // pictureBox_stajyer_kaydet
+            // 
+            this.pictureBox_stajyer_kaydet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_stajyer_kaydet.Image = global::InternFollowProgramming.Properties.Resources.SAVEDARKYELLOW;
+            this.pictureBox_stajyer_kaydet.Location = new System.Drawing.Point(212, 279);
+            this.pictureBox_stajyer_kaydet.Name = "pictureBox_stajyer_kaydet";
+            this.pictureBox_stajyer_kaydet.Size = new System.Drawing.Size(60, 25);
+            this.pictureBox_stajyer_kaydet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_stajyer_kaydet.TabIndex = 25;
+            this.pictureBox_stajyer_kaydet.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_stajyer_kaydet, "STAJYER KAYDET");
+            this.pictureBox_stajyer_kaydet.Click += new System.EventHandler(this.pictureBox_kaydet_Click);
+            this.pictureBox_stajyer_kaydet.MouseLeave += new System.EventHandler(this.pictureBox_kaydet_MouseLeave);
+            this.pictureBox_stajyer_kaydet.MouseHover += new System.EventHandler(this.pictureBox_kaydet_MouseHover);
+            // 
+            // pictureBox_stajsıfırla
+            // 
+            this.pictureBox_stajsıfırla.BackColor = System.Drawing.Color.Beige;
+            this.pictureBox_stajsıfırla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_stajsıfırla.Image = global::InternFollowProgramming.Properties.Resources.temizle;
+            this.pictureBox_stajsıfırla.Location = new System.Drawing.Point(691, 25);
+            this.pictureBox_stajsıfırla.Name = "pictureBox_stajsıfırla";
+            this.pictureBox_stajsıfırla.Size = new System.Drawing.Size(60, 25);
+            this.pictureBox_stajsıfırla.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_stajsıfırla.TabIndex = 46;
+            this.pictureBox_stajsıfırla.TabStop = false;
+            this.pictureBox_stajsıfırla.Click += new System.EventHandler(this.pictureBox_stajsıfırla_Click);
+            this.pictureBox_stajsıfırla.MouseLeave += new System.EventHandler(this.pictureBox_stajsıfırla_MouseLeave);
+            this.pictureBox_stajsıfırla.MouseHover += new System.EventHandler(this.pictureBox_stajsıfırla_MouseHover);
+            // 
+            // pictureBox_stajbilgisi_kaydet
+            // 
+            this.pictureBox_stajbilgisi_kaydet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_stajbilgisi_kaydet.Image = global::InternFollowProgramming.Properties.Resources.SAVEDARKYELLOW;
+            this.pictureBox_stajbilgisi_kaydet.Location = new System.Drawing.Point(616, 25);
+            this.pictureBox_stajbilgisi_kaydet.Name = "pictureBox_stajbilgisi_kaydet";
+            this.pictureBox_stajbilgisi_kaydet.Size = new System.Drawing.Size(60, 25);
+            this.pictureBox_stajbilgisi_kaydet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_stajbilgisi_kaydet.TabIndex = 43;
+            this.pictureBox_stajbilgisi_kaydet.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_stajbilgisi_kaydet, "STAJ KAYDET");
+            this.pictureBox_stajbilgisi_kaydet.Click += new System.EventHandler(this.pictureBox_stajbilgisi_kaydet_Click);
+            this.pictureBox_stajbilgisi_kaydet.MouseLeave += new System.EventHandler(this.pictureBox_stajbilgisi_kaydet_MouseLeave);
+            this.pictureBox_stajbilgisi_kaydet.MouseHover += new System.EventHandler(this.pictureBox_stajbilgisi_kaydet_MouseHover);
+            // 
+            // pictureBox_yenile
+            // 
+            this.pictureBox_yenile.Image = global::InternFollowProgramming.Properties.Resources.yenile2;
+            this.pictureBox_yenile.Location = new System.Drawing.Point(1045, 12);
+            this.pictureBox_yenile.Name = "pictureBox_yenile";
+            this.pictureBox_yenile.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_yenile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_yenile.TabIndex = 5;
+            this.pictureBox_yenile.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_yenile, "YENİLE");
+            this.pictureBox_yenile.Click += new System.EventHandler(this.pictureBox_yenile_Click);
+            this.pictureBox_yenile.MouseLeave += new System.EventHandler(this.pictureBox_yenile_MouseLeave);
+            this.pictureBox_yenile.MouseHover += new System.EventHandler(this.pictureBox_yenile_MouseHover);
+            // 
+            // pictureBox_stajyer_sil
+            // 
+            this.pictureBox_stajyer_sil.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
+            this.pictureBox_stajyer_sil.Location = new System.Drawing.Point(1005, 12);
+            this.pictureBox_stajyer_sil.Name = "pictureBox_stajyer_sil";
+            this.pictureBox_stajyer_sil.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_stajyer_sil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_stajyer_sil.TabIndex = 4;
+            this.pictureBox_stajyer_sil.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_stajyer_sil, "STAJYER SİL");
+            this.pictureBox_stajyer_sil.Click += new System.EventHandler(this.pictureBox_sil_Click);
+            this.pictureBox_stajyer_sil.MouseLeave += new System.EventHandler(this.pictureBox_sil_MouseLeave);
+            this.pictureBox_stajyer_sil.MouseHover += new System.EventHandler(this.pictureBox_sil_MouseHover);
+            // 
+            // pictureBox_güncelle
+            // 
+            this.pictureBox_güncelle.Image = global::InternFollowProgramming.Properties.Resources.uppp;
+            this.pictureBox_güncelle.Location = new System.Drawing.Point(965, 12);
+            this.pictureBox_güncelle.Name = "pictureBox_güncelle";
+            this.pictureBox_güncelle.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_güncelle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_güncelle.TabIndex = 3;
+            this.pictureBox_güncelle.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_güncelle, "STAJYER GÜNCELLE");
+            this.pictureBox_güncelle.Click += new System.EventHandler(this.pictureBox_güncelle_Click);
+            this.pictureBox_güncelle.MouseLeave += new System.EventHandler(this.pictureBox_güncelle_MouseLeave);
+            this.pictureBox_güncelle.MouseHover += new System.EventHandler(this.pictureBox_güncelle_MouseHover);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::InternFollowProgramming.Properties.Resources.AKESTAJYERLOGO1;
+            this.pictureBox2.Location = new System.Drawing.Point(28, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(150, 25);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // FrmInternInformation
             // 
@@ -2118,7 +2131,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1086, 520);
             this.Controls.Add(this.label_dosya);
-            this.Controls.Add(this.button_stajyertemizle);
             this.Controls.Add(this.panel_stajbilgidosya);
             this.Controls.Add(this.label_kod);
             this.Controls.Add(this.panel2);
@@ -2131,17 +2143,10 @@
             this.Text = "AKE STAJYER TAKİP SİSTEMİ/ STAJYER TANIMLAMA";
             this.Load += new System.EventHandler(this.FrmInternInformation_Load);
             this.panel_adsoyadbul.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yenile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_sil)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_güncelle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_resim)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_resim)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_bul)).EndInit();
             this.tabPage_staj.ResumeLayout(false);
             this.tabPage_staj.PerformLayout();
             this.panel_referans.ResumeLayout(false);
@@ -2152,7 +2157,6 @@
             this.panel_bankabilgileri.PerformLayout();
             this.tabPage_acil.ResumeLayout(false);
             this.tabPage_acil.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_kaydet)).EndInit();
             this.tabPage_genel.ResumeLayout(false);
             this.tabPage_genel.PerformLayout();
             this.tabControl_bilgigiriş.ResumeLayout(false);
@@ -2160,7 +2164,6 @@
             this.tabPage_işakış.PerformLayout();
             this.panel_stajicerigi.ResumeLayout(false);
             this.panel_stajicerigi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajbilgisi_kaydet)).EndInit();
             this.panel_stajbilgidosya.ResumeLayout(false);
             this.panel_stajbilgidosya.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajgüncelle)).EndInit();
@@ -2168,6 +2171,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dosyayukle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_staj)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dosya)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_bul)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_resim)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_resim)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sıfırla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_kaydet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajsıfırla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajbilgisi_kaydet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yenile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajyer_sil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_güncelle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2349,12 +2363,12 @@
         private System.Windows.Forms.Button button_icerikcıkart;
         private System.Windows.Forms.TextBox textBox_stajicerigi;
         private System.Windows.Forms.Label label_resimyolu;
-        private System.Windows.Forms.Button button_stajsııfırla;
-        private System.Windows.Forms.Button button_stajyertemizle;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label_dosya;
+        private System.Windows.Forms.PictureBox pictureBox_sıfırla;
+        private System.Windows.Forms.PictureBox pictureBox_stajsıfırla;
     }
 }

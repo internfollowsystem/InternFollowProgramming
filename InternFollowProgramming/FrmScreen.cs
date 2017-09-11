@@ -74,8 +74,6 @@ namespace InternFollowProgramming
         private void FrmScreen_Load(object sender, EventArgs e)//22 AĞUSTOS 2017 GÜNCEL !!
         {
             command.Connection = connection;
-
-
             command.CommandText = "SELECT * FROM stajyer";
             command.CommandType = CommandType.Text;
             
@@ -3027,6 +3025,78 @@ namespace InternFollowProgramming
             label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
             #endregion
 
+            #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
+            comboBox_s_yıl.Items.Clear();
+            comboBox_s_donem.Items.Clear();
+            comboBox_s_okul.Items.Clear();
+            comboBox_s_bolum.Items.Clear();
+            comboBox_s_stajkonuları.Items.Clear();
+            comboBox_s_referans.Items.Clear();
+            #endregion
+
+            #region RAPORLAMA COMBOBOXLARININ İÇİNE VERİ TABANINDAN VERİ ÇEKMEK  //TEKRARLANAN VERİLERİ DÜZENLE
+
+            SqlCommand cmd1 = new SqlCommand();
+            SqlCommand cmd2 = new SqlCommand();
+            SqlCommand cmd3 = new SqlCommand();
+            SqlCommand cmd4 = new SqlCommand();
+            SqlCommand cmd5 = new SqlCommand();
+            SqlCommand cmd6 = new SqlCommand();
+            cmd1.Connection = connection;
+            cmd2.Connection = connection;
+            cmd3.Connection = connection;
+            cmd4.Connection = connection;
+            cmd5.Connection = connection;
+            cmd6.Connection = connection;
+            connection.Open();
+            cmd1.CommandText = "SELECT DISTINCT staj_yılı FROM stajbilgileri";
+            cmd2.CommandText = "SELECT DISTINCT staj_donem FROM stajbilgileri";
+            cmd3.CommandText = "SELECT DISTINCT okul_adı FROM stajbilgileri";
+            cmd4.CommandText = "SELECT DISTINCT bolum_adı FROM stajbilgileri";
+            cmd5.CommandText = "SELECT DISTINCT staj_turu FROM stajbilgileri";
+            cmd6.CommandText = "SELECT DISTINCT referans_adı FROM stajbilgileri";
+            SqlDataReader dr;
+
+            dr = cmd1.ExecuteReader();
+            while (dr.Read())
+            {
+                comboBox_s_yıl.Items.Add(dr["staj_yılı"]);
+            }
+            dr.Close();
+            dr = cmd2.ExecuteReader();
+            while (dr.Read())
+            {
+                comboBox_s_donem.Items.Add(dr["staj_donem"]);
+            }
+            dr.Close();
+            dr = cmd3.ExecuteReader();
+            while (dr.Read())
+            {
+                comboBox_s_okul.Items.Add(dr["okul_adı"]);
+            }
+            dr.Close();
+            dr = cmd4.ExecuteReader();
+            while (dr.Read())
+            {
+                comboBox_s_bolum.Items.Add(dr["bolum_adı"]);
+            }
+            dr.Close();
+            dr = cmd5.ExecuteReader();
+            while (dr.Read())
+            {
+                comboBox_s_stajkonuları.Items.Add(dr["staj_turu"]);
+            }
+            dr.Close();
+            dr = cmd6.ExecuteReader();
+            while (dr.Read())
+            {
+                comboBox_s_referans.Items.Add(dr["referans_adı"]);
+            }
+            dr.Close();
+            connection.Close();
+            #endregion
+
+
         }
 
         public static string gonderilecekveri;
@@ -3092,6 +3162,13 @@ namespace InternFollowProgramming
         private void label_hata_MouseLeave(object sender, EventArgs e)
         {
             label_hata.Font = new System.Drawing.Font(label_hata.Font, label_hata.Font.Style ); 
+        }
+
+        private void label_hata_Click(object sender, EventArgs e)
+        {
+            gonderilecekveri = "s.ozkaynak@outlook.com";
+            FrmMail frm = new FrmMail();
+            frm.Show();
         }
     }
 }

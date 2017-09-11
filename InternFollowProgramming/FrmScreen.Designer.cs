@@ -39,17 +39,33 @@
             this.planlamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yoklamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sTAJYERGÖSTERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mailGönderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.silToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stajyerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_ust = new System.Windows.Forms.Panel();
-            this.label_suanstajyapanlar = new System.Windows.Forms.Label();
+            this.label_user = new System.Windows.Forms.Label();
+            this.pictureBox_user = new System.Windows.Forms.PictureBox();
             this.label_stajyer = new System.Windows.Forms.Label();
+            this.pictureBox_refresh = new System.Windows.Forms.PictureBox();
+            this.label_suanstajyapanlar = new System.Windows.Forms.Label();
             this.label_suanstajyer = new System.Windows.Forms.Label();
             this.label_genel = new System.Windows.Forms.Label();
+            this.pictureBox_suanstajer = new System.Windows.Forms.PictureBox();
+            this.pictureBox_genel = new System.Windows.Forms.PictureBox();
+            this.pictureBox_yazdır = new System.Windows.Forms.PictureBox();
+            this.pictureBox_excel = new System.Windows.Forms.PictureBox();
             this.label_lise = new System.Windows.Forms.Label();
             this.label_onlisans = new System.Windows.Forms.Label();
             this.label_lisans = new System.Windows.Forms.Label();
             this.labellise = new System.Windows.Forms.Label();
             this.labelonlisans = new System.Windows.Forms.Label();
             this.labellisans = new System.Windows.Forms.Label();
+            this.pictureBox_lise = new System.Windows.Forms.PictureBox();
+            this.pictureBox_onlisans = new System.Windows.Forms.PictureBox();
+            this.pictureBox_lisans = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_alt = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -75,27 +91,10 @@
             this.label_hata = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.sTAJYERGÖSTERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mailGönderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.silToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stajyerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox_refresh = new System.Windows.Forms.PictureBox();
-            this.pictureBox_suanstajer = new System.Windows.Forms.PictureBox();
-            this.pictureBox_genel = new System.Windows.Forms.PictureBox();
-            this.pictureBox_yazdır = new System.Windows.Forms.PictureBox();
-            this.pictureBox_excel = new System.Windows.Forms.PictureBox();
-            this.pictureBox_lise = new System.Windows.Forms.PictureBox();
-            this.pictureBox_onlisans = new System.Windows.Forms.PictureBox();
-            this.pictureBox_lisans = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip_frmscreen.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel_ust.SuspendLayout();
-            this.panel_alt.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_user)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_refresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_suanstajer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_genel)).BeginInit();
@@ -105,6 +104,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_onlisans)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_lisans)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel_alt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip_frmscreen
@@ -123,15 +126,15 @@
             this.menuStrip_frmscreen.Name = "menuStrip_frmscreen";
             this.menuStrip_frmscreen.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip_frmscreen.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip_frmscreen.Size = new System.Drawing.Size(125, 72);
+            this.menuStrip_frmscreen.Size = new System.Drawing.Size(115, 72);
             this.menuStrip_frmscreen.TabIndex = 1;
             this.menuStrip_frmscreen.Text = "menuStrip1";
             // 
             // stajyerYönetimToolStripMenuItem
             // 
             this.stajyerYönetimToolStripMenuItem.Name = "stajyerYönetimToolStripMenuItem";
-            this.stajyerYönetimToolStripMenuItem.Size = new System.Drawing.Size(119, 17);
-            this.stajyerYönetimToolStripMenuItem.Text = "STAJYER YÖNETİM";
+            this.stajyerYönetimToolStripMenuItem.Size = new System.Drawing.Size(109, 17);
+            this.stajyerYönetimToolStripMenuItem.Text = "KAYIT İŞLEMLERİ";
             this.stajyerYönetimToolStripMenuItem.Click += new System.EventHandler(this.stajyerYönetimToolStripMenuItem_Click);
             // 
             // stajyerTanımlamaToolStripMenuItem
@@ -195,13 +198,53 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(147, 70);
             // 
+            // sTAJYERGÖSTERToolStripMenuItem
+            // 
+            this.sTAJYERGÖSTERToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.STAJYER_GÖSTER;
+            this.sTAJYERGÖSTERToolStripMenuItem.Name = "sTAJYERGÖSTERToolStripMenuItem";
+            this.sTAJYERGÖSTERToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.sTAJYERGÖSTERToolStripMenuItem.Text = "Stajyer Göster";
+            this.sTAJYERGÖSTERToolStripMenuItem.Click += new System.EventHandler(this.sTAJYERGÖSTERToolStripMenuItem_Click);
+            // 
+            // mailGönderToolStripMenuItem
+            // 
+            this.mailGönderToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.mailgönder;
+            this.mailGönderToolStripMenuItem.Name = "mailGönderToolStripMenuItem";
+            this.mailGönderToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.mailGönderToolStripMenuItem.Text = "Mail Gönder";
+            this.mailGönderToolStripMenuItem.Click += new System.EventHandler(this.mailGönderToolStripMenuItem_Click);
+            // 
+            // silToolStripMenuItem
+            // 
+            this.silToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stajyerToolStripMenuItem,
+            this.stajToolStripMenuItem});
+            this.silToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
+            this.silToolStripMenuItem.Name = "silToolStripMenuItem";
+            this.silToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.silToolStripMenuItem.Text = "Sil";
+            // 
+            // stajyerToolStripMenuItem
+            // 
+            this.stajyerToolStripMenuItem.Name = "stajyerToolStripMenuItem";
+            this.stajyerToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.stajyerToolStripMenuItem.Text = "Stajyer";
+            this.stajyerToolStripMenuItem.Click += new System.EventHandler(this.stajyerToolStripMenuItem_Click);
+            // 
+            // stajToolStripMenuItem
+            // 
+            this.stajToolStripMenuItem.Name = "stajToolStripMenuItem";
+            this.stajToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.stajToolStripMenuItem.Text = "Staj";
+            this.stajToolStripMenuItem.Click += new System.EventHandler(this.stajToolStripMenuItem_Click);
+            // 
             // panel_ust
             // 
             this.panel_ust.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.panel_ust.BackColor = System.Drawing.Color.Black;
+            this.panel_ust.Controls.Add(this.label_stajyer);
             this.panel_ust.Controls.Add(this.pictureBox_refresh);
             this.panel_ust.Controls.Add(this.label_suanstajyapanlar);
-            this.panel_ust.Controls.Add(this.label_stajyer);
             this.panel_ust.Controls.Add(this.label_suanstajyer);
             this.panel_ust.Controls.Add(this.label_genel);
             this.panel_ust.Controls.Add(this.pictureBox_suanstajer);
@@ -224,27 +267,64 @@
             this.panel_ust.Size = new System.Drawing.Size(1350, 53);
             this.panel_ust.TabIndex = 6;
             // 
+            // label_user
+            // 
+            this.label_user.AutoSize = true;
+            this.label_user.Font = new System.Drawing.Font("Poppins", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_user.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label_user.Location = new System.Drawing.Point(43, 662);
+            this.label_user.Name = "label_user";
+            this.label_user.Size = new System.Drawing.Size(114, 19);
+            this.label_user.TabIndex = 20;
+            this.label_user.Text = "Admin Giriş yaptı.";
+            // 
+            // pictureBox_user
+            // 
+            this.pictureBox_user.Image = global::InternFollowProgramming.Properties.Resources.ara;
+            this.pictureBox_user.Location = new System.Drawing.Point(12, 655);
+            this.pictureBox_user.Name = "pictureBox_user";
+            this.pictureBox_user.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_user.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_user.TabIndex = 19;
+            this.pictureBox_user.TabStop = false;
+            // 
+            // label_stajyer
+            // 
+            this.label_stajyer.AutoSize = true;
+            this.label_stajyer.BackColor = System.Drawing.Color.Black;
+            this.label_stajyer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_stajyer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label_stajyer.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.label_stajyer.Location = new System.Drawing.Point(356, 9);
+            this.label_stajyer.Name = "label_stajyer";
+            this.label_stajyer.Size = new System.Drawing.Size(15, 15);
+            this.label_stajyer.TabIndex = 16;
+            this.label_stajyer.Text = "0";
+            // 
+            // pictureBox_refresh
+            // 
+            this.pictureBox_refresh.Image = global::InternFollowProgramming.Properties.Resources.yenile1;
+            this.pictureBox_refresh.Location = new System.Drawing.Point(1203, 12);
+            this.pictureBox_refresh.Name = "pictureBox_refresh";
+            this.pictureBox_refresh.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_refresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_refresh.TabIndex = 18;
+            this.pictureBox_refresh.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_refresh, "YENİLE");
+            this.pictureBox_refresh.Click += new System.EventHandler(this.pictureBox_refresh_Click);
+            this.pictureBox_refresh.MouseLeave += new System.EventHandler(this.pictureBox_refresh_MouseLeave);
+            this.pictureBox_refresh.MouseHover += new System.EventHandler(this.pictureBox_refresh_MouseHover);
+            // 
             // label_suanstajyapanlar
             // 
             this.label_suanstajyapanlar.AutoSize = true;
             this.label_suanstajyapanlar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_suanstajyapanlar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_suanstajyapanlar.Location = new System.Drawing.Point(1028, 9);
+            this.label_suanstajyapanlar.Location = new System.Drawing.Point(1081, 6);
             this.label_suanstajyapanlar.Name = "label_suanstajyapanlar";
             this.label_suanstajyapanlar.Size = new System.Drawing.Size(15, 15);
             this.label_suanstajyapanlar.TabIndex = 17;
             this.label_suanstajyapanlar.Text = "0";
-            // 
-            // label_stajyer
-            // 
-            this.label_stajyer.AutoSize = true;
-            this.label_stajyer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label_stajyer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_stajyer.Location = new System.Drawing.Point(352, 9);
-            this.label_stajyer.Name = "label_stajyer";
-            this.label_stajyer.Size = new System.Drawing.Size(15, 15);
-            this.label_stajyer.TabIndex = 16;
-            this.label_stajyer.Text = "0";
             // 
             // label_suanstajyer
             // 
@@ -252,7 +332,7 @@
             this.label_suanstajyer.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.label_suanstajyer.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_suanstajyer.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label_suanstajyer.Location = new System.Drawing.Point(963, 38);
+            this.label_suanstajyer.Location = new System.Drawing.Point(1014, 35);
             this.label_suanstajyer.Name = "label_suanstajyer";
             this.label_suanstajyer.Size = new System.Drawing.Size(96, 11);
             this.label_suanstajyer.TabIndex = 15;
@@ -267,7 +347,7 @@
             this.label_genel.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.label_genel.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_genel.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label_genel.Location = new System.Drawing.Point(316, 38);
+            this.label_genel.Location = new System.Drawing.Point(317, 38);
             this.label_genel.Name = "label_genel";
             this.label_genel.Size = new System.Drawing.Size(40, 11);
             this.label_genel.TabIndex = 14;
@@ -276,12 +356,66 @@
             this.label_genel.MouseLeave += new System.EventHandler(this.label_genel_MouseLeave);
             this.label_genel.MouseHover += new System.EventHandler(this.label_genel_MouseHover);
             // 
+            // pictureBox_suanstajer
+            // 
+            this.pictureBox_suanstajer.Image = global::InternFollowProgramming.Properties.Resources.yeni_staj_yapıyor2;
+            this.pictureBox_suanstajer.Location = new System.Drawing.Point(1050, 9);
+            this.pictureBox_suanstajer.Name = "pictureBox_suanstajer";
+            this.pictureBox_suanstajer.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_suanstajer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_suanstajer.TabIndex = 13;
+            this.pictureBox_suanstajer.TabStop = false;
+            this.pictureBox_suanstajer.Click += new System.EventHandler(this.pictureBox_suanstajer_Click);
+            this.pictureBox_suanstajer.MouseLeave += new System.EventHandler(this.pictureBox_suanstajer_MouseLeave);
+            this.pictureBox_suanstajer.MouseHover += new System.EventHandler(this.pictureBox_suanstajer_MouseHover);
+            // 
+            // pictureBox_genel
+            // 
+            this.pictureBox_genel.Image = global::InternFollowProgramming.Properties.Resources.Yeni_genel_stajyer1;
+            this.pictureBox_genel.Location = new System.Drawing.Point(325, 12);
+            this.pictureBox_genel.Name = "pictureBox_genel";
+            this.pictureBox_genel.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_genel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_genel.TabIndex = 12;
+            this.pictureBox_genel.TabStop = false;
+            this.pictureBox_genel.Click += new System.EventHandler(this.pictureBox_genel_Click);
+            this.pictureBox_genel.MouseLeave += new System.EventHandler(this.pictureBox_genel_MouseLeave);
+            this.pictureBox_genel.MouseHover += new System.EventHandler(this.pictureBox_genel_MouseHover);
+            // 
+            // pictureBox_yazdır
+            // 
+            this.pictureBox_yazdır.Image = global::InternFollowProgramming.Properties.Resources.yazdır;
+            this.pictureBox_yazdır.Location = new System.Drawing.Point(1256, 12);
+            this.pictureBox_yazdır.Name = "pictureBox_yazdır";
+            this.pictureBox_yazdır.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_yazdır.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_yazdır.TabIndex = 11;
+            this.pictureBox_yazdır.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_yazdır, "YAZDIR");
+            this.pictureBox_yazdır.Click += new System.EventHandler(this.pictureBox_yazdır_Click);
+            this.pictureBox_yazdır.MouseLeave += new System.EventHandler(this.pictureBox_yazdır_MouseLeave);
+            this.pictureBox_yazdır.MouseHover += new System.EventHandler(this.pictureBox_yazdır_MouseHover);
+            // 
+            // pictureBox_excel
+            // 
+            this.pictureBox_excel.Image = global::InternFollowProgramming.Properties.Resources.excelkaydet;
+            this.pictureBox_excel.Location = new System.Drawing.Point(1309, 12);
+            this.pictureBox_excel.Name = "pictureBox_excel";
+            this.pictureBox_excel.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_excel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_excel.TabIndex = 10;
+            this.pictureBox_excel.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_excel, "EXCELE KAYDET");
+            this.pictureBox_excel.Click += new System.EventHandler(this.pictureBox_excel_Click);
+            this.pictureBox_excel.MouseLeave += new System.EventHandler(this.pictureBox_excel_MouseLeave);
+            this.pictureBox_excel.MouseHover += new System.EventHandler(this.pictureBox_excel_MouseHover);
+            // 
             // label_lise
             // 
             this.label_lise.AutoSize = true;
             this.label_lise.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_lise.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_lise.Location = new System.Drawing.Point(859, 9);
+            this.label_lise.Location = new System.Drawing.Point(925, 9);
             this.label_lise.Name = "label_lise";
             this.label_lise.Size = new System.Drawing.Size(15, 15);
             this.label_lise.TabIndex = 9;
@@ -292,7 +426,7 @@
             this.label_onlisans.AutoSize = true;
             this.label_onlisans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_onlisans.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_onlisans.Location = new System.Drawing.Point(690, 9);
+            this.label_onlisans.Location = new System.Drawing.Point(729, 9);
             this.label_onlisans.Name = "label_onlisans";
             this.label_onlisans.Size = new System.Drawing.Size(15, 15);
             this.label_onlisans.TabIndex = 8;
@@ -303,7 +437,7 @@
             this.label_lisans.AutoSize = true;
             this.label_lisans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_lisans.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_lisans.Location = new System.Drawing.Point(521, 9);
+            this.label_lisans.Location = new System.Drawing.Point(532, 9);
             this.label_lisans.Name = "label_lisans";
             this.label_lisans.Size = new System.Drawing.Size(15, 15);
             this.label_lisans.TabIndex = 7;
@@ -315,7 +449,7 @@
             this.labellise.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.labellise.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labellise.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.labellise.Location = new System.Drawing.Point(826, 38);
+            this.labellise.Location = new System.Drawing.Point(890, 38);
             this.labellise.Name = "labellise";
             this.labellise.Size = new System.Drawing.Size(33, 11);
             this.labellise.TabIndex = 6;
@@ -330,7 +464,7 @@
             this.labelonlisans.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.labelonlisans.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelonlisans.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.labelonlisans.Location = new System.Drawing.Point(641, 38);
+            this.labelonlisans.Location = new System.Drawing.Point(676, 38);
             this.labelonlisans.Name = "labelonlisans";
             this.labelonlisans.Size = new System.Drawing.Size(68, 11);
             this.labelonlisans.TabIndex = 5;
@@ -345,7 +479,7 @@
             this.labellisans.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.labellisans.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labellisans.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.labellisans.Location = new System.Drawing.Point(483, 38);
+            this.labellisans.Location = new System.Drawing.Point(490, 38);
             this.labellisans.Name = "labellisans";
             this.labellisans.Size = new System.Drawing.Size(47, 11);
             this.labellisans.TabIndex = 4;
@@ -353,6 +487,56 @@
             this.labellisans.Click += new System.EventHandler(this.label1_Click);
             this.labellisans.MouseLeave += new System.EventHandler(this.labellisans_MouseLeave);
             this.labellisans.MouseHover += new System.EventHandler(this.labellisans_MouseHover);
+            // 
+            // pictureBox_lise
+            // 
+            this.pictureBox_lise.Image = global::InternFollowProgramming.Properties.Resources.yeni_lise_stajyer1;
+            this.pictureBox_lise.Location = new System.Drawing.Point(894, 12);
+            this.pictureBox_lise.Name = "pictureBox_lise";
+            this.pictureBox_lise.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_lise.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_lise.TabIndex = 3;
+            this.pictureBox_lise.TabStop = false;
+            this.pictureBox_lise.Click += new System.EventHandler(this.pictureBox_lise_Click);
+            this.pictureBox_lise.MouseLeave += new System.EventHandler(this.pictureBox_lise_MouseLeave);
+            this.pictureBox_lise.MouseHover += new System.EventHandler(this.pictureBox_lise_MouseHover);
+            // 
+            // pictureBox_onlisans
+            // 
+            this.pictureBox_onlisans.Image = global::InternFollowProgramming.Properties.Resources.yeni_önlisans_stajyer1;
+            this.pictureBox_onlisans.Location = new System.Drawing.Point(698, 12);
+            this.pictureBox_onlisans.Name = "pictureBox_onlisans";
+            this.pictureBox_onlisans.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_onlisans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_onlisans.TabIndex = 2;
+            this.pictureBox_onlisans.TabStop = false;
+            this.pictureBox_onlisans.Click += new System.EventHandler(this.pictureBox_onlisans_Click);
+            this.pictureBox_onlisans.MouseLeave += new System.EventHandler(this.pictureBox_onlisans_MouseLeave);
+            this.pictureBox_onlisans.MouseHover += new System.EventHandler(this.pictureBox_onlisans_MouseHover);
+            // 
+            // pictureBox_lisans
+            // 
+            this.pictureBox_lisans.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_lisans.Image = global::InternFollowProgramming.Properties.Resources.yeni_lisans_stajyer1;
+            this.pictureBox_lisans.Location = new System.Drawing.Point(501, 12);
+            this.pictureBox_lisans.Name = "pictureBox_lisans";
+            this.pictureBox_lisans.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_lisans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_lisans.TabIndex = 1;
+            this.pictureBox_lisans.TabStop = false;
+            this.pictureBox_lisans.Click += new System.EventHandler(this.pictureBox_lisans_Click);
+            this.pictureBox_lisans.MouseLeave += new System.EventHandler(this.pictureBox_lisans_MouseLeave);
+            this.pictureBox_lisans.MouseHover += new System.EventHandler(this.pictureBox_lisans_MouseHover);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::InternFollowProgramming.Properties.Resources.AKESTAJYERLOGO1;
+            this.pictureBox1.Location = new System.Drawing.Point(32, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel_alt
             // 
@@ -559,11 +743,11 @@
             this.label_aranan_stajyer_sayısı.AutoSize = true;
             this.label_aranan_stajyer_sayısı.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_aranan_stajyer_sayısı.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label_aranan_stajyer_sayısı.Location = new System.Drawing.Point(1168, 63);
+            this.label_aranan_stajyer_sayısı.Location = new System.Drawing.Point(1202, 63);
             this.label_aranan_stajyer_sayısı.Name = "label_aranan_stajyer_sayısı";
-            this.label_aranan_stajyer_sayısı.Size = new System.Drawing.Size(154, 13);
+            this.label_aranan_stajyer_sayısı.Size = new System.Drawing.Size(132, 13);
             this.label_aranan_stajyer_sayısı.TabIndex = 14;
-            this.label_aranan_stajyer_sayısı.Text = "0 STAJYER BULUNMUŞTUR.";
+            this.label_aranan_stajyer_sayısı.Text = "0 STAJ BULUNMUŞTUR.";
             // 
             // label_tcsil
             // 
@@ -595,6 +779,7 @@
             this.label_hata.Size = new System.Drawing.Size(93, 21);
             this.label_hata.TabIndex = 18;
             this.label_hata.Text = "Hata Bildir !";
+            this.label_hata.Click += new System.EventHandler(this.label_hata_Click);
             this.label_hata.MouseLeave += new System.EventHandler(this.label_hata_MouseLeave);
             this.label_hata.MouseHover += new System.EventHandler(this.label_hata_MouseHover);
             // 
@@ -619,170 +804,14 @@
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
             // 
-            // sTAJYERGÖSTERToolStripMenuItem
-            // 
-            this.sTAJYERGÖSTERToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.STAJYER_GÖSTER;
-            this.sTAJYERGÖSTERToolStripMenuItem.Name = "sTAJYERGÖSTERToolStripMenuItem";
-            this.sTAJYERGÖSTERToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.sTAJYERGÖSTERToolStripMenuItem.Text = "Stajyer Göster";
-            this.sTAJYERGÖSTERToolStripMenuItem.Click += new System.EventHandler(this.sTAJYERGÖSTERToolStripMenuItem_Click);
-            // 
-            // mailGönderToolStripMenuItem
-            // 
-            this.mailGönderToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.mailgönder;
-            this.mailGönderToolStripMenuItem.Name = "mailGönderToolStripMenuItem";
-            this.mailGönderToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.mailGönderToolStripMenuItem.Text = "Mail Gönder";
-            this.mailGönderToolStripMenuItem.Click += new System.EventHandler(this.mailGönderToolStripMenuItem_Click);
-            // 
-            // silToolStripMenuItem
-            // 
-            this.silToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stajyerToolStripMenuItem,
-            this.stajToolStripMenuItem});
-            this.silToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
-            this.silToolStripMenuItem.Name = "silToolStripMenuItem";
-            this.silToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.silToolStripMenuItem.Text = "Sil";
-            // 
-            // stajyerToolStripMenuItem
-            // 
-            this.stajyerToolStripMenuItem.Name = "stajyerToolStripMenuItem";
-            this.stajyerToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.stajyerToolStripMenuItem.Text = "Stajyer";
-            this.stajyerToolStripMenuItem.Click += new System.EventHandler(this.stajyerToolStripMenuItem_Click);
-            // 
-            // stajToolStripMenuItem
-            // 
-            this.stajToolStripMenuItem.Name = "stajToolStripMenuItem";
-            this.stajToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.stajToolStripMenuItem.Text = "Staj";
-            this.stajToolStripMenuItem.Click += new System.EventHandler(this.stajToolStripMenuItem_Click);
-            // 
-            // pictureBox_refresh
-            // 
-            this.pictureBox_refresh.Image = global::InternFollowProgramming.Properties.Resources.yenile1;
-            this.pictureBox_refresh.Location = new System.Drawing.Point(1153, 12);
-            this.pictureBox_refresh.Name = "pictureBox_refresh";
-            this.pictureBox_refresh.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_refresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_refresh.TabIndex = 18;
-            this.pictureBox_refresh.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox_refresh, "YENİLE");
-            this.pictureBox_refresh.Click += new System.EventHandler(this.pictureBox_refresh_Click);
-            this.pictureBox_refresh.MouseLeave += new System.EventHandler(this.pictureBox_refresh_MouseLeave);
-            this.pictureBox_refresh.MouseHover += new System.EventHandler(this.pictureBox_refresh_MouseHover);
-            // 
-            // pictureBox_suanstajer
-            // 
-            this.pictureBox_suanstajer.Image = global::InternFollowProgramming.Properties.Resources.yeni_staj_yapıyor2;
-            this.pictureBox_suanstajer.Location = new System.Drawing.Point(997, 12);
-            this.pictureBox_suanstajer.Name = "pictureBox_suanstajer";
-            this.pictureBox_suanstajer.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_suanstajer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_suanstajer.TabIndex = 13;
-            this.pictureBox_suanstajer.TabStop = false;
-            this.pictureBox_suanstajer.Click += new System.EventHandler(this.pictureBox_suanstajer_Click);
-            this.pictureBox_suanstajer.MouseLeave += new System.EventHandler(this.pictureBox_suanstajer_MouseLeave);
-            this.pictureBox_suanstajer.MouseHover += new System.EventHandler(this.pictureBox_suanstajer_MouseHover);
-            // 
-            // pictureBox_genel
-            // 
-            this.pictureBox_genel.Image = global::InternFollowProgramming.Properties.Resources.Yeni_genel_stajyer1;
-            this.pictureBox_genel.Location = new System.Drawing.Point(325, 12);
-            this.pictureBox_genel.Name = "pictureBox_genel";
-            this.pictureBox_genel.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_genel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_genel.TabIndex = 12;
-            this.pictureBox_genel.TabStop = false;
-            this.pictureBox_genel.Click += new System.EventHandler(this.pictureBox_genel_Click);
-            this.pictureBox_genel.MouseLeave += new System.EventHandler(this.pictureBox_genel_MouseLeave);
-            this.pictureBox_genel.MouseHover += new System.EventHandler(this.pictureBox_genel_MouseHover);
-            // 
-            // pictureBox_yazdır
-            // 
-            this.pictureBox_yazdır.Image = global::InternFollowProgramming.Properties.Resources.yazdır;
-            this.pictureBox_yazdır.Location = new System.Drawing.Point(1206, 12);
-            this.pictureBox_yazdır.Name = "pictureBox_yazdır";
-            this.pictureBox_yazdır.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_yazdır.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_yazdır.TabIndex = 11;
-            this.pictureBox_yazdır.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox_yazdır, "YAZDIR");
-            this.pictureBox_yazdır.Click += new System.EventHandler(this.pictureBox_yazdır_Click);
-            this.pictureBox_yazdır.MouseLeave += new System.EventHandler(this.pictureBox_yazdır_MouseLeave);
-            this.pictureBox_yazdır.MouseHover += new System.EventHandler(this.pictureBox_yazdır_MouseHover);
-            // 
-            // pictureBox_excel
-            // 
-            this.pictureBox_excel.Image = global::InternFollowProgramming.Properties.Resources.excelkaydet;
-            this.pictureBox_excel.Location = new System.Drawing.Point(1259, 12);
-            this.pictureBox_excel.Name = "pictureBox_excel";
-            this.pictureBox_excel.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_excel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_excel.TabIndex = 10;
-            this.pictureBox_excel.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox_excel, "EXCELE KAYDET");
-            this.pictureBox_excel.Click += new System.EventHandler(this.pictureBox_excel_Click);
-            this.pictureBox_excel.MouseLeave += new System.EventHandler(this.pictureBox_excel_MouseLeave);
-            this.pictureBox_excel.MouseHover += new System.EventHandler(this.pictureBox_excel_MouseHover);
-            // 
-            // pictureBox_lise
-            // 
-            this.pictureBox_lise.Image = global::InternFollowProgramming.Properties.Resources.yeni_lise_stajyer1;
-            this.pictureBox_lise.Location = new System.Drawing.Point(829, 12);
-            this.pictureBox_lise.Name = "pictureBox_lise";
-            this.pictureBox_lise.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_lise.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_lise.TabIndex = 3;
-            this.pictureBox_lise.TabStop = false;
-            this.pictureBox_lise.Click += new System.EventHandler(this.pictureBox_lise_Click);
-            this.pictureBox_lise.MouseLeave += new System.EventHandler(this.pictureBox_lise_MouseLeave);
-            this.pictureBox_lise.MouseHover += new System.EventHandler(this.pictureBox_lise_MouseHover);
-            // 
-            // pictureBox_onlisans
-            // 
-            this.pictureBox_onlisans.Image = global::InternFollowProgramming.Properties.Resources.yeni_önlisans_stajyer1;
-            this.pictureBox_onlisans.Location = new System.Drawing.Point(661, 12);
-            this.pictureBox_onlisans.Name = "pictureBox_onlisans";
-            this.pictureBox_onlisans.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_onlisans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_onlisans.TabIndex = 2;
-            this.pictureBox_onlisans.TabStop = false;
-            this.pictureBox_onlisans.Click += new System.EventHandler(this.pictureBox_onlisans_Click);
-            this.pictureBox_onlisans.MouseLeave += new System.EventHandler(this.pictureBox_onlisans_MouseLeave);
-            this.pictureBox_onlisans.MouseHover += new System.EventHandler(this.pictureBox_onlisans_MouseHover);
-            // 
-            // pictureBox_lisans
-            // 
-            this.pictureBox_lisans.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_lisans.Image = global::InternFollowProgramming.Properties.Resources.yeni_lisans_stajyer1;
-            this.pictureBox_lisans.Location = new System.Drawing.Point(493, 12);
-            this.pictureBox_lisans.Name = "pictureBox_lisans";
-            this.pictureBox_lisans.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_lisans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_lisans.TabIndex = 1;
-            this.pictureBox_lisans.TabStop = false;
-            this.pictureBox_lisans.Click += new System.EventHandler(this.pictureBox_lisans_Click);
-            this.pictureBox_lisans.MouseLeave += new System.EventHandler(this.pictureBox_lisans_MouseLeave);
-            this.pictureBox_lisans.MouseHover += new System.EventHandler(this.pictureBox_lisans_MouseHover);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::InternFollowProgramming.Properties.Resources.AKESTAJYERLOGO1;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // FrmScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1350, 684);
+            this.Controls.Add(this.label_user);
+            this.Controls.Add(this.pictureBox_user);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label_hata);
             this.Controls.Add(this.label_idsil);
@@ -805,11 +834,7 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel_ust.ResumeLayout(false);
             this.panel_ust.PerformLayout();
-            this.panel_alt.ResumeLayout(false);
-            this.panel_alt.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_user)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_refresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_suanstajer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_genel)).EndInit();
@@ -819,6 +844,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_onlisans)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_lisans)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel_alt.ResumeLayout(false);
+            this.panel_alt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -885,5 +915,7 @@
         private System.Windows.Forms.PictureBox pictureBox_genel;
         private System.Windows.Forms.Label label_hata;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label_user;
+        private System.Windows.Forms.PictureBox pictureBox_user;
     }
 }

@@ -143,6 +143,7 @@
             this.button_mailgonder.TabIndex = 14;
             this.button_mailgonder.Text = "Gönder";
             this.button_mailgonder.UseVisualStyleBackColor = true;
+            this.button_mailgonder.Click += new System.EventHandler(this.button_mailgonder_Click);
             // 
             // textBox_aposta
             // 
