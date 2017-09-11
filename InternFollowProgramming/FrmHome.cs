@@ -144,24 +144,8 @@ namespace InternFollowProgramming
 
         private void label_sifremiunuttum_Click(object sender, EventArgs e)
         {
-            
-            if (label_mail.Text != string.Empty)
-            {
-                SmtpClient client = new SmtpClient();
-                client.Port = 587;
-                client.Host = "mail.ake.com.tr";
-                client.EnableSsl = false;
-                client.Credentials = new NetworkCredential("s.ozkaynak@outlook.com", "madame.nuch");
-                MailMessage mm = new MailMessage("s.ozkaynak@outlook.com", label_mail.Text);
-                mm.Subject = "Mail Hatırlatma";
-                mm.Body = label_sifre.Text;
-                client.Send(mm);
-                MessageBox.Show("Şifre iletilmştir.");
-            } 
-            else
-            {
-                MessageBox.Show("Kullanıcının kayıtlı mail adresi yoktur!");
-            }
+            sifregüncelle sg = new sifregüncelle();
+            sg.Show();
         }
 
         private void comboBox_user_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,8 +165,10 @@ namespace InternFollowProgramming
             connection.Close();
         }
 
+        
         private void label_yenikayit_Click(object sender, EventArgs e)
         {
+            
             yenikullanıcı ac = new yenikullanıcı();
             ac.Show();
         }

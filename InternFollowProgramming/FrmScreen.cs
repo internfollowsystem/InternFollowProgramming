@@ -11,6 +11,8 @@ using System.Data.SqlClient;
 using System.Collections;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
+using System.IO;
+using System.Data.SqlClient;
 
 
 
@@ -195,8 +197,9 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
+            mailGönderToolStripMenuItem.Enabled = true;
         }
 
         #region MENÜ BUTONLARI
@@ -228,7 +231,7 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
         }
 
@@ -252,7 +255,7 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
         }
         private void lisansToolStripMenuItem_Click(object sender, EventArgs e)
@@ -276,7 +279,7 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
 
         }
@@ -301,7 +304,7 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
         }
         #endregion
@@ -332,8 +335,10 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
+
+            mailGönderToolStripMenuItem.Enabled = true;
         }
 
         private void label_genel_Click(object sender, EventArgs e)
@@ -356,10 +361,11 @@ namespace InternFollowProgramming
             dataadapter.Dispose();
             connection.Close();
 
+            mailGönderToolStripMenuItem.Enabled = true;
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
         }
 
@@ -386,8 +392,9 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
+            mailGönderToolStripMenuItem.Enabled = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -413,8 +420,9 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
+            mailGönderToolStripMenuItem.Enabled = false;
         }
 
         private void pictureBox_onlisans_Click(object sender, EventArgs e)
@@ -439,8 +447,9 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
+            mailGönderToolStripMenuItem.Enabled = false;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -465,8 +474,9 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
+            mailGönderToolStripMenuItem.Enabled = false;
         }
 
         private void pictureBox_lise_Click(object sender, EventArgs e)
@@ -492,8 +502,9 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
+            mailGönderToolStripMenuItem.Enabled = false;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -519,8 +530,9 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
+            mailGönderToolStripMenuItem.Enabled = false;
         }
 
         private void pictureBox_suanstajer_Click(object sender, EventArgs e)
@@ -546,8 +558,9 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
+            mailGönderToolStripMenuItem.Enabled = false;
         }
 
         private void label_suanstajyer_Click(object sender, EventArgs e)
@@ -573,8 +586,9 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
+            mailGönderToolStripMenuItem.Enabled = false;
         }
         #endregion 
 
@@ -1086,6 +1100,9 @@ namespace InternFollowProgramming
             label_suanstajyapanlar.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
             #endregion
+
+            string secili= dataGridView.CurrentRow.Cells[0].Value.ToString();
+            File.Delete("O:STAJER_TAKIP\\StajyerGörselleri\\" + secili + "\\kişiselgörsel.jpg");
         }
 
         private void stajToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1156,6 +1173,10 @@ namespace InternFollowProgramming
             label_suanstajyapanlar.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
             #endregion
+
+            string secili = dataGridView.CurrentRow.Cells[0].Value.ToString();
+            string stajturu = dataGridView.CurrentRow.Cells[4].Value.ToString();
+            Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + secili + "_" + stajturu);
         }
        
         //22AGUSTOS RAPORLAMA GÜNCEL DEĞİL SADECE COPY-PASTE OLACAK  ---- 23ağustos güncel gibi ama kontrol ett
@@ -3022,7 +3043,7 @@ namespace InternFollowProgramming
             #region TABLODAKİ VERİ SAYISINI BULAN SORGU
             int kayitsayisi;
             kayitsayisi = dataGridView.RowCount;
-            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJYER BULUNMUŞTUR";
+            label_aranan_stajyer_sayısı.Text = kayitsayisi + " STAJ BULUNMUŞTUR";
             #endregion
 
             #region COMBOBOX'LARIN İÇİNİ SIFIRLIYOR.
@@ -3125,6 +3146,7 @@ namespace InternFollowProgramming
                 
             }
             connection.Close();
+            mailGönderToolStripMenuItem.Enabled = false;
         }
 
         private void sTAJYERGÖSTERToolStripMenuItem_Click(object sender, EventArgs e)

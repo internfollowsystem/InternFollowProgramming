@@ -269,6 +269,16 @@ namespace InternFollowProgramming
                                 connection.Close();
                                 MessageBox.Show("Stajyer Kaydedildi");
 
+                                if (label_resimyolu.Text != string.Empty)
+                                {
+                                    Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
+                                    string resimAdi = Path.GetFileName(label_resimyolu.Text);
+                                    File.Copy(@"" + label_resimyolu.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi);
+                                    File.Move("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi, "O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg");
+                                    MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
+                                }
+
+
                                 pictureBox_dosya.Enabled = true;
                                 pictureBox_dosyayukle.Enabled = true;
                                 tabControl_bilgigiriş.TabPages[2].Enabled = true;//Form açıldığında iban textBoxı pasif olsun.
@@ -335,6 +345,16 @@ namespace InternFollowProgramming
                             connection.Close();
                             MessageBox.Show("Stajyer Kaydedildi");
 
+                            if (label_resimyolu.Text != string.Empty)
+                            {
+                                Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
+                                string resimAdi = Path.GetFileName(label_resimyolu.Text);
+                                File.Copy(@"" + label_resimyolu.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi);
+                                File.Move("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi, "O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg");
+                                MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
+                            }
+
+
                             pictureBox_dosya.Enabled = true;
                             pictureBox_dosyayukle.Enabled = true;
                             tabControl_bilgigiriş.TabPages[2].Enabled = true;//Form açıldığında iban textBoxı pasif olsun.
@@ -359,14 +379,7 @@ namespace InternFollowProgramming
                 }
             }
 
-            if(label_resimyolu.Text!=string.Empty)
-            {
-                Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
-                string resimAdi = Path.GetFileName(label_resimyolu.Text);
-                File.Copy(@"" + label_resimyolu.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\"+resimAdi);
-                File.Move("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi, "O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg");
-                MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
-            }
+          
             
         }
 
@@ -514,6 +527,8 @@ namespace InternFollowProgramming
                 command.ExecuteNonQuery();
                 connection.Close();
                 MessageBox.Show("Kayıt Silinmiştir");
+
+                File.Delete("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg");
             }
             catch (Exception ex)
             {
@@ -556,6 +571,8 @@ namespace InternFollowProgramming
             datareader.Close();
             connection.Close();
             #endregion
+
+            Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text);
         }
 
         #endregion
@@ -607,11 +624,12 @@ namespace InternFollowProgramming
                 connection.Close();
 
 
-                if(label_resimyolu.Text!=string.Empty)
+                if (label_resimyolu.Text != string.Empty)
                 {
                     Directory.CreateDirectory("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text);
                     string resimAdi = Path.GetFileName(label_resimyolu.Text);
                     File.Copy(@"" + label_resimyolu.Text, @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi);
+                    File.Move("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\" + resimAdi, "O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg");
                     MessageBox.Show(textBox_adsoyad.Text + "'in Resmi başarılı olarak kaydedildi.");
                 }
                 MessageBox.Show("Stajyer Bilgileri Güncellendi");
@@ -820,87 +838,97 @@ namespace InternFollowProgramming
         //STAJYER BUL BUTONU GÜNCEL !!
         private void pictureBox_bul_Click(object sender, EventArgs e)
         {
-
-            pictureBox_güncelle.Enabled = true;
-            pictureBox_stajyer_sil.Enabled = true;
-            pictureBox_stajbilgisi_kaydet.Enabled = true;
-            pictureBox_dosya.Enabled = true;
-            pictureBox_dosyayukle.Enabled = true;
-            tabControl_bilgigiriş.TabPages[2].Enabled = true;
-            tabControl_bilgigiriş.TabPages[3].Enabled = true;
-            tabControl_bilgigiriş.TabPages[4].Enabled = true;
-            listBox_dosya.Enabled = true;
-            panel_stajbilgidosya.Enabled = true;
-
-            #region Stajyer bul.
-            connection.Open();
-            cmd.Connection = connection;
-            command.Connection = connection;
-            string stajyer = "SELECT * from stajyer where tc_kimlikno=@tc_kimlikno";
-            command = new SqlCommand(stajyer, connection);
-            command.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
-
-            dataadapter = new SqlDataAdapter(command);
-            SqlDataReader drstajyer = command.ExecuteReader();
-            if (drstajyer.Read())
+            string tc_kimlikno;
+            tc_kimlikno= textBox_tcbul.Text;
+            if(tc_kimlikno.Length==11 )
             {
-                textBox_tc.Text = drstajyer["tc_kimlikno"].ToString();   //Datareader ile okunan müşteri tc_kimlino ile isim değişkenine atadım.       
-                textBox_adsoyad.Text = drstajyer["adı_soyadı"].ToString();
-                textBox_baba.Text = drstajyer["baba_adı"].ToString();
-                textBox_anne.Text = drstajyer["anne_adı"].ToString();
-                textBox_dyeri.Text = drstajyer["dogum_yeri"].ToString();
-                dateTimePicker_dtarih.Text = drstajyer["dogum_tarihi"].ToString();
-                textBox_uyrugu.Text = drstajyer["uyrugu"].ToString();
-                textBox_website.Text = drstajyer["web_site"].ToString();
-                comboBox_kangrubu.Text = drstajyer["kan_grubu"].ToString();
-                comboBox_cinsiyet.Text = drstajyer["cinsiyet"].ToString();
-                textBox_evtel.Text = drstajyer["ev_telefonu"].ToString();
-                textBox_ceptel.Text = drstajyer["cep_telefonu"].ToString();
-                textBox_adres.Text = drstajyer["ikametgah"].ToString();
-                textBox_eposta.Text = drstajyer["e_posta"].ToString();
-                textBox_boy.Text = drstajyer["boy"].ToString();
-                textBox_agırlık.Text = drstajyer["agırlık"].ToString();
-                textBox_ai_adsoyad.Text = drstajyer["acil_adsoyad"].ToString();
-                textBox_ai_adres.Text = drstajyer["acil_adres"].ToString();
-                textBox_ai_akrabalık.Text = drstajyer["acil_yakınlıgı"].ToString();
-                textBox_ai_eposta.Text = drstajyer["acil_eposta"].ToString();
-                textBox_ai_telefon.Text = drstajyer["acil_telefon"].ToString();
-                comboBox_ortaokul.Text = drstajyer["ortaokul_adı"].ToString();
-                comboBox_lise.Text = drstajyer["lise_adı"].ToString();
-                comboBox_universite.Text = drstajyer["universite_adı"].ToString();
+                pictureBox_güncelle.Enabled = true;
+                pictureBox_stajyer_sil.Enabled = true;
+                pictureBox_stajbilgisi_kaydet.Enabled = true;
+                pictureBox_dosya.Enabled = true;
+                pictureBox_dosyayukle.Enabled = true;
+                tabControl_bilgigiriş.TabPages[2].Enabled = true;
+                tabControl_bilgigiriş.TabPages[3].Enabled = true;
+                tabControl_bilgigiriş.TabPages[4].Enabled = true;
+                listBox_dosya.Enabled = true;
+                panel_stajbilgidosya.Enabled = true;
+
+                #region Stajyer bul.
+                connection.Open();
+                cmd.Connection = connection;
+                command.Connection = connection;
+                string stajyer = "SELECT * from stajyer where tc_kimlikno=@tc_kimlikno";
+                command = new SqlCommand(stajyer, connection);
+                command.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
+
+                dataadapter = new SqlDataAdapter(command);
+                SqlDataReader drstajyer = command.ExecuteReader();
+                if (drstajyer.Read())
+                {
+                    textBox_tc.Text = drstajyer["tc_kimlikno"].ToString();   //Datareader ile okunan müşteri tc_kimlino ile isim değişkenine atadım.       
+                    textBox_adsoyad.Text = drstajyer["adı_soyadı"].ToString();
+                    textBox_baba.Text = drstajyer["baba_adı"].ToString();
+                    textBox_anne.Text = drstajyer["anne_adı"].ToString();
+                    textBox_dyeri.Text = drstajyer["dogum_yeri"].ToString();
+                    dateTimePicker_dtarih.Text = drstajyer["dogum_tarihi"].ToString();
+                    textBox_uyrugu.Text = drstajyer["uyrugu"].ToString();
+                    textBox_website.Text = drstajyer["web_site"].ToString();
+                    comboBox_kangrubu.Text = drstajyer["kan_grubu"].ToString();
+                    comboBox_cinsiyet.Text = drstajyer["cinsiyet"].ToString();
+                    textBox_evtel.Text = drstajyer["ev_telefonu"].ToString();
+                    textBox_ceptel.Text = drstajyer["cep_telefonu"].ToString();
+                    textBox_adres.Text = drstajyer["ikametgah"].ToString();
+                    textBox_eposta.Text = drstajyer["e_posta"].ToString();
+                    textBox_boy.Text = drstajyer["boy"].ToString();
+                    textBox_agırlık.Text = drstajyer["agırlık"].ToString();
+                    textBox_ai_adsoyad.Text = drstajyer["acil_adsoyad"].ToString();
+                    textBox_ai_adres.Text = drstajyer["acil_adres"].ToString();
+                    textBox_ai_akrabalık.Text = drstajyer["acil_yakınlıgı"].ToString();
+                    textBox_ai_eposta.Text = drstajyer["acil_eposta"].ToString();
+                    textBox_ai_telefon.Text = drstajyer["acil_telefon"].ToString();
+                    comboBox_ortaokul.Text = drstajyer["ortaokul_adı"].ToString();
+                    comboBox_lise.Text = drstajyer["lise_adı"].ToString();
+                    comboBox_universite.Text = drstajyer["universite_adı"].ToString();
 
 
-                pictureBox_stajyer_resim.ImageLocation = label_resimyolu.Text;
+                    pictureBox_stajyer_resim.ImageLocation = label_resimyolu.Text;
 
+                }
+                //Datareader açık olduğu sürece başka bir sorgu çalıştıramayacağımız için dr nesnesini kapatıyoruz.
+                else
+                {
+                    MessageBox.Show("Kayıtlı Stajyer Bulunamadı");
+                }
+                drstajyer.Close();
+                #endregion
+
+                #region COMBOBOX'IN İÇİNE STAJ BİLGİLERİNİ ÇEK
+                comboBox_staj.Items.Clear();
+                string staj = "SELECT staj_turu FROM stajbilgileri where tc_kimlikno=@tc_kimlikno";
+                cmd = new SqlCommand(staj, connection);
+                cmd.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
+                datareader = cmd.ExecuteReader();
+                while (datareader.Read())
+                {
+                    comboBox_staj.Items.Add(datareader["staj_turu"]);
+                }
+                datareader.Close();
+                connection.Close();
+                #endregion
+
+                #region Resmi Göster
+                string ResimYolu = @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg";
+                label_resimyolu.Text = ResimYolu;
+                pictureBox_stajyer_resim.ImageLocation = ResimYolu;
+                #endregion
+
+                tabControl_bilgigiriş.SelectedTab = tabPage_genel;
             }
-            //Datareader açık olduğu sürece başka bir sorgu çalıştıramayacağımız için dr nesnesini kapatıyoruz.
             else
             {
-                MessageBox.Show("Kayıtlı Stajyer Bulunamadı");
+                MessageBox.Show("Eksik Tc'numarası girdiniz!");
             }
-            drstajyer.Close();
-            #endregion
-
-            #region COMBOBOX'IN İÇİNE STAJ BİLGİLERİNİ ÇEK
-            comboBox_staj.Items.Clear();
-            string staj = "SELECT staj_turu FROM stajbilgileri where tc_kimlikno=@tc_kimlikno";
-            cmd = new SqlCommand(staj, connection);
-            cmd.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
-            datareader = cmd.ExecuteReader();
-            while (datareader.Read())
-            {
-                comboBox_staj.Items.Add(datareader["staj_turu"]);
-            }
-            datareader.Close();
-            connection.Close();
-            #endregion
-
-            #region Resmi Göster
-            string ResimYolu =@"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text + "\\kişiselgörsel.jpg";
-            pictureBox_stajyer_resim.ImageLocation = ResimYolu;
-            #endregion
-
-            tabControl_bilgigiriş.SelectedTab = tabPage_genel;
+           
         }
 
         //STAJ KODU GETİR KODU
@@ -1791,6 +1819,7 @@ namespace InternFollowProgramming
 
         private void pictureBox_sıfırla_Click(object sender, EventArgs e)
         {
+            pictureBox_stajyer_resim.Image = null;
             textBox_tcbul.Clear();
             textBox_tc.Clear();
             textBox_adsoyad.Clear();

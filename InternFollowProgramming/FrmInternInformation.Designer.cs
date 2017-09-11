@@ -301,7 +301,7 @@
             // textBox_dosya
             // 
             this.textBox_dosya.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textBox_dosya.Location = new System.Drawing.Point(281, 6);
+            this.textBox_dosya.Location = new System.Drawing.Point(426, 7);
             this.textBox_dosya.Name = "textBox_dosya";
             this.textBox_dosya.Size = new System.Drawing.Size(121, 20);
             this.textBox_dosya.TabIndex = 33;
@@ -1154,7 +1154,6 @@
             // tabPage_acil
             // 
             this.tabPage_acil.BackColor = System.Drawing.Color.Beige;
-            this.tabPage_acil.Controls.Add(this.pictureBox_sıfırla);
             this.tabPage_acil.Controls.Add(this.label2);
             this.tabPage_acil.Controls.Add(this.label_acil_adres);
             this.tabPage_acil.Controls.Add(this.label45);
@@ -1694,7 +1693,6 @@
             // tabPage_işakış
             // 
             this.tabPage_işakış.BackColor = System.Drawing.Color.Beige;
-            this.tabPage_işakış.Controls.Add(this.pictureBox_stajsıfırla);
             this.tabPage_işakış.Controls.Add(this.label4);
             this.tabPage_işakış.Controls.Add(this.label_stajicerigi);
             this.tabPage_işakış.Controls.Add(this.panel_stajicerigi);
@@ -1870,6 +1868,7 @@
             // panel_stajbilgidosya
             // 
             this.panel_stajbilgidosya.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_stajbilgidosya.Controls.Add(this.pictureBox_stajsıfırla);
             this.panel_stajbilgidosya.Controls.Add(this.pictureBox_stajgüncelle);
             this.panel_stajbilgidosya.Controls.Add(this.pictureBox_stajsil);
             this.panel_stajbilgidosya.Controls.Add(this.pictureBox_dosyayukle);
@@ -1929,7 +1928,7 @@
             // 
             this.pictureBox_dosyayukle.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_dosyayukle.Image = global::InternFollowProgramming.Properties.Resources.dosyayukle;
-            this.pictureBox_dosyayukle.Location = new System.Drawing.Point(456, 4);
+            this.pictureBox_dosyayukle.Location = new System.Drawing.Point(601, 5);
             this.pictureBox_dosyayukle.Name = "pictureBox_dosyayukle";
             this.pictureBox_dosyayukle.Size = new System.Drawing.Size(25, 25);
             this.pictureBox_dosyayukle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1959,7 +1958,7 @@
             // 
             this.pictureBox_dosya.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_dosya.Image = global::InternFollowProgramming.Properties.Resources.Sfile;
-            this.pictureBox_dosya.Location = new System.Drawing.Point(422, 4);
+            this.pictureBox_dosya.Location = new System.Drawing.Point(567, 5);
             this.pictureBox_dosya.Name = "pictureBox_dosya";
             this.pictureBox_dosya.Size = new System.Drawing.Size(25, 25);
             this.pictureBox_dosya.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -2014,15 +2013,16 @@
             // 
             // pictureBox_sıfırla
             // 
-            this.pictureBox_sıfırla.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_sıfırla.BackColor = System.Drawing.Color.White;
             this.pictureBox_sıfırla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox_sıfırla.Image = global::InternFollowProgramming.Properties.Resources.temizle;
-            this.pictureBox_sıfırla.Location = new System.Drawing.Point(287, 279);
+            this.pictureBox_sıfırla.Location = new System.Drawing.Point(876, 75);
             this.pictureBox_sıfırla.Name = "pictureBox_sıfırla";
             this.pictureBox_sıfırla.Size = new System.Drawing.Size(60, 25);
             this.pictureBox_sıfırla.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_sıfırla.TabIndex = 45;
             this.pictureBox_sıfırla.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_sıfırla, "STAJYER BİLGİLERİ TEMİZLE");
             this.pictureBox_sıfırla.Click += new System.EventHandler(this.pictureBox_sıfırla_Click);
             this.pictureBox_sıfırla.MouseLeave += new System.EventHandler(this.pictureBox_sıfırla_MouseLeave);
             this.pictureBox_sıfırla.MouseHover += new System.EventHandler(this.pictureBox_sıfırla_MouseHover);
@@ -2044,15 +2044,16 @@
             // 
             // pictureBox_stajsıfırla
             // 
-            this.pictureBox_stajsıfırla.BackColor = System.Drawing.Color.Beige;
+            this.pictureBox_stajsıfırla.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_stajsıfırla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox_stajsıfırla.Image = global::InternFollowProgramming.Properties.Resources.temizle;
-            this.pictureBox_stajsıfırla.Location = new System.Drawing.Point(691, 25);
+            this.pictureBox_stajsıfırla.Location = new System.Drawing.Point(237, 3);
             this.pictureBox_stajsıfırla.Name = "pictureBox_stajsıfırla";
             this.pictureBox_stajsıfırla.Size = new System.Drawing.Size(60, 25);
             this.pictureBox_stajsıfırla.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_stajsıfırla.TabIndex = 46;
             this.pictureBox_stajsıfırla.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox_stajsıfırla, "Staj Bilgileri Temizle");
             this.pictureBox_stajsıfırla.Click += new System.EventHandler(this.pictureBox_stajsıfırla_Click);
             this.pictureBox_stajsıfırla.MouseLeave += new System.EventHandler(this.pictureBox_stajsıfırla_MouseLeave);
             this.pictureBox_stajsıfırla.MouseHover += new System.EventHandler(this.pictureBox_stajsıfırla_MouseHover);
@@ -2130,6 +2131,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1086, 520);
+            this.Controls.Add(this.pictureBox_sıfırla);
             this.Controls.Add(this.label_dosya);
             this.Controls.Add(this.panel_stajbilgidosya);
             this.Controls.Add(this.label_kod);
