@@ -1920,6 +1920,7 @@
             this.pictureBox_stajsil.TabIndex = 37;
             this.pictureBox_stajsil.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox_stajsil, "STAJ SİL");
+            this.pictureBox_stajsil.ClientSizeChanged += new System.EventHandler(this.pictureBox_stajsıfırla_Click);
             this.pictureBox_stajsil.Click += new System.EventHandler(this.pictureBox_stajsil_Click);
             this.pictureBox_stajsil.MouseLeave += new System.EventHandler(this.pictureBox_stajsil_MouseLeave);
             this.pictureBox_stajsil.MouseHover += new System.EventHandler(this.pictureBox_stajsil_MouseHover);
@@ -2097,6 +2098,7 @@
             this.pictureBox_stajyer_sil.TabIndex = 4;
             this.pictureBox_stajyer_sil.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox_stajyer_sil, "STAJYER SİL");
+            this.pictureBox_stajyer_sil.ClientSizeChanged += new System.EventHandler(this.pictureBox_sıfırla_Click);
             this.pictureBox_stajyer_sil.Click += new System.EventHandler(this.pictureBox_sil_Click);
             this.pictureBox_stajyer_sil.MouseLeave += new System.EventHandler(this.pictureBox_sil_MouseLeave);
             this.pictureBox_stajyer_sil.MouseHover += new System.EventHandler(this.pictureBox_sil_MouseHover);
