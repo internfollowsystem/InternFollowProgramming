@@ -12,7 +12,7 @@ using System.Collections;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 using System.IO;
-using System.Data.SqlClient;
+
 
 
 
@@ -37,7 +37,7 @@ namespace InternFollowProgramming
         bool bFirstPage = false; //Used to check whether we are printing first page
         bool bNewPage = false;// Used to check whether we are printing a new page
         int iHeaderHeight = 0;
-        int numara;// SAĞ TUŞA TIKLAYARAK VERİ SİLME İŞLEMİNDE KULLANDIK
+      
         #endregion
 
         //22 AĞUSTOS 2017 GÜNCEL !! 
@@ -94,7 +94,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand lisans = new SqlCommand();
             lisans.Connection = connection;
-            lisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu='Lisans'";
+            lisans.CommandText = "SELECT Count(staj_id) FROM stajbilgileri where egitim_durumu='LİSANS'";
             kayitSayisi = Convert.ToInt32(lisans.ExecuteScalar());
             label_lisans.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -104,7 +104,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand onlisans = new SqlCommand();
             onlisans.Connection = connection;
-            onlisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'On Lisans'";
+            onlisans.CommandText = "SELECT Count(Staj_id) FROM stajbilgileri where egitim_durumu= 'ÖN LİSANS'";
             kayitSayisi = Convert.ToInt32(onlisans.ExecuteScalar());
             label_onlisans.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -114,7 +114,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand lise = new SqlCommand();
             lise.Connection = connection;
-            lise.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'Lise'";
+            lise.CommandText = "SELECT Count(staj_id) FROM stajbilgileri where egitim_durumu= 'LİSE'";
             kayitSayisi = Convert.ToInt32(lise.ExecuteScalar());
             label_lise.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -124,7 +124,7 @@ namespace InternFollowProgramming
             connection.Open();
             SqlCommand aktif = new SqlCommand();
             aktif.Connection = connection;
-            aktif.CommandText = "SELECT count(tc_kimlikno) FROM stajbilgileri where staj_yapmadurumu= 'STAJ YAPIYOR'";
+            aktif.CommandText = "SELECT count(staj_id) FROM stajbilgileri where staj_yapmadurumu= 'STAJ YAPIYOR'";
             kayitSayisi = Convert.ToInt32(aktif.ExecuteScalar());
             label_suanstajyapanlar.Text = Convert.ToString(kayitSayisi.ToString());
             connection.Close();
@@ -1036,13 +1036,23 @@ namespace InternFollowProgramming
             {
                 connection.Open();
             }
-           label_tcsil.Text= dataGridView.CurrentRow.Cells[0].Value.ToString();
+           //label_tcsil.Text= dataGridView.CurrentRow.Cells[0].Value.ToString();
            
             command.CommandText = "DELETE FROM stajyer where tc_kimlikno=@tc_kimlikno";
-            command.Parameters.AddWithValue("@tc_kimlikno",label_tcsil.Text);
+            command.Parameters.AddWithValue("@tc_kimlikno", dataGridView.CurrentRow.Cells[0].Value.ToString());
             command.ExecuteNonQuery();
-            command.Parameters.Clear();
-            MessageBox.Show("STAJYER SİLİNDİ");
+
+			//string secili = dataGridView.CurrentRow.Cells[0].Value.ToString();
+			//string stajturu = dataGridView.CurrentRow.Cells[4].Value.ToString();
+			if (Directory.Exists("O:STAJER_TAKIP\\StajyerGörselleri\\" + dataGridView.CurrentRow.Cells[0].Value.ToString()))
+			{
+				Directory.Delete("O:STAJER_TAKIP\\StajyerGörselleri\\" + dataGridView.CurrentRow.Cells[0].Value.ToString(), true);
+			}
+			if (Directory.Exists("O:STAJER_TAKIP\\StajyerDosyaları\\" + dataGridView.CurrentRow.Cells[0].Value.ToString() + "_" + dataGridView.CurrentRow.Cells[4].Value.ToString()))
+			{
+				Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + dataGridView.CurrentRow.Cells[0].Value.ToString() + "_" + dataGridView.CurrentRow.Cells[4].Value.ToString(), true);
+			}
+			MessageBox.Show("STAJYER SİLİNDİ");
 
             datatable = new System.Data.DataTable();
             dataadapter = new SqlDataAdapter("SELECT i.* , s.* FROM stajyer i Left Join stajbilgileri s on i.tc_kimlikno=s.tc_kimlikno ", connection);
@@ -1101,84 +1111,83 @@ namespace InternFollowProgramming
             connection.Close();
             #endregion
 
-            string secili= dataGridView.CurrentRow.Cells[0].Value.ToString();
-            Directory.Delete("O:STAJER_TAKIP\\StajyerGörselleri\\" + secili, true);
-            Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + secili + "_" + stajturu, true);
-        }
+            
+		}
 
-        private void stajToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            label_idsil.Text = dataGridView.CurrentRow.Cells[2].Value.ToString();
-            connection.Close();
-            command.Connection = connection;
-            connection.Open();
-            command.CommandText = "DELETE FROM stajbilgileri where staj_id=@staj_id";
-            command.Parameters.AddWithValue("@staj_id", label_idsil.Text);
-            command.ExecuteNonQuery();
-            command.Parameters.Clear();
-            MessageBox.Show("STAJ SİLİNDİ");
+		private void stajToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			//label_idsil.Text = dataGridView.CurrentRow.Cells[2].Value.ToString();
+			connection.Close();
+			command.Connection = connection;
+			connection.Open();
+			command.CommandText = "DELETE FROM stajbilgileri where staj_id=@staj_id";
+			command.Parameters.AddWithValue("@staj_id", dataGridView.CurrentRow.Cells[2].Value.ToString());
+			command.ExecuteNonQuery();
+			command.Parameters.Clear();
+			if (Directory.Exists("O:STAJER_TAKIP\\StajyerDosyaları\\" + dataGridView.CurrentRow.Cells[0].Value.ToString() + "_" + dataGridView.CurrentRow.Cells[4].Value.ToString()))
+			{
+				Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + dataGridView.CurrentRow.Cells[0].Value.ToString() + "_" + dataGridView.CurrentRow.Cells[4].Value.ToString(), true);
+			}
+			MessageBox.Show("STAJ SİLİNDİ");
 
-            datatable = new System.Data.DataTable();
-            dataadapter = new SqlDataAdapter("SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno", connection);
-            dataadapter.Fill(datatable);
-            dataGridView.DataSource = datatable;
-            dataadapter.Dispose();
-            connection.Close();
+			datatable = new System.Data.DataTable();
+			dataadapter = new SqlDataAdapter("SELECT i.adı_soyadı, i.tc_kimlikno, s.staj_id,i.cinsiyet, s.staj_turu, s.staj_icerigi, s.egitim_durumu, s.okul_adı, s.bolum_adı, s.okul_acıklama, s.staj_kabuldurumu, s.staj_donem, s.baslangıc_tarihi, s.bitis_tarihi, s.staj_yılı, s.staj_yapmadurumu, s.staj_suresi, s.servis_imkanı, s.arac_plaka,s.mentör, s.basvuru_turu,s.referans_adı,s.staj_acıklama FROM stajyer as i JOIN stajbilgileri as s on i.tc_kimlikno=s.tc_kimlikno", connection);
+			dataadapter.Fill(datatable);
+			dataGridView.DataSource = datatable;
+			dataadapter.Dispose();
+			connection.Close();
 
-            #region TÜM STAJYERLER LABELA STAJYER SAYISINI AKTARMA     
-            connection.Open();
-            SqlCommand stajyer = new SqlCommand();
-            stajyer.Connection = connection;
-            stajyer.CommandText = "Select Count(tc_kimlikno) FROM stajyer ";
-            kayitSayisi = Convert.ToInt32(stajyer.ExecuteScalar());
-            label_stajyer.Text = Convert.ToString(kayitSayisi.ToString());
-            connection.Close();
-            #endregion
+			#region TÜM STAJYERLER LABELA STAJYER SAYISINI AKTARMA     
+			connection.Open();
+			SqlCommand stajyer = new SqlCommand();
+			stajyer.Connection = connection;
+			stajyer.CommandText = "Select Count(tc_kimlikno) FROM stajyer ";
+			kayitSayisi = Convert.ToInt32(stajyer.ExecuteScalar());
+			label_stajyer.Text = Convert.ToString(kayitSayisi.ToString());
+			connection.Close();
+			#endregion
 
-            #region LİSANS LABELA STAJYER SAYISINI AKTARMA     
-            connection.Open();
-            SqlCommand lisans = new SqlCommand();
-            lisans.Connection = connection;
-            lisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu='Lisans'";
-            kayitSayisi = Convert.ToInt32(lisans.ExecuteScalar());
-            label_lisans.Text = Convert.ToString(kayitSayisi.ToString());
-            connection.Close();
-            #endregion
+			#region LİSANS LABELA STAJYER SAYISINI AKTARMA     
+			connection.Open();
+			SqlCommand lisans = new SqlCommand();
+			lisans.Connection = connection;
+			lisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu='Lisans'";
+			kayitSayisi = Convert.ToInt32(lisans.ExecuteScalar());
+			label_lisans.Text = Convert.ToString(kayitSayisi.ToString());
+			connection.Close();
+			#endregion
 
-            #region ONLİSANS LABELA STAJYER SAYISINI AKTARMA
-            connection.Open();
-            SqlCommand onlisans = new SqlCommand();
-            onlisans.Connection = connection;
-            onlisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'On Lisans'";
-            kayitSayisi = Convert.ToInt32(onlisans.ExecuteScalar());
-            label_onlisans.Text = Convert.ToString(kayitSayisi.ToString());
-            connection.Close();
-            #endregion
+			#region ONLİSANS LABELA STAJYER SAYISINI AKTARMA
+			connection.Open();
+			SqlCommand onlisans = new SqlCommand();
+			onlisans.Connection = connection;
+			onlisans.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'On Lisans'";
+			kayitSayisi = Convert.ToInt32(onlisans.ExecuteScalar());
+			label_onlisans.Text = Convert.ToString(kayitSayisi.ToString());
+			connection.Close();
+			#endregion
 
-            #region LİSE LABELE STAJYER SAYISINI AKTARMA
-            connection.Open();
-            SqlCommand lise = new SqlCommand();
-            lise.Connection = connection;
-            lise.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'Lise'";
-            kayitSayisi = Convert.ToInt32(lise.ExecuteScalar());
-            label_lise.Text = Convert.ToString(kayitSayisi.ToString());
-            connection.Close();
-            #endregion
+			#region LİSE LABELE STAJYER SAYISINI AKTARMA
+			connection.Open();
+			SqlCommand lise = new SqlCommand();
+			lise.Connection = connection;
+			lise.CommandText = "SELECT Count(tc_kimlikno) FROM stajbilgileri where egitim_durumu= 'Lise'";
+			kayitSayisi = Convert.ToInt32(lise.ExecuteScalar());
+			label_lise.Text = Convert.ToString(kayitSayisi.ToString());
+			connection.Close();
+			#endregion
 
-            #region ŞUAN STAJ YAPANLAR LABELA STAJYER SAYISINI AKTARMA     
-            connection.Open();
-            SqlCommand aktif = new SqlCommand();
-            aktif.Connection = connection;
-            aktif.CommandText = "SELECT count(tc_kimlikno) FROM stajbilgileri where staj_yapmadurumu= 'STAJ YAPIYOR'";
-            kayitSayisi = Convert.ToInt32(aktif.ExecuteScalar());
-            label_suanstajyapanlar.Text = Convert.ToString(kayitSayisi.ToString());
-            connection.Close();
-            #endregion
-
-            string secili = dataGridView.CurrentRow.Cells[0].Value.ToString();
-            string stajturu = dataGridView.CurrentRow.Cells[4].Value.ToString();
-            Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + secili + "_" + stajturu,true);
-        }
+			#region ŞUAN STAJ YAPANLAR LABELA STAJYER SAYISINI AKTARMA     
+			connection.Open();
+			SqlCommand aktif = new SqlCommand();
+			aktif.Connection = connection;
+			aktif.CommandText = "SELECT count(tc_kimlikno) FROM stajbilgileri where staj_yapmadurumu= 'STAJ YAPIYOR'";
+			kayitSayisi = Convert.ToInt32(aktif.ExecuteScalar());
+			label_suanstajyapanlar.Text = Convert.ToString(kayitSayisi.ToString());
+			connection.Close();
+			#endregion
+		}
+           
        
         //22AGUSTOS RAPORLAMA GÜNCEL DEĞİL SADECE COPY-PASTE OLACAK  ---- 23ağustos güncel gibi ama kontrol ett
         private void button_s_ara_Click(object sender, EventArgs e)  //RAPORLAMA

@@ -59,7 +59,14 @@ namespace InternFollowProgramming
         //COMBOBOX'İÇİNDEKİ STAJ TURUNE GÖRE İCERİKLERİ LİSTBOX'A AKTARMA OLAYI:29 AGUSTOS 2017
         private void comboBox_stajturu_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+			if(comboBox_stajturu.Text=="")
+			{
+				pictureBox_dosyayukle.Enabled = false;
+			}
+			else if(comboBox_stajturu.Text != "")
+			{
+				pictureBox_dosyayukle.Enabled = true;
+			}
             listBox_icerikler.Items.Clear();
             command.Connection = connection;
             connection.Close();
@@ -526,11 +533,18 @@ namespace InternFollowProgramming
                 command.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
                 command.ExecuteNonQuery();
                 connection.Close();
-                MessageBox.Show("Kayıt Silinmiştir");
+               
+				if (Directory.Exists("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text))
+				{
+					Directory.Delete("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text, true);
+				}
+				if (Directory.Exists("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text))
+				{
+					Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text, true);
+				}
 
-                Directory.Delete("O:STAJER_TAKIP\\StajyerGörselleri\\" + textBox_tc.Text, true);
-                Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text, true);
-            }
+				MessageBox.Show("Kayıt Silinmiştir");
+			}
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + "Kayıt Silinemedi");
@@ -550,16 +564,21 @@ namespace InternFollowProgramming
                 command.Parameters.AddWithValue("@staj_id", label_kod.Text);
                 command.ExecuteNonQuery();
                 connection.Close();
-                MessageBox.Show("Staj Bilgileri Silinmiştir");
+				if (Directory.Exists(@"O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text + ""))
+				{
+
+					Directory.Delete(@"O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text + "", true);
+				}
+				MessageBox.Show("Staj Bilgileri Silinmiştir");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + "İşlem gerçekleşememiştir");
             }
+			
 
-
-            #region COMBOBOX'IN İÇİNE STAJ BİLGİLERİNİ ÇEK
-            comboBox_staj.Items.Clear();
+			#region COMBOBOX'IN İÇİNE STAJ BİLGİLERİNİ ÇEK
+			comboBox_staj.Items.Clear();
             string staj = "SELECT DISTINCT staj_turu FROM stajbilgileri where tc_kimlikno=@tc_kimlikno";
             cmd = new SqlCommand(staj, connection);
             connection.Open();
@@ -571,9 +590,10 @@ namespace InternFollowProgramming
             }
             datareader.Close();
             connection.Close();
-            #endregion
+			#endregion
 
-            Directory.Delete("O:STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text, true);
+			
+				
         }
 
         #endregion
@@ -843,7 +863,7 @@ namespace InternFollowProgramming
         }
 
         #region VERİTABANINDAN BULMA İŞLEMLERİ
-        int i;
+       
         //STAJYER BUL BUTONU GÜNCEL !!
         private void pictureBox_bul_Click(object sender, EventArgs e)
         {
@@ -942,98 +962,100 @@ namespace InternFollowProgramming
 
         //STAJ KODU GETİR KODU
         private void comboBox_staj_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			string sql = "Select staj_id from stajbilgileri where tc_kimlikno=@tc_kimlikno and staj_turu=@staj_turu";
+			SqlCommand command = new SqlCommand(sql, connection);
+			command.Connection = connection;
+			command.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
+			command.Parameters.AddWithValue("@staj_turu", comboBox_staj.Text);
+			connection.Open();
+			dataadapter = new SqlDataAdapter(command);
+			SqlDataReader stajkodu = command.ExecuteReader();
+			while (stajkodu.Read())
+			{
+
+				label_kod.Text = stajkodu["staj_id"].ToString();
+
+			}
+			stajkodu.Close();
+			connection.Close();
+
+
+			textBox_stajyapmadurumu.Visible = true;
+			listBox_dosya.Enabled = false;//Form açıldığında iban textBoxı pasif olsun.
+			string staj = "SELECT staj_id, tc_kimlikno,egitim_durumu,okul_adı,bolum_adı,sınıf,okul_no,sehir,okul_puanı,okul_acıklama,banka_adı,şube_kodu,hesap_no,iban_no,staj_kabuldurumu,staj_donem,baslangıc_tarihi,bitis_tarihi,staj_yılı,staj_yapmadurumu,staj_suresi,servis_imkanı,arac_plaka,mentör,sigorta_evrak,basvuru_turu,referans_adı,referans_adres,referans_telefon,referans_eposta,staj_acıklama,staj_turu,staj_icerigi, staj_kalan_sure FROM stajbilgileri where tc_kimlikno=@tc_kimlikno and staj_id=@staj_id";
+			command = new SqlCommand(staj, connection);
+			command.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
+			command.Parameters.AddWithValue("@staj_id", label_kod.Text);
+
+			if (connection.State == ConnectionState.Closed)
+			{
+				connection.Open();
+			}
+
+			dataadapter = new SqlDataAdapter(command);
+			SqlDataReader drstaj = command.ExecuteReader();
+			while (drstaj.Read() == true)
+			{
+				label_kod.Text = drstaj["staj_id"].ToString();
+				textBox_tc.Text = drstaj["tc_kimlikno"].ToString();
+				comboBox_kabuldurumu.Text = drstaj["staj_kabuldurumu"].ToString();
+				comboBox_stajdonemi.Text = drstaj["staj_donem"].ToString();
+				dateTimePicker_baslangıc.Text = drstaj["baslangıc_tarihi"].ToString();
+				dateTimePicker_bitis.Text = drstaj["bitis_tarihi"].ToString();
+				textBox_stajyapmadurumu.Text = drstaj["staj_yapmadurumu"].ToString();
+				textBox_stajsuresi.Text = drstaj["staj_suresi"].ToString();
+				comboBox_servis.Text = drstaj["servis_imkanı"].ToString();
+				comboBox_aracplaka.Text = drstaj["arac_plaka"].ToString();
+				comboBox_mentor.Text = drstaj["mentör"].ToString();
+				comboBox_sigorta.Text = drstaj["sigorta_evrak"].ToString();
+				comboBox_stajyili.Text = drstaj["staj_yılı"].ToString();
+				comboBox_basvuruturu.Text = drstaj["basvuru_turu"].ToString();
+				textBox_r_ad.Text = drstaj["referans_adı"].ToString();
+				textBox_r_adres.Text = drstaj["referans_adres"].ToString();
+				textBox_r_eposta.Text = drstaj["referans_eposta"].ToString();
+				textBox_r_telefon.Text = drstaj["referans_telefon"].ToString();
+				textBox_staj_aciklama.Text = drstaj["staj_acıklama"].ToString();
+				comboBox_egitimdurumu.Text = drstaj["egitim_durumu"].ToString();
+				comboBox_okuladı.Text = drstaj["okul_adı"].ToString();
+				comboBox_bolumadı.Text = drstaj["bolum_adı"].ToString();
+				comboBox_sinif.Text = drstaj["sınıf"].ToString();
+				textBox_okulno.Text = drstaj["okul_no"].ToString();
+				comboBox_sehir.Text = drstaj["sehir"].ToString();
+				textBox_okulpuan.Text = drstaj["okul_puanı"].ToString();
+				textBox_okulacıklama.Text = drstaj["okul_acıklama"].ToString();
+				textBox_bankaadı.Text = drstaj["banka_adı"].ToString();
+				textBox_subekodu.Text = drstaj["şube_kodu"].ToString();
+				textBox_hesapno.Text = drstaj["hesap_no"].ToString();
+				textBox_iban.Text = drstaj["iban_no"].ToString();
+				label_kalansure.Text = drstaj["staj_kalan_sure"].ToString();
+				comboBox_stajturu.Text = drstaj["staj_turu"].ToString();
+			}
+			drstaj.Close();
+			connection.Close();
+
+			tabControl_bilgigiriş.SelectedTab = tabPage_okul;
+			listBox_dosya.Enabled = true;
+
+			#region DÖKÜMANLARI LİSTBOX'A AKTAR
+			listBox_dosya.Items.Clear(); // Listbox'ın içini temizle
+			string DosyaYolu = "O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text;
+			if (Directory.Exists(DosyaYolu))
+			{
+				//GetFiles metodu dosyaları temsil eder. Belirtilen Dizindeki Dosyaları Dizi olarak döndürür
+				string[] dosyalar = System.IO.Directory.GetFiles("O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_staj.Text);
+				for (int j = 0; j < dosyalar.Length; j++)
+				{
+					//klasörler dizisinin i. elemanı listboxa ekle
+					listBox_dosya.Items.Add(dosyalar[j]);
+				}
+			}
+			#endregion
+		}
+
+		//STAJ BUL BUTONU GÜNCEL
+		private void pictureBox_staj_Click(object sender, EventArgs e)
         {
-            string sql = "Select staj_id from stajbilgileri where tc_kimlikno=@tc_kimlikno and staj_turu=@staj_turu";
-            SqlCommand command = new SqlCommand(sql, connection);
-            command.Connection = connection;
-            command.Parameters.AddWithValue("@tc_kimlikno", textBox_tcbul.Text);
-            command.Parameters.AddWithValue("@staj_turu", comboBox_staj.Text);
-            connection.Open();
-            dataadapter = new SqlDataAdapter(command);
-            SqlDataReader stajkodu = command.ExecuteReader();
-            while (stajkodu.Read())
-            {
-
-                label_kod.Text = stajkodu["staj_id"].ToString();
-
-            }
-            stajkodu.Close();
-            connection.Close();
-        }
-
-        //STAJ BUL BUTONU GÜNCEL
-        private void pictureBox_staj_Click(object sender, EventArgs e)
-        {
-            textBox_stajyapmadurumu.Visible = true;
-            listBox_dosya.Enabled = false;//Form açıldığında iban textBoxı pasif olsun.
-            string staj = "SELECT staj_id, tc_kimlikno,egitim_durumu,okul_adı,bolum_adı,sınıf,okul_no,sehir,okul_puanı,okul_acıklama,banka_adı,şube_kodu,hesap_no,iban_no,staj_kabuldurumu,staj_donem,baslangıc_tarihi,bitis_tarihi,staj_yılı,staj_yapmadurumu,staj_suresi,servis_imkanı,arac_plaka,mentör,sigorta_evrak,basvuru_turu,referans_adı,referans_adres,referans_telefon,referans_eposta,staj_acıklama,staj_turu,staj_icerigi, staj_kalan_sure FROM stajbilgileri where tc_kimlikno=@tc_kimlikno and staj_id=@staj_id";
-            command = new SqlCommand(staj, connection);
-            command.Parameters.AddWithValue("@tc_kimlikno", textBox_tc.Text);
-            command.Parameters.AddWithValue("@staj_id", label_kod.Text);
-            if (connection.State == ConnectionState.Closed)
-            {
-                connection.Open();
-            }
-
-            dataadapter = new SqlDataAdapter(command);
-            SqlDataReader drstaj = command.ExecuteReader();
-            while (drstaj.Read() == true)
-            {
-                label_kod.Text = drstaj["staj_id"].ToString();
-                textBox_tc.Text = drstaj["tc_kimlikno"].ToString();
-                comboBox_kabuldurumu.Text = drstaj["staj_kabuldurumu"].ToString();
-                comboBox_stajdonemi.Text = drstaj["staj_donem"].ToString();
-                dateTimePicker_baslangıc.Text = drstaj["baslangıc_tarihi"].ToString();
-                dateTimePicker_bitis.Text = drstaj["bitis_tarihi"].ToString();
-                textBox_stajyapmadurumu.Text = drstaj["staj_yapmadurumu"].ToString();
-                textBox_stajsuresi.Text = drstaj["staj_suresi"].ToString();
-                comboBox_servis.Text = drstaj["servis_imkanı"].ToString();
-                comboBox_aracplaka.Text = drstaj["arac_plaka"].ToString();
-                comboBox_mentor.Text = drstaj["mentör"].ToString();
-                comboBox_sigorta.Text = drstaj["sigorta_evrak"].ToString();
-                comboBox_stajyili.Text = drstaj["staj_yılı"].ToString();
-                comboBox_basvuruturu.Text = drstaj["basvuru_turu"].ToString();
-                textBox_r_ad.Text = drstaj["referans_adı"].ToString();
-                textBox_r_adres.Text = drstaj["referans_adres"].ToString();
-                textBox_r_eposta.Text = drstaj["referans_eposta"].ToString();
-                textBox_r_telefon.Text = drstaj["referans_telefon"].ToString();
-                textBox_staj_aciklama.Text = drstaj["staj_acıklama"].ToString();
-                comboBox_egitimdurumu.Text = drstaj["egitim_durumu"].ToString();
-                comboBox_okuladı.Text = drstaj["okul_adı"].ToString();
-                comboBox_bolumadı.Text = drstaj["bolum_adı"].ToString();
-                comboBox_sinif.Text = drstaj["sınıf"].ToString();
-                textBox_okulno.Text = drstaj["okul_no"].ToString();
-                comboBox_sehir.Text = drstaj["sehir"].ToString();
-                textBox_okulpuan.Text = drstaj["okul_puanı"].ToString();
-                textBox_okulacıklama.Text = drstaj["okul_acıklama"].ToString();
-                textBox_bankaadı.Text = drstaj["banka_adı"].ToString();
-                textBox_subekodu.Text = drstaj["şube_kodu"].ToString();
-                textBox_hesapno.Text = drstaj["hesap_no"].ToString();
-                textBox_iban.Text = drstaj["iban_no"].ToString();
-                label_kalansure.Text = drstaj["staj_kalan_sure"].ToString();
-                comboBox_stajturu.Text = drstaj["staj_turu"].ToString();
-            }
-            drstaj.Close();
-            connection.Close();
-
-            tabControl_bilgigiriş.SelectedTab = tabPage_okul;
-            listBox_dosya.Enabled = true;
-
-            #region DÖKÜMANLARI LİSTBOX'A AKTAR
-
-            listBox_dosya.Items.Clear(); // Listbox'ın içini temizle
-            string DosyaYolu = "O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_stajturu.Text;
-             if (Directory.Exists(DosyaYolu))
-            {
-                //GetFiles metodu dosyaları temsil eder. Belirtilen Dizindeki Dosyaları Dizi olarak döndürür
-                string[] dosyalar = System.IO.Directory.GetFiles("O:\\STAJER_TAKIP\\StajyerDosyaları\\" + textBox_tc.Text + "_" + comboBox_staj.Text);
-                for (int j = 0; j < dosyalar.Length; j++)
-                {
-                    //klasörler dizisinin i. elemanı listboxa ekle
-                    listBox_dosya.Items.Add(dosyalar[j]);
-                }
-            }
-            #endregion
         }
 #endregion
 

@@ -22,7 +22,7 @@ namespace InternFollowProgramming
         SqlConnection connection = new SqlConnection(conString);
         SqlCommand command = new SqlCommand();
         SqlDataAdapter dataadapter;
-        SqlDataReader datareader;
+       
         SqlCommand cmd = new SqlCommand();
         #endregion
 

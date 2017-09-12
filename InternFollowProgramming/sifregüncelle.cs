@@ -20,8 +20,7 @@ namespace InternFollowProgramming
         static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN; MultipleActiveResultSets=True;user id=sa;password=20fcab9e";
         SqlConnection connection = new SqlConnection(conString);
         SqlCommand command = new SqlCommand();
-        SqlDataAdapter dataadapter;
-        SqlDataReader datareader;
+        
         SqlCommand cmd = new SqlCommand();
         #endregion
         public sifregüncelle()
