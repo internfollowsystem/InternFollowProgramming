@@ -40,6 +40,7 @@
 			this.yoklamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.sTAJYERGÖSTERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.düzenleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.mailGönderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.silToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.stajyerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -193,10 +194,11 @@
 			// 
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sTAJYERGÖSTERToolStripMenuItem,
+            this.düzenleToolStripMenuItem,
             this.mailGönderToolStripMenuItem,
             this.silToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
+			this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
 			// 
 			// sTAJYERGÖSTERToolStripMenuItem
 			// 
@@ -205,6 +207,14 @@
 			this.sTAJYERGÖSTERToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.sTAJYERGÖSTERToolStripMenuItem.Text = "Stajyer Göster";
 			this.sTAJYERGÖSTERToolStripMenuItem.Click += new System.EventHandler(this.sTAJYERGÖSTERToolStripMenuItem_Click);
+			// 
+			// düzenleToolStripMenuItem
+			// 
+			this.düzenleToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.düzenle1;
+			this.düzenleToolStripMenuItem.Name = "düzenleToolStripMenuItem";
+			this.düzenleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.düzenleToolStripMenuItem.Text = "Düzenle";
+			this.düzenleToolStripMenuItem.Click += new System.EventHandler(this.düzenleToolStripMenuItem_Click);
 			// 
 			// mailGönderToolStripMenuItem
 			// 
@@ -227,14 +237,14 @@
 			// stajyerToolStripMenuItem
 			// 
 			this.stajyerToolStripMenuItem.Name = "stajyerToolStripMenuItem";
-			this.stajyerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.stajyerToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
 			this.stajyerToolStripMenuItem.Text = "Stajyer";
 			this.stajyerToolStripMenuItem.Click += new System.EventHandler(this.stajyerToolStripMenuItem_Click);
 			// 
 			// stajToolStripMenuItem
 			// 
 			this.stajToolStripMenuItem.Name = "stajToolStripMenuItem";
-			this.stajToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.stajToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
 			this.stajToolStripMenuItem.Text = "Staj";
 			this.stajToolStripMenuItem.Click += new System.EventHandler(this.stajToolStripMenuItem_Click);
 			// 
@@ -921,5 +931,6 @@
         private System.Windows.Forms.Label label_user;
         private System.Windows.Forms.PictureBox pictureBox_user;
 		private System.Windows.Forms.Label label_stajyer;
+		private System.Windows.Forms.ToolStripMenuItem düzenleToolStripMenuItem;
 	}
 }

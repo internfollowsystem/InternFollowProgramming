@@ -43,6 +43,10 @@ namespace InternFollowProgramming
                 command.Parameters.AddWithValue("@sifresi", textBox_sifre.Text);
                 command.ExecuteNonQuery();
                 connection.Close();
+
+				textBox_adı.ResetText();
+				textBox_sifre.ResetText();
+
                 MessageBox.Show("Şifre Yenilendi");
             }
 

@@ -69,10 +69,16 @@ namespace InternFollowProgramming
                 label_ortaokul.Text = drstajyer["ortaokul_adı"].ToString();
                 label_lise.Text = drstajyer["lise_adı"].ToString();
                 label_universite.Text = drstajyer["universite_adı"].ToString();
-                //pictureBox_stajyer.ImageLocation = label_resimyolu.Text;
-            }
-            //Datareader açık olduğu sürece başka bir sorgu çalıştıramayacağımız için dr nesnesini kapatıyoruz.
-            else
+
+
+				#region Resmi Göster
+				string ResimYolu = @"" + @"O:STAJER_TAKIP\\StajyerGörselleri\\" + label_tc.Text + "\\kişiselgörsel.jpg";
+				pictureBox_stajyer.ImageLocation = ResimYolu;
+				pictureBox_stajyer.SizeMode = PictureBoxSizeMode.Zoom;
+				#endregion
+			}
+			//Datareader açık olduğu sürece başka bir sorgu çalıştıramayacağımız için dr nesnesini kapatıyoruz.
+			else
             {
                 MessageBox.Show("Kayıtlı Stajyer Bulunamadı");
             }

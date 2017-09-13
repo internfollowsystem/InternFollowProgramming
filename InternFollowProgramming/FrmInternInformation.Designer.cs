@@ -47,6 +47,9 @@
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.openFileDialog_dosya = new System.Windows.Forms.OpenFileDialog();
 			this.tabPage_staj = new System.Windows.Forms.TabPage();
+			this.label_kalan_sure = new System.Windows.Forms.Label();
+			this.label_staj_yapmadurumu = new System.Windows.Forms.Label();
+			this.label_staj_yılı = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.comboBox_aracplaka = new System.Windows.Forms.ComboBox();
 			this.button_plaka = new System.Windows.Forms.Button();
@@ -66,7 +69,6 @@
 			this.textBox_r_ad = new System.Windows.Forms.TextBox();
 			this.label_servisimkanı = new System.Windows.Forms.Label();
 			this.label_mentör = new System.Windows.Forms.Label();
-			this.textBox_stajyapmadurumu = new System.Windows.Forms.TextBox();
 			this.label_stajyapmadurumu = new System.Windows.Forms.Label();
 			this.label_bittarih = new System.Windows.Forms.Label();
 			this.button_stajdonemi = new System.Windows.Forms.Button();
@@ -81,7 +83,6 @@
 			this.dateTimePicker_bitis = new System.Windows.Forms.DateTimePicker();
 			this.dateTimePicker_baslangıc = new System.Windows.Forms.DateTimePicker();
 			this.comboBox_stajdonemi = new System.Windows.Forms.ComboBox();
-			this.comboBox_stajyili = new System.Windows.Forms.ComboBox();
 			this.comboBox_basvuruturu = new System.Windows.Forms.ComboBox();
 			this.comboBox_kabuldurumu = new System.Windows.Forms.ComboBox();
 			this.label_stajsuresi = new System.Windows.Forms.Label();
@@ -203,7 +204,6 @@
 			this.pictureBox_stajgüncelle = new System.Windows.Forms.PictureBox();
 			this.pictureBox_stajsil = new System.Windows.Forms.PictureBox();
 			this.pictureBox_dosyayukle = new System.Windows.Forms.PictureBox();
-			this.pictureBox_staj = new System.Windows.Forms.PictureBox();
 			this.pictureBox_dosya = new System.Windows.Forms.PictureBox();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.pictureBox_sıfırla = new System.Windows.Forms.PictureBox();
@@ -236,7 +236,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajgüncelle)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajsil)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_dosyayukle)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_staj)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_dosya)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_sıfırla)).BeginInit();
 			this.SuspendLayout();
@@ -251,7 +250,7 @@
 			this.textBox_tcbul.Size = new System.Drawing.Size(127, 25);
 			this.textBox_tcbul.TabIndex = 0;
 			this.textBox_tcbul.Text = "TC Kimlik No İle Ara";
-			this.textBox_tcbul.MouseLeave += new System.EventHandler(this.textBox_tcbul_MouseLeave);
+			this.textBox_tcbul.TextChanged += new System.EventHandler(this.textBox_tcbul_TextChanged);
 			this.textBox_tcbul.MouseHover += new System.EventHandler(this.textBox_tcbul_MouseHover);
 			// 
 			// panel_adsoyadbul
@@ -422,6 +421,7 @@
 			this.comboBox_staj.TabIndex = 12;
 			this.comboBox_staj.Text = "Staj Türü Seç";
 			this.comboBox_staj.SelectedIndexChanged += new System.EventHandler(this.comboBox_staj_SelectedIndexChanged);
+			this.comboBox_staj.Click += new System.EventHandler(this.comboBox_staj_Click);
 			// 
 			// openFileDialog
 			// 
@@ -434,6 +434,9 @@
 			// tabPage_staj
 			// 
 			this.tabPage_staj.BackColor = System.Drawing.Color.Beige;
+			this.tabPage_staj.Controls.Add(this.label_kalan_sure);
+			this.tabPage_staj.Controls.Add(this.label_staj_yapmadurumu);
+			this.tabPage_staj.Controls.Add(this.label_staj_yılı);
 			this.tabPage_staj.Controls.Add(this.label3);
 			this.tabPage_staj.Controls.Add(this.comboBox_aracplaka);
 			this.tabPage_staj.Controls.Add(this.button_plaka);
@@ -445,7 +448,6 @@
 			this.tabPage_staj.Controls.Add(this.panel_referans);
 			this.tabPage_staj.Controls.Add(this.label_servisimkanı);
 			this.tabPage_staj.Controls.Add(this.label_mentör);
-			this.tabPage_staj.Controls.Add(this.textBox_stajyapmadurumu);
 			this.tabPage_staj.Controls.Add(this.label_stajyapmadurumu);
 			this.tabPage_staj.Controls.Add(this.label_bittarih);
 			this.tabPage_staj.Controls.Add(this.button_stajdonemi);
@@ -460,7 +462,6 @@
 			this.tabPage_staj.Controls.Add(this.dateTimePicker_bitis);
 			this.tabPage_staj.Controls.Add(this.dateTimePicker_baslangıc);
 			this.tabPage_staj.Controls.Add(this.comboBox_stajdonemi);
-			this.tabPage_staj.Controls.Add(this.comboBox_stajyili);
 			this.tabPage_staj.Controls.Add(this.comboBox_basvuruturu);
 			this.tabPage_staj.Controls.Add(this.comboBox_kabuldurumu);
 			this.tabPage_staj.Controls.Add(this.label_stajsuresi);
@@ -474,6 +475,37 @@
 			this.tabPage_staj.Size = new System.Drawing.Size(857, 358);
 			this.tabPage_staj.TabIndex = 3;
 			this.tabPage_staj.Text = "Staj Bilgileri";
+			// 
+			// label_kalan_sure
+			// 
+			this.label_kalan_sure.AutoSize = true;
+			this.label_kalan_sure.Location = new System.Drawing.Point(20, 126);
+			this.label_kalan_sure.Name = "label_kalan_sure";
+			this.label_kalan_sure.Size = new System.Drawing.Size(71, 15);
+			this.label_kalan_sure.TabIndex = 55;
+			this.label_kalan_sure.Text = "Kalan Süre:";
+			// 
+			// label_staj_yapmadurumu
+			// 
+			this.label_staj_yapmadurumu.AutoSize = true;
+			this.label_staj_yapmadurumu.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+			this.label_staj_yapmadurumu.ForeColor = System.Drawing.Color.Goldenrod;
+			this.label_staj_yapmadurumu.Location = new System.Drawing.Point(158, 151);
+			this.label_staj_yapmadurumu.Name = "label_staj_yapmadurumu";
+			this.label_staj_yapmadurumu.Size = new System.Drawing.Size(43, 15);
+			this.label_staj_yapmadurumu.TabIndex = 54;
+			this.label_staj_yapmadurumu.Text = "______";
+			// 
+			// label_staj_yılı
+			// 
+			this.label_staj_yılı.AutoSize = true;
+			this.label_staj_yılı.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+			this.label_staj_yılı.ForeColor = System.Drawing.Color.Goldenrod;
+			this.label_staj_yılı.Location = new System.Drawing.Point(383, 76);
+			this.label_staj_yılı.Name = "label_staj_yılı";
+			this.label_staj_yılı.Size = new System.Drawing.Size(19, 15);
+			this.label_staj_yılı.TabIndex = 53;
+			this.label_staj_yılı.Text = "00";
 			// 
 			// label3
 			// 
@@ -491,7 +523,7 @@
 			// comboBox_aracplaka
 			// 
 			this.comboBox_aracplaka.FormattingEnabled = true;
-			this.comboBox_aracplaka.Location = new System.Drawing.Point(157, 278);
+			this.comboBox_aracplaka.Location = new System.Drawing.Point(157, 239);
 			this.comboBox_aracplaka.Name = "comboBox_aracplaka";
 			this.comboBox_aracplaka.Size = new System.Drawing.Size(175, 23);
 			this.comboBox_aracplaka.TabIndex = 51;
@@ -499,7 +531,7 @@
 			// 
 			// button_plaka
 			// 
-			this.button_plaka.Location = new System.Drawing.Point(338, 283);
+			this.button_plaka.Location = new System.Drawing.Point(338, 244);
 			this.button_plaka.Name = "button_plaka";
 			this.button_plaka.Size = new System.Drawing.Size(23, 23);
 			this.button_plaka.TabIndex = 50;
@@ -509,7 +541,7 @@
 			// 
 			// button_mentör
 			// 
-			this.button_mentör.Location = new System.Drawing.Point(338, 215);
+			this.button_mentör.Location = new System.Drawing.Point(338, 273);
 			this.button_mentör.Name = "button_mentör";
 			this.button_mentör.Size = new System.Drawing.Size(23, 22);
 			this.button_mentör.TabIndex = 49;
@@ -520,16 +552,18 @@
 			// label_kalansure
 			// 
 			this.label_kalansure.AutoSize = true;
-			this.label_kalansure.Location = new System.Drawing.Point(342, 130);
+			this.label_kalansure.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+			this.label_kalansure.ForeColor = System.Drawing.Color.Goldenrod;
+			this.label_kalansure.Location = new System.Drawing.Point(158, 127);
 			this.label_kalansure.Name = "label_kalansure";
-			this.label_kalansure.Size = new System.Drawing.Size(85, 15);
+			this.label_kalansure.Size = new System.Drawing.Size(19, 15);
 			this.label_kalansure.TabIndex = 48;
-			this.label_kalansure.Text = "KALAN SURE:";
+			this.label_kalansure.Text = "00";
 			// 
 			// label_aracplaka
 			// 
 			this.label_aracplaka.AutoSize = true;
-			this.label_aracplaka.Location = new System.Drawing.Point(17, 283);
+			this.label_aracplaka.Location = new System.Drawing.Point(17, 244);
 			this.label_aracplaka.Name = "label_aracplaka";
 			this.label_aracplaka.Size = new System.Drawing.Size(68, 15);
 			this.label_aracplaka.TabIndex = 46;
@@ -640,7 +674,7 @@
 			// label_servisimkanı
 			// 
 			this.label_servisimkanı.AutoSize = true;
-			this.label_servisimkanı.Location = new System.Drawing.Point(17, 193);
+			this.label_servisimkanı.Location = new System.Drawing.Point(17, 214);
 			this.label_servisimkanı.Name = "label_servisimkanı";
 			this.label_servisimkanı.Size = new System.Drawing.Size(83, 15);
 			this.label_servisimkanı.TabIndex = 41;
@@ -649,23 +683,16 @@
 			// label_mentör
 			// 
 			this.label_mentör.AutoSize = true;
-			this.label_mentör.Location = new System.Drawing.Point(18, 222);
+			this.label_mentör.Location = new System.Drawing.Point(18, 280);
 			this.label_mentör.Name = "label_mentör";
 			this.label_mentör.Size = new System.Drawing.Size(49, 15);
 			this.label_mentör.TabIndex = 40;
 			this.label_mentör.Text = "Mentör:";
 			// 
-			// textBox_stajyapmadurumu
-			// 
-			this.textBox_stajyapmadurumu.Location = new System.Drawing.Point(156, 128);
-			this.textBox_stajyapmadurumu.Name = "textBox_stajyapmadurumu";
-			this.textBox_stajyapmadurumu.Size = new System.Drawing.Size(178, 21);
-			this.textBox_stajyapmadurumu.TabIndex = 36;
-			// 
 			// label_stajyapmadurumu
 			// 
 			this.label_stajyapmadurumu.AutoSize = true;
-			this.label_stajyapmadurumu.Location = new System.Drawing.Point(18, 130);
+			this.label_stajyapmadurumu.Location = new System.Drawing.Point(18, 151);
 			this.label_stajyapmadurumu.Name = "label_stajyapmadurumu";
 			this.label_stajyapmadurumu.Size = new System.Drawing.Size(121, 15);
 			this.label_stajyapmadurumu.TabIndex = 35;
@@ -720,7 +747,7 @@
 			// comboBox_mentor
 			// 
 			this.comboBox_mentor.FormattingEnabled = true;
-			this.comboBox_mentor.Location = new System.Drawing.Point(157, 214);
+			this.comboBox_mentor.Location = new System.Drawing.Point(157, 272);
 			this.comboBox_mentor.Name = "comboBox_mentor";
 			this.comboBox_mentor.Size = new System.Drawing.Size(176, 23);
 			this.comboBox_mentor.TabIndex = 26;
@@ -732,7 +759,7 @@
 			this.comboBox_sigorta.Items.AddRange(new object[] {
             "VAR",
             "YOK"});
-			this.comboBox_sigorta.Location = new System.Drawing.Point(157, 243);
+			this.comboBox_sigorta.Location = new System.Drawing.Point(157, 301);
 			this.comboBox_sigorta.Name = "comboBox_sigorta";
 			this.comboBox_sigorta.Size = new System.Drawing.Size(175, 23);
 			this.comboBox_sigorta.TabIndex = 23;
@@ -740,7 +767,7 @@
 			// label_sigortaevrak
 			// 
 			this.label_sigortaevrak.AutoSize = true;
-			this.label_sigortaevrak.Location = new System.Drawing.Point(17, 248);
+			this.label_sigortaevrak.Location = new System.Drawing.Point(17, 306);
 			this.label_sigortaevrak.Name = "label_sigortaevrak";
 			this.label_sigortaevrak.Size = new System.Drawing.Size(120, 15);
 			this.label_sigortaevrak.TabIndex = 21;
@@ -752,7 +779,7 @@
 			this.comboBox_servis.Items.AddRange(new object[] {
             "VAR",
             "YOK"});
-			this.comboBox_servis.Location = new System.Drawing.Point(156, 185);
+			this.comboBox_servis.Location = new System.Drawing.Point(156, 206);
 			this.comboBox_servis.Name = "comboBox_servis";
 			this.comboBox_servis.Size = new System.Drawing.Size(178, 23);
 			this.comboBox_servis.TabIndex = 19;
@@ -760,7 +787,7 @@
 			// 
 			// textBox_stajsuresi
 			// 
-			this.textBox_stajsuresi.Location = new System.Drawing.Point(156, 156);
+			this.textBox_stajsuresi.Location = new System.Drawing.Point(156, 177);
 			this.textBox_stajsuresi.Name = "textBox_stajsuresi";
 			this.textBox_stajsuresi.Size = new System.Drawing.Size(177, 21);
 			this.textBox_stajsuresi.TabIndex = 17;
@@ -771,6 +798,7 @@
 			this.dateTimePicker_bitis.Name = "dateTimePicker_bitis";
 			this.dateTimePicker_bitis.Size = new System.Drawing.Size(177, 21);
 			this.dateTimePicker_bitis.TabIndex = 16;
+			this.dateTimePicker_bitis.ValueChanged += new System.EventHandler(this.dateTimePicker_bitis_ValueChanged);
 			// 
 			// dateTimePicker_baslangıc
 			// 
@@ -778,6 +806,7 @@
 			this.dateTimePicker_baslangıc.Name = "dateTimePicker_baslangıc";
 			this.dateTimePicker_baslangıc.Size = new System.Drawing.Size(177, 21);
 			this.dateTimePicker_baslangıc.TabIndex = 15;
+			this.dateTimePicker_baslangıc.ValueChanged += new System.EventHandler(this.dateTimePicker_baslangıc_ValueChanged);
 			// 
 			// comboBox_stajdonemi
 			// 
@@ -787,45 +816,6 @@
 			this.comboBox_stajdonemi.Size = new System.Drawing.Size(162, 23);
 			this.comboBox_stajdonemi.TabIndex = 13;
 			this.comboBox_stajdonemi.Click += new System.EventHandler(this.comboBox_stajdonemi_Click);
-			// 
-			// comboBox_stajyili
-			// 
-			this.comboBox_stajyili.FormattingEnabled = true;
-			this.comboBox_stajyili.Items.AddRange(new object[] {
-            "1995",
-            "1996",
-            "1997",
-            "1998",
-            "1999",
-            "2000",
-            "2001",
-            "2001",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-            "2024"});
-			this.comboBox_stajyili.Location = new System.Drawing.Point(159, 315);
-			this.comboBox_stajyili.Name = "comboBox_stajyili";
-			this.comboBox_stajyili.Size = new System.Drawing.Size(175, 23);
-			this.comboBox_stajyili.TabIndex = 12;
 			// 
 			// comboBox_basvuruturu
 			// 
@@ -849,7 +839,7 @@
 			// label_stajsuresi
 			// 
 			this.label_stajsuresi.AutoSize = true;
-			this.label_stajsuresi.Location = new System.Drawing.Point(17, 159);
+			this.label_stajsuresi.Location = new System.Drawing.Point(17, 180);
 			this.label_stajsuresi.Name = "label_stajsuresi";
 			this.label_stajsuresi.Size = new System.Drawing.Size(119, 15);
 			this.label_stajsuresi.TabIndex = 7;
@@ -876,7 +866,7 @@
 			// label_stajyılı
 			// 
 			this.label_stajyılı.AutoSize = true;
-			this.label_stajyılı.Location = new System.Drawing.Point(17, 318);
+			this.label_stajyılı.Location = new System.Drawing.Point(336, 74);
 			this.label_stajyılı.Name = "label_stajyılı";
 			this.label_stajyılı.Size = new System.Drawing.Size(50, 15);
 			this.label_stajyılı.TabIndex = 2;
@@ -1622,6 +1612,7 @@
 			this.textBox_tc.Name = "textBox_tc";
 			this.textBox_tc.Size = new System.Drawing.Size(180, 21);
 			this.textBox_tc.TabIndex = 7;
+			this.textBox_tc.TextChanged += new System.EventHandler(this.textBox_tc_TextChanged);
 			// 
 			// label_kangrubu
 			// 
@@ -1973,7 +1964,7 @@
 			// label_staj_kodu
 			// 
 			this.label_staj_kodu.AutoSize = true;
-			this.label_staj_kodu.Location = new System.Drawing.Point(217, 54);
+			this.label_staj_kodu.Location = new System.Drawing.Point(136, 10);
 			this.label_staj_kodu.Name = "label_staj_kodu";
 			this.label_staj_kodu.Size = new System.Drawing.Size(70, 13);
 			this.label_staj_kodu.TabIndex = 35;
@@ -1983,7 +1974,7 @@
 			// 
 			this.label_kod.AutoSize = true;
 			this.label_kod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-			this.label_kod.Location = new System.Drawing.Point(293, 54);
+			this.label_kod.Location = new System.Drawing.Point(212, 10);
 			this.label_kod.Name = "label_kod";
 			this.label_kod.Size = new System.Drawing.Size(21, 13);
 			this.label_kod.TabIndex = 36;
@@ -1995,9 +1986,10 @@
 			this.panel_stajbilgidosya.Controls.Add(this.pictureBox_stajsıfırla);
 			this.panel_stajbilgidosya.Controls.Add(this.pictureBox_stajgüncelle);
 			this.panel_stajbilgidosya.Controls.Add(this.pictureBox_stajsil);
+			this.panel_stajbilgidosya.Controls.Add(this.label_kod);
 			this.panel_stajbilgidosya.Controls.Add(this.pictureBox_dosyayukle);
 			this.panel_stajbilgidosya.Controls.Add(this.textBox_dosya);
-			this.panel_stajbilgidosya.Controls.Add(this.pictureBox_staj);
+			this.panel_stajbilgidosya.Controls.Add(this.label_staj_kodu);
 			this.panel_stajbilgidosya.Controls.Add(this.comboBox_staj);
 			this.panel_stajbilgidosya.Controls.Add(this.pictureBox_dosya);
 			this.panel_stajbilgidosya.Location = new System.Drawing.Point(209, 70);
@@ -2010,7 +2002,7 @@
 			this.pictureBox_stajsıfırla.BackColor = System.Drawing.Color.Transparent;
 			this.pictureBox_stajsıfırla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pictureBox_stajsıfırla.Image = global::InternFollowProgramming.Properties.Resources.temizle;
-			this.pictureBox_stajsıfırla.Location = new System.Drawing.Point(237, 3);
+			this.pictureBox_stajsıfırla.Location = new System.Drawing.Point(323, 4);
 			this.pictureBox_stajsıfırla.Name = "pictureBox_stajsıfırla";
 			this.pictureBox_stajsıfırla.Size = new System.Drawing.Size(60, 25);
 			this.pictureBox_stajsıfırla.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -2025,7 +2017,7 @@
 			// 
 			this.pictureBox_stajgüncelle.BackColor = System.Drawing.Color.Transparent;
 			this.pictureBox_stajgüncelle.Image = global::InternFollowProgramming.Properties.Resources.düzenle;
-			this.pictureBox_stajgüncelle.Location = new System.Drawing.Point(206, 4);
+			this.pictureBox_stajgüncelle.Location = new System.Drawing.Point(284, 4);
 			this.pictureBox_stajgüncelle.Name = "pictureBox_stajgüncelle";
 			this.pictureBox_stajgüncelle.Size = new System.Drawing.Size(25, 25);
 			this.pictureBox_stajgüncelle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -2040,7 +2032,7 @@
 			// 
 			this.pictureBox_stajsil.BackColor = System.Drawing.Color.Transparent;
 			this.pictureBox_stajsil.Image = global::InternFollowProgramming.Properties.Resources.stajsil;
-			this.pictureBox_stajsil.Location = new System.Drawing.Point(175, 4);
+			this.pictureBox_stajsil.Location = new System.Drawing.Point(248, 4);
 			this.pictureBox_stajsil.Name = "pictureBox_stajsil";
 			this.pictureBox_stajsil.Size = new System.Drawing.Size(25, 25);
 			this.pictureBox_stajsil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -2065,21 +2057,6 @@
 			this.pictureBox_dosyayukle.Click += new System.EventHandler(this.pictureBox_fileupdate_Click);
 			this.pictureBox_dosyayukle.MouseLeave += new System.EventHandler(this.pictureBox_fileupdate_MouseLeave);
 			this.pictureBox_dosyayukle.MouseHover += new System.EventHandler(this.pictureBox_fileupdate_MouseHover);
-			// 
-			// pictureBox_staj
-			// 
-			this.pictureBox_staj.BackColor = System.Drawing.Color.Transparent;
-			this.pictureBox_staj.Image = global::InternFollowProgramming.Properties.Resources.stajbul;
-			this.pictureBox_staj.Location = new System.Drawing.Point(140, 4);
-			this.pictureBox_staj.Name = "pictureBox_staj";
-			this.pictureBox_staj.Size = new System.Drawing.Size(25, 25);
-			this.pictureBox_staj.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox_staj.TabIndex = 13;
-			this.pictureBox_staj.TabStop = false;
-			this.toolTip1.SetToolTip(this.pictureBox_staj, "STAJ BUL");
-			this.pictureBox_staj.Click += new System.EventHandler(this.pictureBox_staj_Click);
-			this.pictureBox_staj.MouseLeave += new System.EventHandler(this.pictureBox_staj_MouseLeave);
-			this.pictureBox_staj.MouseHover += new System.EventHandler(this.pictureBox_staj_MouseHover);
 			// 
 			// pictureBox_dosya
 			// 
@@ -2134,9 +2111,7 @@
 			this.Controls.Add(this.pictureBox_sıfırla);
 			this.Controls.Add(this.label_dosya);
 			this.Controls.Add(this.panel_stajbilgidosya);
-			this.Controls.Add(this.label_kod);
 			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.label_staj_kodu);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.tabControl_bilgigiriş);
 			this.Controls.Add(this.panel_adsoyadbul);
@@ -2181,7 +2156,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajgüncelle)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_stajsil)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_dosyayukle)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_staj)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_dosya)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_sıfırla)).EndInit();
 			this.ResumeLayout(false);
@@ -2203,7 +2177,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox comboBox_staj;
-        private System.Windows.Forms.PictureBox pictureBox_staj;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ListBox listBox_dosya;
         private System.Windows.Forms.TextBox textBox_dosya;
@@ -2222,7 +2195,6 @@
 		private System.Windows.Forms.TextBox textBox_r_ad;
 		private System.Windows.Forms.Label label_servisimkanı;
 		private System.Windows.Forms.Label label_mentör;
-		private System.Windows.Forms.TextBox textBox_stajyapmadurumu;
 		private System.Windows.Forms.Label label_stajyapmadurumu;
 		private System.Windows.Forms.Label label_bittarih;
 		private System.Windows.Forms.Button button_stajdonemi;
@@ -2237,7 +2209,6 @@
 		private System.Windows.Forms.DateTimePicker dateTimePicker_bitis;
 		private System.Windows.Forms.DateTimePicker dateTimePicker_baslangıc;
 		private System.Windows.Forms.ComboBox comboBox_stajdonemi;
-		private System.Windows.Forms.ComboBox comboBox_stajyili;
 		private System.Windows.Forms.ComboBox comboBox_basvuruturu;
 		private System.Windows.Forms.ComboBox comboBox_kabuldurumu;
 		private System.Windows.Forms.Label label_stajsuresi;
@@ -2372,5 +2343,8 @@
         private System.Windows.Forms.Label label_dosya;
         private System.Windows.Forms.PictureBox pictureBox_sıfırla;
         private System.Windows.Forms.PictureBox pictureBox_stajsıfırla;
-    }
+		private System.Windows.Forms.Label label_staj_yapmadurumu;
+		private System.Windows.Forms.Label label_staj_yılı;
+		private System.Windows.Forms.Label label_kalan_sure;
+	}
 }

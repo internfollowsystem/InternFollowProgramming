@@ -56,6 +56,10 @@ namespace InternFollowProgramming
             command.ExecuteNonQuery();
             connection.Close();
 
+			textBox_adı.ResetText();
+			textBox_departman.ResetText();
+			textBox_eposta.ResetText();
+			textBox_sifre.ResetText();
             MessageBox.Show("Kullanıcı silindi!");
         }
 

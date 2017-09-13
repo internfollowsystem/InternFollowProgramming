@@ -48,6 +48,11 @@ namespace InternFollowProgramming
                 datareader.Close();
             #endregion
             connection.Close();
+
+			if(comboBox_cmbx.Text=="stajturu")
+			{
+				MessageBox.Show("STAJ TÜRÜ VERİSİ GİRERKEN VERİ KAYBI OLMAMASI İÇİN ŞUNLARA DİKKAT EDİNİZ;\n 1.Türkçe Karakter giriniz! (BİLGİİŞLEM yerine BILGIISLEM) \n 2.Boşluk Bırakmadan yazınız!(BİLGİ İŞLEM YERİNE BİLGİİŞLEM)  \n Dikkatiniz için teşekkür ederiz");
+			}
         }
 
         private void button_ekle_Click(object sender, EventArgs e)
