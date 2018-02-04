@@ -16,8 +16,8 @@ namespace InternFollowProgramming
     public partial class FrmHome : Form
     {
         #region baglantımız
-        //static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=20fbgsbjk07";
-        static string conString = "Data Source=10.0.0.51;Initial Catalog=INTERN;user id=sa;password=20fcab9e";
+       static string conString = "Server=DESKTOP-PBAHQL4;Initial Catalog=INTERN;user id=sa;password=*********";
+        //
         SqlConnection connection = new SqlConnection(conString);
         SqlCommand command = new SqlCommand();
         SqlDataAdapter dataadapter;

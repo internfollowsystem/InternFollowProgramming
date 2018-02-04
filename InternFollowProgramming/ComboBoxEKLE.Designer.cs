@@ -32,15 +32,14 @@
             this.comboBox_cmbx = new System.Windows.Forms.ComboBox();
             this.listBox_cmbx = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button_ekle = new System.Windows.Forms.Button();
-            this.textBox_cmbxveri = new System.Windows.Forms.TextBox();
-            this.button_cıkıs = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GüncelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button_ekle = new System.Windows.Forms.Button();
+            this.textBox_cmbxveri = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -88,6 +87,22 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(132, 48);
             // 
+            // SilToolStripMenuItem
+            // 
+            this.SilToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
+            this.SilToolStripMenuItem.Name = "SilToolStripMenuItem";
+            this.SilToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.SilToolStripMenuItem.Text = "SİL";
+            this.SilToolStripMenuItem.Click += new System.EventHandler(this.SilToolStripMenuItem_Click);
+            // 
+            // GüncelleToolStripMenuItem
+            // 
+            this.GüncelleToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.düzenle1;
+            this.GüncelleToolStripMenuItem.Name = "GüncelleToolStripMenuItem";
+            this.GüncelleToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.GüncelleToolStripMenuItem.Text = "GÜNCELLE";
+            this.GüncelleToolStripMenuItem.Click += new System.EventHandler(this.GüncelleToolStripMenuItem_Click);
+            // 
             // button_ekle
             // 
             this.button_ekle.Location = new System.Drawing.Point(369, 82);
@@ -106,18 +121,6 @@
             this.textBox_cmbxveri.Size = new System.Drawing.Size(141, 20);
             this.textBox_cmbxveri.TabIndex = 5;
             // 
-            // button_cıkıs
-            // 
-            this.button_cıkıs.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_cıkıs.Location = new System.Drawing.Point(382, 292);
-            this.button_cıkıs.Name = "button_cıkıs";
-            this.button_cıkıs.Size = new System.Drawing.Size(30, 23);
-            this.button_cıkıs.TabIndex = 6;
-            this.button_cıkıs.Text = "x";
-            this.button_cıkıs.UseVisualStyleBackColor = true;
-            this.button_cıkıs.Visible = false;
-            this.button_cıkıs.Click += new System.EventHandler(this.button_cıkıs_Click);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
@@ -127,6 +130,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(440, 56);
             this.panel1.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::InternFollowProgramming.Properties.Resources.AKESTAJYERLOGO1;
+            this.pictureBox1.Location = new System.Drawing.Point(25, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -148,44 +161,16 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Seçim Nesnesi Yaz!";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::InternFollowProgramming.Properties.Resources.AKESTAJYERLOGO1;
-            this.pictureBox1.Location = new System.Drawing.Point(25, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
-            // SilToolStripMenuItem
-            // 
-            this.SilToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.Delete_Icon2;
-            this.SilToolStripMenuItem.Name = "SilToolStripMenuItem";
-            this.SilToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.SilToolStripMenuItem.Text = "SİL";
-            this.SilToolStripMenuItem.Click += new System.EventHandler(this.SilToolStripMenuItem_Click);
-            // 
-            // GüncelleToolStripMenuItem
-            // 
-            this.GüncelleToolStripMenuItem.Image = global::InternFollowProgramming.Properties.Resources.düzenle1;
-            this.GüncelleToolStripMenuItem.Name = "GüncelleToolStripMenuItem";
-            this.GüncelleToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.GüncelleToolStripMenuItem.Text = "GÜNCELLE";
-            this.GüncelleToolStripMenuItem.Click += new System.EventHandler(this.GüncelleToolStripMenuItem_Click);
-            // 
             // ComboBoxEKLE
             // 
             this.AcceptButton = this.button_ekle;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Beige;
-            this.CancelButton = this.button_cıkıs;
             this.ClientSize = new System.Drawing.Size(440, 331);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button_cıkıs);
             this.Controls.Add(this.textBox_cmbxveri);
             this.Controls.Add(this.button_ekle);
             this.Controls.Add(this.listBox_cmbx);
@@ -206,7 +191,6 @@
         private System.Windows.Forms.ListBox listBox_cmbx;
         private System.Windows.Forms.Button button_ekle;
         private System.Windows.Forms.TextBox textBox_cmbxveri;
-        private System.Windows.Forms.Button button_cıkıs;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem SilToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
